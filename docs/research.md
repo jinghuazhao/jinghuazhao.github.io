@@ -60,8 +60,8 @@ as well as developed [software](software.md) (esp. [Haplotype Analysis](https://
 [R](https://jinghuazhao.github.io/R/) and more recently
 [FM-pipeline](https://jinghuazhao.github.io/FM-pipeline/) and
 [PW-pipeline](https://jinghuazhao.github.io/PW-pipeline/)) on
-[GitHub](https://github.com/jinghuazhao?tab=repositories) ![Image](bees.jpg){:.circle} and
-[CRAN](http://cran.r-project.org/) ![Image](https://cran.r-project.org/Rlogo.svg){:.circle}.
+[GitHub](https://github.com/jinghuazhao?tab=repositories) and
+[CRAN](http://cran.r-project.org/).
 
 The following is an excerpt from the [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/) pipeline.
 ```mermaid

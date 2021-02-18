@@ -12,6 +12,8 @@ Epidemiology Unit (2005-18, [people](http://www.mrc-epid.cam.ac.uk/people/jing-h
 [China](http://en.wikipedia.org/wiki/China) (1988-94). I have a PhD in Genetics (2004, King\'s College London), master\'s (1988, [Fudan University](http://www.fudan.edu.cn)) and bachelor\'s (1985,
  [Shandong University](http://www.sdu.edu.cn)) degrees in Medicine. I am [Fushan No 1 Middle School](http://www.gx211.com/school/school833.shtml) and [Dong Huang Shan Primary School](http://school.ci123.com/firms-index/114472) alumni.
 
+![Image](bees.jpg){:.circle}
+
 ## The old page is still visible from
 
 # [https://jhz22.user.srcf.net/](https://jhz22.user.srcf.net/)
