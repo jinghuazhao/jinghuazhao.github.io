@@ -14,7 +14,5 @@ Epidemiology Unit (2005-18, [people](http://www.mrc-epid.cam.ac.uk/people/jing-h
 
 ![Image](bees.jpg){:.circle}
 
-## The old page is still visible from
-
-# [https://jhz22.user.srcf.net/](https://jhz22.user.srcf.net/)
+# See also [https://jhz22.user.srcf.net/](https://jhz22.user.srcf.net/)
 
