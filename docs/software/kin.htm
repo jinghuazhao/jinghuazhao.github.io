@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>KCL: Institute of Psychiatry: Section of Genetic Epidemiology and Biostatistics</TITLE>
+  <META NAME="IP" CONTENT="Jing Hua Zhao">
+  <META NAME="e-mail" CONTENT="j.zhao@iop.kcl.ac.uk">
+  <META NAME="created" CONTENT="**insert**">
+  <META NAME="modified" CONTENT="**insert**">
+  <META NAME="expires" CONTENT="">
+  <META NAME="keywords" CONTENT="**insert**">
+  <META NAME="description" CONTENT="Kinship Calculator">
+  <META NAME="copyright" CONTENT="Jing Hua Zhao">
+  <META NAME="content_source" CONTENT="Institute of Psychiatry - Psychological Medicine - Genetic Epidemiology and Biostatistics">
+  <META NAME="content_destination" CONTENT="College">
+  <META NAME="source_path" CONTENT="">
+  <LINK REL="STYLESHEET" TYPE="text/css" HREF="/IoP/Includes/kcl_dom.css">
+  <LINK REL="STYLESHEET" TYPE="text/css" HREF="/IoP/Includes/kcl_sub.css">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<!--NOEDIT-->
+<!--#include virtual="/IoP/Includes/kcl_h_sub.html"-->
+<!--#include virtual="/IoP/Includes/IoP_GEB_h.html" -->
+<!--begin contents-->
+<!--/NOEDIT-->
+
+<P><CENTER><TABLE WIDTH="520" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR>
+    <TD WIDTH="100%">
+    <H3>Documentation for KIN</H3>
+
+    <P>27-11-2001 JH Zhao<BR>
+<BR>
+    This distribution includes a driver program and an executable
+    program based on Morgan v2.0/kinship and Werner pedigree example.
+    The remaining source code is available from (http://www.stat.washington.edu/thompson/Genepi/Morgan.shtml).
+    Note Morgan v2.3 has kin program to handle for more sophisticated
+    pedigree.</P>
+
+    <P><B>A list of files</B></P>
+
+    <P>kindrv.c &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Driver<BR>
+    kin.exe &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Executable program<BR>
+    readme &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This file<BR>
+    werner.pre &nbsp;A pre-MakePed file<BR>
+    werner.kin &nbsp;&nbsp;Output for werner.pre</P>
+
+    <P>werner.pre is a sample input file in LINKAGE pre-MakePed format.
+    Basically it includes family ID plus triple information of individual
+    ID, father ID, and mother ID. If you wish to know more about
+    that format, please consult Prof Jurg Ott's website at http://linkage.rockefeller.edu.</P>
+
+    <P>werner.kin was obtained from werner.pre by following command</P>
+
+    <P>kin werner.pre werner.kin</P>
+
+    <P>(or kin &lt;werner.pre &gt;werner.kin by redirection)<BR>
+<BR>
+    Note Under Windows system this is only possible under MS-DOS
+    prompt. To enter this mode, follow the sequence below,</P>
+
+    <P>Click Start -&gt; Run, and type command, cd \your_kin_directory</P>
+
+    <P>The MS-DOS windows may be too small on WinNT, you can press
+    Alt+Enter to toggle between high-resolution small window and
+    low-resolution large window. You can switch between you Windows
+    tasks using Alt+Tab.</P>
+
+    <P>If your system has MS-DOS Prompt in the Programs list, you
+    can follow the sequence below,</P>
+
+    <P>Click Start -&gt; Programs -&gt; MS-DOS Prompt, cd \your_kin_directory</P>
+
+    <P>Otherwise the program automatically enters interactive mode,
+    asking for pedigree ID, individual ID, father ID and mother ID.
+    Like Morgan you will also need tell the program when your input
+    ends by signalling EOF (end of file), i.e. ^Z for MS-DOS and
+    ^D for Unix.</P>
+
+    <P>When you finish a MS-DOS session use exit command to give
+    control back to Windows.</P>
+
+    <P>&nbsp;</P>
+
+    <P>Cheers,</P>
+
+    <P><CENTER>Jing Hua Zhao<BR>
+    Section of Genetic Epidemiology and Biostatistics<BR>
+    Division of Psychological Medicine<BR>
+    Institute of Psychiatry<BR>
+    De Crespigny Park<BR>
+    London SE5 8AF<BR>
+    UK</CENTER></P>
+
+    <P><CENTER>j.zhao@iop.kcl.ac.uk<BR>
+    </CENTER></TD>
+  </TR>
+</TABLE></CENTER></P>
+
+<!--NOEDIT-->
+<!--end contents-->
+<!--#include virtual="/IoP/Includes/kcl_footer.html"--> 
+
+  <CENTER>
+    Last modified: <!--#echo var="LAST_MODIFIED"--> 14/1/2000 by: <A
+HREF="mailto:j.zhao@iop.kcl.ac.uk">Jing Hua Zhao</A> 
+  </CENTER>
+
+<!--/NOEDIT-->
+
+</BODY>
+</HTML>

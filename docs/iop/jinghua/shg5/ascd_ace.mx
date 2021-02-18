@@ -1,0 +1,124 @@
+!A C E model fitted to Alison's Data with ascertainment
+G1: model parameters
+Data Calc NGroups=9
+Begin Matrices;
+X Lower 1 1 Free    ! genetic structure
+Y Lower 1 1 Free    ! common environmental structure
+Z Lower 1 1 Free    ! specific environmental structure
+W Lower 1 1 Fixed   ! dominance structure
+M Full  1 2 Fixed
+T Full  2 1 Fixed
+End Matrices
+Matrix M 10.23 10.23
+Matrix T 15.5 15.5
+Begin Algebra;
+A= X*X' ;
+C= Y*Y' ;
+E= Z*Z' ;
+D= W*W' ;
+End Algebra;
+End
+
+G2: Monozygotic twin pairs
+Data NInput-vars=2 NObservations=131
+Raw_data file=mz.dat
+Labels N_t1 N_t2
+Matrices= Group 1
+Mean M /
+Covariances  A+C+D+E | A+C+D _
+             A+C+D   | A+C+D+E /
+Options RSidual
+End
+
+G3: dummay group
+Data Ninput=2
+CTable 2 2
+0 0
+0 0
+! It's full of zeros so it contributes zero to the function
+Matrices = Group 1
+Thresholds T /
+Covariances  A+C+D+E | A+C+D _
+             A+C+D   | A+C+D+E /
+Option RSiduals
+End
+
+G4: Calculate ascertainment correction
+Data Ninput=0
+Matrices
+I Iden 1 1
+J Izero 1 2
+P Full 2 2 = %P3
+T Full 1 1
+K Unit 2 1
+Compute T*\ln(I-J*P*K) /
+Matrix T 262                 ! twice the sample size of group 2
+Options User-defined RSiduals Multiple
+End
+
+
+G5: Dizygotic twin pairs
+Data NInput_vars=2 NObservations=75
+Raw_data file=dz.dat
+Labels N_t1 N_t2
+Matrices= Group 1
+H Full 1 1
+Q Full 1 1
+Mean M /
+Covariances A+C+D+E   | H@A+C+Q@D _
+            H@A+C+Q@D | A+C+D+E /
+Matrix H .5
+Matrix Q .25
+Start 2.5 All
+Options Multiple RSidual
+End
+
+G6: dummy group
+Data Ninput=2
+CTable 2 2
+0 0
+0 0
+! It's full of zeros so it contributes zero to the function
+Matrices = Group 1
+H Full 1 1
+Q Full 1 1
+Thresholds T /
+Covariances A+C+D+E   | H@A+C+Q@D _
+            H@A+C+Q@D | A+C+D+E /
+Matrix H .5
+Matrix Q .25
+Option RSiduals
+End
+
+G7: Calculate ascertainment correction
+Data Ninput=0
+Matrices
+I Iden 1 1
+J Izero 1 2
+P Full 2 2 = %P6
+T Full 1 1
+K Unit 2 1
+Compute T*\ln(I-J*P*K) /
+Matrix T 150                 ! twice the sample size of group 5
+Options User-defined RSiduals Multiple
+End
+
+G8: standardization
+data calc
+matrices= Group 1
+compute (A|C|D|E) @ (A+C+D+E)~/
+options rs nd=3
+options multiple
+end
+
+G9: Constraint group
+Data Constraint NInput=1
+matrices= Group 1
+U Full 1 1
+Begin Algebra;
+S= (X|Y|W|Z);
+End Algebra;
+Matrix U 18.0
+Constraint U - S*S'/
+end
+

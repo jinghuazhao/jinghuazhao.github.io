@@ -1,0 +1,426 @@
+---
+layout: article
+title: Jing Hua Zhao's virtual library at MRC
+---
+
+**CURRENT ISSUES OF MAJOR JOURNALS **
+
+-   [American Journal of Epidemiology](http://aje.oxfordjournals.org/current.dtl)
+-   [American Journal of Human Genetics](http://www.cell.com/AJHG/current) ([archive](http://www.ncbi.nlm.nih.gov/pmc/journals/203/))
+-   [Annals of Human Genetics](http://www3.interscience.wiley.com/journal/117956622/home)
+-   [Annals of Statistics](http://www.imstat.org/aos/) ([Project Euclid](http://projecteuclid.org/)) 
+-   [Applied Statistics](http://www3.interscience.wiley.com/journal/117997424/home)
+-   [Biometrics](http://www3.interscience.wiley.com/journal/118538342/home)
+-   [Biometrika](http://biomet.oxfordjournals.org/current.dtl)
+-   [Biostatistics](http://biostatistics.oxfordjournals.org/current.dtl)
+-   [BMJ](http://www.bmj.com/current.dtl)
+-   [Diabetes](http://diabetes.diabetesjournals.org/content/current)
+-   [Diabetes Care](http://care.diabetesjournals.org/content/current)
+-   [Diabetologia](http://www.springer.com/medicine/internal/journal/125) 
+-   [Epidemiology](http://journals.lww.com/epidem/pages/currenttoc.aspx)
+-   [European Journal of ClinicalNutrition](http://www.nature.com/ejcn/index.html)
+-   [European Journal of Epidemiology](http://www.springerlink.com/content/r33410802507/) 
+-   [European Journal of Human Genetics](http://www.springerlink.com/content/q5714jr37m20/)
+-   [European Journal of Nutrition](http://www.springerlink.com/content/q5714jr37m20/) 
+-   [Genetics, Selection, Evolution](http://www.gsejournal.org/) 
+-   [Genetic Epidemiology](http://www3.interscience.wiley.com/journal/35841/home)
+-   [Genetics](http://genetics.org/content/current)
+-   [Human Biology](http://www.bioone.org/loi/hbio)
+-   [Human Molecular Genetics](http://hmg.oxfordjournals.org/) 
+-   [International Journal of Epidemiology](http://ije.oxfordjournals.org/current.dtl)
+-   [JAMA](http://jama.ama-assn.org/current.dtl)
+-   [Journal of Applied Physiology](http://jap.physiology.org/current.shtml) 
+-   [Journal of Clinical Epidemiology](http://www.sciencedirect.com/science/journal/08954356)
+-   [Journal of the American Statistical Association](http://pubs.amstat.org/loi/jasa)
+-   [Journal of Probability and Statistics](http://www.hindawi.com/journals/jps/) 
+-   [Journal of the Royal Statistical Society, Series B](http://www3.interscience.wiley.com/journal/118490742/home)
+-   [Journal of Statistical Software](http://www.jstatsoft.org/) 
+-   [Metabolism](http://www.sciencedirect.com/science/journal/00260495)
+-   [Nature](http:///www.nature.com/nature/current_issue.html) ([Manuscript Tracking System](http://mts-nature.nature.com/cgi-bin/main.plex)),
+    [Nature Genetics](http://www.nature.com/ng/index.html), [Nature Review Genetics](http://www.nature.com/nrg/index.html)
+-   [New England Journal of Medicine](http://content.nejm.org/current.dtl)
+-   [PLoS Genetics](http://www.plosgenetics.org/article/browseIssue.action?field=issue)
+-   [PLoS One](http://www.plosone.org/home.action) 
+-   [PNAS](http://www.pnas.org/content/current) 
+-   [Science](http://www.sciencemag.org/current.dtl)
+-   [Significance](http://www3.interscience.wiley.com/journal/118500352/home) 
+-   [Statistics in Medicine](http://www3.interscience.wiley.com/journal/2988/home)
+-   [Statistical Methods in Medical Research](http://smm.sagepub.com/) 
+-   [Statistical Science](http://projecteuclid.org/ss)
+-   [The American Journal of Clinical  Nutrition](http://www.ajcn.org/current.dtl)
+-   [The American Statistician](http://pubs.amstat.org/loi/tas)
+-   [The Lancet](http://www.thelancet.com/journals/lancet/issue/current)
+-   [The R Journal](http://journal.r-project.org/current.html)
+
+**BOOKMARKS**
+
+-   Childcareplus (<https://www.childcare-plus.co.uk/NonSecure/Login.aspx?ReturnUrl=%2fPages%2fLogin.aspx>)
+-   [dbGaP Frammingham Study](http://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000342.v5.p6)
+-   [Cambridge City Council](https://idox.cambridge.gov.uk/online-applications//)
+-   [CRAN](http://cran.r-project.org/)
+-   [EPIC-Norfolk People](http://www.srl.cam.ac.uk/epic/people/amit.shtml)
+-   [Galaxy](https://usegalaxy.org/)
+-   [Genetic Analysis Workshops](http://www.gaworkshop.org/) (GAWs)
+-   Genome 10K Project (<http://genome10k.soe.ucsc.edu/>)
+-   [Huili County](http://baike.baidu.com/view/1524578.htm), [Dong Huang  Shan Village](http://www.youbianku.com/%E5%B1%B1%E4%B8%9C%E7%9C%81%E7%83%9F%E5%8F%B0%E5%B8%82%E7%A6%8F%E5%B1%B1%E5%8C%BA%E5%9B%9E%E9%87%8C%E9%95%87%E4%B8%9C%E9%BB%84%E5%B1%B1%E6%9D%91),
+    [Kindergarden](http://company.ch.gongchang.com/info/57587520_3636/)
+-   [National Human Genome Research Institute](http://www.genome.gov/)
+-   [OpenBUGS](http://www.openbugs.net/w/FrontPage)
+-   [Quick-R](http://www.statmethods.net/index.html)
+-   [RStudio](http://www.rstudio.com/products/rstudio/download/)
+-   [SAS macros at Vanderbilt](http://biostat.mc.vanderbilt.edu/wiki/Main/SasMacros)
+-   [SAS/STAT](http://support.sas.com/documentation/onlinedoc/stat/)
+-   [Stan](http://mc-stan.org/)
+-   [Stata 13 documentation](http://www.stata.com/features/documentation/) **and FAQs ([http://www.stata.com/support/faqs/)](http://www.stata.com/support/faqs/)**
+-   Schegen visa application form ([Finland)](http://formin.finland.fi/public/default.aspx?nodeid=35334&contentlan=2&culture=en-US#Application_form)
+-   [Speedtest.net](http://www.speedtest.net/)
+-   [VirtualBox](https://www.virtualbox.org/)
+-   [Wiley Statistics](http://onlinelibrary.wiley.com/subject/code/000113)
+
+**INFORMATION**
+
+-   [HM Treasury](http://www.hm-treasury.gov.uk/home.htm)
+    [Budget](http://www.hm-treasury.gov.uk/junebudget_documents.htm)
+-   [Hairtique Cambridge](http://hairtique.wordpress.com/)
+-   [Medical Research Council](http://www.mrc.ac.uk) ([UKRC portal](https://portal.ssc.rcuk.ac.uk))
+    -   [MRC-BSU Seminars](http://talks.cam.ac.uk/show/index/7411)
+    -   [MRC branding](http://www.mrc.ac.uk/branding)
+    -   [MRC electronic application &  assessment](https://www.eaa.mrc.ac.uk/EAA/) (EAA)
+    -   [MRC Human Nutrition Research](http://www.mrc-hnr.cam.ac.uk/)
+    -   [MRC Laboratory of Molecular Biology](http://www2.mrc-lmb.cam.ac.uk/)
+    -   [MRC Portal](http://portal.mrc.ac.uk)
+    -   [News and Publications](http://www.mrc.ac.uk/Newspublications/News/RSSFeeds/index.htm)
+    -   [Computing](http://www.mrc-epid.cam.ac.uk/Internal/IT/Computing/)
+-   [Stephen Perse School for Girls](http://junior.stephenperse.com/) ([Newsletters](http://junior.stephenperse.com/newsletters)) and [Perse](http://www.perse.co.uk/)
+-   [Sanger Institute](http://www.sanger.ac.uk/Info/Seminars/)
+    -   [Data](https://www.sanger.ac.uk/PostGenomics/genotyping/access_to_data.shtml) 
+-   [The Royal Society (eGAP)](https://e-gap.royalsociety.org/Login.aspx?ReturnUrl=%2f)
+-   [University College London](http://www.ucl.ac.uk/)
+    -   [Computer software tutorials](http://www.ucl.ac.uk/is/documents/)
+    -   [Bloomsbury Centre for Genetic Epidemiology and Statistics Seminars](http://www.ucl.ac.uk/ugi/seminars/bloomsbury%20)
+-   [University of Cambridge](http://www.cam.ac.uk/)
+    -   [Accommodation Service](http://www.accommodation.cam.ac.uk)
+    -   [Amgen Scholars Programme](http://www.biomed.cam.ac.uk/amgenscholars/) ([Life Sciences Research themes database](http://www.biomed.cam.ac.uk/cgi-bin/research-name-gs-2009.pl))
+    -   [Cambridge Computer Centre Ltd](http://www.thomsonlocal.com/Cambridge%20Computer%20Centre%20Ltd/0124815113502064000/)
+    -   [CamGrid](http://www.escience.cam.ac.uk/projects/camgrid/)
+    -   [Cambridge Statistics Discussion Group](http://www.mrc-cbu.cam.ac.uk/people/peter.watson/csdg.html)
+    -   [Clinical School](http://www.medschl.cam.ac.uk) ([Webmail](http://webmail.medschl.cam.ac.uk), [Printer monitoring](http://printer-status:9191))
+    -   [Computing Service](http://www.cam.ac.uk/cs/)
+    -   [Computing information for new Cambridge Staff](http://www.cam.ac.uk/cs/newusers/n1/)
+    -   [Current Status of Services](http://www-tus.csx.cam.ac.uk/news/)
+    -   [Delivery arrangements and directory status](https://jackdaw.cam.ac.uk/cammail)
+    -   [Employment Self-Service (ESS)](http://www.hrsystems.admin.cam.ac.uk/systems/systems-overview/employee-self-service-ess)
+    -   [Epidemiology, Risk and Genomics](http://www.hps.cam.ac.uk/epidemiology/) 
+    -   [Hermes Webmail Services](https://webmail.hermes.cam.ac.uk/)
+    -   [Holiday Playschemes](http://www.admin.cam.ac.uk/univ/childcare/playscheme/)
+    -   [Life Sciencces Research themes database](http://www.biomed.cam.ac.uk/cgi-bin/research-name-gs.pl)
+    -   [KiddiVouchers](https://www.kiddivouchers.com/login.php)
+    -   [Raven Authentication Service](https://raven.cam.ac.uk/auth/login.html)
+    -   [Research Service Division](http://www.rsd.cam.ac.uk/)
+    -   [Seminars](http://www.cam.ac.uk/cambuniv/currentss/seminars.html)
+    -   [Site-licensed software](http://www.ucs.cam.ac.uk/compsoft/site-licensed-software)
+    -   [The Strangeways Research Laboratory](http://www.srl.cam.ac.uk) ([EPIC-document management system](https://hoodedclaw.srl.cam.ac.uk/owl-0.95/), [EPIC Intranet](https://hoodedclaw.srl.cam.ac.uk/intranet))
+    -   [Training courses](http://training.csx.cam.ac.uk)
+    -   [Travel Insurance](http://www.admin.cam.ac.uk/offices/insurance/travel/)
+    -   [University look up](http://www.lookup.cam.ac.uk/person/jhz22)
+    -   [Voice mail](http://voicemail.phone.cam.ac.uk/vm/) 
+
+**SOFTWARE FOR GENETIC ANALYSIS (Lists at [Pittsburg](http://www.hgen.pitt.edu/resources/cluster/software.html), [UCLA](http://helpdesk.genetics.ucla.edu/howtos/biosoft)** **and [WUSTL](http://www.biostat.wustl.edu/genetics/geneticssoft/))**
+
+-   [ACGT at TAU](http://acgt.cs.tau.ac.il/)
+-   [Algorithms and Computational Biology lab of Kun-Mao Chao](http://www.csie.ntu.edu.tw/%7Ekmchao/tools/)
+-   [Allegro](http://www.decode.com/software/)
+-   [APPL](http://www.rose-hulman.edu/%7Eevans/appl/index.html) ([WM](http://www.math.wm.edu/%7Eleemis/Leemis/APPL.txt))
+-   [ASIAN](http://eureka.cbrc.jp/asian/)
+-   [ASReml](http://www.vsn-intl.com/ASReml/)
+-   [BayexX](http://www.stat.uni-muenchen.de/%7Ebayesx/bayesx.html)
+-   [B-Course](http://b-course.hiit.fi/)
+-   [BEAGLE and PRESTO](http://faculty.washington.edu/browning/)
+-   [BOADICEA](http://www.srl.cam.ac.uk/genepi/boadicea/boadicea_home.html)
+-   [Computer prorgrams by DY Lin](http://www.bios.unc.edu/%7Elin/)
+-   [Cranefoot \-- pedigree drawing software](http://www.artemis.kll.helsinki.fi/cranefoot/)
+-   [DCEG tools and resources](http://dceg.cancer.gov/bb) (Power and other analysis tools)
+-   [Deciphia](http://public.tgen.org/dcraig/deciphia/)  
+-   [DetSel](http://www.genetix.univ-montp2.fr/detsel/detsel.html)
+-   [DHLAS](http://biomath.med.uth.gr/genetics/index.html)
+-   [DnaSP](http://www.ub.es/dnasp/)
+-   [FASTSNP](http://fastsnp.ibms.sinica.edu.tw)
+-   [Forensic software resources at NCBI](http://www.ncbi.nlm.nih.gov/IEB/Research/GVWG/OSIRIS/index.htm)
+-   [Elvira](http://www.ia.uned.es/investig/proyectos/elvira)
+-   [FaSTLMM](http://research.microsoft.com/en-us/um/redmond/projects/mscompbio/fastlmm/)
+-   [GCTA](http://www.complextraitgenomics.com/software/gcta/)
+-   [GERON](http://neurogenetics.nia.nih.gov/)
+-   [Genetic Analysis in Excel
+    (GenAlEx)](http://www.anu.edu.au/BoZo/GenAlEx/)
+-   [Genetic Analysis Software at Oxford](http://www.stats.ox.ac.uk/%7Emarchini/software/gwas/gwas.html)
+-   [GFF2PS](http://genome.imim.es/software/gfftools/GFF2PS.html) 
+-   [glu-Genetics](http://code.google.com/p/glu-genetics/)
+-   [GoldenHelix](http://www.goldenhelix.com/index.jsp)
+-   [GRAPPA](http://www.stats.bris.ac.uk/%7Epeter/Grappa/)
+-   [iVici](http://michnick.bcm.umontreal.ca/ivici/)
+-   [LDhat](http://www.stats.ox.ac.uk/%7Emcvean/) (Computer program and course notes by McVean)
+-   [LDmap](http://cedar.genetics.soton.ac.uk/pub/PROGRAMS/LDMAP) ([The Genetic Epidemiology Group](http://cedar.genetics.soton.ac.uk/public_html/))
+-   [LDselect](http://droog.gs.washington.edu/)
+-   [MACH](http://www.sph.umich.edu/csg/abecasis/MACH/download/)
+-   [Madeline 2.0](http://eyegene.ophthy.med.umich.edu/madeline/index.php)
+-   [MAP-O-MAT](http://compgen.rutgers.edu/mapomat/)
+-   [MEGA](http://www.megasoftware.net/)
+-   [MIDAS](http://www.genes.org.uk/software/midas/)
+-   [Mx Examples](http://www.vcu.edu/mx/examples.html)
+-   [PediDraw](http://pedidraw.gcnet.org.cn/)
+-   [Pedfiddler, parente and Imap](http://www.medicine.mcgill.ca/statgene/) ([parente and Miniped](http://www.math.mun.ca/%7Eloredoos/software/))
+-   [Pedigree viewer](http://www-personal.une.edu.au/%7Ebkinghor/pedigree.htm)
+-   [PedVizAPI](http://www.pedvizapi.org/)
+-   [PEDSYS](http://pedsys.txbiomedgenetics.org/download.html)
+-   [POPSIM](http://www.mucosa.de/)
+-   [PowerMarker](http://statgen.ncsu.edu/powermarker/)
+-   [PRISM](http://www.prismmodelchecker.org/) 
+-   [PyPop: Python for population genetics](http://allele5.biol.berkeley.edu/pypop/)
+-   [Quality control for GWAS by Mike Weale](http://www.kcl.ac.uk/schools/medicine/research/genetics/research/clusters/bse/weale/gwascode.html) 
+-   [Quanto](http://hydra.usc.edu/GxE/) and [FITF](http://hydra.usc.edu/fitf/)
+-   [SNPGWA](http://www.phs.wfubmc.edu/web/public_bios/sec_gene/downloads.cfm)  <http://bioinfo.iconcologia.net/> (SNPStats and SNPassoc)
+-   [Software tools for animal genetics (epiSNP, Locusmap, Pedigraph, MiniInred)](http://animalgene.umn.edu/)
+-   [Software from the Broad Institute](http://www.broad.mit.edu/tools/software.html)
+-   [Software from the Sanger Institute](http://www.sanger.ac.uk/resources/software/) 
+-   [Software by Clarice R Weinberg](http://dir.niehs.nih.gov/dirbb/weinberg/weinberg.htm)
+-   [Software by Johnathan Marchini](http://www.stats.ox.ac.uk/%7Emarchini/software/gwas/gwas.html)
+-   [Software from Ritchie\'s lab](http://chgr.mc.vanderbilt.edu/ritchielab/)
+-   [Software by Wei-Min Chen](http://people.virginia.edu/%7Ewc9c/)
+-   [SOLAR](http://solar.txbiomedgenetics.org/download.html)
+-   [SPAGeDi](http://www.ulb.ac.be/sciences/ecoevol/spagedi.html)
+-   [Superlink online](http://bioinfo.cs.technion.ac.il/superlink-online/) 
+-   [Stata program for G-G, G-E
+    interactions](http://cruk.leeds.ac.uk/katie/) by Catherine Saunders
+-   [Statistical genetics and genomics laboratory of H Li](http://www.cceb.upenn.edu/%7Ehli/prog.html)
+-   [Tagger](http://www.broad.mit.edu/mpg/tagger/server.html)
+-   UCSC x86\_64 programs (<http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/>)
+-   [VCE](http://vce.tzv.fal.de/index.pl)
+-   [WGAviewer](http://sourceforge.net/projects/wgaviewer/) ([Duke site](http://www.genome.duke.edu/centers/pg2/downloads/wgaviewer.php))
+
+**GENERAL INTERESTS (**Google search [China](http://google.cn/), [France](http://www.google.fr/), [Germany](http://www.google.de/), [Japan](http://www.google.co.jp/), [Spain](http://www.google.es/), [UK](http://www.google.co.uk/), [USA](http://www.google.com/))
+
+-   [An Introduction of S-PLUS for Windows](http://www.splusbook.com/)  by Longhow Lam
+-   [Best free MicroSoft downloads](http://www.techsupportalert.com/content/best-free-microsoft-downloads.htm#HTMLEditor)
+-   [Biomedical PowerPoint Toolkits for Presentation](http://www.motifolio.com/sampleslides.html)
+-   [BioWiki](http://www.mybio.net/biowiki/Main_Page)
+-   [Catogorical Data Analysis 2nd Edition](http://www.stat.ufl.edu/%7Eaa/cda/cda.html)
+-   [Causality Actuarial Society](http://www.casact.org/cotor/) 
+-   [Centre for Multilevel Modeling](http://www.mlwin.com/)
+-   [Chinese-English/English-Chinese dictionary](http://dict.cnki.net/) at [CNKI](http://www.cnki.net/) and [UMich](http://eyegene.ophthy.med.umich.edu/hanyu/index.php)
+-   [Chinese Student & Scholar Association UK](http://www.cssauk.org.uk/) (CSSA-UK)
+-   [Coriell Institute for Medical Research](http://ccr.coriell.org/) (Coriell Cell Repositories)
+-   [Directory of open access journals](http://www.doaj.org/)
+-   [Operations Research Society of China](http://www.orsc.org.cn/) (orsc)
+-   [CGEMS](http://cgems.cancer.gov/)
+-   [China Statistical Network](http://www.8sta.com/)
+-   [Computational Biology Group](http://compbio.sysbiol.cam.ac.uk/Resources/Annotation/)
+-   [CUDD: CU decision diagram package](http://vlsi.colorado.edu/%7Efabio/CUDD/)
+-   [Current Bioinformatics](http://www.bentham.org/cbio/) (CBio)
+-   [Database of Genomic Variants](http://projects.tcag.ca/variation/)
+-   [David A Kenny\'s Homepage](http://davidakenny.net/kenny.htm)
+-   [dbGaP genotype and phenotype](http://www.ncbi.nlm.nih.gov/sites/entrez?db=gap)  
+-   [Debian Genomics](http://wiki.debian.org/DebianGenomics)
+-   [Direct Methods for Sparse Linear Systems](http://www.cise.ufl.edu/research/sparse/CSparse/)
+-   [Epidemiology and Biostatistics at Shandong University School of Public Health](http://202.194.14.141/read.asp?AID=372)
+-   [Fenland Study](http://legacy.mrc-epid.cam.ac.uk/Internal/Data_Management/Release/Fenland/Fenland.html)
+-   [FFTW](http://www.fftw.org/)
+-   [Encyclopedia of Biostatistics](http://www.wiley.co.uk/eob/) 
+-   [English Longitudinal Study of Aging](http://www.ifs.org.uk/elsa/) (ELSA, <http://www.natcen.ac.uk/elsa/>)
+-   Europe PubMed Central (<http://ukpmc.ac.uk/europepmc>) 
+-   [Fortran and C/C++ mixed  programming](http://www.neurophys.wisc.edu/comp/docs/notes/not017.html)
+-   [Free Association](http://blogs.nature.com/ng/freeassociation/)
+-   [G95](http://www.g95.org/)
+-   [GAW16 FrontPage](http://www.sfbrgenetics.org/gaw16/FrontPage)
+-   [GCC](http://gcc.gnu.org/)
+-   [Genetic Association Identification Network](http://www.fnih.org/GAIN2/home_new.shtml) (GAIN)
+-   [Genetic susceptibility to the metabolic syndrome](http://www.theses.ulaval.ca/2004/22151/22151.html)
+-   [Genstat publications](http://www.vsn-intl.com/genstat/doc/GSpublications.htm)
+-   [Geoscience Australia](http://www.ga.gov.au/)
+-   [GNU Fortran](https://gcc.gnu.org/fortran/) 
+-   [Growth analysis repository](http://oregonstate.edu/%7Eacock/growth-curves/) by Alan Acock
+-   [Hardy-Weinberg principle](http://en.wikipedia.org/wiki/Hardy-Weinberg_principle)
+-   [Harvard program on causal inference](http://www.hsph.harvard.edu/causal/index.htm)
+-   [Henry Stewart Talks](http://www.hstalks.com)
+-   [Homepage of Prof Trefthen](http://web.comlab.ox.ac.uk/oucl/work/nick.trefethen/) (Numerical Analysis)
+-   [Hotspot Shield](http://hotspotshield.com/downloads/thank-you-CN/)
+-   [Hypergenes](http://www.hypergenes.eu/)
+-   [Information & Communication Technologies ICT](https://fileexchange.imperial.ac.uk/)
+-   [International Encyclopedia of the Social & Behavioral Sciences](http://www.sciencedirect.com/science/referenceworks/9780080430768)
+    ([Wikipedia](http://en.wikipedia.org/wiki/International_Encyclopedia_of_the_Social_%26_Behavioral_Sciences))
+-   [International Genetic Epidemiology Society
+    (IGES)](http://www.geneticepi.org/)
+-   [International Chinese Statistical Association](http://www.icsa.org/)
+-   [Introduction to Parallel Computing](https://computing.llnl.gov/tutorials/parallel_comp/)
+-   [ITC Research Computing Support Center Talks](http://www.itc.virginia.edu/research/talks/)
+-   [Jonathan Thornburg\'s home page](http://www.soton.ac.uk/%7Ejt1c06/index.html) (C/C++ and other stuff)
+-   [KEGG](http://www.genome.jp/kegg/) (Kyoto Encyclopedia of Genes and Genomes)
+-   [KORA](http://www.helmholtz-muenchen.de/kora/en/index.html) study (<http://epi.gsf.de/kora-gen/index_e.php>)
+-   [Korbinian Strimmer Lab](http://strimmerlab.org/) ([notes](http://www.strimmerlab.org/notes/))
+-   [Linear Models in SAS](http://www.stat.wisc.edu/%7Eyandell/software/sas/linmod.html)
+-   [Linux parallel processing using SMP](http://yara.ecn.purdue.edu/%7Epplinux/ppsmp.html)
+-   [Lunar calendar](http://www.khngai.com/chinese/lucal/)
+-   [Manuals at VCU](http://www.ts.vcu.edu/manuals/) (GCG,Matlab,SAS,SPSS,SUDAAN)
+-   [Markov chain Monte Carlo](http://www.dme.ufrj.br/mcmc/)
+-   [MATBUGS: a matlab interface to WinBUGS](http://www.cs.ubc.ca/%7Emurphyk/Software/MATBUGS/matbugs.html)
+-   [Media Fire](http://www.mediafire.com/COSBook43810712) 
+-   [MedTerms](http://www.medterms.com)
+-   [Metabochip SNP details](http://www.sph.umich.edu/csg/kang/MetaboChip/)
+-   [MinGW](http://www.mingw.org/)
+-   [MRC Clinical Sciences Centre](http://www.csc.mrc.ac.uk/)
+-   [Mx](http://www.vcu.edu/mx/)
+-   [NIST Digital Library of Mathematical Functions](http://dlmf.nist.gov) 
+-   [NSF fastlane website](https://www.fastlane.nsf.gov/)
+-   [Numerical Recipes International Student Edition at ICTP](http://sdu.ictp.it/nr/) 
+-   [Obesity Gene Map Database](http://obesitygene.pbrc.edu/) 
+-   [OpenOffice.org](http://www.openoffice.org/)
+-   [Open Source Computer Vision Library](http://www.intel.com/technology/computing/opencv/index.htm)
+-   [Paint.net](http://www.getpaint.net/index.html)
+-   [PGP notes](http://www.math.utah.edu/%7Ebeebe/PGP-notes.html)
+-   Phoenix network (<http://www.ifeng.com/>) 
+-   Printed Journals with Mathemtics and websites (<http://www.mathontheweb.org/mathweb/mi-journals5.html>)
+-   [POP 510 Multilevel Methods](http://data.princeton.edu/pop510/default.html)
+-   Probability and Statistics Journals on the Web ([http://www.math.ucla.edu/\~tom/ProbStatJ.html](http://www.math.ucla.edu/%7Etom/ProbStatJ.html))
+-   [puTTY](http://www.chiark.greenend.org.uk/%7Esgtatham/putty/)[](http://winscp.net/eng/index.php)
+-   [Quantitative genetics website by Bruce Walsh](http://nitro.biosci.arizona.edu/)
+-   rarlab (<http://www.rarlab.com/>) 
+-   [Research councils UK](http://www.rcuk.ac.uk/)
+-   [Research IT Services at Cincinnati
+    Children\'s](http://bmi.cchmc.org/resources/software)
+-   Research Reports in Mathematical Statistics (<http://www2.math.su.se/matstat/reports/seriea/showsurvey.cgi?s>) 
+-   [Revman \-- the information management system](http://www.cc-ims.net/)
+-   [SAS Product Documentation](http://support.sas.com/documentation/) [Shrinkage regression](http://members.iquest.net/%7Esoftrx/rxadobe.htm)
+-   [Simple network of workstations for R](http://www.stat.uiowa.edu/%7Eluke/R/cluster/cluster.html)
+-   [Skin Cancer Awareness & Prevention for People of Color](https://thedermreview.com/skin-cancer-awareness-prevention-for-people-of-color/)
+-   [Software](http://www.devenezia.com/) by Richard Devenezia
+-   [Some Classical Papers in Biometrical Genetics](http://genepi.qimr.edu.au/staff/classicpapers/)
+-   [Statistical Applications in Genetics and Molecular Biology](http://www.bepress.com/sagmb "Statistical Applications in Genetics and Molecular Biology") (SAGMB)
+-   [Statistical genetic analysis of complex phenotypes](http://www.charite.de/ch/medgen/eumedis/statistics05/index.html)
+-   [Statistical modelling and analysis of complex traits in human populations](http://www.mshri.on.ca/mitacs/default.asp) ([software](http://www.mshri.on.ca/mitacs/software/SOFTWARE.HTML))
+-   [STATLIB at Yale](http://statlab.stat.yale.edu/)
+-   [St Jude Children Research Hospital](http://www.stjuderesearch.org/depts/biostats/)
+-   [Student Software Support](http://www.stat.washington.edu/software/) at UW
+-   [Summary of survey analysis software](http://www.hcp.med.harvard.edu/statistics/survey-soft/index.html) by Alan Zaslavsky
+-   [Test](http://www.seio.es/test/)
+-   [The BUGS book](http://www2.mrc-bsu.cam.ac.uk/bugs/thebugsbook/examples/)
+-   [The magnificent ROC](http://www.anaesthetist.com/mnm/stats/roc/)
+-   [The MRC Cognitive Function and Ageing Study](http://www.cfas.ac.uk/) (MRC CFAS)
+-   [The open content alliance](http://www.opencontentalliance.org/)
+-   [The Royal Statistical Society Datasets Website](http://www.blackwellpublishing.com/rss/) (<http://www.blackwellpublishing.com/rss/>)
+-   [The SAS System for Statistical Graphics](http://www.math.yorku.ca/SCS/sssg/)
+-   [Top 500 supercomputer sites](http://www.top500.org/)
+-   UCLA Statistical Computing (<http://www.ats.ucla.edu/stat/>)
+-   [Using 1000Genomes data](http://www.1000genomes.org/using-1000-genomes-data)
+-   [UK-China Science](http://www.uk.cn/science/)
+-   [UnifyPow](http://www.bio.ri.ccf.org/power.html) ([Ralph G. O\'Brien](http://www.bio.ri.ccf.org/Resume/Pages/robrien.html))
+-   [Using MicroSoft Windows Debugger (WinDbg)](http://kipirvine.com/asm/4th/debug/windbg/index.htm)
+-   [WHO Commission on Social Determinants of Health \-- Final Report](http://www.who.int/social_determinants/final_report/en/index.html)
+-   [Whole genome association](http://www.ncbi.nlm.nih.gov/WGA/)
+-   [WinSCP](http://winscp.net/eng/index.php)
+-   Willard van Orman Quine (<http://www.wvquine.org/>) 
+-   [Zhengzhou University](http://www.zzu.edu.cn)
+-   <http://202.38.126.65/mathdoc/> (Archive of Mathematics)
+-   <http://www.agre.org/> (The Autism Genetic Resources Exchange)
+-   <http://biostatistics.mdanderson.org/SoftwareDownload/>
+-   <http://darwin-online.org.uk>
+-   <http://genomx.org/>
+-   <http://gmed.bu.edu> (GMED browser)
+-   <http://grass.itc.it/>  (GRSS GIS)
+-   <http://highwire.stanford.edu>
+-   <http://spss.wikia.com/wiki/Main_Page> 
+-   [http://users.pop.umn.edu/\~chkim/Stata\_WinEdt.html](http://users.pop.umn.edu/%7Echkim/Stata_WinEdt.html)
+-   <http://visualcpp.net/>
+-   <http://wikitravel.org>   (Wikitravel)
+-   <http://www2.efzy.com/xtyh/srf.htm> 
+-   <http://www.andy-roberts.net/misc/index.html> 
+-   <http://www.air-china.co.uk>
+-   <http://www.amtrak.com> 
+-   <http://www.anaqol.org/> (<http://www.freeirt.org/>)
+-   <http://www.ats.ucla.edu/stat/overview.htm> (UCLA Academic Technology Services)
+-   <http://babynamewizard.com/>  
+-   <http://www.bartleby.com/> (Internet publisher of literature, reference and verse)
+-   <http://www.bepress.com/sagmb/>
+-   <http://www.bio-computing.org/> ([JH Zhao](http://www.bio-computing.org/showauthor.php?surname=Zhao&initials=JH))
+-   <http://www.chinamor.cn.net/>
+-   <http://www.china-holiday.com/>
+-   <http://www.citrix.com/lang/English/home.asp>  
+-   <http://www.clusterresources.com/> (Moab Clusters Builder)
+-   <http://www.cmm.bristol.ac.uk/> (Centre for Multilevel Modelling)
+-   <http://www.codeweavers.com/products/cxoffice/>
+-   <http://www.coolmath.com/>
+-   <http://www.cpearson.com/Excel/Topic.aspx> 
+-   <http://www.cplusplus.com/> (C++)
+-   <http://www.csm.ornl.gov/pvm/>  (Parallel Virtual Machine)
+-   <http://www.csm.ornl.gov/torc/C3/> (Project C3 Cluster Command and Control)
+-   <http://www.cutepdf.com/>
+-   <http://www.devenezia.com/>
+-   <http://www.direct.gov.uk/en/Motoring/index.htm>
+-   <http://www.donquixote.eu/> (free time-series analysis software)
+-   <http://www.dorak.info/epi/genetepi.html>
+-   <http://www.dvla.gov.uk/>   
+-   <http://ganglia.sourceforge.net/> (monitoring system for high-performance computing systems such as clusters and Grids)
+-   <http://www.gcnet.org.cn/> (China Genetic Counseling Network)
+-   <http://www.genesniffer.org/>
+-   <http://www.findis.org/> (Finnish Disease Database)
+-   <http://www.fortran.com/> (The Fortran Company) 
+-   <http://www.freepascal.org/>  
+-   <http://www.emsl.pnl.gov/docs/mscf/gold/> (GOLD accounting and allocation manager)
+-   <http://www.gams.com/>
+-   <http://www.gei.nih.gov/> (The Genes, Environment and Health Initiative)
+-   <http://www.genomeutwin.org/>
+-   <http://www.greyhound.com/>  
+-   <http://www.gzip.org>
+-   <http://www.gimp.org>
+-   <http://www.hipaa.org> 
+-   <http://www.housingmaps.com/>
+-   <http://www.hugin.com>
+-   <http://www.imagemagick.org/script/index.php> 
+-   <http://bulletin.imstat.org/archive>
+-   <http://javastat.stat.wvu.edu/> 
+-   <http://www.latex-project.org>
+-   [http://www.liaad.up.pt/\~ltorgo/DataMiningWithR/](http://www.liaad.up.pt/%7Eltorgo/DataMiningWithR/) (Data Mining with R)
+-   <http://www.mathworks.org> (MATLAB)
+-   <http://www.meti.com.cn/>
+-   <http://www.ici.ro/camo/nonlin/minos.htm>
+-   <http://jung.sourceforge.net/>
+-   <http://www.lindo.com/>
+-   <http://www.magiciso.com/>
+-   [http://www.math.umn.edu/\~olver/ala.html](http://www.math.umn.edu/%7Eolver/ala.html) (Applied Linear Algebra) 
+-   <http://www.maximalsoftware.com/> 
+-   <http://www.mitomap.org/> (A human mitochondrial genome database)
+-   <http://www.mozilla.org/support/firefox/keyboard> 
+-   [http://www.musikwissenschaft.uni-mainz.de/\~ag/ag.html](http://www.musikwissenschaft.uni-mainz.de/%7Eag/ag.html) (lex.exe, yacc.exe)
+-   <http://www.mpi-forum.org/> (Message Passing Interface Forum)
+-   <http://www.mvstats.com/> (Multivariate Data Analysis)
+-   <http://ec.mydict.com/>
+-   <http://www.nationalexpress.com/>  
+-   <http://www.networkchinese.com>
+-   <http://www.open-mpi.org/>
+-   <http://www.openbioinformatics.org/> 
+-   [http://www.osc.edu/\~troy/pbs/](http://www.osc.edu/%7Etroy/pbs/) (OSC Configuration and Tools for PBS)
+-   <http://www.pagebreeze.com/>  
+-   <http://psychclassics.yorku.ca/Fisher/Methods/index.htm>
+-   <http://www.pubmed.org>
+-   <http://www.pubmedcentral.nih.gov>
+-   <http://www.rootsforreal.com/>
+-   <http://cran.r-project.org/doc/> 
+-   <http://rsync.samba.org/examples.html>
+-   <http://www.solver.com/>
+-   <http://www.statmethods.net/index.html> 
+-   <http://www.statsdirect.com/>
+-   <http://www.stats.uwo.ca/faculty/murdoch/software/debuggingR/>
+-   <http://tldp.org/> (The Linux Documentation Project)
+-   <http://trolltech.com/products/qt>  
+-   <http://www.ucl.ac.uk/prospectus/> (UCL prospectus)
+-   <http://people.umass.edu/foulkes/asg.html> (Applied Statistical Genetics with R)
+-   <http://www.who.int/whr/en/> (World Health Report)
+-   <http://en.wikipedia.org/wiki/CDisplayEx> 
+-   <http://en.wikipedia.org/wiki/Main_Page>
+-   <http://www.wtccc.org.uk/> (The Wellcome Trust Case Control Consortium)
+-   <http://gershwin.ens.fr/vdaniel/Doc-Locale/Graph-General/Xfig/attributes.html>
+    
+-   <http://www.x-rates.com> (Exchange rates)
+-   <http://www.york.parkinn.co.uk> ([IGES
+    2007](http://www.genepi.org/))
+-   <http://zhangroup.aporc.org/HomePage>
+
+***Created on** 22/2/2006 and **last changed** 10/11/2020*

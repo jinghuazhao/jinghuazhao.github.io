@@ -1,0 +1,376 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>KCL: Institute of Psychiatry: Section of Genetic Epidemiology and Biostatistics</TITLE>
+  <META NAME="IP" CONTENT="Jing Hua Zhao">
+  <META NAME="e-mail" CONTENT="j.zhao@iop.kcl.ac.uk">
+  <META NAME="created" CONTENT="**insert**">
+  <META NAME="modified" CONTENT="**insert**">
+  <META NAME="expires" CONTENT="">
+  <META NAME="keywords" CONTENT="**insert**">
+  <META NAME="description" CONTENT="Two-locus LD calculator">
+  <META NAME="copyright" CONTENT="Jing Hua Zhao">
+  <META NAME="content_source" CONTENT="Institute of Psychiatry - Psychological Medicine - Genetic Epidemiology and Biostatistics">
+  <META NAME="content_destination" CONTENT="College">
+  <META NAME="source_path" CONTENT="">
+  <LINK REL="STYLESHEET" TYPE="text/css" HREF="/IoP/Includes/kcl_dom.css">
+  <LINK REL="STYLESHEET" TYPE="text/css" HREF="/IoP/Includes/kcl_sub.css">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<!--NOEDIT-->
+<!--#include virtual="/IoP/Includes/kcl_h_sub.html"-->
+<!--#include virtual="/IoP/Includes/IoP_GEB_h.html" -->
+<!--begin contents-->
+<!--/NOEDIT-->
+
+<P><CENTER><TABLE WIDTH="520" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR>
+    <TD WIDTH="100%">
+    <H3>2LD -- two-locus LD calculator</H3>
+
+    <P>JH Zhao 15/02/2002</P>
+
+    <P><A HREF="#anchor274372">Program description</A><BR>
+    <A HREF="#anchor275325">Running 2ld</A><BR>
+    <A HREF="#anchor276027">File listing</A><BR>
+    <A HREF="#anchor276439">Known problems</A><BR>
+    <A HREF="#anchor276861">Acknowledgements</A><BR>
+    <A HREF="#anchor282417">Contact information</A><BR>
+    <A HREF="#anchor277263">References</A><BR>
+    </P>
+
+    <H4><A NAME="anchor274372"></A>&gt;&gt;&gt; Program description</H4>
+
+    <P>2LD is a simple program calculating linkage disequilibrium
+    (LD) measures between two polymorphic markers. It is developed
+    as a supplement for an Excel calculator by Dr David Collier,
+    adding standard errors and handling multiallelic markers.</P>
+
+    <P>Denote the number of alleles at markers 1 and 2 as m and n,
+    the observed data can be organized into a contingency table of
+    m(m+1)/2 x n(n+1)/2 cells. However table can be parameterised
+    by only m x n possible haplotype frequencies. As illustrated
+    by ASSOCIATE, an ordinary chi-squared statistic will have [m(m+1)/2-1][n(n+1)/2-1]
+    degrees of freedom and this test of independence may imply dependence
+    other than allelic association. The haplotypes at linkage equilibrium
+    can be obtained from allele frequencies of each marker, while
+    assuming LD they are estimated using a gene-counting procedure.
+    Alternatively, haplotype frequency estimates from other sources
+    can also be used. In addition, the program gives chi-squared
+    test of the estimated haplotype frequencies, as a global measure
+    of LD, i.e. Phi coefficient and Cramer's V. However this will
+    need asymptotic approximation, Fisher's exact test may be more
+    appropriate for its significance. Finally 2ld calculates another
+    popular measure of LD, D' and standard error. As yet 2ld does
+    not handle missing genotypes.</P>
+
+    <P>Computer programs ASSOCIATE and EH also implement gene-counting
+    procedure, and are available from http://linkage.rockefeller.edu.</P>
+
+    <P>For more details see Klitz et al. (1995), Long et al. (1995),
+    Weir (1996) and other references listed below. To obtain permutation-based
+    LD measures use PM or FASTEH+ at this site.</P>
+
+    <H4><BR>
+    <A NAME="anchor275325"></A>&gt;&gt;&gt; Running 2ld</H4>
+
+    <P>2ld will accept an input file in one of the three formats.</P>
+
+    <P><B>Format 1</B>. the raw genotype data in consecutive lines,
+    each line containing five columns as follows.</P>
+
+    <P>Column 1. Individual ID<BR>
+    Column 2, 3. Marker 1 genotypes<BR>
+    Column 4, 5. Marker 2 genotypes</P>
+
+    <P>File genotype.dat is in this format.</P>
+
+    <P><B>Format 2</B>. genotype table as required by ASSOCIATE and
+    EH programs</P>
+
+    <P>Line 1. &lt; No of alleles at marker 1&gt; &lt;No of alleles
+    at marker 2&gt;<BR>
+    Line 2- actual two-locus genotype counts</P>
+
+    <P>File genotype.tab is in this format. Note that since the two
+    markers have alleles 14 and 2, the genotype table has 14(14+1)/2
+    x 2(2+1)/2 = 105 x 3 cells.</P>
+
+    <P><B>Format 3</B>. observed haplotype frequencies from any other
+    sources.</P>
+
+    <P>Line 1.<BR>
+    &lt;# of alleles at marker 1&gt; &lt;# of alleles at marker 2&gt;
+    &lt;# of subjects&gt;<BR>
+    Line 2-<BR>
+    haplotype frequencies</P>
+
+    <P>File genotype.eh, 2by2.dat, kbyl.dat are in this format. Note
+    if haplotype frequency estimates are based on EH then the column
+    &quot;w/association&quot; in the output has to be used. Since
+    2ld was designed for diploid individuals, the number of haplotypes
+    is equal to twice the number of subjects.</P>
+
+    <P>The syntax of 2ld is as follows,</P>
+
+    <P>2ld &lt;data file&gt;</P>
+
+    <P>We use convention of DOS that ``data file'' within angled
+    bracket is needed; otherwise the program only gives the internal
+    example. The screen output can be redirected to a ASCII file
+    by using &quot;&gt; output file name&quot;. For a case-control
+    study three separate input files can be created, for cases only,
+    controls only and combined. To run 2ld on 2by2.dat the command
+    is</P>
+
+    <P>2ld 2by2.dat</P>
+
+    <P>to output on computer screen,</P>
+
+    <P>or</P>
+
+    <P>2ld 2by2.dat &gt;2by2.out</P>
+
+    <P>to output to file 2by2.out</P>
+
+    <H4><BR>
+    <A NAME="anchor276027"></A>&gt;&gt;&gt; File listing</H4>
+
+    <MENU>
+      <LI><FONT FACE="Courier New">2ld.c &nbsp;&nbsp;&nbsp;C source</FONT>
+      <LI><FONT FACE="Courier New">2ld.exe &nbsp;Win9x executable</FONT>
+      <LI><FONT FACE="Courier New">2ld.txt &nbsp;this file</FONT>
+      <LI><FONT FACE="Courier New">2by2.dat sample data file for two
+      biallelic markers</FONT>
+      <LI><FONT FACE="Courier New">kbyl.dat sample data file for two
+      multiallelic markers</FONT>
+      <LI><FONT FACE="Courier New">genotype.dat an example of directly
+      using raw genotype data</FONT>
+      <LI><FONT FACE="Courier New">genotype.tab an example of directly
+      using EH input file</FONT>
+      <LI><FONT FACE="Courier New">genotype.eh EH output file on genotype.dat,
+      genotype.tab</FONT>
+    </MENU>
+
+    <P><FONT FACE="Courier New"><BR>
+    </FONT>2ld.c is in ANSI C so should be portable to Unix/Linux.
+    2ld.exe is created from 2ld.c by Symantec C/C++ 7.2 compiler
+    with command &quot;sc -mn 2ld.c&quot;.</P>
+
+    <H4><BR>
+    <A NAME="anchor276439"></A>&gt;&gt;&gt; Known problems</H4>
+
+    <P>&gt; Q</P>
+
+    <P>2ld.exe always gives internal example if clicking 2ld.exe
+    from Win9x, when I press &lt;Return&gt;, even 2ld window disappears.</P>
+
+    <P>&gt; A</P>
+
+    <P>Since 2ld is a DOS-based program, Windows users will have
+    to enter MS-DOS Prompt first. For example under Win9x, click
+    Start -&gt; Program -&gt; MS-DOS Prompt, change to the appropriate
+    directory and issue 2ld command described above. I put 2ld.exe
+    in c:\iop\2ld directory, so my commands would be</P>
+
+    <P>cd c:\iop\2ld<BR>
+    2ld 2by2.dat &gt;2by2.out<BR>
+    edit 2by2.out</P>
+
+    <P>Alternatively I can add 2ld directory by DOS command</P>
+
+    <P>set path=c:\iop\2ld;%path%</P>
+
+    <P>then I can use 2ld anywhere under DOS.</P>
+
+    <P>&gt; Q</P>
+
+    <P>Why my degree(s) of freedom differ from EH ?</P>
+
+    <P>&gt; A</P>
+
+    <P>2LD calculates degree(s) of freedom from alleles present,
+    rather than user-specified.</P>
+
+    <P>&gt; Q</P>
+
+    <P>I get two D's, one negative and one positive, for my biallelic
+    data, why?</P>
+
+    <P>&gt; A&gt; Q</P>
+
+    <P>I get two D's, one negative and one positive, for two biallelic
+    data, why?</P>
+
+    <P>&gt; A</P>
+
+    <P>When there are 2 biallelic markers involved, let p_1, p_2
+    be allele frequencies<BR>
+    at locus 1, and q_1, q_2 be allele frequencies at locus 2.  The
+    first D' is<BR>
+    given under &quot;Disequilibria, expectations and variances&quot;
+    as D'_{11}, i.e., D'<BR>
+    for haplotype 11, while the second D' is obtained as follows,</P>
+
+    <P>p_1q_1|D'_{11}|+p_1q_2|D'_{12}|+p_2q_1|D'_{21}|+p_2q_2|D'_{22}|</P>
+
+    <P>They happen to have the same quantity but may differ in signs.<BR>
+<BR>
+    &gt; Q</P>
+
+    <P>How to get more sense of the global chi-square ?</P>
+
+    <P>&gt; A</P>
+
+    <P>A chi-square based on the estimated haplotype frequency table,
+    as a direct test of global disequilibrium. A simple check can
+    be done with standard packages such as SAS. For example the following
+    program computes chi-square and Fisher's exact test for a biallelic
+    marker and a three-allele marker from 21 diploid individuals
+    (data kindly from Dr Zhicheng Lin).</P>
+
+    <P>data abc;<BR>
+    input a b w;<BR>
+    w=round(w*42);<BR>
+    cards;<BR>
+    1 1 0.095234<BR>
+    1 2 0.000005<BR>
+    1 3 0.047618<BR>
+    2 1 0.238099<BR>
+    2 2 0.571423<BR>
+    2 3 0.047621<BR>
+    ;<BR>
+    proc freq;<BR>
+    weight w;<BR>
+    table a*b/chisq exact;<BR>
+    run;</P>
+
+    <P>Unfortunately there is no degree of freedom for a test between
+    this and that from EH, for both chi-squares have (m-1)(n-1) degrees
+    of freedom.</P>
+
+    <P>&gt; Q</P>
+
+    <P>I have 5 loci in my data set, and 6 populations. Is it possible
+    to use 1 working file and include parameters for which pop and
+    locus pair to analysis?</P>
+
+    <P>&gt; A (this is now part of LDSHELL)</P>
+
+    <P>I imagined it was much of a work to have everything in one
+    go and didn't implement it. Now I spent &gt;1 days to integrate
+    my program fragments and attach it to you. As usual you will
+    need unzip it first. I wrote it in a haste so please let me know
+    if there is any problem with it.</P>
+
+    <P>Basically you can organize your subjects as follows,</P>
+
+    <P>id popid m11 m12 m21 m22 m31 m32 m41 m42 m51 m52</P>
+
+    <P>where id is any subject id, popid is a population a subject
+    belongs to, and m's are the marker genotypes/alleles.</P>
+
+    <P>Now put ldshell.exe in the same directory as 2LD and type</P>
+
+    <P>ldshell yourfilename 5</P>
+
+    <P>then check pop##.out for results of each population (## is
+    the population label).</P>
+
+    <P>Included also are a file called hla.dat which is in the format
+    aforementioned. Since it has control and case information labelled
+    as 0 and 1, the output files are pop0.out and pop1.out, which
+    are generated using command</P>
+
+    <P>ldshell hla.dat 3</P>
+
+    <P>To see D' coefficient grep.exe is useful (Under Unix/Linux
+    both unzip and grep are internal):</P>
+
+    <P>grep &quot;coefficient =&quot; pop?.out<BR>
+    POP0.OUT: D' coefficient = 0.970663, SD = 0.0090 (Var = 0.000081)<BR>
+    POP1.OUT: D' coefficient = 0.824925, SD = 0.0265 (Var = 0.000701)</P>
+
+    <P>It should be a good idea to do some random checks to make
+    sure.<BR>
+<BR>
+<BR>
+    <A NAME="anchor276861"></A>&gt;&gt;&gt; Acknowledgements</P>
+
+    <P>A list of people who help to make the program/documentation
+    more useful.</P>
+
+    <P>David Collier &lt;sphadco@iop.kcl.ac.uk&gt;<BR>
+    Zhicheng Lin &lt;ZLIN@intra.nida.nih.gov&gt;<BR>
+    Mustafa Neamatallah &lt;m_neamatallah@hotmail.com&gt;<BR>
+    Carlos Zapata &lt;bfcazaba@usc.es&gt;<BR>
+    Barry Chioza &lt;spbcaja@iop.kcl.ac.uk&gt;<BR>
+    Maria Arranz &lt;m.arranz@iop.kcl.ac.uk&gt;<BR>
+    Tan Hui Hui Jenny &lt;medp9193@nus.edu.sg&gt;</P>
+
+    <H4><A NAME="anchor282417"></A>&gt;&gt;&gt; Contact information</H4>
+
+    <P>Please let me know your problem or comments by e-mailing j.zhao@iop.kcl.ac.uk
+    or by post to</P>
+
+    <P>Jing Hua Zhao</P>
+
+    <P>Section of Genetic Epidemiology &amp; Biostatistics<BR>
+    Division of Psychological Medicine<BR>
+    Institute of Psychiatry<BR>
+    De Crespigny Park<BR>
+    London SE5 8AF<BR>
+    UK</P>
+
+    <H4><BR>
+    <A NAME="anchor277263"></A>&gt;&gt;&gt; References</H4>
+
+    <P>Abramowitz M and Stegun IA (1968) Handbook of mathematical
+    functions. New York</P>
+
+    <P>Bishop YMM, Fienberg SE, Holland PW (1975) Discrete Multivariate
+    Analysis -- Theory and Practice, The MIT press</P>
+
+    <P>Cramer H (1946) Mathematical Methods of Statistics. Princeton
+    Univ. Press</P>
+
+    <P>Klitz W, Stephen JC, Grote M, Carrington M (1995) Discordant
+    patterns of linkage disequilibrium of the peptide transporter
+    loci within the HLA class II region. Am. J. Hum. Genet. 57:1436-1444</P>
+
+    <P>Long JC, Williams RC, Unbanek M (1995) An E-M algorithm and
+    testing strategy for multiple-locus haplotypes. Am. J. Hum. Genet.
+    56:799-810</P>
+
+    <P>Weir BS (1979) Inferences about linkage disequilibrium. Biometrics
+    35:235-254</P>
+
+    <P>Weir BS (1996) Genetic Data Analysis II. Sinaur</P>
+
+    <P>Xie X, Ott J (1993) Testing linkage disequilibrium between
+    a disease gene and marker loci. Am J Hum Genet 53:1107</P>
+
+    <P>Zapata C, Alvarez G, Carollo C (1997) Approximate variance
+    of the standardized measure of gametic disequilibrium D'. Am.
+    J. Hum. Genet. 61:771-774</P>
+
+    <P>Zapata C, Carollo C, Rodriguez S (2001) Sampling variance
+    and distribution of the D' measure of overall gametic disequlibrium
+    between multiallelic loci. Ann Hum Genet 65:395-406</TD> 
+  </TR>
+</TABLE></CENTER></P>
+
+<!--NOEDIT-->
+<!--end contents-->
+<!--#include virtual="/IoP/Includes/kcl_footer.html"--> 
+
+  <CENTER>
+    Last modified: <!--#echo var="LAST_MODIFIED"--> 22/5/2004 by: <A
+HREF="mailto:jzhao@hgmp.mrc.ac.uk">Jing Hua Zhao</A> 
+  </CENTER>
+
+<!--/NOEDIT-->
+
+</BODY>
+</HTML>

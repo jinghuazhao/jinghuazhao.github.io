@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<meta name="GENERATOR" content="PageBreeze Free HTML Editor (http://www.pagebreeze.com)">
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" >
+<title>A genomewide association study of obesity</title>
+<style>
+a.navwhite:link { text-decoration: none; color: #ffffff; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; }
+a.navwhite:visited { text-decoration: none; color: #ffffff; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; }
+a.navwhite:hover { text-decoration: underline; color: #ffffff; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; }
+a.navblack:link { text-decoration: none; color: #000000; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; }
+a.navblack:visited { text-decoration: none; color: #000000; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; }
+a.navblack:hover { text-decoration: underline; color: #000000; font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; }
+</style>
+
+<style>
+<!--
+h1 { font-family: Arial, sans-serif; font-size: 30px; color: #004080;}
+h2 { font-family: Arial, sans-serif; font-size: 18px; color: #004080;}
+
+body,p,b,i,em,dt,dd,dl,sl,caption,th,td,tr,u,blink,select,option,form,div,li { font-family: Arial, sans-serif; font-size: 12px; }
+
+/* IE Specific */
+body, textarea {
+  scrollbar-3dlight-color: #808080;
+  scrollbar-highlight-color: #808080;
+  scrollbar-face-color: #004080;
+  scrollbar-shadow-color: #808080;
+  scrollbar-darkshadow-color: #805B32;
+  scrollbar-arrow-color: #000000;
+  scrollbar-track-color: #F8EFE2;
+}
+/* END IE Specific */
+-->
+</style>
+
+
+</head>
+<body bgcolor="#ffffff" >
+<p>
+<table cellspacing="1" cellpadding="3" width="780" align="center" bgcolor="#004080" 
+border="0">
+  
+  <tr>
+    <td>
+      <h1 align="center"><br><font color="#ffffff">A genomewide association study of obesity</font></h1>
+      <p>&nbsp;</p></td></tr>
+  <tr>
+      <td bgcolor="#c0c0c0">
+      <p align="center">&nbsp; <a class="navblack" href="go/epic400.htm" >The pilot study</a>&nbsp; |&nbsp; <a class="navblack" href="go/data.htm" >The data</a>&nbsp; |&nbsp; <a class="navblack" href="go/programs.htm" >The programs</a>&nbsp; |&nbsp; <a class="navblack" href="go/Epilogue.htm" >Epilogue</a>&nbsp; |&nbsp; <a class="navblack" href="go/References.htm" >Further reading</a></p></td></tr>
+  <tr>
+    <td bgcolor="#ffffff">
+      <p align="center">&nbsp;</p>
+      <p>This document describes a set of SAS program for 
+      performing genomewide association analysis. The data are from a study of 
+      obesity using population-based case-cohort design. The merits of cohort 
+      design in genetic association studies have recently been recognised 
+      (Langhholz B. Rothman N., Wacholder S, Thomas DC<font face="Arial"><span 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-fareast-font-family: SimSun; mso-ansi-language: EN-GB; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA">. 
+      <span 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-fareast-font-family: SimSun; mso-ansi-language: EN-GB; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA"><em>J 
+      Natl Cancer Inst Monogr 39-42, 1999; Manolio TA, Bailey-Wilson JE, Collins 
+      FS</em></span><span 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-fareast-font-family: SimSun; mso-ansi-language: EN-GB; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA">.<span 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-fareast-font-family: SimSun; mso-ansi-language: EN-GB; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA"> 
+      <span 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-fareast-font-family: SimSun; mso-ansi-language: EN-GB; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA"><em>Nat 
+      Rev Genet 7:812-820, 2006</em></span></span></span></span>).</font>         
+                 
+          </p>
+      <p>The implementation is based on SAS&nbsp;(<a href="http://www.sas.com">http://www.sas.com</a>), a 
+      well-established system for data management, graphics, statistical 
+      computing, among others. The rationale for choosing such a system has been 
+      documented earlier (Zhao JH, Tan, Q. <em>Current Bioinformatics 
+      </em>1:359-369,<em> </em>2006).&nbsp;The implementation can easily be 
+      modified for family-based designs with additional SAS programming or 
+      SAS/GENETICS.</p>
+      <p>There are a number of advantages in this 
+      implementation compared to other programs.</p>
+      <ul>
+        <li>
+      <div>We do not require any other database management 
+        systems (DBMS) or software for graphical presentation. In additional to 
+        DATA steps, SAS offers fully functional data access facility through 
+        PROC SQL.</div></li></ul>
+      <ul>
+        <li>
+      <div>SAS has a wide variety of procedures for 
+        statistical analysis, which will be essential for analysis specific for 
+        genomewide association but also for other types of analysis including 
+        covariate adjustment, meta-analysis, and so on.</div></li></ul>
+      <ul>
+        <li>
+      <div>All intermediate results will be stored into 
+        databases through the output devlirey system (ODS) to be ready for 
+        ruther analysis.</div></li></ul>
+      <ul>
+        <li>
+      <div>The users can enjoy the great simplicity in 
+        coding which is essential for validity checks. Over years the SAS 
+        language is relatively stable and would be ideal for 
+      learning.</div></li></ul>
+      <p>Note. As SAS itself is comprehensive, materials 
+      given here only serive for illustrative purpose. We do not aim to create a 
+      "new standard" for data input and output. However, we believe the 
+      implementation will be very useful to researchers in their own work.</p>
+      <p>&nbsp;</p></td></tr>
+  <tr>
+      <td ></td></tr></table></ P></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p><font size="1">
+<p align="center"><font size="1"><a 
+href="http://www.solutionsoft.com/w2w.htm" target=_top><img height="2" alt="html converter" hspace="0" src="b.gif" width="2" border="0" ></a>&nbsp;This Web Page Created with 
+PageBreeze </font><a href="http://www.pagebreeze.com/free-website-builder.htm" 
+target=_blank><font size="1">Free 
+Website Builder</font> </a>&nbsp;<a href="http://www.querybot.com/knowledgebase-software.htm" target="_top"><img height="2" alt="knowledge base software" hspace="0" src="b.gif" width="2" border="0" ></a>&nbsp;</p>      </font>
+</body>
+</html>

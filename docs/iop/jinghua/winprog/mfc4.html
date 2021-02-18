@@ -1,0 +1,791 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Untitled Document</TITLE>
+</HEAD>
+<BODY>
+
+<P><BR>
+<BR>
+<FONT COLOR="#008000" SIZE="+2" FACE="Arial">Introduction to MFC
+Programming with Visual C++ Version 6.x<BR>
+</FONT><I><FONT SIZE="-1" FACE="arial">by Marshall Brain<BR>
+<BR>
+</FONT></I><FONT COLOR="#008000" SIZE="+1" FACE="arial">Message
+Maps</FONT><BR>
+<BR>
+<!-- Force all text to format --><FONT FACE="arial">Any user interface
+object that an application places in a window has two controllable
+features: 1) its appearance, and 2) its behavior when responding
+to events. In the last tutorial you gained an understanding of
+the <B>CStatic</B> control and saw how you can use style attributes
+to customize the appearance of user interface objects. These concepts
+apply to all the different control classes available in MFC.</FONT></P>
+
+<P><FONT FACE="arial">In this tutorial we will examine the <B>CButton</B>
+control to gain an understanding of message maps and simple event
+handling. We'll then look at the <B>CScrollBar</B> control to
+see a somewhat more involved example.</FONT></P>
+
+<H3><FONT FACE="arial">Understanding Message Maps</FONT></H3>
+
+<P><FONT FACE="arial">As discussed in Tutorial 2, MFC programs
+do not contain a main function or event loop. All of the event
+handling happens &quot;behind the scenes&quot; in C++ code that
+is part of the <B>CWinApp</B> class. Because it is hidden, we
+need a way to tell the invisible event loop to notify us about
+events of interest to the application. This is done with a mechanism
+called a <I>message map</I>. The message map identifies interesting
+events and then indicates functions to call in response to those
+events.</FONT></P>
+
+<P><FONT FACE="arial">For example, say you want to write a program
+that will quit whenever the user presses a button labeled &quot;Quit.&quot;
+In the program you place code to specify the button's creation:
+you indicate where the button goes, what it says, etc. Next, you
+create a message map for the parent of the button-whenever a user
+clicks the button, it tries to send a message to its parent. By
+installing a message map for the parent window you create a mechanism
+to intercept and use the button's messages. The message map will
+request that MFC call a specific function whenever a specific
+button event occurs. In this case, a click on the quit button
+is the event of interest. You then put the code for quitting the
+application in the indicated function.</FONT></P>
+
+<P><FONT FACE="arial">MFC does the rest. When the program executes
+and the user clicks the Quit button, the button will highlight
+itself as expected. MFC then automatically calls the right function
+and the program terminates. With just a few lines of code your
+program becomes sensitive to user events.</FONT></P>
+
+<H3><FONT FACE="arial">The CButton Class</FONT></H3>
+
+<P><FONT FACE="arial">The <B>CStatic</B> control discussed in
+Tutorial 3 is unique in that it cannot respond to user events.
+No amount of clicking, typing, or dragging will do anything to
+a <B>CStatic</B> control because it ignores the user completely.
+However, The <B>CStatic </B>class is an anomaly. All of the other
+controls available in Windows respond to user events in two ways.
+First, they update their appearance automatically when the user
+manipulates them (e.g., when the user clicks on a button it highlights
+itself to give the user visual feedback). Second, each different
+control tries to send messages to your code so the program can
+respond to the user as needed. For example, a button sends a <I>command
+message</I> whenever it gets clicked. If you write code to receive
+the messages, then your code can respond to user events.</FONT></P>
+
+<P><FONT FACE="arial">To gain an understanding of this process,
+we will start with the <B>CButton</B> control. The code below
+demonstrates the creation of a button.</FONT></P>
+
+<PRE><FONT COLOR="#000080" FACE="arial">// button1.cpp</FONT>
+<FONT COLOR="#000080" FACE="arial">#include &lt;afxwin.h&gt;</FONT>
+<FONT COLOR="#000080" FACE="arial">#define IDB_BUTTON 100</FONT>
+<FONT COLOR="#000080" FACE="arial">// Declare the application class</FONT>
+<FONT COLOR="#000080" FACE="arial">class CButtonApp : public CWinApp</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">public:</FONT>
+<FONT COLOR="#000080" FACE="arial">	virtual BOOL InitInstance();</FONT>
+<FONT COLOR="#000080" FACE="arial">};</FONT>
+<FONT COLOR="#000080" FACE="arial">// Create an instance of the application class</FONT>
+<FONT COLOR="#000080" FACE="arial">CButtonApp ButtonApp;  </FONT>
+<FONT COLOR="#000080" FACE="arial">// Declare the main window class</FONT>
+<FONT COLOR="#000080" FACE="arial">class CButtonWindow : public CFrameWnd</FONT>
+<FONT COLOR="#000080" FACE="arial">{ </FONT>
+<FONT COLOR="#000080" FACE="arial">	CButton *button;</FONT>
+<FONT COLOR="#000080" FACE="arial">public:</FONT>
+<FONT COLOR="#000080" FACE="arial">	CButtonWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">};</FONT>
+<FONT COLOR="#000080" FACE="arial">// The InitInstance function is called once</FONT>
+<FONT COLOR="#000080" FACE="arial">// when the application first executes</FONT>
+<FONT COLOR="#000080" FACE="arial">BOOL CButtonApp::InitInstance()</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd = new CButtonWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd-&gt;ShowWindow(m_nCmdShow);</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd-&gt;UpdateWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	return TRUE;</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT>
+<FONT COLOR="#000080" FACE="arial">// The constructor for the window class</FONT>
+<FONT COLOR="#000080" FACE="arial">CButtonWindow::CButtonWindow()</FONT>
+<FONT COLOR="#000080" FACE="arial">{ </FONT>
+<FONT COLOR="#000080" FACE="arial">	CRect r;</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Create the window itself</FONT>
+<FONT COLOR="#000080" FACE="arial">	Create(NULL, </FONT>
+<FONT COLOR="#000080" FACE="arial">		&quot;CButton Tests&quot;, </FONT>
+<FONT COLOR="#000080" FACE="arial">		WS_OVERLAPPEDWINDOW,</FONT>
+<FONT COLOR="#000080" FACE="arial">		CRect(0,0,200,200));</FONT>
+<FONT COLOR="#000080" FACE="arial">	</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Get the size of the client rectangle</FONT>
+<FONT COLOR="#000080" FACE="arial">	GetClientRect(&amp;r);</FONT>
+<FONT COLOR="#000080" FACE="arial">	r.InflateRect(-20,-20);</FONT>
+<FONT COLOR="#000080" FACE="arial">	</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Create a button</FONT>
+<FONT COLOR="#000080" FACE="arial">	button = new CButton();</FONT>
+<FONT COLOR="#000080" FACE="arial">	button-&gt;Create(&quot;Push me&quot;,</FONT>
+<FONT COLOR="#000080" FACE="arial">		WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,</FONT>
+<FONT COLOR="#000080" FACE="arial">		r,</FONT>
+<FONT COLOR="#000080" FACE="arial">		this,</FONT>
+<FONT COLOR="#000080" FACE="arial">		IDB_BUTTON);</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT></PRE>
+
+<P><FONT FACE="arial">The code above is nearly identical to the
+code discussed in previous tutorials. The <B>Create</B> function
+for the <B>CButton</B> class, as seen in the MFC help file, accepts
+five parameters. The first four are exactly the same as those
+found in the <B>CStatic</B> class. The fifth parameter indicates
+the resource ID for the button. The resource ID is a unique integer
+value used to identify the button in the message map. A constant
+value IDB_BUTTON has been defined at the top of the program for
+this value. The &quot;IDB_&quot; is arbitrary, but here indicates
+that the constant is an ID value for a Button. It is given a value
+of 100 because values less than 100 are reserved for system-defined
+IDs. You can use any value above 99.</FONT></P>
+
+<P><FONT FACE="arial">The style attributes available for the <B>CButton</B>
+class are different from those for the <B>CStatic</B> class. Eleven
+different &quot;BS&quot; (&quot;Button Style&quot;) constants
+are defined. A complete list of &quot;BS&quot; constants can be
+found using <B>Search</B> on CButton and selecting the &quot;button
+style&quot; link. Here we have used the BS_PUSHBUTTON style for
+the button, indicating that we want this button to display itself
+as a normal push-button. We have also used two familiar &quot;WS&quot;
+attributes: WS_CHILD and WS_VISIBLE. We will examine some of the
+other styles in later sections.</FONT></P>
+
+<P><FONT FACE="arial">When you run the code, you will notice that
+the button responds to user events. That is, it highlights as
+you would expect. It does nothing else because we haven't told
+it what to do. We need to wire in a message map to make the button
+do something interesting.</FONT></P>
+
+<H3><FONT FACE="arial">Creating a Message Map</FONT></H3>
+
+<P><FONT FACE="arial">The code below contains a message map as
+well as a new function that handles the button click (so the program
+beeps when the user clicks on the button). It is simply an extension
+of the prior code.</FONT></P>
+
+<PRE><FONT COLOR="#000080" FACE="arial">// button2.cpp</FONT>
+<FONT COLOR="#000080" FACE="arial">#include &lt;afxwin.h&gt;</FONT>
+<FONT COLOR="#000080" FACE="arial">#define IDB_BUTTON 100</FONT>
+<FONT COLOR="#000080" FACE="arial">// Declare the application class</FONT>
+<FONT COLOR="#000080" FACE="arial">class CButtonApp : public CWinApp</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">public:</FONT>
+<FONT COLOR="#000080" FACE="arial">	virtual BOOL InitInstance();</FONT>
+<FONT COLOR="#000080" FACE="arial">};</FONT>
+<FONT COLOR="#000080" FACE="arial">// Create an instance of the application class</FONT>
+<FONT COLOR="#000080" FACE="arial">CButtonApp ButtonApp;  </FONT>
+<FONT COLOR="#000080" FACE="arial">// Declare the main window class</FONT>
+<FONT COLOR="#000080" FACE="arial">class CButtonWindow : public CFrameWnd</FONT>
+<FONT COLOR="#000080" FACE="arial">{ </FONT>
+<FONT COLOR="#000080" FACE="arial">	CButton *button;</FONT>
+<FONT COLOR="#000080" FACE="arial">public:</FONT>
+<FONT COLOR="#000080" FACE="arial">	CButtonWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	afx_msg void HandleButton();</FONT>
+<FONT COLOR="#000080" FACE="arial">	DECLARE_MESSAGE_MAP()	 </FONT>
+<FONT COLOR="#000080" FACE="arial">};</FONT>
+<FONT COLOR="#000080" FACE="arial">// The message handler function</FONT>
+<FONT COLOR="#000080" FACE="arial">void CButtonWindow::HandleButton()</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">	MessageBeep(-1);</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT>
+<FONT COLOR="#000080" FACE="arial">// The message map</FONT>
+<FONT COLOR="#000080" FACE="arial">BEGIN_MESSAGE_MAP(CButtonWindow, CFrameWnd)</FONT>
+<FONT COLOR="#000080" FACE="arial">	ON_BN_CLICKED(IDB_BUTTON, HandleButton)</FONT>
+<FONT COLOR="#000080" FACE="arial">END_MESSAGE_MAP()</FONT>
+<FONT COLOR="#000080" FACE="arial">// The InitInstance function is called once</FONT>
+<FONT COLOR="#000080" FACE="arial">// when the application first executes</FONT>
+<FONT COLOR="#000080" FACE="arial">BOOL CButtonApp::InitInstance()</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd = new CButtonWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd-&gt;ShowWindow(m_nCmdShow);</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd-&gt;UpdateWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	return TRUE;</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT>
+<FONT COLOR="#000080" FACE="arial">// The constructor for the window class</FONT>
+<FONT COLOR="#000080" FACE="arial">CButtonWindow::CButtonWindow()</FONT>
+<FONT COLOR="#000080" FACE="arial">{ </FONT>
+<FONT COLOR="#000080" FACE="arial">	CRect r;</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Create the window itself</FONT>
+<FONT COLOR="#000080" FACE="arial">	Create(NULL, </FONT>
+<FONT COLOR="#000080" FACE="arial">		&quot;CButton Tests&quot;, </FONT>
+<FONT COLOR="#000080" FACE="arial">		WS_OVERLAPPEDWINDOW,</FONT>
+<FONT COLOR="#000080" FACE="arial">		CRect(0,0,200,200));</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Get the size of the client rectangle</FONT>
+<FONT COLOR="#000080" FACE="arial">	GetClientRect(&amp;r);</FONT>
+<FONT COLOR="#000080" FACE="arial">	r.InflateRect(-20,-20);</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Create a button</FONT>
+<FONT COLOR="#000080" FACE="arial">	button = new CButton();</FONT>
+<FONT COLOR="#000080" FACE="arial">	button-&gt;Create(&quot;Push me&quot;,</FONT>
+<FONT COLOR="#000080" FACE="arial">		WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,</FONT>
+<FONT COLOR="#000080" FACE="arial">		r,</FONT>
+<FONT COLOR="#000080" FACE="arial">		this,</FONT>
+<FONT COLOR="#000080" FACE="arial">		IDB_BUTTON);</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT></PRE>
+
+<P><FONT FACE="arial">Three modifications have been made to the
+code:</FONT></P>
+
+<OL>
+  <LI><FONT FACE="arial">The class declaration for <B>CButtonWindow</B>
+  now contains a new member function as well as a macro that indicates
+  a message map is defined for the class. The <B>HandleButton</B>
+  function, which is identified as a message handler by the use
+  of the <B>afx_msg </B>tag, is a normal C++ function. There are
+  some special constraints on this function which we will discuss
+  shortly (e.g., it must be <B>void</B> and it cannot accept any
+  parameters). The DECLARE_MESSAGE_MAP macro makes the creation
+  of a message map possible. <I>Both the function and the macro
+  must be public.</I></FONT>
+  <LI><FONT FACE="arial">The <B>HandleButton</B> function is created
+  in the same way as any member function. In this function, we
+  called the <B>MessageBeep </B>function available from the Windows
+  API.</FONT>
+  <LI><FONT FACE="arial">Special MFC macros create a message map.
+  In the code, you can see that the BEGIN_MESSAGE_MAP macro accepts
+  two parameters. The first is the name of the specific class to
+  which the message map applies. The second is the base class from
+  which the specific class is derived. It is followed by an ON_BN_CLICKED
+  macro that accepts two parameters: The ID of the control and
+  the function to call whenever that ID sends a command message.
+  Finally, the message map ends with the END_MESSAGE_MAP macro.</FONT>
+</OL>
+
+<P><FONT FACE="arial">When a user clicks the button, it sends
+a command message containing its ID to its parent, which is the
+window containing the button. That is default behavior for a button,
+and that is why this code works. The button sends the message
+to its parent because it is a child window. The parent window
+intercepts this message and uses the message map to determine
+the function to call. MFC handles the routing, and whenever the
+specified message is seen, the indicated function gets called.
+The program beeps whenever the user clicks the button.</FONT></P>
+
+<P><FONT FACE="arial">The ON_BN_CLICKED message is the only interesting
+message sent by an instance of the <B>CButton</B> class. It is
+equivilent to the ON_COMMAND message in the <B>CWnd</B> class,
+and is simply a convenient synonym for it.</FONT></P>
+
+<H3><FONT FACE="arial">Sizing Messages</FONT></H3>
+
+<P><FONT FACE="arial">In the code above, the application's window,
+which is derived from the <B>CFrameWnd</B> class, recognized the
+button-click message generated by the button and responded to
+it because of its message map. The ON_BN_CLICKED macro added into
+the message map (search for the <B>CButton</B> overview as well
+as the the ON_COMMAND macro in the MFC help file) specifies the
+ID of the button and the function that the window should call
+when it receives a command message from that button. Since the
+button automatically sends to its parent its ID in a command message
+whenever the user clicks it, this arrangement allows the code
+to handle button events properly.</FONT></P>
+
+<P><FONT FACE="arial">The frame window that acts as the main window
+for this application is also capable of sending messages itself.
+There are about 100 different messages available, all inherited
+from the <B>CWnd</B> class. By browsing through the member functions
+for the <B>CWnd </B>class in MFC help file you can see what all
+of these messages are. Look for any member function beginning
+with the word &quot;On&quot;.</FONT></P>
+
+<P><FONT FACE="arial">You may have noticed that all of the code
+demonstrated so far does not handle re-sizing very well. When
+the window re-sizes, the frame of the window adjusts accordingly
+but the contents stay where they were placed originally. It is
+possible to make resized windows respond more attractively by
+recognizing resizing events. One of the messages that is sent
+by any window is a sizing message. The message is generated whenever
+the window changes shape. We can use this message to control the
+size of child windows inside the frame, as shown below:</FONT></P>
+
+<PRE><FONT COLOR="#000080" FACE="arial">// button3.cpp</FONT>
+<FONT COLOR="#000080" FACE="arial">#include &lt;afxwin.h&gt;</FONT>
+<FONT COLOR="#000080" FACE="arial">#define IDB_BUTTON 100</FONT>
+<FONT COLOR="#000080" FACE="arial">// Declare the application class</FONT>
+<FONT COLOR="#000080" FACE="arial">class CButtonApp : public CWinApp</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">public:</FONT>
+<FONT COLOR="#000080" FACE="arial">	virtual BOOL InitInstance();</FONT>
+<FONT COLOR="#000080" FACE="arial">};</FONT>
+<FONT COLOR="#000080" FACE="arial">// Create an instance of the application class</FONT>
+<FONT COLOR="#000080" FACE="arial">CButtonApp ButtonApp;  </FONT>
+<FONT COLOR="#000080" FACE="arial">// Declare the main window class</FONT>
+<FONT COLOR="#000080" FACE="arial">class CButtonWindow : public CFrameWnd</FONT>
+<FONT COLOR="#000080" FACE="arial">{ </FONT>
+<FONT COLOR="#000080" FACE="arial">	CButton *button;</FONT>
+<FONT COLOR="#000080" FACE="arial">public:</FONT>
+<FONT COLOR="#000080" FACE="arial">	CButtonWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	afx_msg void HandleButton();</FONT>
+<FONT COLOR="#000080" FACE="arial">	afx_msg void OnSize(UINT, int, int);</FONT>
+<FONT COLOR="#000080" FACE="arial">	DECLARE_MESSAGE_MAP()	 </FONT>
+<FONT COLOR="#000080" FACE="arial">};</FONT>
+<FONT COLOR="#000080" FACE="arial">// A message handler function</FONT>
+<FONT COLOR="#000080" FACE="arial">void CButtonWindow::HandleButton()</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">	MessageBeep(-1);</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT>
+<FONT COLOR="#000080" FACE="arial">// A message handler function</FONT>
+<FONT COLOR="#000080" FACE="arial">void CButtonWindow::OnSize(UINT nType, int cx,</FONT>
+<FONT COLOR="#000080" FACE="arial">	int cy)</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">	CRect r;</FONT>
+<FONT COLOR="#000080" FACE="arial">	GetClientRect(&amp;r);</FONT>
+<FONT COLOR="#000080" FACE="arial">	r.InflateRect(-20,-20);</FONT>
+<FONT COLOR="#000080" FACE="arial">	button-&gt;MoveWindow(r);</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT>
+<FONT COLOR="#000080" FACE="arial">// The message map</FONT>
+<FONT COLOR="#000080" FACE="arial">BEGIN_MESSAGE_MAP(CButtonWindow, CFrameWnd)</FONT>
+<FONT COLOR="#000080" FACE="arial">	ON_BN_CLICKED(IDB_BUTTON, HandleButton)</FONT>
+<FONT COLOR="#000080" FACE="arial">	ON_WM_SIZE()</FONT>
+<FONT COLOR="#000080" FACE="arial">END_MESSAGE_MAP()</FONT>
+<FONT COLOR="#000080" FACE="arial">// The InitInstance function is called once</FONT>
+<FONT COLOR="#000080" FACE="arial">// when the application first executes</FONT>
+<FONT COLOR="#000080" FACE="arial">BOOL CButtonApp::InitInstance()</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd = new CButtonWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd-&gt;ShowWindow(m_nCmdShow);</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd-&gt;UpdateWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	return TRUE;</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT>
+<FONT COLOR="#000080" FACE="arial">// The constructor for the window class</FONT>
+<FONT COLOR="#000080" FACE="arial">CButtonWindow::CButtonWindow()</FONT>
+<FONT COLOR="#000080" FACE="arial">{ </FONT>
+<FONT COLOR="#000080" FACE="arial">	CRect r;</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Create the window itself</FONT>
+<FONT COLOR="#000080" FACE="arial">	Create(NULL, </FONT>
+<FONT COLOR="#000080" FACE="arial">		&quot;CButton Tests&quot;, </FONT>
+<FONT COLOR="#000080" FACE="arial">		WS_OVERLAPPEDWINDOW,</FONT>
+<FONT COLOR="#000080" FACE="arial">		CRect(0,0,200,200));</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Get the size of the client rectangle</FONT>
+<FONT COLOR="#000080" FACE="arial">	GetClientRect(&amp;r);</FONT>
+<FONT COLOR="#000080" FACE="arial">	r.InflateRect(-20,-20);</FONT>
+<FONT COLOR="#000080" FACE="arial">	</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Create a button</FONT>
+<FONT COLOR="#000080" FACE="arial">	button = new CButton();</FONT>
+<FONT COLOR="#000080" FACE="arial">	button-&gt;Create(&quot;Push me&quot;,</FONT>
+<FONT COLOR="#000080" FACE="arial">		WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,</FONT>
+<FONT COLOR="#000080" FACE="arial">		r,</FONT>
+<FONT COLOR="#000080" FACE="arial">		this,</FONT>
+<FONT COLOR="#000080" FACE="arial">		IDB_BUTTON);</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT></PRE>
+
+<P><FONT FACE="arial">To understand this code, start by looking
+in the message map for the window. There you will find the entry
+ON_WM_SIZE. This entry indicates that the message map is sensitive
+to sizing messages coming from the <B>CButtonWindow</B> object.
+Sizing messages are generated on this window whenever the user
+re-sizes it. The messages come to the window itself (rather than
+being sent to a parent as the ON_COMMAND message is by the button)
+because the frame window is not a child.</FONT></P>
+
+<P><FONT FACE="arial">Notice also that the ON_WM_SIZE entry in
+the message map has no parameters. As you can see in the MFC documentation
+under the <B>CWnd</B> class, <I>it is understood that the ON_WM_SIZE
+entry in the message map will always call a function named <B>OnSize
+</B>, and that function must accept the three parameters shown
+</I>. The <B>OnSize</B> function must be a member function of
+the class owning the message map, and the function must be declared
+in the class as an <B>afx_msg</B> function (as shown in the definition
+of the <B>CButtonWindow</B> class).</FONT></P>
+
+<P><FONT FACE="arial">If you look in the MFC documentation there
+are almost 100 functions named &quot;On...&quot; in the <B>CWnd</B>
+class. <B>CWnd::OnSize </B>is one of them. All these functions
+have a corresponding tag in the message map with the form ON_WM_.
+For example, ON_WM_SIZE corresponds to <B>OnSize</B>. None of
+the ON_WM_ entries in the message map accept parameters like ON_BN_CLICKED
+does. The parameters are assumed and automatically passed to the
+corresponding &quot;On...&quot; function like <B>OnSize</B>.</FONT></P>
+
+<P><FONT FACE="arial">To repeat, because it is important: The
+<B>OnSize</B> function always corresponds to the ON_WM_SIZE entry
+in the message map. You must name the handler function <B>OnSize</B>,
+and it must accept the three parameters shown in the listing.
+You can find the specific parameter requirements of any <B>On...</B>
+function by looking up that function in the MFC help file. You
+can look the function up directly by typing <B>OnSize</B> into
+the search window, or you can find it as a member function of
+the <B>CWnd </B>class.</FONT></P>
+
+<P><FONT FACE="arial">Inside the <B>OnSize</B> function itself
+in the code above, three lines of code modify the size of the
+button held in the window. You can place any code you like in
+this function.</FONT></P>
+
+<P><FONT FACE="arial">The call to <B>GetClientRect</B> retrieves
+the new size of the window's client rectangle. This rectangle
+is then deflated, and the <B>MoveWindow</B> function is called
+on the button. <B>MoveWindow </B>is inherited from <B>CWnd</B>
+and re-sizes and moves the child window for the button in one
+step.</FONT></P>
+
+<P><FONT FACE="arial">When you execute the program above and re-size
+the application's window, you will find the button re-sizes itself
+correctly. In the code, the re-size event generates a call through
+the message map to the <B>OnSize</B> function, which calls the
+<B>MoveWindow </B>function to re-size the button appropriately.</FONT></P>
+
+<H3><FONT FACE="arial">Window Messages</FONT></H3>
+
+<P><FONT FACE="arial">By looking in the MFC documentation, you
+can see the wide variety of <B>CWnd</B> messages that the main
+window handles. Some are similar to the sizing message seen in
+the previous section. For example, ON_WM_MOVE messages are sent
+when a user moves a window, and ON_WM_PAINT messages are sent
+when any part of the window has to be repainted. In all of our
+programs so far, repainting has happened automatically because
+controls are responsible for their own appearance. If you draw
+the contents of the client area yourself with GDI commands (see
+the book &quot;<A HREF="http://www.iftech.com/index.asp?qmainframe=books.asp">Windows
+NT Programming: An Introduction Using C++ </A>&quot; for a complete
+explanation) the application is responsible for repainting any
+drawings it places directly in the window. In this context the
+ON_WM_PAINT message becomes important.</FONT></P>
+
+<P><FONT FACE="arial">There are also some event messages sent
+to the window that are more esoteric. For example, you can use
+the ON_WM_TIMER message in conjunction with the <B>SetTimer</B>
+function to cause the window to receive messages at pre-set intervals.
+The code below demonstrates the process. When you run this code,
+the program will beep once each second. The beeping can be replaced
+by a number of useful processes.</FONT></P>
+
+<PRE><FONT COLOR="#000080" FACE="arial">// button4.cpp</FONT>
+<FONT COLOR="#000080" FACE="arial">#include &lt;afxwin.h&gt;</FONT>
+<FONT COLOR="#000080" FACE="arial">#define IDB_BUTTON 100</FONT>
+<FONT COLOR="#000080" FACE="arial">#define IDT_TIMER1 200</FONT>
+<FONT COLOR="#000080" FACE="arial">// Declare the application class</FONT>
+<FONT COLOR="#000080" FACE="arial">class CButtonApp : public CWinApp</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">public:</FONT>
+<FONT COLOR="#000080" FACE="arial">	virtual BOOL InitInstance();</FONT>
+<FONT COLOR="#000080" FACE="arial">};</FONT>
+<FONT COLOR="#000080" FACE="arial">// Create an instance of the application class</FONT>
+<FONT COLOR="#000080" FACE="arial">CButtonApp ButtonApp;  </FONT>
+<FONT COLOR="#000080" FACE="arial">// Declare the main window class</FONT>
+<FONT COLOR="#000080" FACE="arial">class CButtonWindow : public CFrameWnd</FONT>
+<FONT COLOR="#000080" FACE="arial">{ </FONT>
+<FONT COLOR="#000080" FACE="arial">	CButton *button;</FONT>
+<FONT COLOR="#000080" FACE="arial">public:</FONT>
+<FONT COLOR="#000080" FACE="arial">	CButtonWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	afx_msg void HandleButton();</FONT>
+<FONT COLOR="#000080" FACE="arial">	afx_msg void OnSize(UINT, int, int);</FONT>
+<FONT COLOR="#000080" FACE="arial">	afx_msg void OnTimer(UINT);</FONT>
+<FONT COLOR="#000080" FACE="arial">	DECLARE_MESSAGE_MAP()	 </FONT>
+<FONT COLOR="#000080" FACE="arial">};</FONT>
+<FONT COLOR="#000080" FACE="arial">// A message handler function</FONT>
+<FONT COLOR="#000080" FACE="arial">void CButtonWindow::HandleButton()</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">	MessageBeep(-1);</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT>
+<FONT COLOR="#000080" FACE="arial">// A message handler function</FONT>
+<FONT COLOR="#000080" FACE="arial">void CButtonWindow::OnSize(UINT nType, int cx, </FONT>
+<FONT COLOR="#000080" FACE="arial">	int cy)</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">	CRect r;</FONT>
+<FONT COLOR="#000080" FACE="arial">	GetClientRect(&amp;r);</FONT>
+<FONT COLOR="#000080" FACE="arial">	r.InflateRect(-20,-20);</FONT>
+<FONT COLOR="#000080" FACE="arial">	button-&gt;MoveWindow(r);</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT>
+<FONT COLOR="#000080" FACE="arial">// A message handler function</FONT>
+<FONT COLOR="#000080" FACE="arial">void CButtonWindow::OnTimer(UINT id)</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">	MessageBeep(-1);</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT>
+<FONT COLOR="#000080" FACE="arial">// The message map</FONT>
+<FONT COLOR="#000080" FACE="arial">BEGIN_MESSAGE_MAP(CButtonWindow, CFrameWnd)</FONT>
+<FONT COLOR="#000080" FACE="arial">	ON_BN_CLICKED(IDB_BUTTON, HandleButton)</FONT>
+<FONT COLOR="#000080" FACE="arial">	ON_WM_SIZE()</FONT>
+<FONT COLOR="#000080" FACE="arial">	ON_WM_TIMER()</FONT>
+<FONT COLOR="#000080" FACE="arial">END_MESSAGE_MAP()</FONT>
+<FONT COLOR="#000080" FACE="arial">// The InitInstance function is called once</FONT>
+<FONT COLOR="#000080" FACE="arial">// when the application first executes</FONT>
+<FONT COLOR="#000080" FACE="arial">BOOL CButtonApp::InitInstance()</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd = new CButtonWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd-&gt;ShowWindow(m_nCmdShow);</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd-&gt;UpdateWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	return TRUE;</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT>
+<FONT COLOR="#000080" FACE="arial">// The constructor for the window class</FONT>
+<FONT COLOR="#000080" FACE="arial">CButtonWindow::CButtonWindow()</FONT>
+<FONT COLOR="#000080" FACE="arial">{ </FONT>
+<FONT COLOR="#000080" FACE="arial">	CRect r;</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Create the window itself</FONT>
+<FONT COLOR="#000080" FACE="arial">	Create(NULL, </FONT>
+<FONT COLOR="#000080" FACE="arial">		&quot;CButton Tests&quot;, </FONT>
+<FONT COLOR="#000080" FACE="arial">		WS_OVERLAPPEDWINDOW,</FONT>
+<FONT COLOR="#000080" FACE="arial">		CRect(0,0,200,200));</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Set up the timer</FONT>
+<FONT COLOR="#000080" FACE="arial">	SetTimer(IDT_TIMER1, 1000, NULL); // 1000 ms.</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Get the size of the client rectangle</FONT>
+<FONT COLOR="#000080" FACE="arial">	GetClientRect(&amp;r);</FONT>
+<FONT COLOR="#000080" FACE="arial">	r.InflateRect(-20,-20);</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Create a button</FONT>
+<FONT COLOR="#000080" FACE="arial">	button = new CButton();</FONT>
+<FONT COLOR="#000080" FACE="arial">	button-&gt;Create(&quot;Push me&quot;,</FONT>
+<FONT COLOR="#000080" FACE="arial">		WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,</FONT>
+<FONT COLOR="#000080" FACE="arial">		r,</FONT>
+<FONT COLOR="#000080" FACE="arial">		this,</FONT>
+<FONT COLOR="#000080" FACE="arial">		IDB_BUTTON);</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT></PRE>
+
+<P><FONT FACE="arial">Inside the program above we created a button,
+as shown previously, and left its re-sizing code in place. In
+the constructor for the window we also added a call to the <B>SetTimer</B>
+function. This function accepts three parameters: an ID for the
+timer (so that multiple timers can be active simultaneously, the
+ID is sent to the function called each time a timer goes off),
+the time in milliseconds that is to be the timer's increment,
+and a function. Here, we passed NULL for the function so that
+the window's message map will route the function automatically.
+In the message map we have wired in the ON_WM_TIMER message, and
+it will automatically call the <B>OnTimer</B> function passing
+it the ID of the timer that went off.</FONT></P>
+
+<P><FONT FACE="arial">When the program runs, it beeps once each
+1,000 milliseconds. Each time the timer's increment elapses, the
+window sends a message to itself. The message map routes the message
+to the <B>OnTimer </B>function, which beeps. You can place a wide
+variety of useful code into this function.</FONT></P>
+
+<H3><FONT FACE="arial">Scroll Bar Controls</FONT></H3>
+
+<P><FONT FACE="arial">Windows has two different ways to handle
+scroll bars. Some controls, such as the edit control and the list
+control, can be created with scroll bars attached. When this is
+the case, the master control handles the scroll bars automatically.
+For example, if an edit control has its scroll bars active then,
+when the scroll bars are used, the edit control scrolls as expected
+without any additional code.</FONT></P>
+
+<P><FONT FACE="arial">Scroll bars can also work on a stand-alone
+basis. When used this way they are seen as independent controls
+in their own right. You can learn more about scroll bars by referring
+to the <B>CScrollBar </B>section of the MFC reference manual.
+Scroll bar controls are created the same way we created static
+labels and buttons. They have four member functions that allow
+you to get and set both the range and position of a scroll bar.</FONT></P>
+
+<P><FONT FACE="arial">The code shown below demonstrates the creation
+of a horizontal scroll bar and its message map.</FONT></P>
+
+<PRE><FONT COLOR="#000080" FACE="arial">// sb1.cpp</FONT>
+<FONT COLOR="#000080" FACE="arial">#include &lt;afxwin.h&gt;</FONT>
+<FONT COLOR="#000080" FACE="arial">#define IDM_SCROLLBAR 100</FONT>
+<FONT COLOR="#000080" FACE="arial">const int MAX_RANGE=100;</FONT>
+<FONT COLOR="#000080" FACE="arial">const int MIN_RANGE=0;</FONT>
+<FONT COLOR="#000080" FACE="arial">// Declare the application class</FONT>
+<FONT COLOR="#000080" FACE="arial">class CScrollBarApp : public CWinApp</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">public:</FONT>
+<FONT COLOR="#000080" FACE="arial">	virtual BOOL InitInstance();</FONT>
+<FONT COLOR="#000080" FACE="arial">};</FONT>
+<FONT COLOR="#000080" FACE="arial">// Create an instance of the application class</FONT>
+<FONT COLOR="#000080" FACE="arial">CScrollBarApp ScrollBarApp;  </FONT>
+<FONT COLOR="#000080" FACE="arial">// Declare the main window class</FONT>
+<FONT COLOR="#000080" FACE="arial">class CScrollBarWindow : public CFrameWnd</FONT>
+<FONT COLOR="#000080" FACE="arial">{ </FONT>
+<FONT COLOR="#000080" FACE="arial">	CScrollBar *sb;</FONT>
+<FONT COLOR="#000080" FACE="arial">public:</FONT>
+<FONT COLOR="#000080" FACE="arial">	CScrollBarWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	afx_msg void OnHScroll(UINT nSBCode, UINT nPos,</FONT>
+<FONT COLOR="#000080" FACE="arial">		CScrollBar* pScrollBar);</FONT>
+<FONT COLOR="#000080" FACE="arial">	DECLARE_MESSAGE_MAP()	 </FONT>
+<FONT COLOR="#000080" FACE="arial">};</FONT>
+<FONT COLOR="#000080" FACE="arial">// The message handler function</FONT>
+<FONT COLOR="#000080" FACE="arial">void CScrollBarWindow::OnHScroll(UINT nSBCode, </FONT>
+<FONT COLOR="#000080" FACE="arial">	UINT nPos, CScrollBar* pScrollBar)</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">	MessageBeep(-1);</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT>
+<FONT COLOR="#000080" FACE="arial">// The message map</FONT>
+<FONT COLOR="#000080" FACE="arial">BEGIN_MESSAGE_MAP(CScrollBarWindow, CFrameWnd)</FONT>
+<FONT COLOR="#000080" FACE="arial">	ON_WM_HSCROLL()</FONT>
+<FONT COLOR="#000080" FACE="arial">END_MESSAGE_MAP()</FONT>
+<FONT COLOR="#000080" FACE="arial">// The InitInstance function is called once</FONT>
+<FONT COLOR="#000080" FACE="arial">// when the application first executes</FONT>
+<FONT COLOR="#000080" FACE="arial">BOOL CScrollBarApp::InitInstance()</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd = new CScrollBarWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd-&gt;ShowWindow(m_nCmdShow);</FONT>
+<FONT COLOR="#000080" FACE="arial">	m_pMainWnd-&gt;UpdateWindow();</FONT>
+<FONT COLOR="#000080" FACE="arial">	return TRUE;</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT>
+<FONT COLOR="#000080" FACE="arial">// The constructor for the window class</FONT>
+<FONT COLOR="#000080" FACE="arial">CScrollBarWindow::CScrollBarWindow()</FONT>
+<FONT COLOR="#000080" FACE="arial">{ </FONT>
+<FONT COLOR="#000080" FACE="arial">	CRect r;</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Create the window itself</FONT>
+<FONT COLOR="#000080" FACE="arial">	Create(NULL, </FONT>
+<FONT COLOR="#000080" FACE="arial">		&quot;CScrollBar Tests&quot;, </FONT>
+<FONT COLOR="#000080" FACE="arial">		WS_OVERLAPPEDWINDOW,</FONT>
+<FONT COLOR="#000080" FACE="arial">		CRect(0,0,200,200));</FONT>
+<FONT COLOR="#000080" FACE="arial">	</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Get the size of the client rectangle</FONT>
+<FONT COLOR="#000080" FACE="arial">	GetClientRect(&amp;r);</FONT>
+<FONT COLOR="#000080" FACE="arial">	// Create a scroll bar</FONT>
+<FONT COLOR="#000080" FACE="arial">	sb = new CScrollBar();</FONT>
+<FONT COLOR="#000080" FACE="arial">	sb-&gt;Create(WS_CHILD|WS_VISIBLE|SBS_HORZ,</FONT>
+<FONT COLOR="#000080" FACE="arial">		CRect(10,10,r.Width()-10,30),</FONT>
+<FONT COLOR="#000080" FACE="arial">		this,</FONT>
+<FONT COLOR="#000080" FACE="arial">		IDM_SCROLLBAR);</FONT>
+<FONT COLOR="#000080" FACE="arial">	sb-&gt;SetScrollRange(MIN_RANGE,MAX_RANGE,TRUE);</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT></PRE>
+
+<P><FONT FACE="arial">Windows distinguishes between horizontal
+and vertical scroll bars and also supports an object called a
+<I>size box</I> in the <B>CScrollBar </B>class. A size box is
+a small square. It is formed at the intersection of a horizontal
+and vertical scroll bar and can be dragged by the mouse to automatically
+re-size a window. Looking at the code in listing 4.5, you can
+see that the <B>Create</B> function creates a horizontal scroll
+bar using the SBS_HORZ style. Immediately following creation,
+the range of the scroll bar is set for 0 to 100 using the two
+constants MIN_RANGE and MAX_RANGE (defined at the top of the listing)
+in the <B>SetScrollRange</B> function.</FONT></P>
+
+<P><FONT FACE="arial">The event-handling function <B>OnHScroll</B>
+comes from the <B>CWnd </B>class. We have used this function because
+the code creates a horizontal scroll bar. For a vertical scroll
+bar you should use <B>OnVScroll</B>. In the code here the message
+map wires in the scrolling function and causes the scroll bar
+to beep whenever the user manipulates it. When you run the code
+you can click on the arrows, drag the thumb, and so on. Each event
+will generate a beep, but the thumb will not actually move because
+we have not wired in the code for movement yet.</FONT></P>
+
+<P><FONT FACE="arial">Each time the scroll bar is used and <B>OnHScroll</B>
+is called, your code needs a way to determine the user's action.
+Inside the <B>OnHScroll</B> function you can examine the first
+parameter passed to the message handler, as shown below. If you
+use this code with the code above, the scroll bar's thumb will
+move appropriately with each user manipulation.</FONT></P>
+
+<PRE><FONT COLOR="#000080" FACE="arial">// The message handling function</FONT>
+<FONT COLOR="#000080" FACE="arial">void CScrollBarWindow::OnHScroll(UINT nSBCode,</FONT>
+<FONT COLOR="#000080" FACE="arial">	UINT nPos, CScrollBar* pScrollBar)</FONT>
+<FONT COLOR="#000080" FACE="arial">{</FONT>
+<FONT COLOR="#000080" FACE="arial">	int pos;</FONT>
+<FONT COLOR="#000080" FACE="arial">	pos = sb-&gt;GetScrollPos();</FONT>
+<FONT COLOR="#000080" FACE="arial">	switch ( nSBCode )</FONT>
+<FONT COLOR="#000080" FACE="arial">	{</FONT>
+<FONT COLOR="#000080" FACE="arial">		case SB_LINEUP:</FONT>
+<FONT COLOR="#000080" FACE="arial">			pos -= 1;</FONT>
+<FONT COLOR="#000080" FACE="arial">			break;</FONT>
+<FONT COLOR="#000080" FACE="arial">		case SB_LINEDOWN:</FONT>
+<FONT COLOR="#000080" FACE="arial">			pos += 1;</FONT>
+<FONT COLOR="#000080" FACE="arial">			break;</FONT>
+<FONT COLOR="#000080" FACE="arial">		case SB_PAGEUP:</FONT>
+<FONT COLOR="#000080" FACE="arial">			pos -= 10;</FONT>
+<FONT COLOR="#000080" FACE="arial">			break;</FONT>
+<FONT COLOR="#000080" FACE="arial">		case SB_PAGEDOWN:</FONT>
+<FONT COLOR="#000080" FACE="arial">			pos += 10;</FONT>
+<FONT COLOR="#000080" FACE="arial">			break;</FONT>
+<FONT COLOR="#000080" FACE="arial">		case SB_TOP:</FONT>
+<FONT COLOR="#000080" FACE="arial">			pos = MIN_RANGE;</FONT>
+<FONT COLOR="#000080" FACE="arial">			break;</FONT>
+<FONT COLOR="#000080" FACE="arial">		case SB_BOTTOM:</FONT>
+<FONT COLOR="#000080" FACE="arial">			pos = MAX_RANGE;</FONT>
+<FONT COLOR="#000080" FACE="arial">			break;</FONT>
+<FONT COLOR="#000080" FACE="arial">		</FONT>
+<FONT COLOR="#000080" FACE="arial">		case SB_THUMBPOSITION:</FONT>
+<FONT COLOR="#000080" FACE="arial">			pos = nPos;</FONT>
+<FONT COLOR="#000080" FACE="arial">			break;</FONT>
+<FONT COLOR="#000080" FACE="arial">		default:</FONT>
+<FONT COLOR="#000080" FACE="arial">			return;</FONT>
+<FONT COLOR="#000080" FACE="arial">	}</FONT>
+<FONT COLOR="#000080" FACE="arial">	if ( pos &lt; MIN_RANGE )</FONT>
+<FONT COLOR="#000080" FACE="arial">		pos = MIN_RANGE;</FONT>
+<FONT COLOR="#000080" FACE="arial">	else if ( pos &gt; MAX_RANGE )</FONT>
+<FONT COLOR="#000080" FACE="arial">		pos = MAX_RANGE;</FONT>
+<FONT COLOR="#000080" FACE="arial">	sb-&gt;SetScrollPos( pos, TRUE );</FONT>
+<FONT COLOR="#000080" FACE="arial">}</FONT></PRE>
+
+<P><FONT FACE="arial">The different constant values such as SB_LINEUP
+and SB_LINEDOWN are described in the <B>CWnd::OnHScroll</B> function
+documentation. The code above starts by retrieving the current
+scroll bar position using <B>GetScrollPos</B>. It then decides
+what the user did to the scroll bar using a switch statement.
+The constant value names imply a vertical orientation but are
+used in horizontal scroll bars as well: SB_LINEUP and SB_LINEDOWN
+apply when the user clicks the left and right arrows. SB_PAGEUP
+and SB_PAGEDOWN apply when the user clicks in the shaft of the
+scroll bar itself. SB_TOP and SB_BOTTOM apply when the user moves
+the thumb to the top or bottom of the bar. SB_THUMBPOSITION applies
+when the user drags the thumb to a specific position. The code
+adjusts the position accordingly, then makes sure that it's still
+in range before setting the scroll bar to its new position. Once
+the scroll bar is set, the thumb moves on the screen to inform
+the user visually.</FONT></P>
+
+<P><FONT FACE="arial">A vertical scroll bar is handled the same
+way as a horizontal scroll bar except that you use the SBS_VERT
+style and the <B>OnVScroll </B>function. You can also use several
+alignment styles to align both the scroll bars and the grow box
+in a given client rectangle.</FONT></P>
+
+<H3><FONT FACE="arial">Understanding Message Maps</FONT></H3>
+
+<P><FONT FACE="arial">The message map structure is unique to MFC.
+It is important that you understand why it exists and how it actually
+works so that you can exploit this structure in your own code.</FONT></P>
+
+<P><FONT FACE="arial">Any C++ purist who looks at a message map
+has an immediate question: Why didn't Microsoft use virtual functions
+instead? Virtual functions are the standard C++ way to handle
+what mesage maps are doing in MFC, so the use of rather bizarre
+macros like DECLARE_MESSAGE_MAP and BEGIN_MESSAGE_MAP seems like
+a hack.</FONT></P>
+
+<P><FONT FACE="arial">MFC uses message maps to get around a fundamental
+problem with virtual functions. Look at the <B>CWnd</B> class
+in the MFC help file. It contains over 200 member functions, all
+of which would have to be virtual if message maps were not used.
+Now look at all of the classes that subclass the <B>CWnd</B> class.
+For example, go to the contents page of the MFC help file and
+look at the visual object hierarchy. 30 or so classes in MFC use
+<B>CWnd</B> as their base class. This set includes all of the
+visual controls such as buttons, static labels, and lists. Now
+imagine that MFC used virtual functions, and you created an application
+that contained 20 controls. Each of the 200 virtual functions
+in <B>CWnd</B> would require its own virtual function table, and
+each instance of a control would therefore have a set of 200 virtual
+function tables associated with it. The program would have roughly
+4,000 virtual function tables floating around in memory, and this
+is a problem on machines that have memory limitations. Because
+the vast majority of those tables are never used, they are unneeded.</FONT></P>
+
+<P><FONT FACE="arial">Message maps duplicate the action of a virtual
+function table, but do so on an on-demand basis. When you create
+an entry in a message map, you are saying to the system, &quot;when
+you see the specified message, please call the specified function.&quot;
+Only those functions that actually get overridden appear in the
+message map, saving memory and CPU overhead.</FONT></P>
+
+<P><FONT FACE="arial">When you declare a message map with DECLARE_MESSAGE_MAP
+and BEGIN_MESSAGE_MAP, the system routes all messages through
+to your message map. If your map handles a given message, then
+your function gets called and the message stops there. However,
+if your message map does not contain an entry for a message, then
+the system sends that message to the class specified in the second
+parameter of BEGIN_MESSAGE_MAP. That class may or may not handle
+it and the proces repeats. Eventually, if no message map handles
+a given message, the message arrives at a default handler that
+eats it.</FONT></P>
+
+<H3><FONT FACE="arial">Conclusion</FONT></H3>
+
+<P><FONT FACE="arial">All the message handling concepts described
+in this tutorial apply to every one of the controls and windows
+available in NT. In most cases you can use the ClassWizard to
+install the entries in the message map, and this makes the task
+much easier. For more information on the ClassWizard, AppWizard
+and the resource editors see the tutorials on these topics on
+the <A HREF="http://devcentral.iftech.com/learning/tutorials/submfc.asp">MFC
+Tutorials page</A>. <BR>
+</FONT>
+
+</BODY>
+</HTML>

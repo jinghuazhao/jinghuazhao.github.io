@@ -1,0 +1,757 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Untitled Document</TITLE>
+</HEAD>
+<BODY>
+
+<P><BR>
+<BR>
+<FONT COLOR="#008000" SIZE="+2" FACE="Arial">Win32 Programming
+Features for Windows NT and Windows 95<BR>
+</FONT><I><FONT SIZE="-1" FACE="arial">by Marshall Brain<BR>
+<BR>
+</FONT></I><FONT COLOR="#008000" SIZE="+1" FACE="arial">Services</FONT><BR>
+<BR>
+<!-- Force all text to format --><FONT FACE="arial">Every operating
+system needs a way to execute background tasks that run continuously
+regardless of who is using the machine. These background tasks
+can perform various services important to the system or its users.
+For example, a messaging system might monitor the network and
+display a dialog box whenever it receives a message from another
+machine. An application that sends and receives faxes needs to
+start up at boot time and then continuously monitor the fax modem
+for fax machines dialing in. A home or office security program,
+or code that controls a piece of test equipment, may need to poll
+sensors periodically and respond to them when appropriate. All
+of these tasks require CPU time to perform their jobs, but should
+not affect a user working at the keyboard because they require
+so little of the total CPU power available.</FONT></P>
+
+<P><FONT FACE="arial">In MS-DOS, background tasks like these are
+handled by Terminate and Stay Resident (TSR) programs. These programs
+are started in the autoexec.bat file. In UNIX, background tasks
+are handled by Daemons. At the very end of a UNIX machine's boot
+process you can see the operating system start up things like
+the Cron and Finger daemons before the system lets the first user
+log in. In Windows NT, background tasks are called services. Services
+start automatically when NT boots and remain running in the background
+regardless of who is logged in.</FONT></P>
+
+<P><FONT FACE="arial">Windows NT services are implemented as normal
+executables, but follow a very specific protocol internally that
+allows them to interact properly with the Service Control Manager
+(SCM). In this article, you will learn how to create and install
+simple Win32 services in Windows NT. Once you understand simple
+services, it is easy to build your own because all services, no
+matter how complicated, must contain the same basic SCM interface
+code. Once the requirements of the SCM are met however, there
+is no real difference between the executable for a service and
+a regular program.</FONT></P>
+
+<P><FONT FACE="arial">A good working knowledge of NT services
+is important to both programmers and system administrators. Programmers
+obviously benefit because they can create their own services.
+The benefit to administrators is more subtle, but equally important.
+Background tasks, in general, can be dangerous. Both MS-DOS and
+Macintosh systems make such good viral hosts because, through
+their lack of security, they allow any person or program to create
+background tasks at any time. Windows NT and UNIX systems are
+secure, so only an administrator can add background tasks to the
+system. However, if the administrator adds a destructive background
+task, then it is free to do its damage. When administrators understand
+the mechanisms and privileges available to Windows NT services,
+it is possible for them to be more selective in installing potentially
+harmful background tasks.</FONT></P>
+
+<P>&nbsp;</P>
+
+<H3><FONT FACE="arial">Basic Concepts</FONT></H3>
+
+<P><FONT FACE="arial">Services come in two different varieties.
+Driver services use device driver protocols to interface NT to
+specific pieces of hardware. Win32 services, on the other hand,
+implement general background tasks using the normal Win32 API.
+This article focuses on Win32 services because of their general
+utility and ease of creation. Any NT programmer with the normal
+NT SDK (or Visual C++) and administrative access to an NT machine
+can implement and install his or her own Win32 services. Any time
+that you want to create any type of program that starts at boot
+time and runs continuously as a background task in Windows NT,
+you will want to use a Win32 service.</FONT></P>
+
+<P><FONT FACE="arial">Services expose themselves in NT's user
+interface through the Control Panel. There you will find a Services
+Applet that displays a list of all available Win32 services. This
+applet lets you start, stop, pause and resume services. A second
+dialog, accessed by pressing the Startup button in the Services
+Applet, lets you change the startup behavior as well as the default
+account used by the service. A service can start automatically
+at boot time, it can be totally disabled, or it can be set to
+start manually. When starting a service manually, a user can supply
+startup parameters. You need to be logged in as the administrator
+or a power user to do anything with the Services applet.</FONT></P>
+
+<P><FONT FACE="arial">Windows NT ships with a number of pre-installed
+services that handle such things as network messaging, command
+scheduling with the &quot;at&quot; command, and distributed RPC
+naming. When you create your own services, you must perform a
+separate installation step to insert them into the list managed
+by the services applet. The installation process adds information
+about a new service--its name, the name of its executable, its
+startup type, etc.--into the registry so that the SCM knows about
+the new service the next time the machine boots.</FONT></P>
+
+<P>&nbsp;</P>
+
+<H3><FONT FACE="arial">Creating a New Service</FONT></H3>
+
+<P><FONT FACE="arial">A program that acts as a service is a normal
+EXE file, but it must meet special requirements so that it interfaces
+properly with the SCM. Microsoft has carefully choreographed the
+flow of function calls, and you must follow that plan closely
+or the service will not work. The requirements are listed below.
+You will find descriptions of the functions discussed here in
+the Win32 programmer reference manuals, or in the on-line help
+files for Win32 in the SDK or Visual C++:</FONT></P>
+
+<P>&nbsp;</P>
+
+<UL>
+  <LI><FONT FACE="arial">The service's code must have a normal
+  main or WinMain function. This function should immediately call
+  the StartServiceCrtlDispatcher function. By calling this function,
+  you give the SCM a pointer to a ServiceMain function to call
+  when it wants to start the service.</FONT>
+  <LI><FONT FACE="arial">The SCM calls the ServiceMain function
+  when it wants to start the service. For example, if the administrator
+  presses the Start button in the Services applet, then the SCM
+  will execute the ServiceMain function in a separate thread. ServiceMain
+  should call the RegisterServiceCtrlHandler function, which registers
+  a Handler function with the SCM for it to call with control requests.
+  You can name the Handler function anything you like, but it is
+  listed in the documentation under Handler. The RegisterServiceCtrlHandler
+  function returns a handle that the service can use when it wants
+  to send status messages to the SCM.</FONT>
+  <LI><FONT FACE="arial">The ServiceMain function must also start
+  the thread that does the actual work of the service itself. The
+  ServiceMain function should not return until it is time for the
+  service to stop. When it returns, the service has stopped.</FONT>
+  <LI><FONT FACE="arial">The Handler function contains a switch
+  statement that parses control requests received from the SCM.
+  By default the SCM can send any of the following control constants:</FONT>
+  <UL>
+    <LI><FONT FACE="arial">SERVICE_CONTROL_STOP - Tells the service
+    to stop.</FONT>
+    <LI><FONT FACE="arial">SERVICE_CONTROL_PAUSE - Tells the service
+    to pause.</FONT>
+    <LI><FONT FACE="arial">SERVICE_CONTROL_CONTINUE - Tells the service
+    to resume.</FONT>
+    <LI><FONT FACE="arial">SERVICE_CONTROL_INTERROGATE - Tells the
+    service to immediately report its status.</FONT>
+    <LI><FONT FACE="arial">SERVICE_CONTROL_SHUTDOWN - Tells the service
+    that shutdown is imminent.</FONT>
+  </UL>
+</UL>
+
+<P><FONT FACE="arial">It is also possible to create custom constants
+(with values between 128 and 255) and send them through the SCM
+to the service.</FONT></P>
+
+<P><FONT FACE="arial">When you create an EXE that contains the
+main, ServiceMain, and Handler functions described above, as well
+as a function that contains the thread for the service itself,
+you have a complete service. The figure below summarizes the interactions
+between these different functions and the SCM:</FONT></P>
+
+<P><FONT FACE="arial"><IMG SRC="services.gif" WIDTH="432" HEIGHT="456"
+NATURALSIZEFLAG="3" ALIGN="BOTTOM"></FONT></P>
+
+<P><FONT FACE="arial">Listing 1 shows the simplest service possible.
+This service simply beeps. By default it beeps every two seconds.
+Optionally you can modify the beep interval with startup parameters.
+This service is complete in that it will appropriately respond
+to the SCM for every control signal possible. Because of that,
+this program can act as a good template for creating your own
+services.</FONT></P>
+
+<P><FONT FACE="arial">The main function calls StartServiceCtrlDispatcher
+to register the ServiceMain function. The registration is performed
+using an array of SERVICE_TABLE_ENTRY structures. In this case,
+the program contains just one service, so there is only one entry
+in the table. However, it is possible for there to be several
+services in a single EXE file, and in that case the table identifies
+the appropriate ServiceMain function for each. It is possible
+to put initialization code in the main function prior to the call
+to StartServiceCtrlDispatcher, but this code must complete in
+less than 30 seconds. If it takes longer, the SCM aborts the service
+on the assumption that something went wrong.</FONT></P>
+
+<P><FONT FACE="arial">The ServiceMain function gets called when
+the SCM wants to start the service either during the boot process
+or because of a manual start. ServiceMain always contains the
+following steps:</FONT></P>
+
+<P>&nbsp;</P>
+
+<OL>
+  <LI><FONT FACE="arial">It immediately calls RegisterServiceCtrlHandler
+  to register the Handler function with the SCM as this service's
+  Handler function.</FONT>
+  <LI><FONT FACE="arial">It then calls the SendStatusToSCM function.
+  It does this to notify the SCM of progress. The fourth parameter
+  is a &quot;click count&quot; value, which increments each time
+  the program updates the status. The SCM and other programs can
+  look at the click count and see that progress is being made during
+  initialization. The last parameter is a &quot;wait hint&quot;,
+  which tells the SCM how long (in milliseconds) it should expect
+  to wait before the click count next gets updated.</FONT>
+  <LI><FONT FACE="arial">ServiceMain next creates an event that
+  will be used at the bottom of the function to prevent it from
+  returning until the SCM issues a STOP request.</FONT>
+  <LI><FONT FACE="arial">Next, ServiceMain checks for startup parameters.
+  These parameters can be passed in by the user during a manual
+  start, using the Startup Parameters line in the Service applet.
+  Any parameters come into the ServiceMain function in an argv-style
+  array.</FONT>
+  <LI><FONT FACE="arial">If your service needs to perform other
+  initialization tasks, they should go here just prior to the call
+  to InitService.</FONT>
+  <LI><FONT FACE="arial">The ServiceMain function next calls the
+  InitService function, which will start the thread that does the
+  actual work of the service. If this call succeeds, then ServiceMain
+  lets the SCM know that the service has successfully started.</FONT>
+  <LI><FONT FACE="arial">ServiceMain now calls WaitForSingleObject,
+  which waits efficiently for the terminateEvent event object to
+  be set. This object gets set in the Handler function. Once it
+  does get set, ServiceMain calls the terminate function to clean
+  up, and then returns to stop the service.</FONT>
+</OL>
+
+<P><FONT FACE="arial">As you can see, there is not a lot of flexibility
+in this function. With the exception of step 5, you must perform
+each of the tasks mentioned in the order mentioned for the service
+to start properly.</FONT></P>
+
+<P><FONT FACE="arial">The terminate function cleans up any open
+handles, and sends a status message to the SCM to tell it that
+the service is stopped.</FONT></P>
+
+<P><FONT FACE="arial">The SCM calls the Handler function whenever
+it wants to pause, resume, interrogate or stop the service. To
+stop the service, the handler sets terminateEvent. By doing this,
+it causes ServiceMain, which is executing as a separate thread,
+to terminate and return. Once ServiceMain returns the service
+is stopped.</FONT></P>
+
+<P><FONT FACE="arial">The SendStatusToSCM function consolidates
+all of the statements necessary to send the service's current
+status to the SCM.</FONT></P>
+
+<P><FONT FACE="arial">The InitService function gets called by
+ServiceMain when it needs to start the service's thread. This
+function calls CreateThread to create a new thread for the service.</FONT></P>
+
+<P><FONT FACE="arial">The ServiceThread function contains the
+actual work that is to be performed by the service. In this case,
+the thread consists of an infinite loop that beeps and then sleeps
+for a pre-determined interval. When creating your own services,
+you can place any code that you like in this thread, calling either
+Win32 functions or your own functions.</FONT></P>
+
+<P>&nbsp;</P>
+
+<H3><FONT FACE="arial">Installing and Removing Services</FONT></H3>
+
+<P><FONT FACE="arial">In order to use the beep service described
+in the previous section, you have to install it. Installation
+makes the SCM aware of the service, and causes the SCM to add
+it to the list of services that appears in the Services applet
+of the Control Panel. The code shown in Listing 2 demonstrates
+how to install a service.</FONT></P>
+
+<P><FONT FACE="arial">Listing 2 starts by opening a connection
+to the SCM using the OpenSCManager function. In the call to OpenSCManager,
+you must specify what you want to do so that the SCM can validate
+that activity. If the account you are logged in under does not
+have sufficient privilege, then the call will return NULL.</FONT></P>
+
+<P><FONT FACE="arial">The call to CreateService actually installs
+the new service. It uses the pointer to the SCM returned by OpenSCManager,
+the name, label and EXE file specified on the command line, along
+with a set of standard parameters to fill in all of the other
+values. The use of SERVICE_WIN32_OWN_PROCESS indicates that the
+service's EXE file contains just one service, and SERVICE_DEMAND_START
+indicates that the service is manual start rather than automatic
+start. A typical invocation of the install program at the command
+line is shown below:</FONT></P>
+
+<PRE>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	install BeepService &quot;Beeper&quot; c:\winnt\beep.exe</FONT></TT>
+</PRE>
+
+<P><FONT FACE="arial">The first parameter specifies the name of
+the service used internally by the SCM. This name is later used
+to remove the service. The second parameter specifies the label
+used to display the service in the Services applet. The third
+parameter gives the fully qualified path to the service's executable.
+After you install the service, start it using the Services applet
+in the Control Panel. Look up any error codes in the on-line help
+file for the Win32 API.</FONT></P>
+
+<P><FONT FACE="arial">To remove a service, you follow the steps
+shown in Listing 3. It starts by opening a connection to the SCM,
+and then opens a connection to the service using the OpenService
+function. Listing 3 next queries the service to find out if it
+is currently stopped. If it is not, it stops it. The DeleteService
+function removes the service from the Services applet in the Control
+Panel. A typical invocation of the removal program shown in Listing
+3 would look like this:</FONT></P>
+
+<PRE>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	remove BeepService</FONT></TT>
+</PRE>
+
+<P><FONT FACE="arial">If desired, you can immediately reinstall
+the service.</FONT></P>
+
+<P>&nbsp;</P>
+
+<H3><FONT FACE="arial">Conclusion</FONT></H3>
+
+<P><FONT FACE="arial">Services are an essential part of Windows
+NT because they allow you to extend the operating system. Using
+the code in Listing 1 as a template, you will find that it is
+extremely easy to create new services of your own. <HR ALIGN=LEFT></FONT></P>
+
+<H3><FONT FACE="arial">Listing 1</FONT></H3>
+
+<P><FONT FACE="arial">Code that implements the simplest possible
+NT service</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// From the book &quot;Win32 System Services: The Heart of Windows NT&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// by Marshall Brain</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Published by Prentice Hall</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// This code implements the simplest possible service.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// It beeps every 2 seconds, or at a user specified interval.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// beepserv.cpp</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;windows.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;stdio.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;iostream.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;stdlib.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#define DEFAULT_BEEP_DELAY 2000</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Global variables</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// The name of the service</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">char *SERVICE_NAME = &quot;BeepService&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Event used to hold ServiceMain from completing</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">HANDLE terminateEvent = NULL;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Handle used to communicate status info with</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// the SCM. Created by RegisterServiceCtrlHandler</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">SERVICE_STATUS_HANDLE serviceStatusHandle;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// The beep interval in ms.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">int beepDelay = DEFAULT_BEEP_DELAY;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Flags holding current state of service</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">BOOL pauseService = FALSE;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">BOOL runningService = FALSE;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Thread for the actual work</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">HANDLE threadHandle = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">void ErrorHandler(char *s, DWORD err)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	cout &lt;&lt;  s &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	cout &lt;&lt;  &quot;Error number: &quot; &lt;&lt;  err &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	ExitProcess(err);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// This function consolidates the activities of </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// updating the service status with</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// SetServiceStatus</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">BOOL SendStatusToSCM (DWORD dwCurrentState,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	DWORD dwWin32ExitCode, </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	DWORD dwServiceSpecificExitCode,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	DWORD dwCheckPoint,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	DWORD dwWaitHint)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	BOOL success;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	SERVICE_STATUS serviceStatus;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Fill in all of the SERVICE_STATUS fields</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	serviceStatus.dwServiceType = SERVICE_WIN32_OWN_PROCESS;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	serviceStatus.dwCurrentState = dwCurrentState;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// If in the process of doing something, then accept</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// no control events, else accept anything</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (dwCurrentState == SERVICE_START_PENDING)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		serviceStatus.dwControlsAccepted = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		serviceStatus.dwControlsAccepted = </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			SERVICE_ACCEPT_STOP |</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			SERVICE_ACCEPT_PAUSE_CONTINUE |</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			SERVICE_ACCEPT_SHUTDOWN;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// if a specific exit code is defined, set up</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// the win32 exit code properly</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (dwServiceSpecificExitCode == 0)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		serviceStatus.dwWin32ExitCode = dwWin32ExitCode;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		serviceStatus.dwWin32ExitCode = </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			ERROR_SERVICE_SPECIFIC_ERROR;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	serviceStatus.dwServiceSpecificExitCode =</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		dwServiceSpecificExitCode;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	serviceStatus.dwCheckPoint = dwCheckPoint;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	serviceStatus.dwWaitHint = dwWaitHint;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Pass the status record to the SCM</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	success = SetServiceStatus (serviceStatusHandle, </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		&amp;serviceStatus);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	return success;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">DWORD ServiceThread(LPDWORD param)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	while (1)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		Beep(200,200);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		Sleep(beepDelay);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	return 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Initializes the service by starting its thread</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">BOOL InitService()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	DWORD id;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Start the service's thread</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	threadHandle = CreateThread(0, 0,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		(LPTHREAD_START_ROUTINE) ServiceThread,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		0, 0, &amp;id);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (threadHandle==0)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		return FALSE;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		runningService = TRUE;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		return TRUE;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Dispatches events received from the SCM</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">VOID Handler (DWORD controlCode) </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	DWORD currentState = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	BOOL success;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	switch(controlCode)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		// There is no START option because</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		// ServiceMain gets called on a start</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		// Stop the service</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		case SERVICE_CONTROL_STOP:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			// Tell the SCM what's happening</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			success = SendStatusToSCM(SERVICE_STOP_PENDING,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">				NO_ERROR, 0, 1, 5000);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			runningService=FALSE;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			// Set the event that is holding ServiceMain</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			// so that ServiceMain can return</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			SetEvent(terminateEvent);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			return;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		// Pause the service</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		case SERVICE_CONTROL_PAUSE:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			if (runningService &amp;&amp; !pauseService)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">				// Tell the SCM what's happening</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">				success = SendStatusToSCM(</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">					SERVICE_PAUSE_PENDING,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">					NO_ERROR, 0, 1, 1000);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">				pauseService = TRUE;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">				SuspendThread(threadHandle);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">				currentState = SERVICE_PAUSED;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			break;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		// Resume from a pause</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		case SERVICE_CONTROL_CONTINUE:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			if (runningService &amp;&amp; pauseService)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">				// Tell the SCM what's happening</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">				success = SendStatusToSCM(</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">					SERVICE_CONTINUE_PENDING,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">					NO_ERROR, 0, 1, 1000);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">				pauseService=FALSE;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">				ResumeThread(threadHandle);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">				currentState = SERVICE_RUNNING;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			break;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		// Update current status</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		case SERVICE_CONTROL_INTERROGATE:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			// it will fall to bottom and send status</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			break;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		// Do nothing in a shutdown. Could do cleanup</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		// here but it must be very quick.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		case SERVICE_CONTROL_SHUTDOWN:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			return;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		default:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> 			break;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	SendStatusToSCM(currentState, NO_ERROR, 0, 0, 0);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Handle an error from ServiceMain by cleaning up</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// and telling SCM that the service didn't start.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">VOID terminate(DWORD error)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// if terminateEvent has been created, close it.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (terminateEvent) CloseHandle(terminateEvent);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Send a message to the scm to tell about stopage</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (serviceStatusHandle)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		SendStatusToSCM(SERVICE_STOPPED, error,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			0, 0, 0);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// If the thread has started, kill it off</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (threadHandle) CloseHandle(threadHandle);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Do not need to close serviceStatusHandle</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// ServiceMain is called when the SCM wants to</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// start the service. When it returns, the service</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// has stopped. It therefore waits on an event</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// just before the end of the function, and</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// that event gets set when it is time to stop. </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// It also returns on any error because the</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// service cannot start if there is an eror.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">VOID ServiceMain(DWORD argc, LPTSTR *argv) </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	BOOL success;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// immediately call Registration function</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	serviceStatusHandle =</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		RegisterServiceCtrlHandler(</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			SERVICE_NAME, (LPHANDLER_FUNCTION)Handler);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (!serviceStatusHandle) {terminate(GetLastError()); return;}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Notify SCM of progress</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	success = SendStatusToSCM(SERVICE_START_PENDING,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		NO_ERROR, 0, 1, 5000);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (!success) {terminate(GetLastError()); return;}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// create the termination event</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	terminateEvent = CreateEvent (0, TRUE, FALSE, 0);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (!terminateEvent) {terminate(GetLastError()); return;}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Notify SCM of progress</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	success = SendStatusToSCM(SERVICE_START_PENDING,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		NO_ERROR, 0, 2, 1000);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (!success) {terminate(GetLastError()); return;}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Check for startup params</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (argc == 2)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		int temp = atoi(argv[1]);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		if (temp &lt; 1000)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			beepDelay = DEFAULT_BEEP_DELAY;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			beepDelay = temp;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Notify SCM of progress</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	success = SendStatusToSCM(SERVICE_START_PENDING,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		NO_ERROR, 0, 3, 5000);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (!success) {terminate(GetLastError()); return;}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Start the service itself</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	success = InitService();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (!success) {terminate(GetLastError()); return;}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// The service is now running. </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Notify SCM of progress</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	success = SendStatusToSCM(SERVICE_RUNNING,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		NO_ERROR, 0, 0, 0);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (!success) {terminate(GetLastError()); return;}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Wait for stop signal, and then terminate</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	WaitForSingleObject (terminateEvent, INFINITE);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	terminate(0);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">VOID main(VOID)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	SERVICE_TABLE_ENTRY serviceTable[] = </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	{ </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	{ SERVICE_NAME,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		(LPSERVICE_MAIN_FUNCTION) ServiceMain},</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	{ NULL, NULL }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	};</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	BOOL success;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Register with the SCM</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	success = </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		StartServiceCtrlDispatcher(serviceTable);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (!success)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		ErrorHandler(&quot;In StartServiceCtrlDispatcher&quot;,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			GetLastError());</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT>
+</PRE>
+
+<P><FONT FACE="arial"><HR ALIGN=LEFT></FONT></P>
+
+<H3><FONT FACE="arial">Listing 2</FONT></H3>
+
+<P><FONT FACE="arial">Code that installs an NT service</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// From the book &quot;Win32 System Services: The Heart of Windows NT&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// by Marshall Brain</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Published by Prentice Hall</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// This code installs a service.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// install.cpp</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;windows.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;iostream.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">void ErrorHandler(char *s, DWORD err)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	cout &lt;&lt;  s &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	cout &lt;&lt;  &quot;Error number: &quot; &lt;&lt;  err &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	ExitProcess(err);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">void main(int argc, char *argv[])</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	SC_HANDLE newService, scm;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (argc != 4)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		cout &lt;&lt;  &quot;Usage:\n&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		cout &lt;&lt;  &quot;   install service_name \</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">service_label executable\n&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		cout &lt;&lt;  &quot;           service_name is the \</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">name used internally by the SCM\n&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		cout &lt;&lt;  &quot;           service_label is the \</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">name that appears in the Services applet\n&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		cout &lt;&lt;  &quot;              (for multiple \</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">words, put them in double quotes)\n&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		cout &lt;&lt;  &quot;           executable is the \</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">full path to the EXE\n\n&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		return;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// open a connection to the SCM</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	scm = OpenSCManager(0, 0, SC_MANAGER_CREATE_SERVICE);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (!scm) ErrorHandler(&quot;In OpenScManager&quot;,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		GetLastError());</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Install the new service</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	newService = CreateService(</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		scm, argv[1], // eg &quot;beep_srv&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		argv[2],      // eg &quot;Beep Service&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		SERVICE_ALL_ACCESS, SERVICE_WIN32_OWN_PROCESS,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		SERVICE_DEMAND_START, SERVICE_ERROR_NORMAL,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		argv[3],      // eg &quot;c:\winnt\xxx.exe&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		0, 0, 0, 0, 0);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (!newService) ErrorHandler(&quot;In CreateService&quot;,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		GetLastError());</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	else cout &lt;&lt;  &quot;Service installed\n&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// clean up</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	CloseServiceHandle(newService);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	CloseServiceHandle(scm);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT>
+</PRE>
+
+<P><FONT FACE="arial"><HR ALIGN=LEFT></FONT></P>
+
+<H3><FONT FACE="arial">Listing 3</FONT></H3>
+
+<P><FONT FACE="arial">Code that removes an NT service</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// From the book &quot;Win32 System Services: The Heart of Windows NT&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// by Marshall Brain</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Published by Prentice Hall</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// This code removes a service from the Services applet in the</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Control Panel.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// remove.cpp</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;windows.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;iostream.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">void ErrorHandler(char *s, DWORD err)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{	</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	cout &lt;&lt; s &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	cout &lt;&lt;  &quot;Error number: &quot; &lt;&lt;  err &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	ExitProcess(err); </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">void main(int argc, char *argv[])</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	SC_HANDLE service, scm;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	BOOL success;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	SERVICE_STATUS status;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (argc != 2)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		cout &lt;&lt;  &quot;Usage:\n   remove service_name\n&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		return;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Open a connection to the SCM</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	scm = OpenSCManager(0, 0, SC_MANAGER_CREATE_SERVICE);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (!scm) ErrorHandler(&quot;In OpenScManager&quot;,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		GetLastError());</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Get the service's handle</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	service = OpenService(scm, argv[1],</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		SERVICE_ALL_ACCESS | DELETE);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (!service) ErrorHandler(&quot;In OpenService&quot;,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		GetLastError());</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Stop the service if necessary</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	success = QueryServiceStatus(service, &amp;status);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (!success) ErrorHandler(&quot;In QueryServiceStatus&quot;,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		GetLastError());</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (status.dwCurrentState != SERVICE_STOPPED)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		cout &lt;&lt;  &quot;Stopping service...\n&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		success = ControlService(service,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			SERVICE_CONTROL_STOP, &amp;status);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		if (!success) ErrorHandler(&quot;In ControlService&quot;,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">			GetLastError());</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Remove the service</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	success = DeleteService(service);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	if (success) cout &lt;&lt;  &quot;Service removed\n&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	else ErrorHandler(&quot;In DeleteService&quot;,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">		GetLastError());</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	// Clean up</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	CloseServiceHandle(service);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	CloseServiceHandle(scm);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT></PRE>
+
+</BODY>
+</HTML>
