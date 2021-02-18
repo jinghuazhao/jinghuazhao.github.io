@@ -27,6 +27,6 @@ I also made a [University of London](http://www.lon.ac.uk/)
 together with [Endnote](http://www.endnote.com/) [genetic reference
 library](iop/jinghua/refs/genetics.enl) and keep some notes on [MFC
 programming](iop/jinghua/winprog/winprog.html) and [some programs for
-genetic data analysis](software/softlink.htm)
+genetic data analysis](software/softlink.md)
 
 *Date last changed* 30/3/2019

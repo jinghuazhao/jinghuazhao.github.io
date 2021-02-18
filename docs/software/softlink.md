@@ -1,10 +1,7 @@
-<center>
-<table width="520" cellspacing="0" cellpadding="0" border="0">
-<tbody>
-<tr>
-<td width="100%">
-
-### Software Links (Local Copy)
+---
+layout: article
+title: Software Links (Local Copy)
+---
 
 *   2LD (2-locus LD calculator)
 *   3LOCUS (3-locus haplotype analysis)
@@ -108,10 +105,5 @@
 *   TreeView
 *   VITESSE (Likelihood Calculation on Pedigrees)
 *   XDT (Sibling transmission test and quantitative TDT)
-</td>
-</tr>
-</tbody>
-</table>
-</center>
 
-<center>Last modified: 14/1/2000 by: [Jing Hua Zhao](mailto:j.zhao@iop.kcl.ac.uk)</center>
+*Last modified*: 14/1/2000 by: [Jing Hua Zhao](mailto:j.zhao@iop.kcl.ac.uk)
