@@ -1,0 +1,1968 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+  <META NAME="Author" CONTENT="j zhao">
+  <TITLE>shg5</TITLE>
+</HEAD>
+<BODY>
+
+<P><I><FONT FACE="Times New Roman,Times">Lecture notes.</FONT></I>
+<BR>
+&nbsp;</P>
+
+<H1><CENTER><FONT FACE="Times New Roman,Times">Introduction to
+Quantitative Genetic Analysis</FONT></CENTER></H1>
+
+<P><HR ALIGN=LEFT><BR>
+<FONT FACE="Times New Roman,Times">&nbsp;This notes serve as a
+companion to Chapter 5 of&nbsp;<I> Staistics in Human Genetics</I>.
+It will guide you work out most of the examples there. Briefly,
+the contents of the notes are as follows.</FONT></P>
+
+<UL>
+  <LI><A HREF="#Twin method using SAS and"><FONT FACE="Times New Roman,Times">Linear
+  models for continuous twin data using SAS and SPSS</FONT></A>
+  <LI><A HREF="#Structural equation models for twin data using"><FONT
+   FACE="Times New Roman,Times">Structural equation models for
+  twin data using Mx</FONT></A>
+  <LI><A HREF="#Regressive models and Haseman-Elston sib pair"><FONT
+   FACE="Times New Roman,Times">Regressive models and Haseman-Elston
+  sib pair analysis using SAGE</FONT></A>
+</UL>
+
+<P><FONT FACE="Times New Roman,Times">Many examples were in SAS.
+Since currently SAS is unavailable in the institute network it
+may not be straight forward for non-SAS users. However with the
+SAS source codes provded in this notes the burden should be relieved
+quite a lot. We also give some details about MLn, Mx and SAGE.</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">In the analysis of the&nbsp;
+<A HREF="#Dr Alison's data on personality dimension">the neuroticism
+dataset</A>, we used a few packages: SAS in examples <A HREF="#Example 5.1">5.1</A>,
+<A HREF="#Example 5.2">5.2</A>, <A HREF="#Example 5.3">5.3</A>,
+<A HREF="#Example 5.9">5.9</A> <A HREF="#Example 5.16">5.16</A>,
+<A HREF="#Example 5.18">5.18</A>, SPSS in example <A HREF="#Example 5.10">5.10</A>,
+SPSS and MLn in example <A HREF="#Example 5.11">5.11</A>, Mx in
+examples <A HREF="#Example 5.20">5.20</A>&nbsp; and <A HREF="#Example 5.21">5.21</A>.</FONT></P>
+
+<P><B><I><FONT SIZE="+1" FACE="Times New Roman,Times">Important
+!!!</FONT></I></B></P>
+
+<P><FONT FACE="Times New Roman,Times">We do not intend to distribute
+many files. The exceptions are the original data files which are
+too long to include or too difficult to make, and some Mx programs
+that are very similar to the codes within this notes. In order
+to replicate the examples you could take advantage of the <I>copy/cut</I>
+and <I>paste</I> utility under MS Windows and create your own
+programs. For example if you want to run the programs for SPSS
+you could first block the code from web browser (Netscape or Internet
+Explorer), then select <I>copy</I> from its Edit menu, and finally
+switch and <I>paste</I> to your SPSS syntax window. From there
+you block the code and click the execute button to get the result.
+SPSS can also paste your selections from its own menu. By doing
+this you would be able to check your choices with ours.</FONT>
+<BR>
+&nbsp; <BR>
+<FONT FACE="Times New Roman,Times">The book chapter makes extensive
+use of&nbsp;</FONT><A NAME="Dr Alison's data on personality dimension"></A>Dr
+Alison MacDonald's data on personality dimension neuroticism.
+Originally the dataset contains the following variables.</P>
+
+<UL>
+  <LI><FONT FACE="Times New Roman,Times">zyg2 equals 2 if the twin
+  pair is MZ, or 4 if the twin pair is DZ.</FONT>
+  <LI><FONT FACE="Times New Roman,Times">n_1, n_2 are the neuroticism
+  scores.</FONT>
+</UL>
+
+<P><FONT FACE="Times New Roman,Times">From these, new variables
+t1, t2 and group were created for the subsequent analyses.</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">Table 5.1 Cross-tabulation
+of neuroticism for MZ and DZ twin pairs.</FONT></P>
+
+<P><B><FONT FACE="Times New Roman,Times">MZ</FONT></B> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">------------------------------------------------------------------</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+T2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;
+----------------------------------------------------------</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 2&nbsp; 3&nbsp; 4&nbsp; 5&nbsp; 6&nbsp; 7&nbsp; 8&nbsp;
+9&nbsp; 10 11 12 13 14 15 16 17 18 19 ALL</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">------------------------------------------------------------------</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;T1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;4&nbsp;&nbsp;&nbsp;
+1&nbsp; 3&nbsp; 4&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+10</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 1 12&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+18</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 2&nbsp; 6 11&nbsp; 6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+26</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+5&nbsp; 5&nbsp; 8&nbsp; 7&nbsp; 6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+31</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 1&nbsp; 1&nbsp; 4&nbsp; 8&nbsp; 6&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+24</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 2&nbsp; 1&nbsp; 5 12&nbsp; 9&nbsp; 8&nbsp; 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+45</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+5&nbsp; 3&nbsp; 2&nbsp; 3&nbsp; 8&nbsp; 5&nbsp; 5&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+35</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 1&nbsp; 4&nbsp; 3&nbsp; 3&nbsp; 9&nbsp; 8&nbsp; 3&nbsp;
+5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+37</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp; 3&nbsp; 3&nbsp; 4&nbsp; 4&nbsp; 6&nbsp; 8&nbsp; 9&nbsp;
+4&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+46</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp; 4&nbsp; 5&nbsp; 4&nbsp; 7&nbsp;
+7&nbsp; 6&nbsp; 6&nbsp; 6&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+51</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 3&nbsp; 2&nbsp; 3&nbsp; 1&nbsp;
+4&nbsp; 4&nbsp; 9&nbsp; 4 13&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+50</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp; 1&nbsp; 2&nbsp; 1&nbsp; 4&nbsp; 4&nbsp; 1&nbsp; 2&nbsp;
+5&nbsp; 7&nbsp; 7&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+39</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 2&nbsp; 1&nbsp; 2&nbsp; 4&nbsp;
+4&nbsp; 5&nbsp; 6&nbsp; 4&nbsp; 4&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+35</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 2&nbsp; 3&nbsp; 2&nbsp; 1&nbsp;
+4&nbsp; 6&nbsp; 6&nbsp; 9&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+36</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 1&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 2&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp; 1&nbsp; 4&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; 21</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;19&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 2&nbsp; 1&nbsp; 1&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp; 3&nbsp; 1&nbsp; 14</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;ALL&nbsp; 1 11
+24 41 49 55 47 47 52 35 34 28 35 22 18 11&nbsp; 7&nbsp; 4&nbsp;
+1 522</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">------------------------------------------------------------------</FONT></P>
+
+<P><B><FONT FACE="Times New Roman,Times">DZ</FONT></B> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">------------------------------------------------------------</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+T2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;
+----------------------------------------------------</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp; 3&nbsp; 4&nbsp; 5&nbsp; 6&nbsp; 7&nbsp; 8&nbsp; 9&nbsp;
+10 11 12 13 14 15 16 17 19 ALL</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">------------------------------------------------------------</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;T1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 3&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+5</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+6</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4&nbsp; 1&nbsp; 4&nbsp; 6&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+16</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;8&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp; 1&nbsp; 6&nbsp; 4&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+21</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp; 4&nbsp; 2&nbsp; 6&nbsp; 2&nbsp; 5&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+25</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;10&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp; 4&nbsp; 2&nbsp; 1&nbsp; 2&nbsp;
+2&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+18</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp; 1&nbsp; 2&nbsp; 4&nbsp; 4&nbsp; 4&nbsp; 4&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+23</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;12&nbsp;&nbsp;
+2&nbsp; 2&nbsp; 1&nbsp; 2&nbsp; 2&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp; 4&nbsp; 1&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+21</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp; 1&nbsp; 2&nbsp; 1&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;
+1&nbsp; 3&nbsp; 7&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+22</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp; 2&nbsp; 5&nbsp; 2&nbsp; 1&nbsp;
+2&nbsp; 4&nbsp; 2&nbsp; 1&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+23</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 2&nbsp; 1&nbsp; 1&nbsp; 2&nbsp; 4&nbsp; 5&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;
+4&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+24</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;16&nbsp;&nbsp;
+1&nbsp; 3&nbsp; 2&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;
+4&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp; 1&nbsp; 4&nbsp; 3&nbsp;
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 25</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 1&nbsp; 2&nbsp; 1&nbsp;
+1&nbsp; 2&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;
+1&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 18</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp; 1&nbsp;
+3&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 2&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; 14</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;19&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 1&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp; 1&nbsp;&nbsp; 7</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;ALL&nbsp; 7 21
+23 24 36 25 23 23 22 15 18&nbsp; 7 11&nbsp; 8&nbsp; 3&nbsp; 5&nbsp;
+1 272</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">------------------------------------------------------------</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">The above&nbsp;</FONT> table
+was created by the following SAS program.</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">libname x '';</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">data subset;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; set x.alison;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; where zyg2=2
+or zyg2=4;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; if zyg2=2 then
+do; t1=max(n_1,n_2); t2=min(n_1,n_2); end;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; if zyg2=4 then
+do; t1=max(n_1,n_2); t2=min(n_1,n_2); end;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; t1=max(n_1,n_2);
+t2=min(n_1,n_2);</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; td=t1-t2;tm=mean(t1,t2);</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; group=zyg2/2;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">run;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">options nocenter ls=120
+missing=' ';</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">title2 'MZ';</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">proc tabulate data=subset
+fc=' ----------' noseps f=2. missing;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; class t1 t2;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; where zyg2=2;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; table t1 all,
+t2 all/rts=5;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; keylabel n='
+';</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">run;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">title2 'DZ';</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">proc tabulate data=subset
+fc=' ----------' noseps f=2. missing;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; class t1 t2;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; where zyg2=4;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; table t1 all,
+t2 all/rts=5;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; keylabel n='
+';</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">run;</FONT></P>
+
+<UL>
+  <LI><FONT FACE="Times New Roman,Times">The SPSS format dataset
+  is <B>alison.sav</B>, create the above table using SPSS (<I>Hint:
+  </I>use <B>select if</B> or <B>filter </B>command).</FONT>
+</UL>
+
+<P>&nbsp;</P>
+
+<H2><A NAME="Twin method using SAS and"></A><FONT FACE="Times New Roman,Times">Linear
+Models for continuous twin data using SAS and SPSS</FONT>&nbsp;
+<HR ALIGN=LEFT></H2>
+
+<P><A NAME="Example 5.1"></A><B><FONT FACE="Times New Roman,Times">Example
+5.1</FONT></B><FONT FACE="Times New Roman,Times"> One-way ANOVA
+of neuroticism.</FONT></P>
+
+<P><B><FONT FACE="Times New Roman,Times">MZ sample</FONT></B></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Dependent Variable:
+N</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Source&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp; Mean Square&nbsp;&nbsp;
+F Value&nbsp;&nbsp; Pr &gt; F</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+521&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13445.23&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+25.81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.72&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.00</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+522&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4953.00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+9.49</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Corrected Total 1043&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+18398.23</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+R-Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+C.V.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Root MSE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+N Mean</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.73&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+30.04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.08&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+10.25</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Source&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Anova SS&nbsp;&nbsp;
+Mean Square&nbsp;&nbsp; F Value&nbsp;&nbsp; Pr &gt; F</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">PAIRID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+521&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13445.23&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+25.81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.72&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.00</FONT> <BR>
+&nbsp;</P>
+
+<P><B><FONT FACE="Times New Roman,Times">DZ sample</FONT></B></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Dependent Variable:
+N</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Source&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp; Mean Square&nbsp;&nbsp;
+F Value&nbsp;&nbsp; Pr &gt; F</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+271&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5970.45&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+22.03&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.48&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.00</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+272&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4053.50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+14.90</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Corrected Total&nbsp;
+543&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10023.95</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+R-Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+C.V.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Root MSE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+N Mean</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+37.86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+10.20</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Source&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Anova SS&nbsp;&nbsp;
+Mean Square&nbsp;&nbsp; F Value&nbsp;&nbsp; Pr &gt; F</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">PAIRID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+271&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5970.45&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+22.03&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.48&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.00</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT FACE="Times New Roman,Times">The F-test for a genetic
+contribution.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">F=MSW(DZ)/MSW(MZ):=1.5700737619
+p=.000006513</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">The corresponding SAS program
+is as follows.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">data anova;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; set x.alison
+(keep=pairid n_1 n_2 zyg2);</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; where zyg2=2
+or zyg2=4;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; keep pairid
+n nc a c d z twin group wgt;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; group=zyg2/2;wgt=.5;</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; n=n_1;nc=n_2;c=nc;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;
+if group=1 then do; a=nc; d=nc; z=1; end;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;
+else do;a=nc/2; d=nc/4; z=0;end;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;
+twin=1;output;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; n=n_2;nc=n_1;c=nc;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;
+if group=1 then do; a=nc; d=nc; z=1; end;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;
+else do;a=nc/2; d=nc/4; z=0;end;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; twin=2;output;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">run;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">title2' test for MZ
+correlation';</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">proc anova;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; where group=1;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; class pairid;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; model n=pairid;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">run;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">title2' test for DZ
+correlation';</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">proc anova;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; where group=2;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; class pairid;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; model n=pairid;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">run;</FONT> <BR>
+&nbsp;<FONT SIZE="-1" FACE="Courier New,Courier">data _null_;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; file print;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put' Test of
+genetic contribution';</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; f=14.90/9.49;p=1-probf(f,272,522);</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'F=MSW(DZ)/MSW(MZ):='
+f 'p=' p 10.9;</FONT> <BR>
+run;</P>
+
+<UL>
+  <LI>The dataset for SPSS is named <B>anova.sav</B>, can you do
+  ANOVA within SPSS ?
+</UL>
+
+<P><FONT FACE="Times New Roman,Times">This part shows testing
+for heteroscedasticity, intraclass correlation, the SAS codes
+are self-explanatory.</FONT></P>
+
+<P><A NAME="Example 5.2"></A><B><FONT FACE="Times New Roman,Times">Example
+5.2</FONT></B><FONT FACE="Times New Roman,Times"> The F-test for
+homoscedasticity.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F=MST(DZ)/MST(MZ):=1.0465195042
+p=.268726137</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">The Z-tests for twin pair
+correlations are</FONT> as follows. <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">MZ z=0.0468542566 p=.142892555</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">DZ z=0.0038100184 p=.475086731</FONT></P>
+
+<P><A NAME="Example 5.3"></A><B><FONT FACE="Times New Roman,Times">Example
+5.3</FONT></B><FONT FACE="Times New Roman,Times"> The intraclass
+correlations for MZ and DZ twins.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">MZ r=(MSB-MSW)/(MSB+MSW)=0.4623229462</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">DZ r=(MSB-MSW)/(MSB+MSW)=0.1930679664</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">The Z-test for equal intraclass
+correlations is as follows.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">z =4.0625533933 p =.000024269</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">As a measure of the proportion
+of phenotypic variance accounted for by genetic factors.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Holzinger's H =&nbsp;&nbsp;
+0.33368</FONT> <BR>
+&nbsp;</P>
+
+<P><A NAME="Example 5.9"></A><B><FONT FACE="Times New Roman,Times">Example
+5.9</FONT></B><FONT FACE="Times New Roman,Times"> The MZ:DZ ratio
+in intraclass correlations.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Ratio of intraclass
+correlations=2.3946123986</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Va=0.3099489195 Vd=0.1523740267
+Ve=0.5376770538</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Narrow heritability
+(S.E.)=0.3099489195 0.2360174398</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Broad heritability&nbsp;
+(S.E.)=0.4623229462 0.0344135556</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">The SAS program is as follows.
+It is obvious that you could use <A HREF="../../dos/qbasic.exe">QBASIC</A>
+or&nbsp;</FONT> a calculator to perform most of the computations.</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">data _null_;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; file print;</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put' Test
+of homoscedasticity';</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; f=(10023.95/543)/(18398.23/1043);p=1-probf(f,543,1043);</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'F=MST(DZ)/MST(MZ):='
+f 'p=' p 10.9;</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'Test
+of twin pair correlation';</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; r=0.04682;n=522;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; z=0.5*log((1+r)/(1-r));p=1-probnorm(z/sqrt(1/(n-3)));</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'MZ z='
+z 'p=' p 10.9;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; r=0.00381;n=272;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; z=0.5*log((1+r)/(1-r));p=1-probnorm(z/sqrt(1/(n-3)));</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'DZ z='
+z 'p=' p 10.9;</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'Intraclass
+correlation for MZ';</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; rm=(25.81-9.49)/(25.81+9.49);</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; zm=0.5*log((1+rm)/(1-rm));</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'MZ r=(MSB-MSW)/(MSB+MSW)='
+rm;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'Intraclass
+correlation for DZ';</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; rd=(22.03-14.90)/(22.03+14.90);</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; zd=0.5*log((1+rd)/(1-rd));</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'DZ r=(MSB-MSW)/(MSB+MSW)='
+rd;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'Test for
+equal intraclass correlations';</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; z=(zm-zd)/(sqrt(1/(522-2)+1/(272-2)));</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; p=1-probnorm(z);</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'z =' z
+'p =' p 10.9;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; h=(rm-rd)/(1-rd);</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'Holzinger''s
+H =' h 10.5;</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; rr=rm/rd;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'Ratio of
+intraclass correlations=' rr;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; va=4*rd-rm;vd=2*rm-4*rd;ve=1-va-vd;
+hn=va; hb=va+vd;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'Components
+of genetic variances:';</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'Va=' va
+'Vd=' vd 'Ve=' ve;</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; var_rm=(1-rm**2)**2/522;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; var_rd=(1-rd**2)**2/272;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; var_hn=16*var_rd+var_rm;se_hn=sqrt(var_hn);</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; var_hb=var_rm;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+se_hb=sqrt(var_hb);</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'Narrow
+heritability (S.E.)=' hn se_hn;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put 'Broad heritability&nbsp;
+(S.E.)=' hb se_hb;</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">run;</FONT></P>
+
+<P><A NAME="Example 5.10"></A><B><FONT FACE="Times New Roman,Times">Example
+5.10</FONT></B><FONT FACE="Times New Roman,Times"> The linear
+regression approach for estimating heritability.</FONT></P>
+
+<P>The dataset has already been created in example <A HREF="#Example 5.1">5.1</A>.
+Now denote y the mean centered trait value of cotwin we can perform
+a linear regresssion of&nbsp; y on A2 and D2 for MZ and DZ twins
+together using SPSS.</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * * *&nbsp; MULTIPLE REGRESSION THROUGH THE ORIGIN&nbsp; * *
+* *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Listwise Deletion
+of Missing Data</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Equation Number
+1&nbsp;&nbsp;&nbsp; Dependent Variable..&nbsp;&nbsp; Y</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Block Number&nbsp;
+1.&nbsp; Method:&nbsp; Enter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Z</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable(s) Entered
+on Step Number</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 1..&nbsp;&nbsp;&nbsp;
+Z</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 2..&nbsp;&nbsp;&nbsp;
+A2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 3..&nbsp;&nbsp;&nbsp;
+D2</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Multiple R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.38838</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">R Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.15084</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Adjusted R Square&nbsp;&nbsp;&nbsp;
+.14762</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Standard Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3.90599</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Analysis of Variance</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean Square</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Regression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2143.63633&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+714.54544</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+791&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12068.07627&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+15.25673</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+46.83476&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signif F =&nbsp;
+.0000</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">------------------
+Variables in the Equation ------------------</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SE B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T&nbsp; Sig
+T</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.303566&nbsp;&nbsp;&nbsp;&nbsp; .224411&nbsp;&nbsp;&nbsp; .260339&nbsp;&nbsp;&nbsp;&nbsp;
+1.353&nbsp; .1765</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">D2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.158013&nbsp;&nbsp;&nbsp;&nbsp; .235236&nbsp;&nbsp;&nbsp; .129277&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.672&nbsp; .5020</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.013347&nbsp;&nbsp;&nbsp;&nbsp; .170963&nbsp;&nbsp;&nbsp; .002558&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.078&nbsp; .9378</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * * *&nbsp; MULTIPLE REGRESSION THROUGH THE ORIGIN&nbsp; * *
+* *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Equation Number
+1&nbsp;&nbsp;&nbsp; Dependent Variable..&nbsp;&nbsp; Y</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Block Number&nbsp;
+2.&nbsp; Method:&nbsp; Backward&nbsp;&nbsp;&nbsp;&nbsp; Criterion&nbsp;&nbsp;
+POUT&nbsp; .1000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Z</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable(s) Removed
+on Step Number</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 4..&nbsp;&nbsp;&nbsp;
+Z</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Multiple R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.38837</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">R Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.15083</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Adjusted R Square&nbsp;&nbsp;&nbsp;
+.14868</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Standard Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3.90354</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Analysis of Variance</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean Square</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Regression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2143.54334&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1071.77167</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+792&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12068.16926&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+15.23759</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+70.33736&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signif F =&nbsp;
+.0000</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">------------------
+Variables in the Equation ------------------</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SE B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T&nbsp; Sig
+T</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.303547&nbsp;&nbsp;&nbsp;&nbsp; .224270&nbsp;&nbsp;&nbsp; .260323&nbsp;&nbsp;&nbsp;&nbsp;
+1.353&nbsp; .1763</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">D2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.158051&nbsp;&nbsp;&nbsp;&nbsp; .235088&nbsp;&nbsp;&nbsp; .129308&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.672&nbsp; .5016</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Equation Number
+1&nbsp;&nbsp;&nbsp; Dependent Variable..&nbsp;&nbsp; Y</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable(s) Removed
+on Step Number</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 5..&nbsp;&nbsp;&nbsp;
+D2</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Multiple R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.38774</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">R Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.15034</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Adjusted R Square&nbsp;&nbsp;&nbsp;
+.14927</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Standard Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3.90219</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Analysis of Variance</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean Square</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Regression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2136.65606&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2136.65606</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+793&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12075.05654&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+15.22706</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F =&nbsp;&nbsp;&nbsp;&nbsp;
+140.31970&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signif F =&nbsp;
+.0000</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">------------------
+Variables in the Equation ------------------</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SE B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T&nbsp; Sig
+T</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.452124&nbsp;&nbsp;&nbsp;&nbsp; .038168&nbsp;&nbsp;&nbsp; .387743&nbsp;&nbsp;&nbsp;
+11.846&nbsp; .0000</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">The SPSS program should
+be similar to the following.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">* Program for Page
+216.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">GET</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; FILE='C:\iop\lecture\anova.sav'.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">EXECUTE .</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">WEIGHT BY wgt.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">REGRESSION</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /MISSING LISTWISE</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /STATISTICS
+COEFF OUTS R ANOVA</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /CRITERIA=PIN(.05)
+POUT(.10)</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /ORIGIN</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /DEPENDENT y</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /METHOD=ENTER
+a2 d2 z /METHOD=BACKWARD a2 d2 z.</FONT></P>
+
+<P><A NAME="Example 5.11"></A><B><FONT FACE="Times New Roman,Times">Example
+5.11</FONT></B><FONT FACE="Times New Roman,Times"> ADE and AE
+models using SPSS and MLn.</FONT></P>
+
+<P><B><FONT FACE="Times New Roman,Times">Linear regression under
+selection with weight=(108+66)/(131+75)=0.845 using SPSS</FONT></B></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * * *&nbsp; MULTIPLE REGRESSION THROUGH THE ORIGIN&nbsp; * *
+* *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Listwise Deletion
+of Missing Data</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Equation Number
+1&nbsp;&nbsp;&nbsp; Dependent Variable..&nbsp;&nbsp; Y</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Block Number&nbsp;
+1.&nbsp; Method:&nbsp; Enter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D2</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable(s) Entered
+on Step Number</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 1..&nbsp;&nbsp;&nbsp;
+D2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 2..&nbsp;&nbsp;&nbsp;
+A2</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Multiple R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.54802</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">R Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.30033</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Adjusted R Square&nbsp;&nbsp;&nbsp;
+.29220</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Standard Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.15175</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Analysis of Variance</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean Square</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Regression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1273.13406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+636.56703</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+172&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2965.97524&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+17.23703</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+36.93021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signif F =&nbsp;
+.0000</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">------------------
+Variables in the Equation ------------------</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SE B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T&nbsp; Sig
+T</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.373490&nbsp;&nbsp;&nbsp;&nbsp; .304826&nbsp;&nbsp;&nbsp; .450112&nbsp;&nbsp;&nbsp;&nbsp;
+1.225&nbsp; .2222</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">D2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.086413&nbsp;&nbsp;&nbsp;&nbsp; .320181&nbsp;&nbsp;&nbsp; .099147&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.270&nbsp; .7876</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * * *&nbsp; MULTIPLE REGRESSION THROUGH THE ORIGIN&nbsp; * *
+* *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Equation Number
+1&nbsp;&nbsp;&nbsp; Dependent Variable..&nbsp;&nbsp; Y</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Block Number&nbsp;
+2.&nbsp; Method:&nbsp; Backward&nbsp;&nbsp;&nbsp;&nbsp; Criterion&nbsp;&nbsp;
+POUT&nbsp; .1000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D2</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable(s) Removed
+on Step Number</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 3..&nbsp;&nbsp;&nbsp;
+D2</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Multiple R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.54775</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">R Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.30003</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Adjusted R Square&nbsp;&nbsp;&nbsp;
+.29599</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Standard Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.14061</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Analysis of Variance</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean Square</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Regression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1271.87852&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1271.87852</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+173&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2967.23078&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+17.14469</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+74.18500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signif F =&nbsp;
+.0000</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">------------------
+Variables in the Equation ------------------</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SE B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T&nbsp; Sig
+T</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.454511&nbsp;&nbsp;&nbsp;&nbsp; .052770&nbsp;&nbsp;&nbsp; .547754&nbsp;&nbsp;&nbsp;&nbsp;
+8.613&nbsp; .0000</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT FACE="Times New Roman,Times">The SPSS program should
+look like the following.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">* Program for page
+218.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">GET</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; FILE='C:\iop\lecture\anova.sav'.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">EXECUTE .</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">* PROCESS IF is not
+recognized now.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">SELECT IF (nc&gt;15).</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">COMPUTE wgt_new=0.845.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">WEIGHT BY wgt_new.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">REGRESSION</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /MISSING LISTWISE</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /STATISTICS
+COEFF OUTS R ANOVA</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /CRITERIA=PIN(.05)
+POUT(.10)</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /ORIGIN</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /DEPENDENT y</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /METHOD=ENTER
+a2 d2 /METHOD=BACKWARD a2 d2.</FONT> <BR>
+&nbsp;</P>
+
+<P><B>MLn</B></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">MLN - Software for
+N-level analysis.&nbsp;&nbsp; Tue Feb 17 16:59:22 1998</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">name c1 'ID' c2
+'Y' c3 'wgt' c4 'A2' c5 'D2' c6 'C2' c7 'CONS' c8 'CONSD'</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">resp 'Y'</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">note weight==.5</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">iden 1 'id' 2 'cons'</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">expl 'cons' 'consd'
+'a2' 'd2'</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fpar 'cons' 'consd'</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">setv 1 'cons' 'consd'</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">sett</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">EXPLanatory variables
+in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CONS&nbsp;&nbsp;&nbsp;&nbsp;
+CONSD&nbsp;&nbsp;&nbsp; A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">FPARameters&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">RESPonse variable in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Y</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">FSDErrors : uncorrected&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RSDErrors : uncorrected</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">MAXIterations&nbsp;
+20&nbsp;&nbsp; TOLErance&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;
+METHod is IGLS&nbsp;&nbsp;&nbsp; BATCh is OFF</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">IDENtifying codes :
+1-ID, 2-CONS</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">LEVEL 1 RPM</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CONS&nbsp;&nbsp;&nbsp;&nbsp; CONSD</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">CONS&nbsp;&nbsp;&nbsp;&nbsp;
+1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">CONSD&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">star</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">rand</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fixe</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">like</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">next</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Convergence achieved</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">rand</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">LEV.&nbsp; PARAMETER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(NCONV)&nbsp;&nbsp;&nbsp; ESTIMATE&nbsp;&nbsp;&nbsp; S. ERROR(U)&nbsp;
+PREV. ESTIM&nbsp;&nbsp;&nbsp;&nbsp; CORR.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">-------------------------------------------------------------------------------</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;&nbsp;
+CONS&nbsp;&nbsp;&nbsp;&nbsp; /CONS&nbsp;&nbsp;&nbsp;&nbsp; ( 1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+14.11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.743&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+14.11</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;&nbsp;
+CONSD&nbsp;&nbsp;&nbsp; /CONS&nbsp;&nbsp;&nbsp;&nbsp; ( 1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.028&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.028</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;&nbsp;
+CONSD&nbsp;&nbsp;&nbsp; /CONSD&nbsp;&nbsp;&nbsp; ( 2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fixe</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; PARAMETER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ESTIMATE&nbsp;&nbsp;&nbsp;&nbsp; S. ERROR(U)&nbsp;&nbsp; PREV.
+ESTIMATE</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.3722&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.3144&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.3722</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">D2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.08768&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.3247&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.08768</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">like</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">-2*log(lh) is&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1163.69</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fpar 'd2'</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">sett</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">EXPLanatory variables
+in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CONS&nbsp;&nbsp;&nbsp;&nbsp;
+CONSD&nbsp;&nbsp;&nbsp; A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">FPARameters&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">RESPonse variable in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Y</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">FSDErrors : uncorrected&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RSDErrors : uncorrected</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">MAXIterations&nbsp;
+20&nbsp;&nbsp; TOLErance&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;
+METHod is IGLS&nbsp;&nbsp;&nbsp; BATCh is OFF</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">IDENtifying codes :
+1-ID, 2-CONS</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">LEVEL 1 RPM</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CONS&nbsp;&nbsp;&nbsp;&nbsp; CONSD</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">CONS&nbsp;&nbsp;&nbsp;&nbsp;
+1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">CONSD&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">star</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">rand</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fixe</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">like</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">next</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Convergence achieved</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">rand</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">LEV.&nbsp; PARAMETER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(NCONV)&nbsp;&nbsp;&nbsp; ESTIMATE&nbsp;&nbsp;&nbsp; S. ERROR(U)&nbsp;
+PREV. ESTIM&nbsp;&nbsp;&nbsp;&nbsp; CORR.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">-------------------------------------------------------------------------------</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;&nbsp;
+CONS&nbsp;&nbsp;&nbsp;&nbsp; /CONS&nbsp;&nbsp;&nbsp;&nbsp; ( 1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+14.11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.743&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+14.11</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;&nbsp;
+CONSD&nbsp;&nbsp;&nbsp; /CONS&nbsp;&nbsp;&nbsp;&nbsp; ( 1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.038&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2.01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.037</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;&nbsp;
+CONSD&nbsp;&nbsp;&nbsp; /CONSD&nbsp;&nbsp;&nbsp; ( 2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fixe</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; PARAMETER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ESTIMATE&nbsp;&nbsp;&nbsp;&nbsp; S. ERROR(U)&nbsp;&nbsp; PREV.
+ESTIMATE</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.4562&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.04503&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.4562</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">like</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">-2*log(lh) is&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1163.76</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">clrv 1 'consd'</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">tole 4</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">maxi 100</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">sett</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">EXPLanatory variables
+in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CONS&nbsp;&nbsp;&nbsp;&nbsp;
+CONSD&nbsp;&nbsp;&nbsp; A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">FPARameters&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">RESPonse variable in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Y</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">FSDErrors : uncorrected&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RSDErrors : uncorrected</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">MAXIterations 100&nbsp;&nbsp;
+TOLErance&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp; METHod
+is IGLS&nbsp;&nbsp;&nbsp; BATCh is OFF</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">IDENtifying codes :
+1-ID, 2-CONS</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">LEVEL 1 RPM</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CONS</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">CONS&nbsp;&nbsp;&nbsp;&nbsp;
+1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">star</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">rand</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fixe</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">like</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">next</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Convergence achieved</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">rand</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">LEV.&nbsp; PARAMETER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(NCONV)&nbsp;&nbsp;&nbsp; ESTIMATE&nbsp;&nbsp;&nbsp; S. ERROR(U)&nbsp;
+PREV. ESTIM&nbsp;&nbsp;&nbsp;&nbsp; CORR.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">-------------------------------------------------------------------------------</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;&nbsp;
+CONS&nbsp;&nbsp;&nbsp;&nbsp; /CONS&nbsp;&nbsp;&nbsp;&nbsp; ( 1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+17.05&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1.68&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 17.05</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fixe</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; PARAMETER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ESTIMATE&nbsp;&nbsp;&nbsp;&nbsp; S. ERROR(U)&nbsp;&nbsp; PREV.
+ESTIMATE</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.4544&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.04836&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.4544</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">like</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">-2*log(lh) is&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1168.81</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">stop</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">The MLn script is as follows.
+Suppose our MLn command file is anova.ml1, start MLn from network
+(by typing N:\MLN) and then obey anova.ml1, then you should be
+able to get the above output. Note the location of data and logo
+files need be changed.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">dinp c1-c8</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">u:\lecture\genetics\lecture\anova.1</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">logo u:\lecture\genetics\anova.out</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">name c1 'ID' c2 'Y'
+c3 'wgt' c4 'A2' c5 'D2' c6 'C2' c7 'CONS' c8 'CONSD'</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">resp 'Y'</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">note weight==.5</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">iden 1 'id' 2 'cons'</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">expl 'cons' 'consd'
+'a2' 'd2'</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fpar 'cons' 'consd'</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">setv 1 'cons' 'consd'</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">sett</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">star</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">rand</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fixe</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">like</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">next</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">rand</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fixe</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">like</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fpar 'd2'</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">sett</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">star</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">rand</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fixe</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">like</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">next</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">rand</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fixe</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">like</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">clrv 1 'consd'</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">tole 4</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">maxi 100</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">sett</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">star</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">rand</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fixe</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">like</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">next</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">rand</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">fixe</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">like</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">stop</FONT> <BR>
+&nbsp;</P>
+
+<P><A NAME="Example 5.16"></A><B><FONT FACE="Times New Roman,Times">Example
+5.16 </FONT></B><FONT FACE="Times New Roman,Times">Falconer's
+approximation for MZ and DZ tetrachoric correlations.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">MZ A=1.6424560179
+RM=0.4644076033</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">DZ A=1.5928158852 RD=0.2371256092</FONT></P>
+
+<P><A NAME="Example 5.18"></A><B><FONT FACE="Times New Roman,Times">Example
+5.18 </FONT></B><FONT FACE="Times New Roman,Times">The tetrachoric
+correlations and V</FONT><FONT SIZE="-2" FACE="Times New Roman,Times">A</FONT><FONT
+ FACE="Times New Roman,Times">, V</FONT><FONT SIZE="-2" FACE="Times New Roman,Times">D</FONT><FONT
+ FACE="Times New Roman,Times"> estimates.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">RM=0.4883032777&nbsp;
+SEM=0.1044075369</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">RD=0.2483505375&nbsp;
+SED=0.3640990882</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">VA=0.4799054804
+SVA=0.7575462488</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">VC=0.0083977973 SVC=0.7356449672</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">The thresholds of the liability
+to have a high neuroticism score (&gt;15) are given by example
+5.12, the SAS program for examples <A HREF="#Example 5.16">5.16</A>
+and <A HREF="#Example 5.18">5.18</A> is as follows.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">data _null_;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; n=108;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; t=1.145;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; a=pdf('normal',t,0,1);</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; a=a/(1-probnorm(t));</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; qm=46/131;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; rm=(t-probit(1-qm))/a;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; sem=(1/(a**2*rm))*sqrt((1-qm)/(qm*n));</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put a= rm= ;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; d=probit(1-qm);</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; rm=(t-d*sqrt(1-(t**2-d**2)*(1-t/a)))/(a+d**2*(a-t));</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put rm= sem=;</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; n=66;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; t=1.084;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; a=pdf('normal',t,0,1);</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; a=a/(1-probnorm(t));</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; qd=18/75;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; rd=(t-probit(1-qd))/a;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; sed=(1/(a**2*rd))*sqrt((1-qd)/(qd*n));</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put a= rd= ;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; d=probit(1-qd);</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; rd=(t-d*sqrt(1-(t**2-d**2)*(1-t/a)))/(a+d**2*(a-t));</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put rd= sed=;</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; va=2*(rm-rd);
+sva=sqrt(4*(sed**2+sem**2));</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; vc=2*rd-rm;&nbsp;&nbsp;
+svc=sqrt(4*sed**2+sem**2);</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put va= sva=;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; put vc= svc=;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">run;</FONT> <BR>
+&nbsp;</P>
+
+<H2><A NAME="Structural equation models for twin data using"></A><FONT
+ FACE="Times New Roman,Times">Structural equation models for twin
+data using Mx</FONT>&nbsp; <HR ALIGN=LEFT></H2>
+
+<P><A NAME="Example 5.20"></A><B><FONT FACE="Times New Roman,Times">Example
+5.20</FONT></B><FONT FACE="Times New Roman,Times"> Structural
+equation models for continuous twin data using Mx.</FONT></P>
+
+<P>Mx could simply be started with the following ways:</P>
+
+<P><B>mx</B> <BR>
+<B><FONT FACE="Times New Roman,Times">mx</FONT></B><FONT FACE="Times New Roman,Times">&nbsp;
+inputfile outputfile</FONT> <BR>
+<B><FONT FACE="Times New Roman,Times">mx</FONT></B><FONT FACE="Times New Roman,Times">
+&lt;myfile.mx&nbsp; &gt;myfile.mxo &amp;</FONT></P>
+
+<P>Under the first format, the program prompts: Please enter the
+input filename (Ctrl-c to quit). <BR>
+<FONT FACE="Times New Roman,Times">The second format is to provide
+input and output filenames as command line parameters. Usually
+inputfile and outputfile have extension .mx and .mxo, respetively.
+The third format start Mx in the background under Unix environment.</FONT>
+Under MS Windows, Mx could be setup as short cut; after execution
+you could open and execute an existing command file.</P>
+
+<P>The script have three things: <I>keywords, parameters </I>and
+<I>numbers</I>. Keywords must start on a new line. Parameters
+pass information , e.g. filenames or numbers to commands. Anything
+after ! is comment. An minimum specifications will include the
+following commands.</P>
+
+<UL>
+  <LI>TITLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Title of the job.
+  <LI>DATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Group type, data/calculation/constraint, read, select any data,
+  labels.
+  <LI>MATRICES&nbsp; Definition of at least one matrix
+  <LI>MODEL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Definition
+  of matrix formula: covariances/means/threshold/compute/algebra,
+  specification of numbers and parameters, starting values, equality
+  constraints, fit functions, statistical output, optimization
+  options, multiple fit mode,&nbsp; saving matrices and job specifications
+  <LI>END
+</UL>
+
+<P><FONT FACE="Times New Roman,Times">Take the script of the second
+example from Mx, the observed covariance matrix (COV)&nbsp; was
+obtained from 150 observations about three variables,. It tries
+to establish the factor model COV=AA'+D, where A and D are the
+factor loading matrix and&nbsp; unique factor matrix, respectively.
+Each of them has three unknown parameters.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">!</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">! Anything after a
+! is a comment</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">!</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">! Mx script to fit
+a simple model</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">! One factor in A plus
+specifics in D</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">! Use #define to simplify
+setting matrix dimensions</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">!</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">#define nvar 3</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">#define nfac 1</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Simple MX example
+file</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Ngroups=1</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Data NObservations=150
+NInput_vars=nvar</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;CMatrix</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; 1.2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; .8 1.3</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; .4 .3 1.4</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Begin Matrices;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; A Full nvar
+nfac Free</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; D Diag nvar
+nvar Free</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;End Matrices;</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Start .5 All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+!&nbsp; All free parameters to start at .5</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Bound 0 100 D
+1 1 to D nvar nvar ! Keep specific variances positive</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Covariance
+A*A' + D ;</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Option RS
+! to get residuals</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">The output from Mx is as
+follows.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;MATRIX A</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;This is a FULL
+matrix of order&nbsp;&nbsp;&nbsp; 3 by&nbsp;&nbsp;&nbsp; 1</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1.0328</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.7746</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.3873</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;MATRIX D</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;This is a DIAGONAL
+matrix of order&nbsp;&nbsp;&nbsp; 3 by&nbsp;&nbsp;&nbsp; 3</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.1333</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.0000&nbsp;&nbsp;&nbsp;&nbsp; 0.7000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.0000&nbsp;&nbsp;&nbsp;&nbsp; 0.0000&nbsp;&nbsp;&nbsp;&nbsp;
+1.2500</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;OBSERVED COVARIANCE
+MATRIX</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1.2000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.8000&nbsp;&nbsp;&nbsp;&nbsp; 1.3000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.4000&nbsp;&nbsp;&nbsp;&nbsp; 0.3000&nbsp;&nbsp;&nbsp;&nbsp;
+1.4000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;EXPECTED COVARIANCE
+MATRIX</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1.2000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.8000&nbsp;&nbsp;&nbsp;&nbsp; 1.3000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0.4000&nbsp;&nbsp;&nbsp;&nbsp; 0.3000&nbsp;&nbsp;&nbsp;&nbsp;
+1.4000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;RESIDUAL MATRIX</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;
+-1.7704E-07</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;2&nbsp;&nbsp;
+-2.0424E-07&nbsp; -1.4347E-07</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;3&nbsp;&nbsp;
+-1.2676E-07&nbsp;&nbsp; 3.5314E-08&nbsp; -5.2318E-08</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Function value
+of this group:&nbsp;&nbsp;&nbsp; 6.7271E-12</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Where the fit
+function is Maximum Likelihood</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Your model has&nbsp;&nbsp;&nbsp;
+6 estimated parameters and&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 Observed
+statistics</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Chi-squared fit
+of model &gt;&gt;&gt;&gt;&gt;&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;
+0.000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Degrees of freedom
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Probability incalculable</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;Akaike's Information
+Criterion &gt;&nbsp;&nbsp;&nbsp;&nbsp; 0.000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;RMSEA &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;
+0.000</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">It is a saturated model
+so the Chi-square fit is zero and none degree of freedom left.
+Now turn to our neuroticism dataset, we can use MxWin to generate
+the path diagram (</FONT><A HREF="alison.mxd">alison.mxd</A><FONT
+ FACE="Times New Roman,Times">) such as figure 5.5.</FONT></P>
+
+<P><IMG SRC="alison.jpg" HEIGHT="374" WIDTH="664" NATURALSIZEFLAG="0"
+ALIGN="BOTTOM"></P>
+
+<P><FONT FACE="Times New Roman,Times">The script for ADE model
+is as follows.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">!A D E model fitted
+to Alison's Data</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">G1: model parameters</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Data Calc NGroups=4</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Begin Matrices;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">X Lower 1 1 Free&nbsp;&nbsp;&nbsp;
+! genetic structure</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Y Lower 1 1 Fixed&nbsp;&nbsp;
+! common environmental structure</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Z Lower 1 1 Free&nbsp;&nbsp;&nbsp;
+! specific environmental structure</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">W Lower 1 1 Free&nbsp;&nbsp;&nbsp;
+! dominance structure</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Begin Algebra;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">A= X*X' ;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">C= Y*Y' ;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">E= Z*Z' ;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">D= W*W' ;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End Algebra;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">G2: Monozygotic
+twin pairs</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Data NInput-vars=2
+NObservations=522</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">LAbels N_T1 N_T2</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">CMatrix</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">17.64</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">8.1421 17.64</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrices= Group 1</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">COvariances&nbsp; A+C+D+E
+| A+C+D _</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">A+C+D&nbsp;&nbsp; |
+A+C+D+E /</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Options RSidual SE
+CI=95</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">END</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">G3: Dizygotic twin
+pairs</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Data NInput_vars=2
+NObservations=272</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">LAbels N_T1 N_T2</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">CMATRIX</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">18.4599</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">3.5303 18.4599</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">MAtrices= GROUP 1</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">H Full 1 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Q Full 1 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Covariances A+C+D+E&nbsp;&nbsp;
+| H@A+C+Q@D _</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">H@A+C+Q@D | A+C+D+E
+/</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">MAtrix H .5</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">MAtrix Q .25</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">STart .6 ALL</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Options Multiple RSidual
+SE CI=95</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">G4: beta-test</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">DAta calc</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">MAtrices= Group 1</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">compute (A|C|D|E) @
+(A+C+D+E)~/</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Options RS ND=3 SE
+CI=95</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Options multiple</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">Mx scripts can be split
+into many groups and allows communication between them, it is
+thus more flexible than program such as LISREL. The program gives
+the following estimates.</FONT></P>
+
+<P><FONT FACE="Courier New,Courier">&nbsp;EXPECTED MATRIX of this
+CALCULATION group</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4</FONT> <BR>
+<FONT FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;
+0.279&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.188&nbsp;&nbsp;&nbsp;
+0.533</FONT> <BR>
+&nbsp;</P>
+
+<UL>
+  <LI><FONT FACE="Times New Roman,Times">Can you explain other
+  part of the output ?</FONT>
+  <LI><FONT FACE="Times New Roman,Times">Can you tell the differences
+  between codes for <A HREF="ace.mx">ACE</A>, AE, <A HREF="de.mx">DE</A>,
+  <A HREF="ce.mx">CE</A> and <A HREF="e.mx">E</A> only models ?</FONT>
+</UL>
+
+<P><A NAME="Example 5.21"></A><B><FONT FACE="Times New Roman,Times">Example
+5.21 </FONT></B><FONT FACE="Times New Roman,Times">Structural
+equation model analysis assuming complete ascertainment.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">!A D E model fitted
+to Alison's Data with ascertainment</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">G1: model parameters</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Data Calc NGroups=9</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Begin Matrices;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">X Lower 1 1 Free&nbsp;&nbsp;&nbsp;
+! genetic structure</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Y Lower 1 1 Fixed&nbsp;&nbsp;
+! common environmental structure</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Z Lower 1 1 Free&nbsp;&nbsp;&nbsp;
+! specific environmental structure</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">W Lower 1 1 Free&nbsp;&nbsp;&nbsp;
+! dominance structure</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">M Full&nbsp; 1 2 Fixed</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">T Full&nbsp; 2 1 Fixed</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">V Full&nbsp; 2 1 Free</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End Matrices</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrix T 15.5 15.5</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrix M 10.23 10.23</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">! Specify M</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">! 0 0</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Begin Algebra;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">A= X*X' ;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">C= Y*Y' ;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">E= Z*Z' ;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">D= W*W' ;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">V= T-M' ;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End Algebra;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">G2: Monozygotic
+twin pairs</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Data NInput-vars=2
+NObservations=131</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Raw_data file=mz.dat</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Labels N_t1 N_t2</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrices= Group 1</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Mean M /</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Covariances&nbsp; A+C+D+E
+| A+C+D _</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A+C+D&nbsp;&nbsp; | A+C+D+E /</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Options RSidual</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">G3: dummay group</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Data Ninput=2</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">CTable 2 2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">0 0</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">0 0</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">! It's full of zeros
+so it contributes zero to the function</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrices = Group 1</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Thresholds V /</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Covariances&nbsp; A+C+D+E
+| A+C+D _</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A+C+D&nbsp;&nbsp; | A+C+D+E /</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Option RSiduals</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">G4: Calculate ascertainment
+correction</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Data Ninput=0</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrices</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">I Iden 1 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">J Izero 1 2</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">P Full 2 2 = %P3</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">T Full 1 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">K Unit 2 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Compute T*\ln(I-J*P*K)
+/</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrix T 262&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+! twice the sample size of group 2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Options User-defined
+RSiduals Multiple</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">G5: Dizygotic twin
+pairs</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Data NInput_vars=2
+NObservations=75</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Raw_data file=dz.dat</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Labels N_t1 N_t2</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrices= Group 1</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">H Full 1 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Q Full 1 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Mean M /</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Covariances A+C+D+E&nbsp;&nbsp;
+| H@A+C+Q@D _</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+H@A+C+Q@D | A+C+D+E /</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrix H .5</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrix Q .25</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Start 3.5 All</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Options Multiple RSidual</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">G6: dummy group</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Data Ninput=2</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">CTable 2 2</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">0 0</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">0 0</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">! It's full of zeros
+so it contributes zero to the function</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrices = Group 1</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">H Full 1 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Q Full 1 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Thresholds V /</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Covariances A+C+D+E&nbsp;&nbsp;
+| H@A+C+Q@D _</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+H@A+C+Q@D | A+C+D+E /</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrix H .5</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrix Q .25</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Option RSiduals</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">G7: Calculate ascertainment
+correction</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Data Ninput=0</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrices</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">I Iden 1 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">J Izero 1 2</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">P Full 2 2 = %P6</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">T Full 1 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">K Unit 2 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Compute T*\ln(I-J*P*K)
+/</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrix T 150&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+! twice the sample size of group 5</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Options User-defined
+RSiduals Multiple</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">G8: standardization</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">data calc</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">matrices= Group 1</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">compute (A|C|D|E) @
+(A+C+D+E)~/</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">options rs nd=3</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">options multiple</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">end</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">G9: Constraint group</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Data Constraint NInput=1</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">matrices= Group 1</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">U Full 1 1</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Begin Algebra;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">S= (X|Y|W|Z);</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">End Algebra;</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Matrix U 18.0</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Constraint U - S*S'/</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">end</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">The program gives the following
+estimates for (A, D, E).</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">EXPECTED MATRIX
+of this CALCULATION group</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;
+0.295&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.166&nbsp;&nbsp;&nbsp;
+0.539</FONT> <BR>
+&nbsp; <BR>
+&nbsp; <BR>
+<FONT FACE="Times New Roman,Times">The programs allowing for adjustment
+of ascertainment are given for <A HREF="ascd_ade.mx">ADE</A>,
+<A HREF="ascd_ace.mx">ACE</A>, <A HREF="ascd_ae.mx">AE</A>, <A
+HREF="ascd_de.mx">DE</A>, <A HREF="ascd_ce.mx">CE</A>, and <A
+HREF="ascd_e.mx">E</A> models, respectively.</FONT> <BR>
+<FONT FACE="Times New Roman,Times">Models with means and variances
+as free parameters are also given for <A HREF="ascd-ade.mx">ADE</A>,
+<A HREF="ascd-ace.mx">ACE</A>, <A HREF="ascd-ae.mx">AE</A>, <A
+HREF="ascd-de.mx">DE</A>, <A HREF="ascd-ce.mx">CE</A> and <A 
+HREF="ascd-e.mx">E</A> only.</FONT> <BR>
+&nbsp;</P>
+
+<H2><A NAME="Regressive models and Haseman-Elston sib pair"></A><FONT
+ FACE="Times New Roman,Times">Regressive models and Haseman-Elston
+sib pair analysis using SAGE</FONT>&nbsp; <HR ALIGN=LEFT></H2>
+
+<P><FONT FACE="Times New Roman,Times">Chapter 5 does not provide
+an example for this. Bonney's regressive models and Haseman-Elston
+sib pair analysis have been sucessfully implemented in the package
+SAGE (Statistical Analysis for Genetic Epidemiology). It is composed
+of series of programs and famous for its capability to include
+covariates in the analysis. Here we introduce programs FSP, REGC
+and SIBPAL. FSP is a program for family structure processing.
+REGC is a program for segregation analysis of continuous trait
+using regressive models. SIBPAL is a program for Haseman-Elston
+sib pair analysis.</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">FSP builds a data structure
+for each pedigree, checks pedigree data for correctness of coding,
+prepares data for use in SIBPAL and REGC. As of SAGE 2.2, the
+typical input and output files for FSP, REGC and SIBPAL are listed
+as follows.</FONT> <BR>
+&nbsp;</P>
+
+<UL>
+  <LI>FSP
+  <UL>
+    <LI>Input
+    <UL>
+      <LI>fsp.par&nbsp;&nbsp;&nbsp; Parameter file
+      <LI>fsp.dat&nbsp;&nbsp;&nbsp; Family data file
+    </UL>
+    <LI>Output
+    <UL>
+      <LI>fsp.inf&nbsp;&nbsp;&nbsp;&nbsp; Information file
+      <LI>fsp.lnk&nbsp;&nbsp;&nbsp; FSP pointer file
+      <LI>fsp.nuc&nbsp;&nbsp;&nbsp; Nuclear family data file
+      <LI>fsp.seg&nbsp;&nbsp;&nbsp; REGx's pointer file
+    </UL>
+  </UL>
+  <LI>REGC
+  <UL>
+    <LI>Input
+    <UL>
+      <LI>regc.par&nbsp;&nbsp;&nbsp; Parameter file
+      <LI>regc.dat&nbsp;&nbsp;&nbsp; Pedigree data file
+    </UL>
+    <LI>Output
+    <UL>
+      <LI>regc.out&nbsp;&nbsp;&nbsp; Standard output file
+      <LI>regc.det&nbsp;&nbsp;&nbsp; Iteration detail file (if any)
+      <LI>regc.lnk&nbsp;&nbsp;&nbsp; Penetrance function file (if any)
+      <LI>regc.typ&nbsp;&nbsp;&nbsp; Type probability file (if any)
+    </UL>
+  </UL>
+  <LI>SIBPAL
+  <UL>
+    <LI>Input
+    <UL>
+      <LI>sibpal.par&nbsp;&nbsp;&nbsp; Parameter file
+      <LI>sibpal.loc&nbsp;&nbsp;&nbsp; Locus description
+      <LI>sibpal.dat&nbsp;&nbsp;&nbsp; Family data file
+      <LI>sibpal.lnk&nbsp;&nbsp;&nbsp; FSP pointer file
+    </UL>
+    <LI>Output
+    <UL>
+      <LI>sibpal.out&nbsp;&nbsp;&nbsp; Detailed output file
+      <LI>sibpal.sum&nbsp;&nbsp;&nbsp; Summary output file
+      <LI>sibpal.opt&nbsp;&nbsp;&nbsp; Optional output file
+    </UL>
+  </UL>
+</UL>
+
+<P>Here we set up examples from sage. You can examine these sample
+files, they are in strict Fortran format. Now you can type name
+of&nbsp; the program (eg fsp) at <A HREF="../../command.com">DOS
+prompt</A>, you can issue <B>exit</B> command to return to Windows.
+We will not go into more details of these programs. Since Fortran
+refuses to open an existing file for output, you need delete the
+previous results in order to run the program again. We have a
+very naive DOS program <A HREF="clean.bat">clean.bat</A> to do
+this.</P>
+
+<P>&nbsp; <HR ALIGN=LEFT><BR>
+<FONT FACE="Times New Roman,Times">This notes is prepared for
+the genetic course in Institute of Psychiatry during March 3-23,
+1998. The major reference is chapter 5 of Sham PC (1998) <I>Statistics
+in Human Genetics</I>. Arnold.</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">Any suggestions and problems
+brought to our attention is appreciated.</FONT> <BR>
+<FONT FACE="Times New Roman,Times">&nbsp;</FONT> <BR>
+<FONT FACE="Times New Roman,Times"><A HREF="mailto:p.sham@iop.kcl.ac.uk">Pak
+Chung Sham</A> and <A HREF="mailto:j.zhao@iop.kcl.ac.uk">Jing
+Hua Zhao</A> 16/2/1998</FONT>
+
+</BODY>
+</HTML>

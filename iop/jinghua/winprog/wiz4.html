@@ -1,0 +1,471 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Untitled Document</TITLE>
+</HEAD>
+<BODY>
+
+<P><BR>
+<BR>
+<FONT COLOR="#008000" SIZE="+2" FACE="Arial">Understanding the
+AppWizard and ClassWizard in Visual C++ Version 6.x<BR>
+</FONT><I><FONT SIZE="-1" FACE="arial">by Marshall Brain<BR>
+<BR>
+</FONT></I><FONT COLOR="#008000" SIZE="+1" FACE="arial">Creating
+a Simple Drawing Editor</FONT><BR>
+<BR>
+<!-- Force all text to format --><FONT FACE="arial">Probably the
+best way to understand the document and view classes, as well
+as the ClassWizard and resource editors, is to run through a simple
+example application that makes use of all of these features in
+straightforward ways. In this tutorial we will use the AppWizard
+framework that you generated in the previous tutorial. As you
+recall, we modified it so that you could draw small rectangles
+using the mouse. However, it has no way to load or save the &quot;drawings&quot;,
+nor can it refresh the screen on exposure. In this tutorial we
+will solve these problems using the Document/View paradigm. We
+will also add a new menu option and dialog to the application
+to demonstrate simple uses of the resource editors.</FONT></P>
+
+<P><FONT FACE="arial">Start with the &quot;samp&quot; application
+framework that you created in tutorial 3. In order to turn this
+framework into a complete application we must take the following
+steps:</FONT></P>
+
+<OL>
+  <LI><FONT FACE="arial">Add a data structure to the document class
+  to hold the points that the user draws.</FONT>
+  <LI><FONT FACE="arial">Add code to the document class so that
+  the data structure in the document class is properly loaded from
+  and saved to disk.</FONT>
+  <LI><FONT FACE="arial">Add code to the view class so that whenever
+  the user draws a point it is added to the document's data structure.</FONT>
+  <LI><FONT FACE="arial">Add code to the view class so that it
+  properly redraws the drawing when the application receives an
+  exposure event.</FONT>
+</OL>
+
+<P><FONT FACE="arial">Altogether, we will have to write only about
+15 lines of code to accomplish all of this.</FONT></P>
+
+<P><FONT FACE="arial">The following instructions walk you through
+these different steps.</FONT></P>
+
+<H3><FONT FACE="arial">Step 1: Add a data structure to the document
+class</FONT></H3>
+
+<P><FONT FACE="arial">MFC contains a variety of different collection
+classes, and by using them we can very easily add a robust data
+structure to hold the points that the user draws. Look up the
+collection classes in the MFC help file by choosing the <B>Search</B>
+option in the <B>Help</B> menu, and then typing &quot;hierarchy
+chart&quot;. There should be a category toward the right of the
+chart with Arrays, Lists and Maps. These are the collection classes.</FONT></P>
+
+<P><FONT FACE="arial">In this application we need to store the
+points drawn by the user. This is most easily done using a pair
+of <B>CDWordArrays</B>. These are simple array classes that store
+values of type <B>DWORD </B>(a DWORD being a 32-bit signed integer),
+and we will store the x value of each point in one of the arrays
+and the y value of each point in the other. Click on the CDwordArray
+class in the hierarchy chart to learn more about the class. The
+MFC array classes have a number of useful features that will make
+our lives easier: The MFC arrays automatically size themselves
+as new elements are added and give you virtually infinite room,
+they do range checking in debug mode, and they know how to read
+and write themselves to disk.</FONT></P>
+
+<P><FONT FACE="arial">Open the SAMPDOC.H file (probably the easiest
+way to do this is to double click on the CSampDoc class in the
+ClassView seen in tutorial 3, or go to the FileView and double
+click on SAMPDOC.H in the Header Files folder) and find the public
+attributes section. There will be a section labeled &quot;//attributes&quot;
+with a &quot;public:&quot; marker within it. In that position
+type:</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">CDWordArray x, y;</FONT></TT></PRE>
+
+<P><FONT FACE="arial">If you then save the header file, the ClassView
+of the project window will display the two new variables in the
+CSampDoc class.</FONT></P>
+
+<P><FONT FACE="arial">As an alternative, you can use the tools.
+Right-click on CSampDoc in the ClassView, and then choose <B>Add
+Member Variable...</B> from the list. You will have to do this
+twice, once for x and once for y. Both variables will be added
+to the public implementation section of the header file, and you
+can watch it happen if you have the header file open. For now,
+put x and y in the attributes section.</FONT></P>
+
+<P><FONT FACE="arial">In this simple example we will treat the
+arrays as public members to make things more obvious, but in a
+real application it would be beneficial to make the data structure
+private and provide new member functions in the document class
+to allow the manipulation of the data structure. These functions
+would allow for the complete encapsulation of the document class.</FONT></P>
+
+<H3><FONT FACE="arial">Step 2: Allow for loading and saving of
+the document's data structure</FONT></H3>
+
+<P><FONT FACE="arial">The AppWizard framework and the MFC classes
+do a good bit of the work related to loading and saving files
+to disk. For example, when you choose the <B>Open</B> option of
+the <B>File</B> menu in your drawing program, it already pulls
+up the proper File Open dialog. The framework then takes the file
+name selected by the user, opens it, creates a binary &quot;archive&quot;
+and attaches it to that file, calls several functions in the <B>CDocument</B>
+class, and finally calls a function named <B>Serialize</B> in
+the CSampDoc class, passing it the archive (to see all of this
+code in action, finish adding the code described in this tutorial
+and put a break point in the document's <B>Serialize</B> function,
+run the program under the debugger, choose File Open, and then,
+when the program stops, choose the <B>Call Stack</B> option in
+the <B>View</B> menu. You will be able to examine the MFC source
+code). This same <B>Serialize</B> function is also called when
+it is time to save the file. All that you have to do is fill in
+this function and your data structure will automatically be loaded
+and saved to disk. To make matters even easier, the <B>CDWordArray
+</B>class (and all other MFC collection classes) know how to serialize
+themselves.</FONT></P>
+
+<P><FONT FACE="arial">Find the <B>Serialize</B> function in the
+CSampDoc class. The easiest was to do this is to open the ClassView,
+click on plus sign next to CSampDoc, and then double click on
+the Serialize function. Change it so that it looks like this:</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">void CSampDoc::Serialize(CArchive&amp; ar)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    x.Serialize(ar);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    y.Serialize(ar);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT></PRE>
+
+<P><FONT FACE="arial">The <B>x</B> and <B>y</B> variables will
+handle all details of serialization, including understanding whether
+they should load or save themselves to the archive. The archive
+knows which direction the data should move.</FONT></P>
+
+<H3><FONT FACE="arial">Step 3: Modify the view class so it saves
+points into the document's data structure</FONT></H3>
+
+<P><FONT FACE="arial">First we will add a member variable to the
+view class to store the size of the rectangles that the editor
+draws, rather than using the hard-coded value of 5 as in tutorial
+3. We will then later add a dialog that lets us change this value
+in order to demonstrate the addition of dialogs. Open SAMPVIEW.H
+and find the public attributes section. Add the following declaration:</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">int w;</FONT></TT></PRE>
+
+<P><FONT FACE="arial">Note that in this same section the view
+has a member function named <B>GetDocument</B> that returns a
+pointer back to the view's document. This function will be important
+in a moment.</FONT></P>
+
+<P><FONT FACE="arial">Now find the constructor for the CSampView
+class (you can double-click on it in the ClassView and add the
+following line to initialize the new member:</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">w = 5;</FONT></TT></PRE>
+
+<P><FONT FACE="arial">In the CSampView class, find the <B>OnMouseMove</B>
+function that you added in tutorial 3 (you can find it by hand
+in SAMPVIEW.CPP, or use the ClassView). Change the function so
+that it looks like this:</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">void CSampView::OnMouseMove(UINT nFlags, CPoint point) </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    CSampDoc* pDoc = GetDocument();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    ASSERT_VALID(pDoc);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    if (nFlags == MK_LBUTTON)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        CClientDC dc(this);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        dc.Rectangle(point.x, point.y, </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">            point.x+w, point.y+w);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        pDoc-&gt;x.Add(point.x);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        pDoc-&gt;y.Add(point.y);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        pDoc-&gt;SetModifiedFlag();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">	}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    CView::OnMouseMove(nFlags, point);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT></PRE>
+
+<P><FONT FACE="arial">Look up <B>OnMouseMove</B> in the MFC help
+file for information on its parameters. The easiest way to do
+this is to select Search in the Help menu and type OnMouseMove.</FONT></P>
+
+<P><FONT FACE="arial">The function has been modified so that it
+retrieves a pointer to the view's document and then saves the
+current point in the document's <B>x</B> and <B>y</B> members.
+The function also calls the document's <B>SetModifiedFlag</B>
+function (see the MFC help file) to set the document's dirty bit.
+Once set, the document will automatically query the user about
+saving the file if the user attempts to close it or quit without
+saving. This function also makes use of the new <B>w</B> member
+in the view.</FONT></P>
+
+<H3><FONT FACE="arial">Step 4: Handle exposure events in the view
+class</FONT></H3>
+
+<P><FONT FACE="arial">Whenever the view class receives an exposure
+(WM_PAINT) event, it calls the <B>OnDraw</B> member function.
+This function also is called to handle printing. By putting exposure-handling
+code into this function you can complete the application. Find
+the <B>OnDraw</B> function in the CSampView class. Modify it as
+shown below:</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">void CSampView::OnDraw(CDC* pDC)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    CSampDoc* pDoc = GetDocument();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    ASSERT_VALID(pDoc);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    int i;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    for (i=0; i&lt;pDoc-&gt;x.GetSize(); i++)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        pDC-&gt;Rectangle(pDoc-&gt;x[i],</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">            pDoc-&gt;y[i],</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">            pDoc-&gt;x[i]+w,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">            pDoc-&gt;y[i]+w);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT></PRE>
+
+<P><FONT FACE="arial">This function simply asks one of the arrays
+how many elements it contains and then runs through a <B>for</B>
+loop that many times, drawing all of the points that the user
+has previously entered.</FONT></P>
+
+<P><FONT FACE="arial">Compile and run the application. You will
+find that it properly handles exposure events, and that it can
+now load and save files to disk. You have properly modified the
+document and view classes to create a complete, fully functional
+drawing editor. Congratulations!</FONT></P>
+
+<P><FONT FACE="arial">Note that, as described in tutorial 3, the
+document class holds the data structure and loads and saves the
+data to disk. The view class uses the data in the document to
+handle redrawing, and manipulates the data when the user moves
+the mouse. This is proper use of the document and view classes.</FONT></P>
+
+<P><FONT FACE="arial">It would not be a bad idea to now stop,
+close this tutorial, and try to recreate the application &quot;blind&quot;.
+You will find that you generate a number of questions when you
+try to do it without help, and those questions can teach you a
+lot.</FONT></P>
+
+<P><FONT FACE="arial">What we would like to do now is add a new
+menu option and dialog to the application so that the user can
+modify the size of the rectangles that the application draws.
+This exercise will show you how easy it is to modify the menu
+and create new dialog resources.</FONT></P>
+
+<H3><FONT FACE="arial">Step 5: Add a new menu option</FONT></H3>
+
+<P><FONT FACE="arial">In the application's workspace window choose
+the ResourceView tab and double click on the Menu resource section.
+You will find that the application has two menus. Double click
+on both and look at them. IDR_MAINFRAME is short, and is used
+when there are no windows open in the MDI framework. IDR_SAMPTYPE
+is longer and appears when windows are open. We want to modify
+IDR_SAMPTYPE, so open it by double clicking on it.</FONT></P>
+
+<P><FONT FACE="arial">At the end of the menu bar you will find
+an empty rectangle. Click on it and type &quot;&amp;Option&quot;.
+Press the Return key. The &amp; character indicates which letter
+in the menu title you want to use as a mnemonic, and will appear
+underlined when the menu is shown on the screen. You can move
+the &amp; anywhere within the string. Now a new rectangle will
+appear below <B>Option</B>. Click on it and type &quot;&amp;Size&quot;.
+Press the Return key. Now click on <B>Option</B> and drag it to
+a more appropriate place in the menu bar, perhaps between <B>Edit</B>
+and <B>View</B>. That's all it takes to create a new menu and
+option.</FONT></P>
+
+<P><FONT FACE="arial">Now double-click on the new size option.
+Note that the editor has automatically assigned it the obvious
+ID of ID_OPTION_SIZE. You can change the ID as you see fit, but
+there is rarely a reason to do so. We will use this value inside
+a message map to respond to the new option. [note: If you are
+unfamiliar with the concept of a message map, visit the <A HREF="http://devcentral.iftech.com/learning/tutorials/mfc-win32/submfc.asp">MFC
+Tutorials page</A> and see the introductory MFC tutorial]</FONT></P>
+
+<P><FONT FACE="arial">Build and execute the application. You will
+find that it has a new menu option but that the option is disabled.</FONT></P>
+
+<P><FONT FACE="arial">Now open the ClassWizard by choosing the
+<B>ClassWizard</B> option in the <B>View</B> menu. Make sure the
+<B>Message Maps</B> tab is visible. Make sure the <B>CSampView</B>
+class is selected. In the <B>Object IDs</B> list choose ID_OPTION_SIZE.
+In the <B>Messages</B> list choose COMMAND (UPDATE_COMMAND_UI
+is used primarily to enable and disable the menu options - look
+up <B>CCmdUI </B>in the MFC help file for more information). Click
+the <B>Add Function</B> button. The ClassWizard will pick the
+obvious name <B>OnOptionsSize</B> for the new function and show
+it to you. Click <B>OK</B> to accept the name. Click the <B>Edit
+Code</B> button with the <B>OnOptionsSize</B> function selected
+and modify the function as shown below:</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">void CSampView::OnOptionsSize() </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    Beep(500, 500);	</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT></PRE>
+
+<P><FONT FACE="arial">Build and execute the application. Now when
+you choose the <B>Size </B>option you will find that the application
+beeps. You can see that it is trivial to wire new menu options
+into an AppWizard application. </FONT><TABLE WIDTH="150" ALIGN="RIGHT"
+BGCOLOR="#fffed5" BORDER="3" CELLSPACING="2" CELLPADDING="0">
+  <TBODY> 
+  <TR>
+    <TH>
+    <FONT COLOR="#008000" FACE="arial">Visualizing Class Hierarchies</FONT></TH> 
+  </TR>
+  <TR>
+    <TD>
+    <FONT SIZE="-2" FACE="arial">One of the most frusterating things
+    when you are first learning MFC is the &quot;Where am I?&quot;
+    feeling you get. MFC has <I>hundreds</I> of classes, and the
+    AppWizard adds several more. A good way to get around this feeling
+    is to use a class hierarchy visualization tool like <A HREF="http://codevizor.iftech.com/">CodeVizor</A>.
+    With CodeVizor you can drag the source code for MFC into the
+    CodeVizor tool and in about 30 seconds have a beautiful, clickable
+    (and printable!) class hierarchy chart. You can even color classes
+    individually or in groups so that they stand out! <BR>
+    The <A HREF="http://199.72.148.33/ss?Click&5&35daaf15">trial
+    version</A> is </FONT><FONT COLOR="#ff0000" SIZE="-2" FACE="arial">free</FONT><FONT
+     SIZE="-2" FACE="arial">, so get CodeVizor and see how much easier
+    undestanding class hierarchies becomes!</FONT></TD> 
+  </TR></TBODY> 
+</TABLE></P>
+
+<H3><FONT FACE="arial">Step 6: Add a new dialog</FONT></H3>
+
+<P><FONT FACE="arial">To add a new dialog to the application we
+have to do four things:</FONT></P>
+
+<OL>
+  <LI><FONT FACE="arial">Create a new dialog template with the
+  dialog resource editor,</FONT>
+  <LI><FONT FACE="arial">Create a new dialog class for that template,</FONT>
+  <LI><FONT FACE="arial">Add DDX variables(s) for the controls
+  in the dialog, and</FONT>
+  <LI><FONT FACE="arial">wire the dialog into the application.</FONT>
+</OL>
+
+<P><FONT FACE="arial">Here are the steps:</FONT></P>
+
+<P><FONT FACE="arial">Select the <B>Resource...</B> option from
+the <B>Insert</B> menu. Choose <B>Dialog</B> and click on <B>New</B>.
+You should see a new dialog containing OK and Cancel buttons,
+and a small palette of tools should also appear. If the palette
+is not in evidence, choose the <B>Customize</B> option in the
+<B>Tools</B> menu and check the box marked <B>Controls</B>. One
+button on the palette says &quot;Aa&quot; and is used to create
+static text controls. Another is labeled &quot;ab|&quot; and is
+used to create editable text controls. Create a dialog that looks
+like this:</FONT></P>
+
+<P><FONT FACE="arial"><IMG SRC="dialog.gif" ALIGN="BOTTOM" WIDTH="288"
+HEIGHT="120" NATURALSIZEFLAG="3"></FONT></P>
+
+<P><FONT FACE="arial">Click on the new edit control and press
+<B>Enter</B>. You will find its ID to be IDC_EDIT1. This is fine
+here, but in a real dialog you would likely change it to something
+more meaningful. Select the OK button and note its ID is IDOK.
+This is normal and you will not want to change it. Right click
+in the title bar of the new dialog itself and choose the <B>Properties</B>
+option. Note that the dialog's ID is IDD_DIALOG1. Note also that
+you can change its title here.</FONT></P>
+
+<P><FONT FACE="arial">With the dialog still open on the screen,
+choose the <B>ClassWizard </B>option in the <B>View</B> menu.
+The ClassWizard will see the new dialog and assume that your desire
+is to create a new dialog class for it. This class will act as
+a liaison between the dialog resource and your application, and
+you will need to create a new dialog class for each dialog that
+you add to an application (although you will rarely or never touch
+this class except through the ClassWizard). The first dialog you
+see lets you specify that you want to create a new dialog class.
+There are several fields in the new dialog class creation dialog.
+In the <B>Name</B> field type &quot;CSizeDlg&quot;. Make sure
+that <B>Base Class</B> contains <B>CDialog</B>, that <B>File</B>
+contains SIZEDLG.CPP, that the <B>Dialog ID</B> field contains
+the dialog's ID of IDD_DIALOG1, and that <B>OLE Automation</B>
+is set to None. Click the <B>OK</B> button to create the dialog
+class. Click the <B>OK</B> button in the ClassWizard to close
+it.</FONT></P>
+
+<P><FONT FACE="arial">To try out the new dialog, Find the <B>OnOptionsSize</B>
+function in the CSampView class. Change it so it appears as below:</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">void CSampView::OnOptionsSize() </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    CSizeDlg dlg;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    dlg.DoModal();	</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT></PRE>
+
+<P><FONT FACE="arial">Also, <I>be sure to include SIZEDLG.H as
+the last header file included in SAMPVIEW.CPP.</I></FONT></P>
+
+<P><FONT FACE="arial">Build and execute the application and select
+the size option. You will find that the dialog appears properly
+and disappears as expected when you click the OK or Cancel buttons.</FONT></P>
+
+<P><FONT FACE="arial">What we would like to do now is get the
+value typed by the user into the edit field so that we can modify
+the view's <B>w</B> member. Select the <B>ClassWizard</B> option
+in the <B>View </B>menu. Select the <B>Member Variables</B> tab
+at the top of the ClassWizard. Make sure that <B>Class Name</B>
+is set to <B>CSizeDlg </B>. We want to add a member variable to
+the <B>CSizeDlg</B> class to allow us to get the value from the
+dialog's edit control. In the list, double click on IDC_EDIT1.
+In the dialog that appears, set the <B>Member Variable Name</B>
+to &quot;m_size&quot;. Set the <B>Category</B> to &quot;Value&quot;.
+Set the <B>Variable Type</B> to UINT. Click the OK button. In
+the new <B>Minimum Value </B>and <B>Maximum Value</B> fields that
+appear at the bottom of the ClassWizard type 2 and 50 respectively.</FONT></P>
+
+<P><FONT FACE="arial">The <B>m_size</B> variable is a <I>DDX</I>
+variable. DDX=Dialog Data Exchange. This new variable will always
+contain the value that the user types into the edit control, or
+you can set it to display a default value to the user. The values
+you typed for the minimum and maximum are known as <I>DDV</I>
+values. DDV=Dialog Data Validation. Anything the user types will
+be checked against these values when the user clicks the dialog's
+OK button.</FONT></P>
+
+<P><FONT FACE="arial">Replace the code in <B>OnOptionsSize</B>
+with the following:</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">void CSampView::OnOptionsSize() </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    CSizeDlg dlg;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    dlg.m_size = w;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    if (dlg.DoModal() == IDOK)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        w = dlg.m_size;	</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT></PRE>
+
+<P><FONT FACE="arial">Build and execute the program. You will
+find that if you change the value in the dialog, the size of the
+rectangles drawn by the application will change appropriately.
+The code is simply setting or retrieving the value from the edit
+control using the <B>m_size </B>variable as its proxy. The value
+in <B>m_size</B> is copied into the edit control when the dialog
+appears, and the value in the edit control is copied into <B>m_size</B>
+when the user clicks the OK button.</FONT></P>
+
+<P><FONT FACE="arial">You may notice that the edit control does
+not initially have focus. Fix this by opening the dialog resource
+and choosing the <B>Tab Order</B> option in the <B>Layout</B>
+menu. Click on each control in order to establish the tab order.</FONT></P>
+
+<P><FONT FACE="arial">You may want to store the <B>w</B> value
+with each point that the user draws. To do this, add a new <B>CDWordArray</B>
+variable to the document class, serialize it appropriately, and
+change the view class to set and retrieve this array's values
+in the same way you change <B>x</B> and <B>y</B>.</FONT></P>
+
+<H3><FONT FACE="arial">Conclusion</FONT></H3>
+
+<P><FONT FACE="arial">In this tutorial you have seen how easy
+it can be to create and modify a very robust and capable program
+using the AppWizard, ClassWizard and the resource editors. In
+the next tutorial we will fix one niggling little problem left
+in this application.</FONT>
+
+</BODY>
+</HTML>

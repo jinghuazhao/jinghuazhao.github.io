@@ -1,0 +1,151 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Untitled Document</TITLE>
+</HEAD>
+<BODY>
+
+<P><BR>
+<BR>
+<FONT COLOR="#008000" SIZE="+2" FACE="Arial">Understanding the
+AppWizard and ClassWizard in Visual C++ Version 6.x<BR>
+</FONT><I><FONT SIZE="-1" FACE="arial">by Marshall Brain<BR>
+<BR>
+</FONT></I><FONT COLOR="#008000" SIZE="+1" FACE="arial">Synchronizing
+Views</FONT><BR>
+<BR>
+<!-- Force all text to format --><FONT FACE="arial">In the previous
+tutorial you learned how to modify the document and view classes
+to create a simple drawing editor. There is one subtle problem
+with that program, however. In this tutorial you will learn how
+to solve that problem using the view's <B>OnUpdate </B>function.</FONT></P>
+
+<P><FONT FACE="arial">To demonstrate the problem, run the application
+that you created in the previous tutorial. Draw something in the
+default window. Now choose the <B>New Window</B> option in the
+<B>Window</B> menu. This option opens a second view on the same
+document. This second window will display the same thing that
+the first window does because both share the same document. Now
+choose the <B>Tile</B> option in the <B>Window</B> menu. You can
+see that both views are identical. Now draw into one of the views.
+What you will find is that the views will not be synchronized.
+What you draw into one view does not appear in the other. However,
+if you iconify the application and then expand the icon, you will
+find that the views are once again identical. Both receive exposure
+events, and both draw from the same document data, so they must
+look the same.</FONT></P>
+
+<P><FONT FACE="arial">What we would like to do is modify the code
+so that, when you draw in one view, all views attached to the
+same document are immediately updated as well. The framework already
+contains the functions necessary to do this-all you have to do
+is wire them in properly.</FONT></P>
+
+<P><FONT FACE="arial">The <B>CDocument</B> class maintains a list
+of all views attached to the document. It also contains a function
+called <B>UpdateAllViews </B>. This function, when called, calls
+the <B>OnUpdate</B> function of each view attached to the document.
+By default the <B>OnUpdate </B>function does nothing, but you
+can modify it to do anything you like. Optionally you can pass
+the <B>OnUpdate</B> function two programmer-defined parameters
+to further customize its activities.</FONT></P>
+
+<P><FONT FACE="arial">What we would like to create here is a mechanism
+that causes all views attached to a document to paint the last
+point added to the data structure whenever any of the views for
+that document adds a new point. To do this, first modify the <B>OnMouseMove
+</B>function in the view class so that it contains a call to <B>UpdateAllViews</B>,
+as shown below:</FONT></P>
+
+<PRE><FONT COLOR="#000080" SIZE="-1" FACE="arial"></FONT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"></FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">void CSampView::OnMouseMove(UINT nFlags, CPoint point) </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    CSampDoc* pDoc = GetDocument();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    ASSERT_VALID(pDoc);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    if (nFlags == MK_LBUTTON)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        CClientDC dc(this);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        dc.Rectangle(point.x, point.y, </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">            point.x+w, point.y+w);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        pDoc-&gt;x.Add(point.x);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        pDoc-&gt;y.Add(point.y);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        pDoc-&gt;SetModifiedFlag();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        pDoc-&gt;UpdateAllViews(this, 0, 0);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    CView::OnMouseMove(nFlags, point);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT>
+<FONT COLOR="#000080" SIZE="-1" FACE="arial"></FONT>
+</PRE>
+
+<P><FONT FACE="arial">This call to <B>UpdateAllViews</B> indicates
+that the document should call the <B>OnUpdate</B> function in
+all views attached to it <I>except</I> the one indicated by <B>this</B>.
+It does this because the current view has already drawn the point
+and there is no reason to do it a second time. The latter two
+parameters in the call to <B>UpdateAllViews </B>will be passed
+directly to <B>OnUpdate</B>. We do not have any use for these
+parameters in this simple example so we pass zeros. It would not
+hurt to read about both <B>CDocument::UpdateAllViews</B> and <B>CView::OnUpdate</B>
+in the MFC help file. Also read about <B>CView::OnInitialUpdate</B>
+while you are there.</FONT></P>
+
+<P><FONT FACE="arial">Now use the ClassWizard to override the
+<B>OnUpdate</B> function. Choose the <B>ClassWizard</B> option
+in the <B>View</B> menu. Make sure that the <B>Message Maps</B>
+tab is selected. Make sure that <B>CSampView</B> is the class
+selected in the Class Name field. Click on <B>CSampView</B> in
+the <B>Object IDs</B> list. Search down until you find <B>OnUpdate</B>
+in the <B>Messages </B>list. This function is a virtual function
+and we can override it with the ClassWizard. Select <B>OnUpdate</B>
+in the list, click the <B>Add Function</B> button and then click
+the <B>Edit Code </B>button. Modify the function so that it looks
+like this:</FONT></P>
+
+<PRE><FONT COLOR="#000080" SIZE="-1" FACE="arial"></FONT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"></FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">void CSampView::OnUpdate(CView* pSender, LPARAM lHint, CObject* pHint) </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    CSampDoc* pDoc = GetDocument();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    ASSERT_VALID(pDoc);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    int i = pDoc-&gt;x.GetSize();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    if (i &gt; 0)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        i--;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        CClientDC dc(this);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        dc.Rectangle(pDoc-&gt;x[i],</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">            pDoc-&gt;y[i],</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">            pDoc-&gt;x[i]+w,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">            pDoc-&gt;y[i]+w);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT>
+<FONT COLOR="#000080" SIZE="-1" FACE="arial"></FONT>
+<FONT FACE="arial"></FONT></PRE>
+
+<P><FONT FACE="arial">The goal of this function is to get the
+last point in the data structure and draw it. It therefore gets
+the size of one of the arrays, checks to make sure that the array
+is not empty, and then draws the last point. The <B>if</B> statement
+is necessary because the <B>OnInitialUpdate</B> function gets
+called when the view is created, and by default it calls <B>OnUpdate</B>.
+You could override this function to remove the default behavior
+and the <B>if</B> statement would no longer be necessary. However,
+it is not a bad safety feature.</FONT></P>
+
+<P><FONT FACE="arial">Build and execute the application. Choose
+the <B>New Window</B> option in the <B>Window</B> menu, followed
+by the <B>Tile</B> option. Draw in one of the windows and you
+will find that both views update simultaneously. This is proper
+behavior, and will work regardless of the number of views that
+are open on the same document. It is also very efficient.</FONT></P>
+
+<P><FONT FACE="arial">There are other ways in which to use the
+<B>UpdateAllViews/OnUpdate </B>to accomplish the same thing. For
+example, <B>OnMouseMove </B>might draw nothing and let the <B>OnUpdate</B>
+function handle all drawing. Or you might pass the new point as
+one of the parameters. Experiment with different techniques until
+you find the one you like best. <BR>
+</FONT>
+
+</BODY>
+</HTML>

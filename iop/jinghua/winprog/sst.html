@@ -1,0 +1,2446 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Untitled Document</TITLE>
+</HEAD>
+<BODY>
+
+<P><FONT COLOR="#008000" SIZE="+2" FACE="Arial">The SST Class
+Hierarchy<BR>
+</FONT><I><FONT SIZE="-1" FACE="arial">by Marshall Brain &amp;
+Kelly Campbell</FONT></I><BR>
+<BR>
+<!-- Force all text to format --><FONT FACE="arial">The concept
+of a <I>class hierarchy</I> is often an extremely difficult one
+for new C++ programmers to master. While simple to define (A class
+hierarchy is a set of classes that build on top of each other
+using inheritance and virtual functions) and simple to justify
+(the main reason to create class hierarchies is reusability),
+it is rather difficult to move from concept to proficiency because
+hierarchies tend to be large self-referencing masses of code.
+It can take quite a bit of time to master a large hierarchy, especially
+if it is your first.</FONT></P>
+
+<P><FONT FACE="arial">None the less, one of the best ways to learn
+about C++ is to examine and use existing hierarchies. In this
+way you can begin to understand the advantages of inheritance
+and polymorphism, and you can also gain access to a number of
+valuable design techniques. The problem with existing hierarchies
+is that in most cases they are quite complex. For example, the
+MFC class hierarchy contains hundreds of classes, thousands of
+member functions and tens of thousands of lines of code. People
+may spend years completely understanding all aspects of the hierarchy.</FONT></P>
+
+<P><FONT FACE="arial">The purpose of this article is to introduce
+SST - the Super Simple Toolkit - as an example class hierarchy.
+SST is a GUI class hierarchy that allows you to create super simple
+GUI applications very easily. As such, you can compare it to MFC,
+Borland's OWL classes, Turbo Vision, the Java class hierarchy,
+etc. SST is, as the name implies, super simple. However, in its
+simplicity it carries three important advantages:</FONT></P>
+
+<OL>
+  <LI><FONT FACE="arial">Because it is so simple, you can master
+  SST in just a day or two. That is, you can completely understand
+  the use of the hierarchy, create simple applications with it,
+  add several new controls to it, and understand the source code
+  that creates it, in just a couple of days.</FONT>
+  <LI><FONT FACE="arial">SST, although small, carries all the core
+  ideas found in larger class hierarchies. By exposing you to these
+  fundamental concepts, SST can make it much easier to understand
+  larger hierarchies</FONT>
+  <LI><FONT FACE="arial">SST is extremely portable, and has been
+  compiled under Visual C++, Borland C++, AT&amp;T's C-Front compiler,
+  etc. It is therefore very easy to adapt to a variety of learning
+  environments.</FONT>
+</OL>
+
+<P><FONT FACE="arial">SST is therefore a valuable learning tool
+for the beginning C++ programmer.</FONT></P>
+
+<H3><FONT FACE="arial">Introduction to the SST Hierarchy</FONT></H3>
+
+<P><FONT FACE="arial">All GUI hierarchies let you create standard
+GUI objects such as buttons, labels, scroll bars, etc. SST is
+no different: It is just a bit simpler. The SST toolkit lets you
+create buttons, labels, and edit areas. It is simple enough to
+be used, understood and extended in just a few days. In addition,
+you can examine the source code (all source code for SST appears
+at the end of this article) and learn from the inheritance techniques
+that it contains. SST follows standard usage patterns seen in
+most GUI toolkits.</FONT></P>
+
+<P><FONT FACE="arial">SST is a portable, character-based toolkit.
+This feature allows it to run on almost any platform, although
+it does inhibit beauty just a bit. A typical program created using
+SST looks like this:</FONT></P>
+
+<P><BR>
+</P>
+
+<P><CENTER><IMG SRC="screenshot.gif" HEIGHT="224"
+ALT="SST Application Example" WIDTH="349" BORDER="0" NATURALSIZEFLAG="0"
+ALIGN="BOTTOM"> <BR CLEAR="ALL"><FONT COLOR="#ff0000" SIZE="-2"
+ FACE="Arial">SST Application Example<BR>
+<BR>
+</FONT></CENTER></P>
+
+<P>In this window, there are static labels (&quot;Celsius Temperature&quot;,
+&quot;Fahrenheit Temperature&quot;, and &quot;212&quot;), an Input
+area into which the value 100 has been typed, and two buttons
+(&quot;Convert&quot; and &quot;Quit&quot;). The Input area has
+focus, as represented by the '=' (equal sign) around it. The application
+shown implements a simple Celsius-to-Fahrenheit converter.</P>
+
+<P>An SST program can contain the following GUI objects:</P>
+
+<UL>
+  <LI>main window (one)
+  <LI>labels
+  <LI>buttons
+  <LI>input areas
+</UL>
+
+<P>SST understands the following keyboard semantics:</P>
+
+<UL>
+  <LI>change control focus with the tab key (or Shift-tab)
+  <LI>activate buttons with the return key
+</UL>
+
+<P>Edit controls accept keystrokes and the backspace character.
+<TABLE WIDTH="150" ALIGN="RIGHT" BGCOLOR="#fffed5" BORDER="3"
+CELLSPACING="2" CELLPADDING="0">
+  <TBODY> 
+  <TR>
+    <TH>
+    <FONT COLOR="#008000" FACE="arial">Visualizing Class Hierarchies</FONT></TH> 
+  </TR>
+  <TR>
+    <TD>
+    <P><FONT SIZE="-2" FACE="arial">One of the most frusterating
+    things when you are first using class hierarchies is the &quot;Where
+    am I?&quot; feeling you get. Many larger hierarchies have <I>hundreds</I>
+    of classes. A good way to get around this feeling is to use a
+    class hierarchy visualization tool like <A HREF="http://codevizor.iftech.com/rd/r_dcsb2cv.asp">CodeVizor</A>.
+    With CodeVizor you can drag the SST source code into the CodeVizor
+    tool and in about 30 seconds have a beautiful, clickable (and
+    printable!) class hierarchy chart. You can even color classes
+    individually or in groups so that they stand out! <BR>
+    Get CodeVizor and see how much easier undestanding class hierarchies
+    becomes! <BR>
+<BR>
+    </FONT></P>
+    <P><CENTER><A HREF="http://codevizor.iftech.com/rd/r_dcsb2cv.asp"><FONT
+     SIZE="-2" FACE="arial">CodeVizor Web Site</FONT></A></CENTER></TD>
+  </TR></TBODY> 
+</TABLE></P>
+
+<P>The SST hierarchy contains 10 classes. Six of the classes are
+arranged in a hierarchy as shown below:</P>
+
+<P><IMG SRC="hier.gif" HEIGHT="125" ALT="The SST class hierarchy"
+WIDTH="200" BORDER="0" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></P>
+
+<P>The remaining four are Auxiliary classes:</P>
+
+<UL>
+  <LI>Event - event class used in Object::HandleEvent
+  <LI>ObjectList - object list class used in Window
+  <LI>Screen - screen drawing class used in Object
+  <LI>Strclass - a simple string class used in Input
+</UL>
+
+<P>In the following sections you will learn how to create simple
+applications using these classes, and you will also learn how
+the source code for the classes works.</P>
+
+<H3>Creating the Simplest SST Application</H3>
+
+<P>All SST applications share several fundamental elements. No
+matter how simple or complex, you will always take the following
+steps in every SST application:</P>
+
+<UL>
+  <LI>Derive your application from the Window class. Declare its
+  controls as members
+  <LI>Create a constructor for the derived class that creates and
+  initializes the controls inside the window
+  <LI>Override the HandleEvent member of the window class to handle
+  events from buttons
+</UL>
+
+<P>Using these steps, the simplest possible application that you
+can create is a window that contains a quit button. To create
+such an application, you would start by inheriting from the Window
+class:</P>
+
+<PRE>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;IOSTREAM.H&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;STRSTREA.H&gt;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;button.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;rect.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;window.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">class App: public Window</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    App( char *s, Rect &amp;r );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void HandleEvent( Event &amp;event );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">App app( &quot;Test&quot;, Rect(1, 1, 80, 24) );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">...</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void main()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    app.Execute();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+</PRE>
+
+<P>Note that this code declares a class named App derived from
+Window, and this derived class overrides the constructor and the
+HandleEvent function. Next the program creates an instance of
+this class as a global variable and passes it the string &quot;Test&quot;
+(which will act as the window's name) and the size and position
+of the Window on the screen (you can assume the screen to be a
+2-D character grid with a size of 80 characters wide by 24 characters
+high, so the size specification here fills the screen). Then the
+code calls the class's Execute member in the main function to
+get the ball rolling.</P>
+
+<P>You would then create a new constructor for the App class.
+This constructor's job is to Insert controls into the window:</P>
+
+<PRE>
+
+<TT><FONT COLOR="#000080" SIZE="-1">const int QUIT  = 100;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">App::App( char *s, Rect &amp;r ): </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Window( s, r ), count( 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( new Button(&quot; Quit&quot;, Rect(50, 18, 57, 20), QUIT) );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">} </FONT></TT>
+</PRE>
+
+<P>The Insert function creates a new instance of the Button class,
+passing the button its title (&quot;Quit&quot;), location and
+size, and an ID of 100 in the constant named QUIT. The ID will
+be used to handle events generated by the button.</P>
+
+<P>You would then override the HandleEvent member function in
+the Window class to handle events produced by the Quit button:</P>
+
+<PRE>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void App::HandleEvent( Event &amp;event)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Window::HandleEvent( event );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( event.type == COMMAND )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        switch( event.message )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            case QUIT:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">              Close();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">              screen.Clear();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">              break;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    event.type = CLEAR;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+</PRE>
+
+<P>This code first calls the Window class's default HandleEvent
+function so it can handle any events it understands automatically.
+Any unhandled events are then tested to see if they are COMMAND
+events. If so, then they are tested to see if they come from the
+QUIT button. If so, the application terminates by closing the
+window and clearing the screen.</P>
+
+<P>If you assemble these pieces and run the application, you will
+find that the window appears, that it contains a quit button,
+and when you press the return key (to activate the button) the
+application terminates. The easiest way to compile the program
+is to take all of the SST classes (shown at the end of the article)
+and place them in a directory. Add the code shown here to an additional
+CPP file. Include all of the CPP files in a project or MAKEFILE
+and compile and link them (If you are using the Visual C++ or
+Borland compilers, you will want to create a normal text-based
+console application). Then execute the application. SST assumes
+that the output window handles ANSI character sequences, so if
+you are using DOS or Win 95 be sure to set a device to ANSI.SYS
+in the config.sys file (in other words, add &quot;DEVICE=ANSI.SYS&quot;
+to the config.sys file) and reboot. If you are using NT or UNIX,
+special versions of appropriate files are supplied.</P>
+
+<P>Below is a slightly more advanced program that makes use of
+two of the controls available in SST (labels and buttons). This
+program implements a simple increment facility. When you activate
+the &quot;Increment&quot; button, the counter increments by one.
+When you activate the &quot;Quit&quot; button the program terminates.
+You move focus between the two buttons by pressing the Tab key,
+and activate the currently focused button by hitting the return
+key.</P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1">// Counter program</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;IOSTREAM.H&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;STRSTREA.H&gt;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;button.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;input.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;label.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;rect.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;window.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class App: public Window</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Label *number;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int count;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    App( char *s, Rect &amp;r );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void HandleEvent( Event &amp;event );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">App app( &quot;Test&quot;, Rect(1, 1, 80, 24) );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">const int QUIT = 100;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const int COUNT = 101;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">App::App( char *s, Rect &amp;r ): </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Window( s, r ), count( 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( new Label(&quot;Count: &quot;, </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        Rect(20, 5, 30, 7)) );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    number = new Label(&quot;0&quot;, </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        Rect(31, 5, 40, 7));</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( number );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( new Button(&quot; Increment&quot;, </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        Rect(28, 18, 40, 20), COUNT) );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( new Button(&quot; Quit&quot;, </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        Rect(50, 18, 57, 20), QUIT) );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void main()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    app.Execute();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> void App::HandleEvent( Event &amp;event)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    char t[100];</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ostrstream ostr ( t, 100 );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Window::HandleEvent( event );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( event.type == COMMAND )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        switch( event.message )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            case COUNT:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                count++;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                ostr.width(4);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                ostr &lt;&lt; count &lt;&lt; ends;                  </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                number-&gt;SetTitle( t );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            case QUIT:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                Close();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                screen.Clear();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    event.type = CLEAR;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+</PRE>
+
+<P>The only difference between this program and the first program
+is the fact that more controls are inserted into the window in
+the window constructor, and the HandleEvent function handles two
+events instead of one: one coming from the COUNT button and the
+other coming from the QUIT button.</P>
+
+<P><B>Exercise:</B> A good exercise at this point would be to
+add a new button to this program named &quot;Decrement&quot; and
+have it decrement the counter. To do this, insert a new button
+(perhaps rearranging the other controls in the process) and add
+a new event handler. You might also add a &quot;Clear&quot; button
+to reset the counter to zero.</P>
+
+<P>As a final example, the following code implements the temperature
+conversion program seen earlier. This code demonstrates the use
+of an Input control.<BR>
+</P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1">#include &lt;iostream.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;strstrea.h&gt;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;button.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;input.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;label.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;rect.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;window.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class App: public Window</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    InputLine *fahr;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Label *cel;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    App( char *s, Rect &amp;r );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void HandleEvent( Event &amp;event );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">const int QUIT = 100;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const int CONVERT = 101;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">App app( &quot;Test&quot;, Rect(1, 1, 80, 24) );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">App::App( char *s, Rect &amp;r ): Window( s, r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    fahr = new InputLine (&quot;fahr&quot;, Rect(40, 5, 50, 7) );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( fahr );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( new Label(&quot;Fahrenheit Temperature:   &quot;, Rect(14, 5, 38, 7)) );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( new Label(&quot;Celsius Temperature:&quot;, Rect(14, 9, 38, 11)) );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    cel = new Label(&quot;0&quot;, Rect(40, 9, 45, 11));</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( cel );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( new Button(&quot; Convert&quot;, Rect(28, 18, 40, 20), CONVERT) );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( new Button(&quot; Quit&quot;, Rect(50, 18, 57, 20), QUIT) );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void App::HandleEvent( Event &amp;event)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    char s[100];</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    char t[100];</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    float f;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    istrstream istr( s, 100 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ostrstream ostr( t, 100 );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Window::HandleEvent( event );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( event.type == COMMAND )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        switch( event.message )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            case CONVERT:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                fahr-&gt;GetText( s, 100 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                istr &gt;&gt; f;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                ostr.width(6);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                ostr.precision(2);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                ostr &lt;&lt; (f-32) * 5/9.0 &lt;&lt; ends;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                cel-&gt;SetTitle( t );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            case QUIT:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                Close();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                screen.Clear();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    event.type = CLEAR;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void main()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    app.Execute();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT></PRE>
+
+<P>When running this program, use the tab key to move focus between
+the input control and the two buttons. Press return to activate
+a button. When the Input control has focus, you may type characters
+or the backspace key.</P>
+
+<H3>Understanding the SST class hierarchy</H3>
+
+<P>To understand the three programs shown above, it is helpful
+to look at several of the classes in the SST hierarchy and understand
+how they relate to one another. Let's start with the hierarchy's
+base class: Rect:<BR>
+</P>
+
+<PRE>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class Rect</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int top, bottom, left, right;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Rect();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Rect( int x1, int y1, int x2, int y2 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int Height();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    void SetSize( Rect &amp;r );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int Width();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT></PRE>
+
+<P>The Rect class is very simple (if you look at the CPP file
+at the end of this article you can see just how simple it really
+is - each function contains just a line or two of code). The class
+contains the four data members needed to hold the top, left, right
+and bottom coordinates of the rectangle. The default constructor
+sets these coordinates to zero. There is also a second constructor
+that initializes them to specified values. The Height and Width
+members calculate the height and width of the rectangle through
+simple subtraction. The SetSize member allows you to change the
+coordinates of the rectangle at any time.</P>
+
+<P>The Object class inherits from the Rect class (you could argue
+that the object class should be the base class and it should have
+a &quot;uses a&quot; relationship with the Rect class as opposed
+to the &quot;is a&quot; relationship found in this hierarchy -
+that is good reasoning, so change the hierarchy if you like).
+The object class knows how to handle events and accept focus:</P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1">class Object: public Rect</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">protected:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        char *title;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        int takesFocus;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        int focused;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        Screen screen;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object( char *s, Rect &amp;r );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual ~Object();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int AcceptsFocus();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void HandleEvent( Event &amp;event );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void ReleaseFocus();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void SetFocus();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void SetTitle( char *s );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT></PRE>
+
+<P>The class has two constructors, the second one being the one
+generally used. This constructor accepts a string that acts as
+the title for the object and a rectangle that controls the size
+and placement of the object. An object can accept focus of not
+(a label is a control that does not accept focus, while a button
+does). You can query the AcceptsFocus function to determine whether
+or not the object accepts focus. All objects know how to draw
+themselves, and you cause them to draw themselves by calling the
+Draw member. This function draws a rectangle around the object.
+All objects also can handle events, and do so in their HandleEvent
+member. You can give an object focus by calling its SetFocus member
+and take it away with ReleaseFocus. Finally, you can change the
+title string with SetTitle. Look at OBJECT.CPP and you will find
+that all of the member functions are extremely simple.</P>
+
+<P>The Object class makes use of the Screen helper class. The
+Screen class knows draw onto the screen, and contains three members:
+GotoXY moves the cursor on the screen, CharXY draws a character
+at a specific location, and Clear clears the whole screen. Look
+at SCREEN.H to see how simple the class is. The class uses standard
+ANSI escape sequences to move the cursor around and clear the
+screen.</P>
+
+<P>The Window class inherits from the Object class. The Window
+class is an Object, and it also holds a list of other objects.
+In the list goes all of the controls contained by the window.
+Because it knows of all of its controls, the window class can
+do several things.</P>
+
+<UL>
+  <LI>It can refresh itself by traversing the list and calling
+  the Draw member function of all controls in the list.
+  <LI>It can change the control with focus by calling ReleaseFocus
+  on the object that has focus and SetFocus on the object to get
+  focus.
+  <LI>It can pass events that it cannot handle to the control that
+  has focus.
+</UL>
+
+<P>The Window class contains the following functions:<BR>
+</P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1">class Window: public Object</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">protected:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ObjectList list;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int running;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Window();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Window( char *s, Rect &amp;r );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ~Window();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int Close();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    void Execute();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void HandleEvent( Event &amp;event );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    void Insert( Object *obj );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    void MoveFocus( char direction );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    void Remove( Object *obj );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int WindowRunning();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT></PRE>
+
+<P>You have seen in the example programs that the main function
+must call the window's Execute function. This function, if you
+look at the code, simply loops and retrieves keystrokes, passing
+them to the HandleEvent function. The HandleEvent function moves
+focus if the Tab key is pressed, terminates if the ESC key is
+pressed, or passes the event on to the focused object otherwise.</P>
+
+<P>It is in the Draw and HandleEvent functions where virtual functions
+come into play. For example, look at the Draw function in the
+Window class. It loops through all of the objects in the object
+list and calls the Draw function. Each object, depending on its
+type (Button, Input, Label) has its own implementation for the
+Draw function so each one draws itself appropriately. The HandleEvent
+function in the Window class is another good example. The Execute
+function calls HandleEvent. Since we have inherited from the Window
+class, out version of HandleEvent gets called first. In our code,
+we call back down to the default function Window::HandleEvent
+so it can do any automatic handling on the TAB or ESC keys, and
+also gives the focused object a crack at handling events it understands.
+If either can handle the event they do, and they also clear the
+event to mark it as handled. When Window::HandleEvent returns,
+our code can process any events left over.</P>
+
+<P>If you look in EVENT.H, you will see that the event helper
+class knows of only three event types:</P>
+
+<PRE>
+
+<TT><FONT COLOR="#000080" SIZE="-1">const char KEYBOARD = 100;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const char COMMAND  = 101;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const char CLEAR = 102;</FONT></TT>
+</PRE>
+
+<P>The window can create KEYSTROKE events. A button control can
+massage a KEYSTROKE into a COMMAND event. To mark an event as
+&quot;handled&quot; it is set to CLEAR.</P>
+
+<P>The Insert function, also seen in the examples, simply inserts
+a control into the list of controls. Remove is able to remove
+a control from the list.</P>
+
+<P>The three controls are very simple and are easily understood
+by looking at their H and CPP files at the end of this article.
+The Label control displays text. You can change its text at any
+time. It does not accept focus, so it never handles events. The
+Input control accepts keystrokes and displays them. It holds the
+keystrokes in a string. You can initialize it with SetText or
+retrieve the string with GetText. The Button class inherits from
+the label class. Its main goal is to look for return keys and
+massage the event into a command event.</P>
+
+<P>As you can see, there is not a lot of code involved. What is
+interesting is the way the code intertwines to create a self-referential
+whole. Any larger GUI hierarchy works exactly the same way, but
+obviously handles more capabilities. What is interesting, however,
+is the fact that larger hierarchies rest on exactly the same principles.
+For example, user input is limited, generally, to the keyboard
+and the mouse. That is it. So while the variety and diversity
+of a class hierarchy can implement far more frills, the basic
+foundation is the same as that seen here in SST.</P>
+
+<H3>Adding a New Control</H3>
+
+<P>You can learn a bit more about SST by creating a new control.
+Here we will create a new scale control and use it to modify the
+temperature conversion program. A scale control will look like
+this:</P>
+
+<PRE>
+
+<TT><FONT COLOR="#000080" SIZE="-1">+---------------+</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">|   20          |</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">| o--x--------o |</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">| 0         100 |</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">+---------------+</FONT></TT></PRE>
+
+<P>By pressing the 'j' and 'k' keys the scale will decrement and
+increment by 1. By pressing the 'h' and 'l' keys it will decrement
+or increment by one &quot;notch&quot;. It can be extremely educational
+to attempt to create this control yourself before looking at the
+code. Ask yourself the following questions in order to get started:</P>
+
+<UL>
+  <LI>How do you go about designing this control?
+  <LI>What data members does it need?
+  <LI>What member functions does it need?
+  <LI>How do you fit it into the existing hierarchy?
+</UL>
+
+<P>Try to create a version of the control yourself using the existing
+controls as examples.</P>
+
+<P>Here is one solution to the problem:</P>
+
+<H4>SCALE.H</H4>
+
+<PRE>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class Scale: public Object</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int minValue, maxValue, currentValue, numNotches;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    float notchValue;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Scale();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Scale( char *s, Rect &amp;r, int min = 0, int max = 100 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    void Dec( int number = 1 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    void DecNotch( int number = 1 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int GetPosition();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void HandleEvent( Event &amp;event );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    void Inc( int number = 1 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    void IncNotch( int number = 1 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    void SetPosition( int value );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT></PRE>
+
+<H4>SCALE.CPP</H4>
+
+<PRE>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;scale.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Scale::Scale() : Object(), minValue(0), maxValue(0),</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    currentValue(0), numNotches(0), notchValue(0)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Scale::Scale( char *s, Rect &amp;r, int min, int max )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    : Object( s, r ), minValue(min), maxValue(max),</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    currentValue(min), numNotches(0), notchValue(0)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    numNotches = right - left - 6;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    notchValue = (maxValue - minValue) / (float)numNotches;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Scale::Dec( int number )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( currentValue - number &gt;= minValue )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        currentValue -= number;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Scale::DecNotch( int number )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( (currentValue - notchValue * number) &gt;= minValue )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        currentValue -= notchValue * number;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        currentValue = minValue;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Scale::Draw()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int i, pos;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Object::Draw();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    // draw the ends of the scale</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.CharXY( left+2, top+2, 'O' );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.CharXY( right-2, top+2, 'O' );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    // draw the middle of the scale</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    for( i = 0; i &lt;= numNotches; i++ )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        screen.CharXY( left+3+i, top+2, '-' );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    // draw the min and max values of the scale</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.GotoXY( left+2, top+3 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    cout &lt;&lt; minValue;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.GotoXY( right-2-2, top+3 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    cout &lt;&lt; setiosflags(ios::right) &lt;&lt; setw(3) &lt;&lt; maxValue;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    // draw the current position</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    pos = (left + 3) +  ((currentValue - minValue) / notchValue);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.CharXY( pos, top+2, 'x' );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    // clear old value and draw new value</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    for( i = left+1; i &lt; right; i++ )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        screen.CharXY( i, top+1, ' ' );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.GotoXY( pos-2, top+1 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    cout &lt;&lt; setiosflags(ios::right) &lt;&lt; setw(3) &lt;&lt; currentValue;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">int Scale::GetPosition()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    return currentValue;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Scale::HandleEvent( Event &amp;event )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( event.type == KEYBOARD )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        switch( event.message )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            case 'j':</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                Dec();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            case 'k':</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                Inc();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            case 'h':</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                DecNotch();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            case 'l':</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                IncNotch();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Scale::Inc( int number )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( currentValue + number &lt;= maxValue )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        currentValue += number;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Scale::IncNotch( int number )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( (notchValue * number + currentValue) &lt;= maxValue )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        currentValue += notchValue * number;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        currentValue = maxValue;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Scale::SetPosition( int value )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( (value &gt;= minValue) &amp;&amp; (value &lt;= maxValue) )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        currentValue = value;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+</PRE>
+
+<H4>F2C2.CPP: A Sample program</H4>
+
+<P>The following program recreates the temperature conversion
+program seen previously using the scale control</P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1">#include &lt;iostream.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;strstrea.h&gt;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;button.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;input.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;label.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;rect.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;scale.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;window.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class App: public Window</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Label *cel;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Scale *scale;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    App( char *s, Rect &amp;r );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void HandleEvent( Event &amp;event );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">const int QUIT        = 100;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const int CONVERT    = 101;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">App app( &quot;Test&quot;, Rect(1, 1, 80, 24) );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">App::App( char *s, Rect &amp;r ): Window( s, r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    scale = new Scale(&quot;scale&quot;, Rect(40,4,66,8), 0, 100 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( scale );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( new Label(&quot;Fahrenheit Temperature:   &quot;, Rect(14, 5, 38, 7)) );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( new Label(&quot;Celsius Temperature:&quot;, Rect(14, 9, 38, 11)) );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    cel = new Label(&quot;0&quot;, Rect(40, 9, 45, 11));</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( cel );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( new Button(&quot; Convert&quot;, Rect(28, 18, 40, 20), CONVERT) );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Insert( new Button(&quot; Quit&quot;, Rect(50, 18, 57, 20), QUIT) );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void App::HandleEvent( Event &amp;event)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    char s[100];</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Window::HandleEvent( event );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( event.type == COMMAND )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        switch( event.message )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            case CONVERT:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                int f = scale-&gt;GetPosition();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">                ostrstream ostr ( s, 100 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                ostr &lt;&lt; (f-32) * 5/9.0 &lt;&lt; ends;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                cel-&gt;SetTitle( s );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            case QUIT:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                Close();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                screen.Clear();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    event.type = CLEAR;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void main()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    app.Execute();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+</PRE>
+
+<H3>Conclusion</H3>
+
+<P>In this article you have seen how to use a simple GUI class
+hierarchy called SST. You have also had the chance to extend the
+hierarchy and understand its inner workings. We hope that this
+exprience helps you to more easily understand larger class hierarchies
+in the future.</P>
+
+<H3>Code Listings</H3>
+
+<P>The following listings contain all of the code for the SST
+classes.</P>
+
+<UL>
+  <P><A HREF="http://devcentral.iftech.com/learning/tutorials/c-cpp/sst/code.txt">[
+  View code listings text file ]</A>
+</UL>
+
+<PRE>
+
+<TT><FONT COLOR="#000080" SIZE="-1">/* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * b u t t o n . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * buttons are windows that display a label and respond to the enter</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * key when they have focus.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __BUTTON_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __BUTTON_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;keys.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;rect.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;label.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class Button: public Label</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int data;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Button();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Button( char *s, Rect &amp;r, int d );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void Draw();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void HandleEvent( Event &amp;event );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void SetData( int d );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * b u t t o n . c p p</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * buttons are windows that display a label and respond to the enter</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * key when they have focus.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;button.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Button::Button(): Label()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    takesFocus = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    focused = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Button::Button( char *s, Rect &amp;r, int d )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    : data(d), Label( s, r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    takesFocus = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    focused = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Button::Draw()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Label::Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object::Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Button::HandleEvent( Event &amp;event )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( (event.type == KEYBOARD) &amp;&amp; (event.message == RETURN) )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        event.type = COMMAND;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        event.message = data;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Button::SetData( int d )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    data = d;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * e v e n t . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * class for events</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __EVENT_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __EVENT_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">const char KEYBOARD = 100;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const char COMMAND  = 101;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const char CLEAR    = 102;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class Event</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    char type;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    char message;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Event(): type(COMMAND), message(0) {}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Event( char t, char k ): type(t), message(k) {}</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * i n p u t . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * a simple class to get input from the user.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __INPUT_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __INPUT_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;keys.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;object.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;strclass.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class InputLine: public Object</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    String input;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    InputLine();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    InputLine( char *s, Rect &amp;r );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void GetText( char *s, int n );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void Draw();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void HandleEvent( Event &amp;event );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void SetText( char *s );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * i n p u t . c p p</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * a simple class to get input from the user.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;input.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">InputLine::InputLine()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    takesFocus = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    focused = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">InputLine::InputLine( char *s, Rect &amp;r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    : Object( s, r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    takesFocus = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    focused = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void InputLine::GetText( char *s, int n )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    strncpy( s, input.GetString(), n );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void InputLine::Draw()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int i;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Object::Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( (Height() &gt; 2) &amp;&amp; (Width() &gt; 2) )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        screen.GotoXY( left + 1, top + 1 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        cout &lt;&lt; input.GetString();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">        for( i = left + input.GetLength(); i &lt; right - 1; i++ )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            cout &lt;&lt; &quot; &quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void InputLine::HandleEvent( Event &amp;event )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( event.type == KEYBOARD )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        switch( event.message )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            case BACKSPACE:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                if( input.GetLength() &gt; 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    screen.GotoXY( left + input.GetLength(), top + 1 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    cout &lt;&lt; &quot; &quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    screen.GotoXY( left + input.GetLength(), top + 1 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    input.Remove();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            case RETURN:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            default:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                if( event.message == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    break;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                if( input.GetLength() + left &lt; right - 1 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    input.Insert(event.message);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    screen.GotoXY( left + input.GetLength(), top + 1 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    cout &lt;&lt; char(event.message);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void InputLine::SetText( char *s )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    input.Clear();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    input.Insert( s );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * k e y s . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * defines useful keyboard key codes.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __KEYS_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __KEYS_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">const char BACKSPACE     = 8;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const char TAB          = 9;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const char RETURN         = 13;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const char SHIFT_TAB    = 15;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const char ESC            = 27;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * l a b e l . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * a static label class.  labels do not process events.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __LABEL_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __LABEL_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;iostream.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;iomanip.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;object.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class Label: public Object</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Label();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Label( char *s, Rect &amp;r );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void Draw();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void SetTitle( char *s );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * l a b e l . c p p</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * a static label class.  labels do not process events.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;label.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Label::Label(): Object()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    takesFocus = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    focused = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Label::Label( char *s, Rect &amp;r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    : Object( s, r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    takesFocus = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    focused = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Label::Draw()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( (Height() &gt; 2) &amp;&amp; (Width() &gt; 2) )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        screen.GotoXY( left + 1, top + 1 );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        cout &lt;&lt; title;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Label::SetTitle( char *s )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object::SetTitle( s );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * o b j e c t. h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * the base class for all screen objects.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __OBJECT_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __OBJECT_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;string.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;event.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;rect.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;screen.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class Object: public Rect</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">protected:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    char *title;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    char takesFocus;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    char focused;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Screen screen;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Object( char *s, Rect &amp;r );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    ~Object();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    char AcceptsFocus();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void Draw();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void HandleEvent( Event &amp;event );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void ReleaseFocus();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void SetFocus();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void SetTitle( char *s );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * o b j e c t . c p p</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * the base class for all screen objects.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;iostream.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;object.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Object::Object(): Rect(), title(0), takesFocus(1)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Object::Object( char *s, Rect &amp;r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    : Rect( r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    title = new char[ strlen(s) + 1 ];</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    strcpy( title, s );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    takesFocus = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Object::~Object()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    delete [] title;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">char Object::AcceptsFocus()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    return takesFocus;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Object::Draw( )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    char style;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int i;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( focused )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        style = '=';</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        style = '-';</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    for( i = left + 1; i &lt; right; i++ )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        screen.CharXY( i, top, style );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        screen.CharXY( i, bottom, style );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    for( i = top + 1; i &lt; bottom; i++ )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        screen.CharXY( left, i, '|' );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        screen.CharXY( right, i, '|' );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.CharXY( left, top, '+' );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.CharXY( right, top, '+' );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.CharXY( left, bottom, '+' );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.CharXY( right, bottom, '+' );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Object::HandleEvent( Event &amp;event )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Object::ReleaseFocus()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    focused = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Object::SetFocus()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    focused = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Object::SetTitle( char *s )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    delete [] title;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    title = new char[ strlen(s) + 1 ];</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    strcpy( title, s );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * o b j l i s t . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * a class to manage a list of objects in a window.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __OBJLIST_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __OBJLIST_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class Object;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">typedef struct ObjectNode</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object *object;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ObjectNode *next;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ObjectNode *prev;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">} ObjectNode;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class ObjectList</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ObjectNode *top;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ObjectNode *bottom;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ObjectNode *current;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ObjectList();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    ~ObjectList();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void Insert( Object *obj );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Object *GetCurrent();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Object *GetFirst();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Object *GetLast();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Object *GetNext();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Object *GetPrev();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void Remove( Object *obj );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void SetCurrent( Object *obj );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * o b j l i s t . c p p</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * implementation of a class to manage a list of objects for a window.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;objlist.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">ObjectList::ObjectList(): top(0), bottom(0), current(0)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">ObjectList::~ObjectList()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    current = top;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    while( current != 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        top = current-&gt;next;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        delete current;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        current = top;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void ObjectList::Insert( Object *obj )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( obj == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( top == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        top = new ObjectNode;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">        top-&gt;object = obj;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        top-&gt;next = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        top-&gt;prev = 0;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">        bottom = current = top;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        bottom-&gt;next = new ObjectNode;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        bottom-&gt;next-&gt;prev = bottom;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        bottom = bottom-&gt;next;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        bottom-&gt;object = obj;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        bottom-&gt;next = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Object *ObjectList::GetCurrent()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return current-&gt;object;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Object *ObjectList::GetFirst()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( top == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return 0;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    current = top;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    return top-&gt;object;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Object *ObjectList::GetLast()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( bottom == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return 0;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    current = bottom;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    return bottom-&gt;object;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Object *ObjectList::GetNext()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return 0;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    current = current-&gt;next;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return current-&gt;object;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Object *ObjectList::GetPrev()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return 0;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    current = current-&gt;prev;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return current-&gt;object;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void ObjectList::Remove( Object *obj )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ObjectNode *temp;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( obj == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    temp = top;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    while( (temp != 0) &amp;&amp; (temp-&gt;object != obj) )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        temp = temp-&gt;next;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( temp-&gt;object == obj )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        if( temp == top )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            top = temp-&gt;next;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            if( top == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                bottom = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                top-&gt;prev = 0;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            if( current == temp )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                current = top;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        else if( temp == bottom )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            bottom = temp-&gt;prev;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            if( bottom == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                top = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                bottom-&gt;next = 0;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            if( current == temp )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                current = bottom;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            temp-&gt;next-&gt;prev = temp-&gt;prev;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            temp-&gt;prev-&gt;next = temp-&gt;next;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            if( current == temp )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                current = temp-&gt;next;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        }</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">        delete temp;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void ObjectList::SetCurrent( Object *obj )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    current = top;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    while( (current != 0) &amp;&amp; (current-&gt;object != obj) )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        current = current-&gt;next;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        current = top;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * r e c t . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * a simple rectangle class.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __RECT_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __RECT_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class Rect</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    char top, bottom, left, right;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Rect();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Rect( int x1, int y1, int x2, int y2 );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    char Height();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void SetSize( Rect &amp;r );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    char Width();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * r e c t . c p p</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * a simple rectangle class.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;rect.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Rect::Rect(): top(0), bottom(0),</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    right(0), left(0)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Rect::Rect( int x1, int y1, int x2, int y2 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    : left(x1), top(y1), right(x2), bottom(y2)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">char Rect::Height()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    return bottom - top;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Rect::SetSize( Rect &amp;r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    top = r.top;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    bottom = r.bottom;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    right = r.right;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    left = r.left;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">char Rect::Width()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    return right - left;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * s c r e e n . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * a class to manage an ansi text screen.  allows moving to</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * an x, y location and clearing the screen.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __SCREEN_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __SCREEN_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;iostream.h&gt;</FONT></TT>
+
+
+<TT><FONT COLOR="#000080" SIZE="-1">class Screen</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Screen( )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void GotoXY( int x, int y )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        cout &lt;&lt; &quot;\033[&quot; &lt;&lt; y</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            &lt;&lt; &quot;;&quot; &lt;&lt; x &lt;&lt; &quot;H&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void CharXY( int x, int y, char c)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        GotoXY( x, y );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        cout &lt;&lt; c;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void Clear()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        cout &lt;&lt; &quot;\033[2J&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * s t r c l a s s . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * a simple string class.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __STRCLASS_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __STRCLASS_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;string.h&gt;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class String</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">protected:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    char string[80];</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int pos;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    String();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    String( char *s );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void Clear();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    int GetLength();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    const char *GetString();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void Insert( char c );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void Insert( char *s );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void Remove();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * s t r c l a s s . c p p</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * a simple string class.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;strclass.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">String::String(): pos(0)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    string[0] = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">String::String( char *s )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    strcpy( string, s );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    pos = strlen( string );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void String::Clear()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    string[0] = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    pos = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">int String::GetLength()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    return pos;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">const char *String::GetString()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    return string;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void String::Insert( char c )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    string[pos] = c;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    pos++;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    string[pos] = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void String::Insert( char *s )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    strcat( string, s );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    pos = strlen( string );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void String::Remove()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( pos &gt; 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        pos--;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        string[pos] = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * w i n d o w . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * the basic window class.  all screen objects are derived from</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * this class.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __WINDOW_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __WINDOW_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;conio.h&gt;    // !!!</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;string.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;iostream.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;iomanip.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;event.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;keys.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;object.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;objlist.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;rect.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">const char WIN_NEXT    = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const char WIN_PREV    = 2;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class Window: public Object</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">protected:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ObjectList list;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    char running;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Window();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Window( char *s, Rect &amp;r );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    ~Window();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    int Close();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void Draw();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void Execute();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void HandleEvent( Event &amp;event );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void Insert( Object *obj );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void MoveFocus( char direction );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void Remove( Object *obj );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    char WindowRunning();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1"> /* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * w i n d o w . c p p</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * the basic window class.  all screen objects are derived from</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * this class.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;window.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Window::Window(): running(1)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    takesFocus = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Window::Window( char *title, Rect &amp;r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    : Object( title, r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    running = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    takesFocus = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Window::~Window()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">int Window::Close( )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    running = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    return 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Window::Draw( )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object *temp, *current = list.GetCurrent();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    SetFocus();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object::Draw();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    // draw all the child objects</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    temp = list.GetFirst();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    while( temp != 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        temp-&gt;Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        temp = list.GetNext();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    list.SetCurrent( current );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Window::Execute( )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Event event;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    list.GetLast();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    MoveFocus( WIN_NEXT );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.Clear();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Draw();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    do</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        event.type = KEYBOARD;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        event.message = getch();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        HandleEvent( event );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    } while( WindowRunning() );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Window::HandleEvent( Event &amp;event )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( event.type == KEYBOARD )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        switch( event.message )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            case TAB:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            case SHIFT_TAB:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                if( list.GetCurrent() == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">                if( event.message == TAB )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    MoveFocus( WIN_NEXT );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    MoveFocus( WIN_PREV );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">                event.type = CLEAR;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            case ESC:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                Close();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            default:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                if( list.GetCurrent() == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">                list.GetCurrent()-&gt;HandleEvent( event );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Window::Insert( Object *obj )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    list.Insert( obj );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    obj-&gt;Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Window::MoveFocus( char direction )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int listScanned = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object *current = list.GetCurrent();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    current-&gt;ReleaseFocus();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    current-&gt;Draw();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    do</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        if( direction == WIN_NEXT )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            current = list.GetNext();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            current = list.GetPrev();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">        if( current == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            listScanned++;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            if( direction == WIN_NEXT )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                current = list.GetFirst();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                current = list.GetLast();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    } while( (listScanned &lt; 2) &amp;&amp; !current-&gt;AcceptsFocus() );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current-&gt;AcceptsFocus() )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        current-&gt;SetFocus();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        current-&gt;Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    listScanned = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Window::Remove( Object *obj )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object *current;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    current = list.GetCurrent();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        current-&gt;ReleaseFocus();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    list.Remove( obj );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    current = list.GetCurrent();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        current-&gt;SetFocus();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.Clear();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">char Window::WindowRunning()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    return running;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+</PRE>
+
+<H3>If you are working in NT, the following modified files will
+be useful (we were unable to get the NT command prompt to understand
+ANSI sequences)</H3>
+
+<PRE>
+
+<TT><FONT COLOR="#000080" SIZE="-1">/* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * s c r e e n . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * a class to manage a Windows NT console.  allows moving to</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * an x, y location and clearing the screen.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __SCREEN_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __SCREEN_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;iostream.h&gt;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class Screen</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Screen();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ~Screen();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    void GotoXY( int x, int y );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    void CharXY( int x, int y, char c);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    void Clear();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">/* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * s c r e e n . c p p</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * a class to manage an Windows NT console.  allows moving to</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * an x, y location and clearing the screen.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">// for NT Screen Console functions</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;windows.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;screen.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">static HANDLE hConsole = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">static int instanceCount = 0;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Screen::Screen()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( instanceCount == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        hConsole = GetStdHandle( STD_OUTPUT_HANDLE );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    instanceCount++;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Clear();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+
+<TT><FONT COLOR="#000080" SIZE="-1">Screen::~Screen()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    instanceCount--;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( instanceCount == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">//		  CloseHandle( hConsole );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Screen::GotoXY( int x, int y )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    COORD coord;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    coord.X = x - 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    coord.Y = y - 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">	</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    SetConsoleCursorPosition( hConsole, coord );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Screen::CharXY( int x, int y, char c)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    COORD coord;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    DWORD numWritten;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    coord.X = x - 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    coord.Y = y - 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">	</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    SetConsoleCursorPosition( hConsole, coord );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    WriteConsoleOutputCharacter( hConsole, &amp;c, 1, coord, &amp;numWritten );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Screen::Clear()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">  COORD coordScreen = { 0, 0 }; /* here's where we'll home the cursor */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">  BOOL bSuccess;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">  DWORD cCharsWritten;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">  CONSOLE_SCREEN_BUFFER_INFO csbi; /* to get buffer info */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">  DWORD dwConSize; /* number of character cells in the current buffer */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">  /* get the number of character cells in the current buffer */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">  bSuccess = GetConsoleScreenBufferInfo(hConsole, &amp;csbi);</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">  dwConSize = csbi.dwSize.X * csbi.dwSize.Y;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">  /* fill the entire screen with blanks */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">  bSuccess = FillConsoleOutputCharacter(hConsole, (TCHAR) ' ',</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">      dwConSize, coordScreen, &amp;cCharsWritten);</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">  /* get the current text attribute */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">  bSuccess = GetConsoleScreenBufferInfo(hConsole, &amp;csbi);</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">  /* now set the buffer's attributes accordingly */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">  bSuccess = FillConsoleOutputAttribute(hConsole, csbi.wAttributes,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">      dwConSize, coordScreen, &amp;cCharsWritten);</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">  /* put the cursor at (0, 0) */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">  bSuccess = SetConsoleCursorPosition(hConsole, coordScreen);</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">  return;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+</PRE>
+
+<P>&nbsp;</P>
+
+<H3>If you are working in UNIX, the following modified files will
+be useful</H3>
+
+<P>&nbsp;</P>
+
+<PRE>
+
+<TT><FONT COLOR="#000080" SIZE="-1">/* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * v e r s i o n . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * defines whether we are building an msdos or unix version</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">//#define SST_UNIX  // uncomment this line to build a UNIX version</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">/* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * k e y s . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * defines useful keyboard key codes.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __KEYS_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __KEYS_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;version.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">const char BACKSPACE = 8;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const char TAB = 9;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifdef SST_UNIX</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        const char RETURN = 10;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        const char RETURN = 13;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">const char SHIFT_TAB = 15;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const char ESC = 27;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">/* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * w i n d o w . h</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * the basic window class.  all screen objects are derived from</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * this class.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifndef __WINDOW_H</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#define __WINDOW_H</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;version.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifdef SST_UNIX</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    #include &lt;stdio.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    #include &lt;ctype.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    #include &lt;termio.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    #include &lt;conio.h&gt; // dos specific</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;string.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;iostream.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &lt;iomanip.h&gt;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;event.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;keys.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;object.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;objlist.h&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;rect.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">const char WIN_NEXT	= 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">const char WIN_PREV	= 2;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">class Window: public Object</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">protected:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    ObjectList list;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int running;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">public:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Window();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    Window( char *s, Rect &amp;r );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    ~Window();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    int Close();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void Draw();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void Execute();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    virtual void HandleEvent( Event &amp;event );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void Insert( Object *obj );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void MoveFocus( char direction );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    void Remove( Object *obj );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    int WindowRunning();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">};</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">/* ----------------------------------------------------------------------- *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * w i n d o w . c p p</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * the basic window class.  all screen objects are derived from</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * this class.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> *</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * Copyright 1996 by Interface Technologies, Inc. All Rights Reserved.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1"> * ----------------------------------------------------------------------- */</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#include &quot;window.h&quot;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">#ifdef SST_UNIX</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    static struct termio ostate;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">#endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Window::Window(): running( 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    #ifdef SST_UNIX</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        struct  termio  nstate;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">        ioctl(0, TCGETA, &amp;ostate);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        nstate = ostate;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        nstate.c_lflag &amp;= ~(ICANON|ECHO|ECHOE|ECHOK|ECHONL);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        nstate.c_cc[VMIN] = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        nstate.c_cc[VTIME] = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        ioctl(0, TCSETAW, &amp;nstate);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    #endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    takesFocus = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Window::Window( char *title, Rect &amp;r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    : running( 0 ), Object( title, r )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    #ifdef SST_UNIX</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        struct  termio  nstate;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">        ioctl(0, TCGETA, &amp;ostate);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        nstate = ostate;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        nstate.c_lflag &amp;= ~(ICANON|ECHO|ECHOE|ECHOK|ECHONL);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        nstate.c_cc[VMIN] = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        nstate.c_cc[VTIME] = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        ioctl(0, TCSETAW, &amp;nstate);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    #endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    takesFocus = 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">Window::~Window()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    #ifdef SST_UNIX</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        ioctl( 0, TCSETAW, &amp;ostate );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    #endif</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">int Window::Close( )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    running = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    return 1;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Window::Draw( )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object *temp, *current = list.GetCurrent();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    SetFocus();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object::Draw();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    // draw all the child objects</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    temp = list.GetFirst();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    while( temp != 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        temp-&gt;Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        temp = list.GetNext();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    list.SetCurrent( current );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Window::Execute( )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Event event;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    // make cin and cout work with buffers of length 1</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    cin.setf( ios::unitbuf );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    cout.setf( ios::unitbuf  );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    // we are now up and running</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    running = 1;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    list.GetLast();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    MoveFocus( WIN_NEXT );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.Clear();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Draw();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    do</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        event.type = KEYBOARD;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">        #ifdef SST_UNIX</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            event.message = getchar();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        #else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            event.message = getch();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        #endif</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">        HandleEvent( event );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    } while( WindowRunning() );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Window::HandleEvent( Event &amp;event )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( event.type == KEYBOARD )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        switch( event.message )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            case TAB:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            case SHIFT_TAB:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                if( list.GetCurrent() == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">                if( event.message == TAB )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    MoveFocus( WIN_NEXT );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    MoveFocus( WIN_PREV );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">                event.type = CLEAR;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            case ESC:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                Close();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">            default:</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                if( list.GetCurrent() == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                    break;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">                list.GetCurrent()-&gt;HandleEvent( event );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                break;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Window::Insert( Object *obj )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    list.Insert( obj );</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( WindowRunning() )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        obj-&gt;Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Window::MoveFocus( char direction )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    int listScanned = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object *current = list.GetCurrent();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        return;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    current-&gt;ReleaseFocus();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    current-&gt;Draw();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    do</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        if( direction == WIN_NEXT )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            current = list.GetNext();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            current = list.GetPrev();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">        if( current == 0 )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            listScanned++;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            if( direction == WIN_NEXT )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                current = list.GetFirst();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">            else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">                current = list.GetLast();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    } while( (listScanned &lt; 2) &amp;&amp; !current-&gt;AcceptsFocus() );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current-&gt;AcceptsFocus() )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        current-&gt;SetFocus();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        current-&gt;Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    listScanned = 0;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">void Window::Remove( Object *obj )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Object *current;</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    current = list.GetCurrent();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        current-&gt;ReleaseFocus();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    list.Remove( obj );</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    current = list.GetCurrent();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    if( current )</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">        current-&gt;SetFocus();</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">    screen.Clear();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    Draw();</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT>
+
+<TT><FONT COLOR="#000080" SIZE="-1">int Window::WindowRunning()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">    return running;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1">}</FONT></TT></PRE>
+
+</BODY>
+</HTML>

@@ -1,0 +1,654 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Untitled Document</TITLE>
+</HEAD>
+<BODY>
+
+<P><BR>
+<BR>
+<FONT COLOR="#008000" SIZE="+2" FACE="Arial">Win32 Programming
+Features for Windows NT and Windows 95<BR>
+</FONT><I><FONT SIZE="-1" FACE="arial">by Marshall Brain<BR>
+<BR>
+</FONT></I><FONT COLOR="#008000" SIZE="+1" FACE="arial">Network
+Communications</FONT><BR>
+<BR>
+<!-- Force all text to format --><FONT FACE="arial">This article
+describes the Win32 functions that exist to support network communications,
+and shows how to apply them in your own applications. Two different
+facilities in the API support network communications: mailslots
+and named pipes. This article discusses both techniques as well
+as the advantages and disadvantages of each.</FONT></P>
+
+<P><FONT FACE="arial">Because the Win32 API directly supports
+network communications, it is remarkably easy to create applications
+that use the network in many different ways. For example, you
+might want to create a multi- user conferencing system for your
+network, similar to the &quot;CB&quot; systems you find on Compuserve
+and other BBSs. In a system like this, users each run the conferencing
+program on their machines, and any messages they type get broadcast
+to all of the other users on the network. You generally use mailslots
+for the implementation because mailslots make it easy to broadcast
+information. Any multi-player game that uses the network employs
+similar techniques.</FONT></P>
+
+<P><FONT FACE="arial">When you want to stream large quantities
+of data between two machines, you normally use point-to-point
+named pipe connections. For example, you would use named pipes
+for a digitized phone or video system implemented on a network.
+Any client/server configuration also uses named pipes. One central
+machine acts as the server, and then all of the clients connect
+to it individually with named pipes.</FONT></P>
+
+<P>&nbsp;</P>
+
+<H3><FONT FACE="arial">Network basics</FONT></H3>
+
+<P><FONT FACE="arial">In order to feel comfortable the examples
+that follow, it is helpful to understand basic network terminology.
+The figure below demonstrates a simple network that you might
+find in a small business. Each machine has a network adapter that
+connects it to the network, as well as a name that uniquely identifies
+it. The network adapter determines the type of network, generally
+either Ethernet or Token Ring. The adapter also controls the media
+used for the network: coax, twisted pair, etc. The important thing
+to recognize is that all of the machines in a simple network like
+this can communicate with all of the others equally.</FONT></P>
+
+<P><A HREF="javascript:%2Fnet1.gif')"><FONT FACE="arial"><IMG 
+SRC="net1_tn.gif" HEIGHT="113" ALT="A Network Example" WIDTH="300"
+BORDER="1" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></FONT></A></P>
+
+<P><FONT FACE="arial">There are two ways for the machines to communicate
+using the native Win32 API functions. With a mailslot, one machine
+can broadcast a message that is received by all of the other machines
+on the network. With a named pipe, one machine chooses another
+and forms a specific connection to it. The advantage of a named
+pipe is that the connection is reliable. If the connection breaks,
+for example because a network card or cable malfunctions, both
+ends of the connection receive notification of the break immediately.
+Mailslots are unreliable in the sense that the sender has no way
+to confirm receipt of its messages. The advantage of a mailslot
+is that it is easy to get information to many machines simultaneously.</FONT></P>
+
+<P><FONT FACE="arial">The figure above shows one network segment.
+A segment is defined as a group of machines directly connected
+to one another. There is a limit to the number of machines that
+can exist on one segment because network traffic grows with the
+number of machines. Generally the limit is about 100 machines.
+In a large company, each department might have a single segment
+consisting of 20 to 30 machines. All of the segments are then
+connected to one another with a router so that they can intercommunicate,
+as shown below. This distinction is important because, in general,
+a mailslot message is confined to a single segment, while named
+pipe messages can pass through the router to another segment.</FONT></P>
+
+<P><FONT FACE="arial"><IMG SRC="net2.gif" HEIGHT="180" ALT="Network segments"
+WIDTH="300" BORDER="0" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></FONT></P>
+
+<P><FONT FACE="arial">Using mailslots and named pipes, three different
+communication architectures are possible: broadcast, point-to-point,
+and client/server. In broadcast mode using a mailslot, one machine
+sends a message to all others on the segment. In point-to-point
+communications, one machine forms a specific connection with another
+and data passes back and forth using a named pipe. In a client/server
+relationship, one machine acts as the server, and all clients
+connect to it with point-to-point named pipe connections. To emulate
+a broadcast operation with a client/server architecture, one machine
+sends a message to the server, and then the server sends duplicates
+of the message individually to each client.</FONT></P>
+
+<P>&nbsp;</P>
+
+<H3><FONT FACE="arial">Mailslot Connections</FONT></H3>
+
+<P><FONT FACE="arial">Mailslots are the simplest way to perform
+network communications in the Win32 API. Mailslots provide a one-directional
+communication path from a sender to one or more recipients on
+the same network segment. You generally use mailslots when you
+want to send data to many recipients at once.</FONT></P>
+
+<P><FONT FACE="arial">Mailslots are extremely easy to create,
+and reading and writing are done using the API's normal ReadFile
+and WriteFile functions. When creating the mailslot, a special
+path name passed to the CreateMailslot function causes the system
+to create a mailslot rather than a normal file. [You will find
+descriptions of the functions discussed here in the Win32 programmer
+reference manuals, or in the Win32 help file that comes with the
+SDK or Visual C++ v2.]</FONT></P>
+
+<P><FONT FACE="arial">The programs shown in Listings 1 and 2 are
+as simple as possible so that you can easily see the steps necessary
+to transmit and receive data through a mailslot. Listing 1 shows
+how to create a mailslot server with the CreateMailslot function.
+The server is a queue that holds messages received until you read
+them using the ReadFile function. Messages are stored in the queue
+in the order of their arrival.</FONT></P>
+
+<P><FONT FACE="arial">The name of the mailslot must be of the
+form &quot;\\.\mailslot\[path]name&quot;. This looks just like
+a file name, and it acts like a file name in the ReadFile function.
+However, no actual file is created by the function: The mailslot
+is held in memory. A typical mailslot name, &quot;\\.\mailslot\sms&quot;,
+is used in Listing 1. It is also possible to add &quot;subdirectories&quot;
+to the path to further categorize mailslots.</FONT></P>
+
+<P><FONT FACE="arial">When you create the mailslot, you can specify
+the maximum message length, as well as the read timeout. Mailslots
+can send no more than 400 bytes over the network in a single message.
+If you set the timeout value to 0, then any call to ReadFile will
+return immediately whether or not there is anything in the buffer.
+If you set the timeout value to a specific number of milliseconds,
+any read operation will fail if that amount of time elapses before
+a message arrives. You can also use the MAILSLOT_WAIT_FOREVER
+constant to create a blocking read.</FONT></P>
+
+<P><FONT FACE="arial">Listing 1 takes the non-blocking approach,
+and uses the GetMailslotInfo function to make sure that messages
+exist in the mailslot queue before performing a read. This function
+returns the maximum length of messages in the queue, the length
+of the next message in the queue, and the number of messages waiting.
+Listing 1 continuously checks to determine if messages exist in
+the mailslot. If there are, then it reads the first one. Reading
+from a mailslot is just like reading from a file.</FONT></P>
+
+<P><FONT FACE="arial">Any message sent from any computer on the
+network to a machine running Listing 1 will be received provided
+that the mailslot names of the sender and the receiver match.
+Listing 2 shows how to send messages to a mailslot. It starts
+by using the normal CreateFile function to open a writeable connection
+to the mailslot. The program is referred to as a mailslot client
+because it writes to mailslot servers already running on the network.
+The CreateFile function understands, because of the use of the
+special mailslot file name, that you are not creating a file but
+instead wish to communicate with a mailslot. Four different formats
+for the file name are possible:</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">\\.\mailslot\[path]name</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">\\*\mailslot\[path]name</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">\\domain\mailslot\[path]name</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">\\machine\mailslot\[path]name</FONT></TT></PRE>
+
+<P><FONT FACE="arial">In the first and last cases, the name specifies
+the local machine or a specific machine on the net, respectively.
+The second form specifies a broadcast operation to all machines
+in the local machine's primary domain. The third form specifies
+all machines in the indicated domain. See the book &quot;Windows
+NT Administration: From Single Machines to Heterogeneous Networks&quot;,
+by Marshall Brain and Shay Woodard, for more information on domains
+and domain controllers.</FONT></P>
+
+<P><FONT FACE="arial">After opening the mailslot, Listing 2 gets
+the local computer's name using GetComputerName, and then broadcasts
+the name to all mailslots in the current domain every five seconds.</FONT></P>
+
+<P><FONT FACE="arial">Listing 1 uses a polling technique to check
+for messages. Every half second it calls GetMailslotInfo and checks
+to see if any messages are waiting in the slot. In general, polling
+is not a good technique to use in a multi-threaded environment
+because it is inefficient. You can eliminate the polling by setting
+the timeout value in CreateMailslot to an appropriate value, and
+then calling ReadFile with a buffer length of zero to wait for
+a message to arrive. Once this call to ReadFile returns you know
+a message exists, so call GetMailslotInfo and ReadFile as shown
+in Listing 1.</FONT></P>
+
+<P><FONT FACE="arial">When you run Listing 2, it broadcasts to
+all machines on the network. If you run multiple copies of the
+reader on the same or different machines, all of them will see
+the messages produced by the writer. Alternatively, you can run
+multiple writers on the net and any copies of the reader will
+see the messages from all of them. In both Listing 1 and 2, also
+note the presumption that the program will be terminated externally.
+You can formally close either a mailslot server or client using
+the CloseHandle function.</FONT></P>
+
+<P>&nbsp;</P>
+
+<H3><FONT FACE="arial">Named Pipes</FONT></H3>
+
+<P><FONT FACE="arial">Named pipes provide a guaranteed delivery
+mechanism. Instead of broadcasting the packet onto the network,
+you form a distinct connection to another machine with a named
+pipe. If the connection breaks, for example because a machine
+goes down or a portion of the network fails, both parties to the
+connection find out as soon as they try to send or receive anything.
+Packets are also guaranteed to arrive in sequence through a named
+pipe. The only problem with named pipes is that you lose the ability
+to broadcast packets. To broadcast anything, all of the target
+machines must have a connection to a central server, and the server
+must separately transmit the message to each one.</FONT></P>
+
+<P><FONT FACE="arial">Named pipes are only slightly more difficult
+to create than mailslots. Listings 4 and 5 show how to create
+a simple point-to-point connection between two applications using
+named pipes. Run the receiving program shown in Listing 4 first,
+and then on the same machine run the sending program in Listing
+5. The program will query you for the name of the machine to connect
+to. Since you are running the sender and the receiver on the same
+machine, type &quot;.&quot; or enter your machine name. You will
+see a message sent from sender to receiver every five seconds
+or so. When you kill off the sender, notice that you immediately
+see a message in the receiver indicating that it has detected
+the break in the pipe. If you try to start up the sender without
+the receiver running, the sender will fail immediately because
+it cannot connect. Unlike mailslots, pipes can tell when the other
+end is not working properly.</FONT></P>
+
+<P><FONT FACE="arial">A named pipe connection can occur across
+the network as simply as it occurs on the same machine. For example,
+if the server program in Listing 4 is running on a machine named
+&quot;orion&quot;, log in to a different machine using an account
+with the exact same login ID and password as the one you are using
+on &quot;orion&quot;. Run Listing 5 on the new machine and enter
+the name &quot;orion&quot; when it asks for the machine name.
+The connection will occur properly. Note that, with named pipes,
+you must know the name of the machine running the server.</FONT></P>
+
+<P><FONT FACE="arial">Also note that if you have a different user
+try to connect to the receiver, then the connection fails. For
+example, if the user &quot;jones&quot; is running the receiver
+on the machine &quot;orion&quot; and the user &quot;smith&quot;
+tries to connect from another machine, the connection fails with
+an &quot;access denied&quot; error. This is the NT security system
+at work. See the Security chapter of &quot;Win32 System Services:
+The Heart of Windows NT&quot; for explanations and solutions.</FONT></P>
+
+<P><FONT FACE="arial">In Listing 4, the program starts by creating
+a named pipe server using the CreateNamedPipe function. The name
+used with the CreateNamedPipe function will always have the form:</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">\\.\pipe\[path]name</FONT></TT></PRE>
+
+<P><FONT FACE="arial">As with mailslots, you can specify a path
+before the name of the pipe to clearly distinguish it from other
+pipes on the system.</FONT></P>
+
+<P><FONT FACE="arial">The openMode parameter passed to CreateNamedPipe
+lets you determine the direction of the pipe. Named pipes can
+be one directional or bi-directional, depending on the following
+constants used with the openMode parameter:</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">PIPE_ACCESS_DUPLEX</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">PIPE_ACCESS_INBOUND</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">PIPE_ACCESS_OUTBOUND</FONT></TT></PRE>
+
+<P><FONT FACE="arial">The pipeMode parameter of CreateNamedPipe
+determines whether the pipe works with a pure stream of bytes,
+or with packets of bytes called messages. A stream of bytes has
+no logical boundaries. Messages contain a group of bytes perceived
+as a unit. You can declare byte or message behavior in both the
+read and write directions:</FONT></P>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">PIPE_TYPE_MESSAGE</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">PIPE_TYPE_BYTE</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">PIPE_READMODE_MESSAGE</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">PIPE_READMODE_BYTE</FONT></TT></PRE>
+
+<P><FONT FACE="arial">A pipe can have more than one instance on
+a single machine. This capability allows an application to handle
+multiple clients, each in different threads, and is required to
+create a named pipe server. Since the example in Listings 4 and
+5 is a simple point-to-point connection where only one instance
+is necessary, a maximum of one instance is specified in the call
+to CreateNamedPipe.</FONT></P>
+
+<P><FONT FACE="arial">Listing 4 next waits for a connection on
+the named pipe using the ConnectNamedPipe function. A connection
+is formed in the server when a client program calls CreateFile
+with the proper machine and named pipe specified as its destination.
+Upon connection, the ConnectNamedPipe function returns. Alternatively
+you can specify an overlapped structure and ConnectNamedPipe will
+return immediately and later signal the event upon connection.</FONT></P>
+
+<P><FONT FACE="arial">Listing 4 then enters a loop, waiting for
+data to arrive. The ReadFile function behaves slightly differently
+here than it does with files. Because this named pipe is in message
+mode, the ReadFile function will return as soon as it receives
+a complete message, regardless of how many bytes the message contains.
+It is possible to use a blocking read as shown, or to use an overlapped
+read.</FONT></P>
+
+<P><FONT FACE="arial">Listing 5 is a simple client for Listing
+4. Listing 5 starts by creating a connection to the named pipe
+with the CreateFile function. It then writes messages using the
+WriteFile function. Each individual call to WriteFile constitutes
+a message at the receiving end of the named pipe, so the receiver's
+ReadFile function will unblock when it receives the message. Each
+time the client writes, the server produces a message on the screen.</FONT></P>
+
+<P><FONT FACE="arial">If two copies of the client try to connect
+to Listing 4 at the same time, then the server will reject the
+second client. If you terminate either the client or the server,
+then the other half of the pair will immediately terminate when
+it detects the broken connection.</FONT></P>
+
+<P>&nbsp;</P>
+
+<H3><FONT FACE="arial">Conclusion</FONT></H3>
+
+<P><FONT FACE="arial">Named pipes are often used in client/server
+systems, where the server uses a multi-threaded approach to handle
+multiple connections simultaneously.</FONT></P>
+
+<P><FONT FACE="arial"><HR ALIGN=LEFT></FONT></P>
+
+<H3><FONT FACE="arial">Listing 1</FONT></H3>
+
+<H6><FONT FACE="arial">A program that creates a mailslot server
+and reads from it</FONT></H6>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// From the book &quot;Win32 System Services: The Heart of Windows NT&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// by Marshall Brain</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Published by Prentice Hall</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// This code implements a simple mailslot server (receiver) that</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// uses polling.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// sms_recv.cpp</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;windows.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;iostream.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">int main()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  char toDisptxt[80];</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  HANDLE hSMS_Slot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  DWORD nextSize;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  DWORD Msgs;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  DWORD NumBytesRead;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  BOOL Status;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* Create a mailslot for receiving messages */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  hSMS_Slot=CreateMailslot(&quot;\\\\.\\mailslot\\sms&quot;,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    0, 0, (LPSECURITY_ATTRIBUTES) NULL);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* Check and see if the mailslot was created */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  if (hSMS_Slot == INVALID_HANDLE_VALUE)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    cerr &lt;&lt;  &quot;ERROR: Unable to create mailslot &quot; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      &lt;&lt;  GetLastError() &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    return (1);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* Repeatedly check for messages until the </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">     program is terminated */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  while(1)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    Status=GetMailslotInfo(hSMS_Slot,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      (LPDWORD) NULL, &amp;nextSize, &amp;Msgs,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      (LPDWORD) NULL);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    if (!Status)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      cerr &lt;&lt;  &quot;ERROR: Unable to get status. &quot; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        &lt;&lt;  GetLastError() &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      CloseHandle(hSMS_Slot);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      return (1);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    /* If messages are available, then get them */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    if (Msgs)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      /* Read the message and check to see if </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">         read was successful */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      if (!ReadFile(hSMS_Slot, toDisptxt, nextSize,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        &amp;NumBytesRead, (LPOVERLAPPED) NULL))</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        cerr </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">          &lt;&lt;  &quot;ERROR: Unable to read from mailslot &quot; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">          &lt;&lt;  GetLastError() &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        CloseHandle(hSMS_Slot);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        return (1);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      /* Display the Message */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      cout &lt;&lt;  toDisptxt &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    else</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      /* Check for new messages twice a second */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      Sleep(500);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  } /* while */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT></PRE>
+
+<P><FONT FACE="arial"><HR ALIGN=LEFT></FONT></P>
+
+<H3><FONT FACE="arial">Listing 2</FONT></H3>
+
+<H6><FONT FACE="arial">A program writes to a mailslot every five
+seconds</FONT></H6>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// From the book &quot;Win32 System Services: The Heart of Windows NT&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// by Marshall Brain</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Published by Prentice Hall</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// This code implements a simple mailslot sender.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// sms_send.c</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Usage: sms_send</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;windows.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;iostream.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;string.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">int main()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  char toSendTxt[100], buffer[100];</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  DWORD bufferLen=100;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  HANDLE hSMS_Slot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  BOOL Status;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  DWORD NumBytesWritten;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* Create the mailslot file handle for </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">     sending messages */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  hSMS_Slot=CreateFile(&quot;\\\\*\\mailslot\\sms&quot;,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    GENERIC_WRITE, FILE_SHARE_READ,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    (LPSECURITY_ATTRIBUTES) NULL,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    OPEN_EXISTING,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    FILE_ATTRIBUTE_NORMAL,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    (HANDLE) NULL);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* Check and see if the mailslot file was</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">     opened, if not terminate program */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  if (hSMS_Slot == INVALID_HANDLE_VALUE)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    cerr &lt;&lt;  &quot;ERROR: Unable to create mailslot &quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      &lt;&lt;  GetLastError() &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    return (1);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* form string to send */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  GetComputerName(buffer, &amp;bufferLen);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  strcpy(toSendTxt, &quot;Test string from &quot;);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  strcat(toSendTxt, buffer);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* Repeatedly send message until program</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">     is terminated */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  while(1)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    cout &lt;&lt;  &quot;Sending...&quot; &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    /* Write message to mailslot */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    Status=WriteFile(hSMS_Slot,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      toSendTxt, (DWORD) strlen(toSendTxt)+1,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      &amp;NumBytesWritten, (LPOVERLAPPED) NULL);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    /* If error occurs when writing to mailslot,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">       terminate program */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    if (!Status)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      cerr &lt;&lt;  &quot;ERROR: Unable to write to mailslot &quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        &lt;&lt;  GetLastError() &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      CloseHandle(hSMS_Slot);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      return (1);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    /* Wait sending the message again */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    Sleep(4800);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  } /* while*/</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT></PRE>
+
+<P><FONT FACE="arial"><HR ALIGN=LEFT></FONT></P>
+
+<H3><FONT FACE="arial">Listing 4</FONT></H3>
+
+<H6><FONT FACE="arial">A simple program that creates a named pipe
+server. The server will wait and accept one connection, and then
+receive messages from it.</FONT></H6>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// From the book &quot;Win32 System Services: The Heart of Windows NT&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// by Marshall Brain</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Published by Prentice Hall</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// This code implements a simple named pipe server (receiver).</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// ssnprecv.cpp</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Usage: ssnprecv</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;windows.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;iostream.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">int main()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  char toDisptxt[80];</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  HANDLE ssnpPipe;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  DWORD NumBytesRead;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* Create a named pipe for receiving messages */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  ssnpPipe=CreateNamedPipe(&quot;\\\\.\\pipe\\ssnp&quot;,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    PIPE_ACCESS_INBOUND, </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    PIPE_TYPE_MESSAGE | PIPE_WAIT,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    1, 0, 0, 150,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    (LPSECURITY_ATTRIBUTES) NULL);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* Check and see if the named pipe was created */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  if (ssnpPipe == INVALID_HANDLE_VALUE)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    cerr &lt;&lt;  &quot;ERROR: Unable to create a named pipe. &quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    return (1);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* Allow a client to connect to the name pipe, </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">     terminate if unsuccessful */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  cout &lt;&lt;  &quot;Waiting for connection... &quot; &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  if(!ConnectNamedPipe(ssnpPipe, </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    (LPOVERLAPPED) NULL))</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    cerr &lt;&lt;  &quot;ERROR: Unable to connect a named pipe &quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      &lt;&lt;  GetLastError() &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    CloseHandle(ssnpPipe);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    return (1);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* Repeatedly check for messages until the program</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">     is terminated */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  while(1)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    /* Read the message and check to see if read</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">       was successful */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    if (!ReadFile(ssnpPipe, toDisptxt,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      sizeof(toDisptxt),</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      &amp;NumBytesRead, (LPOVERLAPPED) NULL))</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      cerr </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        &lt;&lt;  &quot;ERROR: Unable to read from named pipe &quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        &lt;&lt;  GetLastError() &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      CloseHandle(ssnpPipe);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      return (1);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    /* Display the Message */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    cout &lt;&lt;  toDisptxt &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  } /* while */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT></PRE>
+
+<P><FONT FACE="arial"><HR ALIGN=LEFT></FONT></P>
+
+<H3><FONT FACE="arial">Listing 5</FONT></H3>
+
+<H6><FONT FACE="arial">A named pipe client able to connect to
+Listing 4 and send it messages</FONT></H6>
+
+<PRE><TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// From the book &quot;Win32 System Services: The Heart of Windows NT&quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// by Marshall Brain</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Published by Prentice Hall</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Copyright 1994, by Prentice Hall.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// This code implements a simple named pipe sender.</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">//***************************************************************</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// ssnpsend.cpp</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">// Usage: ssnpsend</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;windows.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">#include &lt;iostream.h&gt; </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">int main()</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">{</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  char *toSendtxt=&quot;Test String&quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  HANDLE ssnpPipe;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  DWORD NumBytesWritten;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  char machineName[80];</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  char pipeName[80];</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  cout &lt;&lt;  &quot;Enter name of server machine: &quot;;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  cin &gt;&gt; machineName;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  wsprintf(pipeName, &quot;\\\\%s\\pipe\\ssnp&quot;, </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    machineName);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* Create the named pipe file handle for sending</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">     messages */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  ssnpPipe=CreateFile(pipeName,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    GENERIC_WRITE, FILE_SHARE_READ,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    (LPSECURITY_ATTRIBUTES) NULL,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    (HANDLE) NULL);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* Check and see if the named pipe file was</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">     opened, if not terminate program */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  if (ssnpPipe == INVALID_HANDLE_VALUE)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    cerr &lt;&lt;  &quot;ERROR: Unable to create a named pipe &quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    cerr &lt;&lt;  GetLastError() &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    return (1);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  /* Repeatedly send message until program is</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">     terminated */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  while(1)</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    cout &lt;&lt;  &quot;Sending...&quot; &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    /* Write message to the pipe */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    if (!WriteFile(ssnpPipe,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">          toSendtxt, (DWORD) strlen(toSendtxt)+1,</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">          &amp;NumBytesWritten, (LPOVERLAPPED) NULL))</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    {</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      /* If error occurs when writing to named</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">         pipe, terminate program */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      cerr &lt;&lt;  &quot;ERROR: Unable to write to named pipe &quot;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">        &lt;&lt;  GetLastError() &lt;&lt;  endl;</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      CloseHandle(ssnpPipe);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">      return (1);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    }</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial"> </FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    /* Wait before sending the message again */</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">    Sleep(4800);</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">  } /* while*/</FONT></TT>
+<TT><FONT COLOR="#000080" SIZE="-1" FACE="arial">}</FONT></TT></PRE>
+
+</BODY>
+</HTML>
