@@ -26,6 +26,8 @@ titles:
 key: page-work
 ---
 
+![Image](bees.jpg){:.circle}
+
 My field is statistics, epidemiology and public heatlth with specific
 interest in [genetic analysis of complex
 traits](https://jinghuazhao.github.io/GDCT/) especially
@@ -51,6 +53,4 @@ currently a review editor for [Frontiers in
 Genetics](http://www.frontiersin.org/) ([blog
 network](http://www.frontiersin.org/blog/all_blogs) and
 [profile](http://community.frontiersin.org/people/Jing_HuaZhao/44539)).
-
-![Image](bees.jpg){:.circle}
 
