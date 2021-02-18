@@ -1,0 +1,194 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Stripped version of website I maintained</TITLE>
+  <META NAME="IP" CONTENT="Jing Hua Zhao">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<!--SELECTION--><!--/SELECTION--><!--NOEDIT-->
+<!--#include virtual="/IoP/Includes/kcl_h_sub.html"-->
+<!--#include virtual="/IoP/Includes/IoP_GEB_h.html" -->
+<!--begin contents-->
+<!--/NOEDIT-->
+
+<P><CENTER><TABLE WIDTH="520" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR>
+    <TD WIDTH="100%">
+    <H2><BR>
+    Introduction to Human Genome Computing</H2>
+
+    <BLOCKQUOTE>
+      <UL>
+        <LI><A HREF="http://www.ornl.gov/TechResources/Human_Genome/genetics.html">WWW
+        virtual Library, Genetic Division</A>
+        <LI><A HREF="http://www.ncbi.nlm.nih.gov/">GenBank/National Center
+        for Biotechnology Information (NCBI)</A>
+        <LI><A HREF="http://www3.ncbi.nlm.nih.gov/Entrez/">Entrez Home
+        Page</A>
+        <LI><A HREF="http://www3.ncbi.nlm.nih.gov/Entrez/struchelp.html">Entrez
+        MMDB FAQ Page</A>
+        <LI><A HREF="http://www.ncbi.nlm.nih.gov/">NCBI Gene Map of the
+        Human Genome</A>
+        <LI><A HREF="http://www.embl-heidelberg.de/srs5">SRS Home Page</A>
+        <LI><A HREF="http://gdbwww.gdb.org/">GDB Home Page</A>
+        <LI><A HREF="http://www.genome.wi.mit.edu/">Whitehead Institute/MIT
+        Center for Genome Research</A>
+        <LI><A HREF="http://www.jax.org/">MGD Home Page</A>
+        <LI><A HREF="http://shgc.stanford.edu/">Stanford Human Genome
+        Center</A>
+        <LI><A HREF="http://flybase.bio.indiana.edu/">FlyBase</A>
+        <LI><A HREF="http://probe.nalusda.gov/other">ACEDB</A>
+        <LI><A HREF="http://genome-www.stanford.edu/Saccharonmyces">Sacharonmyces
+        Genome Database</A>
+        <LI><A HREF="http://www.tigr.org/">The Institute for Genome Research</A>
+        <LI><A HREF="http://genome.wustl.edu/gsc/gschmpg.html">Washington
+        University Genome Sequencing Center</A>
+        <LI><A HREF="http://www.sanger.ac.uk/">The Sanger Center</A>
+        <LI><A HREF="http://chimera.biotech.washington.edu/uwgc/">University
+        of Washington</A>
+        <LI><A HREF="http://www3.ncbi.nlm.nih.gov/BLAST/">NCBI BLAST
+        Searches</A>
+        <LI><A HREF="http://www.genome.wi.mit.edu/">Whitehead PCR Primer
+        Picking</A>
+        <LI><A HREF="http://condor.bcm.tmc.tmu.edu/home.html">Baylor
+        College of Medicine Computational Resources</A>
+        <LI><A HREF="http://avalon.epm.ornl.gov/">GRAIL</A>
+        <LI><A HREF="http://biology.ncsa.uiuc.edu/">NCSA Biology Workbench</A>
+        <LI><A HREF="http://www.genome.wi.mit.edu/cgi-bin/contig/rhmapper.pl">Direct
+        Link to Whitehead Radiation Hybrid Mapping Service</A>
+        <LI><A HREF="http://www.public.iastate.edu/~pedra/research_tools.html">Pedro's
+        BioMolecular Resarch Tools</A>
+        <LI><A HREF="http://www.wi.mit.edu/bio/biology.html">Whitehead
+        Institute Biology Resources</A>
+        <LI><A HREF="http://www.gdb.org/Dan/softsearch/biol-links.html">Dan
+        Jacobson's Archive of Molecular Biology Software</A>
+      </UL>
+      <H5>Biological Materials and Services</H5>
+    </BLOCKQUOTE>
+
+    <UL>
+      <UL>
+        <LI><A HREF="http://www.atcc.org/">ATCC</A>
+        <LI><A HREF="http://muggsunc.ctan.yale.edu/home.html">Bios</A>
+        <LI><A HREF="http://arginie.umdnj.edu/ccr.html">CCR</A>
+        <LI><A HREF="http://www.csmc.edu/genetics/korenberg/reagents.page.html">CSM</A>
+        <LI><A HREF="http://www.cephb.fr/">CEPH</A>
+        <LI><A HREF="http://www.gdb.org/annex/ecacc/HTML/ecacc.html">ECACC</A>
+        <LI><A HREF="http://www.genethon.fr/">Genethon</A>
+        <LI><A HREF="http://www.genome.systems/">Gen Sys</A>
+        <LI><A HREF="http://www.jax.org/">Jackson</A>
+        <LI><A HREF="http://www.nihs.go.jp/">JCRB</A>
+        <LI><A HREF="http://bacpac.med.buffalo.edu/">RP</A>
+        <LI><A HREF="http://www.resgen.com/">Res Gen</A>
+        <LI><A HREF="http://www.riken.go.jp/">RIKEN</A>
+        <LI><A HREF="http://www.rzpd.de/">RZPD</A>
+        <LI><A HREF="http://www.hgmp.mrc.ac.uk/">HGMP-RC</A>
+      </UL>
+    </UL>
+
+    <BLOCKQUOTE>
+      <H5>Comparative Mapping in Humans and Vertebrates</H5>
+    </BLOCKQUOTE>
+
+    <UL>
+      <UL>
+        <LI><A HREF="http://www.angis.su.oz.au/Databases/BIRX/ocoa/ocoa_form.html">Online
+        Cytogenetics of Animals (OCOA)</A>
+        <LI><A HREF="http://www.hgmp.mrc.ac.uk/MRx">European Collaborative
+        Interspecific Backcorss</A>
+        <LI><A HREF="http://ratmap.gen.gu.se/">RATMAP</A>
+        <LI><A HREF="http://www.ri.bbsrc.ac.uk/">ARK family of animal
+        genome mapping databases</A>
+        <LI><A HREF="http://spinal.tap.csiro.au/.cgd.html">Cattle Genome
+        Database (CGD)</A>
+        <LI><A HREF="http://www.ws4.niai.affrc.go.jp/">Cytogenetic maps
+        for cattle, pig, mouse, human, rat and sheep in Japan</A>
+        <LI><A HREF="http://locus.jouy.inra.fr/">BOVMAP at INRA Biotechnology
+        Laboratories</A>
+        <LI><A HREF="http://bos.cvm.tamu.edu/bovgbase.html">BOVGBASE</A>
+        <LI><A HREF="http://www.public.iastate.edu/~pigmap/pigmap.html">US
+        Pig Gene Mapping</A>
+        <LI><A HREF="http://sol.marc.usda.gov/genome/swine/swine.html">Pig
+        maps at Meat Animal Research Center</A>
+        <LI><A HREF="http://rubens.its.unimelb.edu.au/~jillm/jill.html">Sheep
+        mapping from Centre for Animal Biotechnology</A>
+        <LI><A HREF="http://ubeclu.unibe.ch/itz/dogmap.html">DogMap</A>
+        <LI><A HREF="http://www.latrobe.edu.au/genetics/roobase.html">Marsupials
+        and Monotremes</A>
+        <LI><A HREF="http://www.ri.bbsrc.ac.uk/chickmap">Roslin chickmap</A>
+        <LI><A HREF="http://poultry.mph.msu.edu/">East Lansing chickmap</A>
+        <LI><A HREF="http://tilapia.unh.edu/WWWPages/TGP.html">Tilapia
+        Genome Project</A>
+        <LI><A HREF="http://zfish.uoregon.edu/">Zebrafish Genome Project</A>
+        <LI><A HREF="http://fugu.hgmp.mrc.ac.uk/">Fugu Human Genome Project</A>
+        <LI><A HREF="http://www.angis.su.oz.au/Databases/BIRX/omia">Online
+        Mendelian Inheritance in Animals</A>
+        <LI><A HREF="http://www.mgu.har.mrc.ac.uk/mgu/homolog.html">MRC
+        Mammalian Genetics Unit human-mouse homologies</A>
+        <LI><A HREF="http://www3.ncbi.nlm.nih.gov/Homology">NCBI human-mouse
+        homologies</A>
+      </UL>
+    </UL>
+
+    <BLOCKQUOTE>
+      <H5>Software for Human Genome&nbsp; Sequencing</H5>
+    </BLOCKQUOTE>
+
+    <UL>
+      <UL>
+        <LI><A HREF="http://www.hgmp.mrc.ac.uk/Software">ACEDB, ACEMBLY,
+        ASP, BLIXEM, CAF, CROW, DOTTER, GELMINDER, HAWK, PHRAP2GAP, SVEC_CLIP</A>
+        <LI><A HREF="http://www-genome.wi.mit.edu/ftp/pub/software/Bass/">BASS
+        and Grace</A>
+        <LI><A HREF="http://www.ncbi.nlm.nih.gov/Home.html">BLASTN</A>
+        <LI><A HREF="http://www.cs.mu.oz.au/appletalk/cap.html">CAP(Columbia
+        Appletalk Protocol)</A>
+        <LI><A HREF="ftp://ftp.bio.indiana.edu/molbio/align/">CAPII (Contig
+        Assembly Program)</A>
+        <LI><A HREF="http://www.genome.washington.edu/consed/consed.html">CONSED</A>
+        <LI><A HREF="http://bozeman.genome.wahsington.edu/phrap_documentation.html">CROSS_MATCH,
+        PHRAP, PHRED</A>
+        <LI><A HREF="http://www.cs.arizona.edu/research/reports.html">FAKII.
+        Fragment Assembly Kernel</A>
+        <LI><A HREF="http://www.mrc-lmb.cam.ac.uk/pubseq/">GAP4, NIP,
+        PREGAP, SIP, TED, TREV, VECTOR_CLIP (The Staden Package)</A>
+        <LI><A HREF="http://genome.wustl.edu/gsc/gschmpg.html">GETLANES
+        lane tracking software</A>
+        <LI><A HREF="http://genome.wustl.edu/eddy/HMMER/main.html">HMMER
+        (Hidden Markov Model package)</A>
+      </UL>
+    </UL>
+
+    <BLOCKQUOTE>
+      <H5>Human EST Sequencing</H5>
+    </BLOCKQUOTE>
+
+    <UL>
+      <UL>
+        <LI><A HREF="http://www.ebi.ac.uk/ebi_docs/embl_db/ebi/topembl.html">EMBL</A>
+        <LI><A HREF="http://www.ncbi.nlm.nih.gov/Web/Genbank">GenBank</A>
+        <LI><A HREF="http://www.ddbj.nig.ac.jp/">DDBJ</A>
+        <LI><A HREF="http://www.ncbi.nlm.nih.gov/dbEST">dbEST</A>
+        <LI><A HREF="http://www-bio.llnl.gov/bbrp/image/image.html">IMAGE</A>
+        <LI><A HREF="http://www.sambi.ac.za/stack/">STACK</A>
+        <LI><A HREF="http://www.ncbi.nlm.nih.gov/UniGene/">UniGene</A>
+        <LI><A HREF="http://www.tigr.org/rdb/hgi/hgi.html">TIGR HGI</A>
+        <LI><A HREF="http://www.merck.com/mrl/merck_gene_index.2.html">Merck
+        Gene Index</A>
+        <LI><A HREF="ftp://ftp.tigr.org/pub/software/TIGR_assembler/">TIGR
+        Assembler</A>
+        <LI><A HREF="http://sunny.ebi.ac.uk/~jparsons/packages/icatools/ICAtools_index.html">ICAtools</A>
+      </UL>
+    </UL>
+
+    <BLOCKQUOTE>
+      <H5>This list is given by Lincoln D. Stein, Michael Rhodes and
+      Ramnath Elaswarapu, Martin Bishop, Simon Dear, Guy St C. Slater.</H5>
+    </BLOCKQUOTE>
+</TD>
+  </TR>
+</TABLE></CENTER></P>
+
+</BODY>
+</HTML>
