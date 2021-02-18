@@ -1,4 +1,4 @@
 ---
 layout: archive
-tags: Update
+tags: info
 ---
