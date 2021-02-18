@@ -25,6 +25,6 @@ Linear Mixed Models with Polygenic Effects](https://www.jstatsoft.org/article/vi
 I also made a [University of London](http://www.lon.ac.uk/)
 [LaTeX](http://www.ctan.org/) [thesis class](software/ulthesis.zip),
 together with [Endnote](http://www.endnote.com/) [genetic reference library](iop/jinghua/refs/genetics.enl)
-and keep some notes on [MFC programming](iop/jinghua/winprog/winprog.html) and [some programs for genetic data analysis](software/softlink.md)
+and keep some notes on [MFC programming](iop/jinghua/winprog/winprog.html) and [some programs for genetic data analysis](software/softlink.html)
 
 *Date last changed* 30/3/2019
