@@ -27,7 +27,6 @@ key: page-work
 ---
 
 ![Image](bees.jpg){:.circle}
-
 My field is statistics, epidemiology and public heatlth with specific
 interest in [genetic analysis of complex
 traits](https://jinghuazhao.github.io/GDCT/) especially
