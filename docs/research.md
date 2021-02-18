@@ -74,3 +74,8 @@ and the mathematical expression of the test statistic is
 $$ z_{EWAS} = \frac{w^T_{me}z_T}{\sqrt{w^T_{me}Vw_{me}}} $$
 
 At CEU, I am part of the [cambridge-ceu](https://cambridge-ceu.github.io/) GitHub organisation.
+
+I would appreciate if you [e-mail me](mailto:jinghuazhao@hotmail.com)
+your comments or information on [citations](references.txt) ([Google
+Scholar](https://tinyurl.com/yxh3ycwg)).
+
