@@ -1,0 +1,117 @@
+<center>
+<table width="520" cellspacing="0" cellpadding="0" border="0">
+<tbody>
+<tr>
+<td width="100%">
+
+### Software Links (Local Copy)
+
+*   2LD (2-locus LD calculator)
+*   3LOCUS (3-locus haplotype analysis)
+*   [AFBAC](http://alleleb.biol.berkeley.edu/~mpn/afbac.html) ([e-mail](mailto:mpn@alleleb.biol.berkeley.edu), Affected Family-Based Controls)
+*   ALLASS (ALLelic ASSociation)
+*   Arlequin (population genetics package)
+*   [ASPEX](ftp://lahmed.stanford.edu/pub/aspex) ([TCL](http://www.sco.com/Technology/tcl/Tcl.html), [Xmgr](http://plasma-gate.weizmann.ac.il/Xmgr/))
+*   ATRIBUTE (path analysis under a generalized single-locus model)
+*   AUTOZ (computation of the Interval Probability of Autozygosity)
+*   [BAMBE](http://www.mathcs.duq.edu/larget/bambe.html) (Bayesian Analysis in Molecular Biology and Evolution)
+*   BETA (nonparametric linkage using sib-pairs)
+*   [BioEdit](http://www.mbio.ncsu.edu/BioEdit/bioedit.html) (BIOlogical sequence alignment EDITor)
+*   CHRSIM (CHRomosome-based SIMulation)
+*   CLUMP (assessing association using Monte Carlo simulation)
+*   Cruise ([a](http://www.wpi.edu/~hkim/cruise),[b](http://www.stat.wisc.edu/~loh/cruise.html))
+*   CYRILLIC (a pedigree drawing program)
+*   dGENE
+*   DMAP (Disequilibrium MAPping)
+*   ERPA (a program for assessing excessive sharing among relatives)
+*   ESPA (Extended Sib Pair Analysis)
+*   ETDT (Extended TDT)
+*   [ET-TDT](http://wpicr.wpic.pitt.edu/WPICCompGen/) (Evolutionary Tree TDT)
+*   FASTLINK (Faster LINKAGE)
+*   FBAT (Family-Based Association Tests)
+*   [FineMap](http://www.stat.cmu.edu/~roeder/) ([GTL](http://www.fmi.uni-passau.de/Graphlet/GTL/))
+*   FISHER (analysis of quantitative traits for general pedigrees)
+*   GAS (Genetic Analysis System)
+*   [GASSOC](http://www.mayo.edu/statgen/gassoc/) ([e-mail](mailto:rowland@mayo.edu), Genetic ASSOCiations)
+*   GASP (a program for genetic data simulation)
+*   [Gcontrol](http://www.stat.cmu.edu/~roeder/) (Association using Genomic Control)
+*   [GDA](http://lewis.eeb.uconn.edu/lewishome/software.html) (Genetic Data Analysis)
+*   [GeneHunter](http://www.fhcrc.org/labs/kruglyak/) (PLUS, TWOLOCUS, IMPRINTING)
+*   [GenePop](http://www.cefe.cnrs-mop.fr/) (population genetic software package)
+*   GTREE (Gene Tree)
+*   [GhostView](http://www.cs.wisc.edu/~ghost/gsview/)
+*   GRAPPA (Phylogeny reconstruction from gene orders)
+*   [HAPLO](http://krunch.med.yale.edu/haplo/) (HAPLOtype analysis)
+*   [HAPLOTYPER](http://www.people.fas.harvard.edu/~junliu/index1.html#Computational_Biology)
+*   [HMMER](http://hmmer.wustl.edu/) ([FTP](ftp://ftp.genetics.wustl.edu/pub/eddy/hmmer/), profile hidden Markov models for biological sequence analysis)
+*   [HMMgene](http://www.cbs.dtu.dk/services/HMMgene/)
+*   HOMOG (HOMOgeneity tests)
+*   IntraPop (Software for analysis of mitochondrial DNA polymorphisms)
+*   [KIN](http://gnome.agrenv.mcgill.ca/) (Software for computing KINship coefficients)
+*   Lamarc
+*   LINKAGE
+*   LIPED (LIkelihood in PEDigrees)
+*   MAPMAKER (HOMOZ, SIBS)
+*   MAPPOP (Software for selective mapping and bin mapping)
+*   [MEGA](http://www.megasoftware.net/) (Molecular Evolutionary Genetic Analysis)
+*   [MEGA2](http://watson.hgen.pitt.edu/mega2.html) (Manipulation Environment for Genetic Analyses)
+*   [MegaLink](http://pegasus.med.ohio-state.edu/) (interfacing FASTLINK 4.1P, GENEHUNTER 2.0, and SIMPLE)
+*   MENDEL (genetic linkage analysis program)
+*   MFLINK (Model-free LINKAGE)
+*   MIM (Multipoint Interval Mapping)
+*   [MLD](ftp://statgen.ncsu.edu/pub/zaykin/) (Multilocus Linkage Disequilibrium)
+*   MLIKELY (maximum-likelihood estimation)
+*   MORGAN (a collection of software, including Markov chain Monte Carlo)
+*   MSA (Multiple Sequence Alignment)
+*   MultiSim (Multipoint Multiple trait Simulation)
+*   Mx (structuring equation modeling)
+*   PAML (Phylogenic Analysis using Maximum Likelihood)
+*   PAP (Pedigree Analysis Package)
+*   PATHMIX (Path Analysis for Nuclear Families)
+*   PDT (Pedigree Transmission Test)
+*   PedCheck (Detecting marker typing incompatibilities in pedigree data)
+*   Pedraw (drawing pedigrees)
+*   PedHunter (a software package used to manage genealogies)
+*   [PEPI](http://www.myatt.demon.co.uk/index.htm) (Program for EPIdemiology)
+*   PdpSys (Pedigree Data Processing System)
+*   [PHASE](http://www.stats.ox.ac.uk/mathgen/software.html) (a program for reconstructing haplotypes from population genotype data)
+*   [Phred/Phrap/consed](http://bozeman.mbt.washington.edu/)
+*   Phylip (phylogenic analysis)
+*   POINTER (Segregation Analysis using POINTERs)
+*   POPULUS
+*   [Probability Calculator](http://icwlin.icw.com/ncss/ncsscalc.zip) ([NCSS](http://www.megasoftware.net/))
+*   [QMS](http://ibgwww.Colorado.EDU/~lessem/software/qms2.html) (DeFries-Fulker Multiple Regression of Sibship QTL Data)
+*   QTDT (Quantitative TDT)
+*   RELATIVE
+*   RELPAIR
+*   SAGE (Statistical Analysis for Genetic Epidemiology)
+*   [SAM](http://www.cse.ucsc.edu/research/compbio/sam.html) (Sequence Alignment and Modeling System)
+*   [SCOP](http://scop.berkeley.edu/) (Structural classification of proteins, [Australia](http://scop.wehi.edu.au/scop/), [Cambridge](http://scop.mrc-lmb.cam.ac.uk/scop/))
+*   SIB-PAIR
+*   SIGSCAN (SIGnal SCAN)
+*   SimCoal (Simulation of Coalescence)
+*   SimIBD (IBD calculation using Simulation)
+*   SIMLINK (Simulation program for Linkage)
+*   SIMULATE (unconditional simulation for linkage)
+*   [Simple](http://pegasus.med.ohio-state.edu/) (analyze human pedigree data involving large pedigrees and multiloci)
+*   SimWalk2 (Multipoint analyses using Markov chain Monte Carlo and simulated annealing)
+*   SKUMIX (maximum likelihood to fit a mixture of up to three distributions)
+*   SLINK (Conditional simulation on pedigrees)
+*   SNPHAP (SNP haplotyping)
+*   SOLAR (Sequential Oligonenic Linkage Analysis Routine)
+*   [SPLINK](http://www.mrc-bsu.cam.ac.uk/pub/methodology/genetics/) (Sib Pair LINKage analysis)
+*   [Statistical tests and Molecular biology tools](http://hjmuller.bio.uci.edu/~labhome/tools.html) (AD Long's lab)
+*   STRUCTURE (a model-based clustering method for inferring population structure)
+*   TABLE (tabulating LINKAGE outputs)
+*   TLINKAGE (Two-locus LINKAGE)
+*   [Transmit](http://www-gene.cimr.cam.ac.uk/clayton/software/)
+*   TreeView
+*   VITESSE (Likelihood Calculation on Pedigrees)
+*   XDT (Sibling transmission test and quantitative TDT)
+</td>
+</tr>
+</tbody>
+</table>
+</center>
+
+<center>Last modified: 14/1/2000 by: [Jing Hua Zhao](mailto:j.zhao@iop.kcl.ac.uk)</center>
