@@ -26,7 +26,7 @@ titles:
 key: page-work
 ---
 
-![Image](IMG_20200823_095321.jpg){:.circle}
+![Image](IMG_20200823_095311.jpg){:.circle}
 
 My field is statistics, epidemiology and public heatlth with specific
 interest in [genetic analysis of complex
