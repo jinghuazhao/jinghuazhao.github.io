@@ -1,0 +1,456 @@
+      
+09 Mar 98 SPSS for MS WINDOWS Release 6.1                                Page 1
+
+This software is functional through December 31, 1998.
+
+      
+
+
+09 Mar 98 SPSS for MS WINDOWS Release 6.1                                Page 2
+
+
+            * * *  A N A L Y S I S   O F   V A R I A N C E  * * *
+
+                 N        Neuroticism
+            by   ID
+
+                 UNIQUE sums of squares
+                 All effects entered simultaneously
+
+
+                                   Sum of                 Mean             Sig
+Source of Variation               Squares     DF        Square       F    of F
+
+Main Effects                    13445.226    521        25.807     2.720  .000
+   ID                           13445.226    521        25.807     2.720  .000
+
+Explained                       13445.226    521        25.807     2.720  .000
+
+Residual                         4953.000    522         9.489
+
+Total                           18398.226   1043        17.640
+
+
+1588 cases were processed.
+544 cases (34.3 pct) were missing.
+
+
+09 Mar 98 SPSS for MS WINDOWS Release 6.1                                Page 3
+
+      
+
+            * * *  A N A L Y S I S   O F   V A R I A N C E  * * *
+
+                 N        Neuroticism
+            by   ID
+
+                 UNIQUE sums of squares
+                 All effects entered simultaneously
+
+
+                                   Sum of                 Mean             Sig
+Source of Variation               Squares     DF        Square       F    of F
+
+Main Effects                     5970.454    271        22.031     1.478  .001
+   ID                            5970.454    271        22.031     1.478  .001
+
+Explained                        5970.454    271        22.031     1.478  .001
+
+Residual                         4053.500    272        14.903
+
+Total                           10023.954    543        18.460
+
+
+1588 cases were processed.
+1044 cases (65.7 pct) were missing.
+
+
+09 Mar 98 SPSS for MS WINDOWS Release 6.1                                Page 4
+
+      
+
+           * * * *   M U L T I P L E   R E G R E S S I O N   * * * *
+
+
+Listwise Deletion of Missing Data
+
+Equation Number 1    Dependent Variable..   NCOTWIN   Neuroticism of cotwin
+
+Block Number  1.  Method:  Enter      N
+
+
+Variable(s) Entered on Step Number
+   1..    N         Neuroticism
+
+
+Multiple R           .46158
+R Square             .21305
+Adjusted R Square    .21154
+Standard Error      3.73116
+
+Analysis of Variance
+                    DF      Sum of Squares      Mean Square
+Regression           1          1959.91459       1959.91459
+Residual           520          7239.19844         13.92154
+
+F =     140.78293       Signif F =  .0000
+
+
+------------------ Variables in the Equation ------------------
+
+Variable              B        SE B       Beta         T  Sig T
+
+N               .461579     .038902    .461579    11.865  .0000
+(Constant)     5.521399     .431063               12.809  .0000
+
+
+End Block Number   1   All requested variables entered.
+
+
+09 Mar 98 SPSS for MS WINDOWS Release 6.1                                Page 5
+
+      
+
+           * * * *   M U L T I P L E   R E G R E S S I O N   * * * *
+
+
+Listwise Deletion of Missing Data
+
+Equation Number 1    Dependent Variable..   NCOTWIN   Neuroticism of cotwin
+
+Block Number  1.  Method:  Enter      N
+
+
+Variable(s) Entered on Step Number
+   1..    N         Neuroticism
+
+
+Multiple R           .19124
+R Square             .03657
+Adjusted R Square    .03300
+Standard Error      4.22895
+
+Analysis of Variance
+                    DF      Sum of Squares      Mean Square
+Regression           1           183.29657        183.29657
+Residual           270          4828.68045         17.88400
+
+F =      10.24919       Signif F =  .0015
+
+
+------------------ Variables in the Equation ------------------
+
+Variable              B        SE B       Beta         T  Sig T
+
+N               .191237     .059735    .191237     3.201  .0015
+(Constant)     8.246703     .660871               12.479  .0000
+
+
+End Block Number   1   All requested variables entered.
+
+
+09 Mar 98 SPSS for MS WINDOWS Release 6.1                                Page 6
+
+      
+
+
+Number of valid observations (listwise) =       794.00
+
+                                                   Valid
+Variable      Mean    Std Dev   Minimum   Maximum      N  Label
+
+N            10.23       4.23      1.00     21.00    794  Neuroticism
+
+
+09 Mar 98 SPSS for MS WINDOWS Release 6.1                                Page 7
+
+      
+
+           * * * *  MULTIPLE REGRESSION THROUGH THE ORIGIN  * * * *
+
+
+Listwise Deletion of Missing Data
+
+Equation Number 1    Dependent Variable..   Y
+
+>Note # 10572
+>For regression through the origin (the no-intercept model), R-square
+>measures the proportion of variability in the y's about the origin
+>explained by regression.  This CANNOT be compared to R-square for models
+>which include an intercept.
+
+
+Block Number  1.  Method:  Enter
+
+
+Variable(s) Entered on Step Number
+   1..    C
+   2..    A
+
+
+Multiple R           .38837
+R Square             .15083
+Adjusted R Square    .14868
+Standard Error      3.90354
+
+Analysis of Variance
+                    DF      Sum of Squares      Mean Square
+Regression           2          2143.54334       1071.77167
+Residual           792         12068.16926         15.23759
+
+F =      70.33736       Signif F =  .0000
+
+
+------------------ Variables in the Equation ------------------
+
+Variable              B        SE B       Beta         T  Sig T
+
+A               .540623     .137061    .463640     3.944  .0001
+C              -.079025     .117544   -.079025     -.672  .5016
+
+
+End Block Number   1   All requested variables entered.
+
+
+09 Mar 98 SPSS for MS WINDOWS Release 6.1                                Page 8
+
+
+           * * * *  MULTIPLE REGRESSION THROUGH THE ORIGIN  * * * *
+
+Equation Number 1    Dependent Variable..   Y
+
+Block Number  2.  Method:  Backward     Criterion   POUT  .1000
+   A        C
+
+
+Variable(s) Removed on Step Number
+   3..    C
+
+
+Multiple R           .38774
+R Square             .15034
+Adjusted R Square    .14927
+Standard Error      3.90219
+
+Analysis of Variance
+                    DF      Sum of Squares      Mean Square
+Regression           1          2136.65606       2136.65606
+Residual           793         12075.05654         15.22706
+
+F =     140.31970       Signif F =  .0000
+
+
+------------------ Variables in the Equation ------------------
+
+Variable              B        SE B       Beta         T  Sig T
+
+A               .452124     .038168    .387743    11.846  .0000
+
+
+------------- Variables not in the Equation -------------
+
+Variable     Beta In  Partial  Min Toler         T  Sig T
+
+C           -.079025 -.023882    .077601     -.672  .5016
+
+
+End Block Number   2   POUT =     .100 Limits reached.
+
+
+09 Mar 98 SPSS for MS WINDOWS Release 6.1                                Page 9
+
+      
+
+           * * * *  MULTIPLE REGRESSION THROUGH THE ORIGIN  * * * *
+
+
+Listwise Deletion of Missing Data
+
+Equation Number 1    Dependent Variable..   Y
+
+>Note # 10572
+>For regression through the origin (the no-intercept model), R-square
+>measures the proportion of variability in the y's about the origin
+>explained by regression.  This CANNOT be compared to R-square for models
+>which include an intercept.
+
+
+Block Number  1.  Method:  Enter      A        D
+
+
+Variable(s) Entered on Step Number
+   1..    D
+   2..    A
+
+
+Multiple R           .38837
+R Square             .15083
+Adjusted R Square    .14868
+Standard Error      3.90354
+
+Analysis of Variance
+                    DF      Sum of Squares      Mean Square
+Regression           2          2143.54334       1071.77167
+Residual           792         12068.16926         15.23759
+
+F =      70.33736       Signif F =  .0000
+
+
+------------------ Variables in the Equation ------------------
+
+Variable              B        SE B       Beta         T  Sig T
+
+A               .303547     .224270    .260323     1.353  .1763
+D               .158051     .235088    .129308      .672  .5016
+
+
+End Block Number   1   All requested variables entered.
+
+
+09 Mar 98 SPSS for MS WINDOWS Release 6.1                               Page 10
+
+      
+
+           * * * *  MULTIPLE REGRESSION THROUGH THE ORIGIN  * * * *
+
+
+Listwise Deletion of Missing Data
+
+Equation Number 1    Dependent Variable..   Y
+
+>Note # 10572
+>For regression through the origin (the no-intercept model), R-square
+>measures the proportion of variability in the y's about the origin
+>explained by regression.  This CANNOT be compared to R-square for models
+>which include an intercept.
+
+
+Block Number  1.  Method:  Enter
+
+
+Variable(s) Entered on Step Number
+   1..    C
+   2..    A
+
+
+Multiple R           .54802
+R Square             .30033
+Adjusted R Square    .29220
+Standard Error      4.15175
+
+Analysis of Variance
+                    DF      Sum of Squares      Mean Square
+Regression           2          1273.13406        636.56703
+Residual           172          2965.97524         17.23703
+
+F =      36.93021       Signif F =  .0000
+
+
+------------------ Variables in the Equation ------------------
+
+Variable              B        SE B       Beta         T  Sig T
+
+A               .503110     .187685    .606324     2.681  .0081
+C              -.043207     .160090   -.061046     -.270  .7876
+
+
+End Block Number   1   All requested variables entered.
+
+
+09 Mar 98 SPSS for MS WINDOWS Release 6.1                               Page 11
+
+
+           * * * *  MULTIPLE REGRESSION THROUGH THE ORIGIN  * * * *
+
+Equation Number 1    Dependent Variable..   Y
+
+Block Number  2.  Method:  Backward     Criterion   POUT  .1000
+   A        C
+
+
+Variable(s) Removed on Step Number
+   3..    C
+
+
+Multiple R           .54775
+R Square             .30003
+Adjusted R Square    .29599
+Standard Error      4.14061
+
+Analysis of Variance
+                    DF      Sum of Squares      Mean Square
+Regression           1          1271.87852       1271.87852
+Residual           173          2967.23078         17.14469
+
+F =      74.18500       Signif F =  .0000
+
+
+------------------ Variables in the Equation ------------------
+
+Variable              B        SE B       Beta         T  Sig T
+
+A               .454511     .052770    .547754     8.613  .0000
+
+
+------------- Variables not in the Equation -------------
+
+Variable     Beta In  Partial  Min Toler         T  Sig T
+
+C           -.061046 -.020570    .079478     -.270  .7876
+
+
+End Block Number   2   POUT =     .100 Limits reached.
+
+
+09 Mar 98 SPSS for MS WINDOWS Release 6.1                               Page 12
+
+      
+
+           * * * *  MULTIPLE REGRESSION THROUGH THE ORIGIN  * * * *
+
+
+Listwise Deletion of Missing Data
+
+Equation Number 1    Dependent Variable..   Y
+
+>Note # 10572
+>For regression through the origin (the no-intercept model), R-square
+>measures the proportion of variability in the y's about the origin
+>explained by regression.  This CANNOT be compared to R-square for models
+>which include an intercept.
+
+
+Block Number  1.  Method:  Enter      A        D
+
+
+Variable(s) Entered on Step Number
+   1..    D
+   2..    A
+
+
+Multiple R           .54802
+R Square             .30033
+Adjusted R Square    .29220
+Standard Error      4.15175
+
+Analysis of Variance
+                    DF      Sum of Squares      Mean Square
+Regression           2          1273.13406        636.56703
+Residual           172          2965.97524         17.23703
+
+F =      36.93021       Signif F =  .0000
+
+
+------------------ Variables in the Equation ------------------
+
+Variable              B        SE B       Beta         T  Sig T
+
+A               .373490     .304826    .450112     1.225  .2222
+D               .086413     .320181    .099147      .270  .7876
+
+
+End Block Number   1   All requested variables entered.
+
+
+09 Mar 98 SPSS for MS WINDOWS Release 6.1                               Page 13
+

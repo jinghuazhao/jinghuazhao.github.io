@@ -1,0 +1,513 @@
+\documentstyle[12pt]{article}
+% change \thetable to Roman in article.cls
+\begin{document}
+{\noindent \huge\bf Class Discussion:}\bigskip
+
+Haseman, J.K. and R.C. Elston, 1972, ``The investigation of linkage
+between a quantitative trait and a marker locus'', Behavior Genetics, Vol.
+2, No. 1, 3-19.
+
+\section{An Overview}
+
+  Haseman and Elston (1972) paper on quantitative traits was among the
+substantial developments in the 1970s.  As of today there are many extensions
+of the method; it is thus worthy to review it for some fundamental insight what
+the present methodologies work.  From these understanding we conceive that
+indeed the recent plethora about sib-pair analysis does not happen overnight.
+
+Here I would highlight some points of its formulation and
+its practical applications. That paper dealt with QTL, however, the
+topic itself does not restrict us to quantitative trait only.
+
+\section{The main material}
+
+\subsection{The problem}
+  It's not a easy matter in man to establish a trait with a genetic
+component. Different existing methods all have their drawbacks. Here are the
+points made in the paper.
+\begin{itemize}
+\item Twin studies tends to overestimate the genetic component (H-E
+1970).
+\item Classical segregation analysis only apply to qualitative trait.
+\item Linkage analysis of trait and marker would be very helpful,
+especially when increasing number of marker loci available in man.
+The focus on sib pairs avoid secular or age effects. Penrose first
+considered the sib pair data, but this paper allowed for
+incorporation of parental information on marker loci. The
+recombination fraction was also addressed.
+\end{itemize}
+While parametric linkage analysis depends heavily on the model specifications
+(e.g., the penetrance) and has difficulty in collecting large pedigrees,
+sib-pair analysis requires no such assumptions and thus more robust
+and easy to implement in terms of its design and computation.  The
+drawback might be a larger sample size is necessary.  In general it is a very
+powerful strategy comparable to association analysis, TDT and parametric linkage
+analysis.
+\subsection{Some terms}
+\begin{itemize}
+\item{IBD/IBS.} Any two copies of allele 1 at a given locus are
+considered to be identical by state (IBS), but only copies from
+allele 1 that are inherited from a common ancestral source are said
+to be identical by descent(IBD). If two alleles are IBD, they are
+also IBS.
+\item{Linkage equilibrium.} It refers to the situation where genes segregate
+independently. If linkage disequilibrium occurs we also term it as allelic association.
+\item{Genetic heterogeneity.} Any of a number of genetic causes can act
+independently to produce an identical disease phenotype.
+\item{Phenocopy.} The phenotype is simply a copy from environment. In model
+specification this means we have non-zero penetrances for all genotypes.
+\end{itemize}
+
+\subsection{The genetic model}
+The model is $$  x=\mu + g + e$$
+where $\mu$ is the overall mean, $g$ is a major gene effect, and $e$ is an
+environmental effect independent of $g$.  $g$ is $a$, $d$ and $-a$ for unobserved
+genotype BB, Bb and bb.  $E(g)=E(e)=0$.
+
+To apply the above equation to sib pair we have $x_{1j}=\mu +
+g_{1j}+e_{1j}$, $x_{2j}=g_{2j}+e_{2j}$ From these we could expect a relation
+for the squared pair difference $Y_j={(x_{1j}-x_{2j})}^2$ of sib pair $j$,
+under any possible combinations as listed in H-E table I.
+
+\begin{table}[h]\centering
+\caption{Conditional Distribution of $Y_j$\label{table1}}
+\begin{tabular}{lclll}
+\hline
+&&\multicolumn{3}{c}{Conditional probability}\\ \cline{3-5}
+Sib pair& $Y_j$& $\pi_j=0$ & $\pi_j=\frac{1}{2}$ & $\pi_j=1$\\
+\hline
+BB-BB &$e_j^2$ & $p^4$ & $p^3$ & $p^2$\\
+bb-bb &$e_j^2$ & $q^4$ & $q^3$ & $q^2$\\
+Bb-Bb &$e_j^2$ & $4p^2q^2$ & $pq$ & $2pq$\\
+BB-Bb &$(a-d+e_j)^2$ & $2p^3q$ & $p^2q$ & 0\\
+Bb-BB &$(-a+d+e_j)^2$&$2p^3q$ &$p^2q$ & 0 \\
+Bb-bb &$(d+d+e_j)^2$&$2pq^3$ &$pq^2$ & 0 \\
+bb-Bb &$(-a-d+e_j)^2$&$2pq^3$ &$pq^2$ & 0 \\
+BB-bb &$(2a+e_j)^2$&$p^2q^2$ &$0$ & 0 \\
+bb-BB &$(-2a+e_j)^2$&$p^2q^2$ &$0$ & 0 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+\item $\pi_j=0$ signifies
+sibs are "unrelated" at the trait locus, so the distribution simply follows the
+usual Hardy-Weinberg Law of random-mating population.
+\item $\pi_j=1$ when both sibs have the same genotype so the probability is just
+the probability in population of one of them.
+\item $\pi_j={1\over2}$ is similarly reasoned yet more complicated. 
+\end{itemize}
+
+From table~\ref{table1}, we can have the expected value of $Y_j$ given $\pi_j,
+j=0,\frac{1}{2}, 1$, i.e.,
+$$E[Y_j|\pi_j]=\sigma_e^2+2\sigma_a^2+2\sigma_d^2,\quad 
+\sigma_e^2+\sigma_a^2+2\sigma_d^2,\quad
+\sigma_e^2$$
+and in a more general case
+$$E[Y_j|\pi_j]=(\sigma_e^2+2\sigma_g^2)-\pi_j[2\sigma_g^2+2n_1(n_2-n_0)\sigma_d^2/(4n_0n_2+n_0n_1+n_1n_2)]$$
+
+Assuming no dominance ($d=0$ or $\sigma_d=0$) we see that
+$E(Y_j|\pi_j)=\alpha+\beta\pi_j, \alpha={\sigma_e}^2+2{\sigma_g}^2$, and
+$\beta=-2{\sigma_g}^2$. 
+
+In a more general formulation, a term for polygenic effect and/or covariates
+may also be included.  It is familiar to see this for variance components/path
+analysis models.
+
+In derivation of the variance of a quantitative trait, we take BB, Bb and bb as
+$2\alpha, \alpha, 0$ respectively, by considering that the variance is
+independent of origin.  Thus in a random-mating population, the mean and
+variance (genetic variance of the population) would be $2p\alpha$ and
+$2pq{\alpha}^2$.  In many situations it is convenient to take genic effect as
+unit of measurement, then g has values 2, 1, 0 and the mean and variance change
+to $2p$ and $2pq$.
+
+To determine the effect of dominance on the variance, we fit a set of
+hypothetical G values for which the effect of each gene substitution is constant.
+The phenotypic and fitted values then have relationship
+${\sigma_x}^2={\sigma_a}^2+{\sigma_d}^2$ The fit of $X=G+D$, $D$ has forms
+$D_{BB}, D_{Bb}$ and $D_{bb}$, is by minimizing
+
+  $$\Delta = \Sigma fD^2=p^2{D_{bb}}^2+2pq{D_{Bb}}^2+q^2{D_{bb}}^2$$
+then
+  $$D_{BB}=-q^2(h_1 -h_2)$$
+  $$D_{Bb}=pq(h_1 - h_2) $$
+  $$D_{bb}=-p^2(h_1 -h_2)$$
+  where $h_1=x_{Bb}-x_{bb}, h_2=x_{BB}-x_{Bb}$ and $\alpha$ could be obtained
+see, Li(1955).
+
+  $${\sigma_a}^2=2pq{\alpha}^2=2pq{(ph_2+qh_1)}^2, {\sigma_D}^2=p^2q^2{(h_1 -h_2)}^2$$
+
+We have
+
+  $${\sigma_a}^2=2pq{[a-d(p-q)]}^2\quad  {\sigma_d}^2=4p^2q^2d^2$$
+
+\subsection{Including marker information}
+
+   Let $f_{ji}$ be the probability that $j^{th}$ sib pair has $i$ alleles IBD at the
+marker locus, $i=0,1,2$ conditional on the nuclear family data available, then $\pi_j$,
+the proportion of alleles the $j^{th}$ sib pair shares IBD at the marker locus, is given
+by $\hat{\pi}_j=f_{j2}+{1\over2}f_{j1}$.  The proportion of alleles the $j^{th}$
+half-sib pair share IBD at the marker locus is estimated by
+$\hat{\pi}_j={1\over2}f_{j1}$. 
+
+   With half-sibs, one schematic form is as follows.
+
+\begin{center}
+\begin{tabular}{rcccl}
+           \fbox{1}& $\rightarrow\leftarrow$ &(2)&  $\rightarrow\leftarrow$ &\fbox{3} \\
+               &$\downarrow$ && $\downarrow$ & \\
+               &\fbox{$S_1$}  &&  \fbox{$S_2$}&\\
+\end{tabular}
+\end{center}
+
+  It would display a 'cluster' format (SAGE/SIBPAL) if any parent
+has more than three spouses and then another kinds of sibs.
+
+  The same reasoning process applies to the estimation involving
+marker information, i.e., the notion of mating type and conditional
+probability, as shown in E-H table II.
+
+\begin{table}[h]\centering
+\caption{$\hat\pi_j$ when both parental and sib genotypes are known\label{table2}}
+\begin{tabular}{rlrcccccc}
+\hline
+\multicolumn{2}{c}{Mating type} & 
+\multicolumn{2}{c}{Sib pair type} & Probability & $f_{j0}$ & $f_{j1}$ & $f_{j2}$ & $\hat\pi_j$ \\
+\hline
+I: & $A_iA_i\times A_iA_i$ & I: & $A_iA_i-A_iA_i$ & $p_i^4$ & $\frac{1}{4}$ & $\frac{1}{2}$ & $\frac{1}{4}$ & $\frac{1}{2}$ \\
+II: & $A_iA_i\times A_jA_j$ & V: & $A_iA_j-A_iA_j$ & $2p_i^2p_j^2$ & $\frac{1}{4}$ & $\frac{1}{2}$ & $\frac{1}{4}$ & $\frac{1}{2}$ \\
+III: & $A_iA_i\times A_iA_j$ & I: & $A_iA_i-A_iA_i$ & $p_i^3p_j$ & 0 & $\frac{1}{2}$ & $\frac{1}{2}$ & $\frac{3}{4}$ \\
+                             && III: & $A_iA_i-A_iA_j$ & $2p_i^3p_j$ & $\frac{1}{2}$ & $\frac{1}{2}$ & 0 & $\frac{1}{4}$ \\
+                             && V: & $A_iA_j-A_iA_j$ & $p_i^3p_j$ & 0 & $\frac{1}{2}$ & $\frac{1}{2}$ & $\frac{3}{4}$ \\
+IV: & $A_iA_i\times A_jA_k$ & V: & (2) & $p_i^2p_jp_k$ & 0 & $\frac{1}{2}$ & $\frac{1}{2}$ & $\frac{3}{4}$ \\
+                            && VI: & $A_iA_j\times A_iA_k$ & $2p_i^2p_jp_k$ & $\frac{1}{2}$ & $\frac{1}{2}$ & 0 & $\frac{1}{4}$ \\
+V: & $A_iA_j\times A_iA_j$ & I: & (2) & $p_i^2p_j^2/4$ & 0 & 0 & 1 & 1 \\
+                            && II: & $A_iA_i\times A_jA_j$ & $p_i^2p_j^2/2$ & 1 & 0 & 0 & 0 \\
+                            && III: & (2) & $p_i^2p_j^2$ & 0 & 1 & 0 & $\frac{1}{2}$ \\
+                            && V: & $A_iA_j\times A_iA_j$ & $p_i^2p_j^2$ & $\frac{1}{2}$ & 0 & $\frac{1}{2}$ & $\frac{1}{2}$ \\
+VI: & $A_iA_j\times A_iA_k$ & I: & $A_iA_i-A_iA_i$ & $p_i^2p_jp_k/2$ & 0 & 0 & 1 & 1 \\
+                          &&III: & (2) & $p_i^2p_ip_k$ & 0 & 1 & 0 & $\frac{1}{2}$ \\
+                           &&IV: & $A_iA_i-A_jA_k$ & $p_i^2p_jp_k$ & 1 & 0 & 0 & 0 \\
+                      &&V: & (3) & $p_i^2p_jp_k/2$ & 0 & 0 & 1 & 1 \\
+                           &&VI: & $A_iA_j-A_iA_k$ & $p_i^2p_jp_k$ & 1 & 0 & 0 & 0 \\
+                           &&VI: & ${A_iA_j-A_jA_k} \atop {A_iA_k-A_jA_k}$ & $p_i^2p_jp_k$ & 0 & 1 & 0 & $\frac{1}{2}$ \\
+VII: & $A_iA_i\times A_kA_l$ & V: & (4) & $p_ip_jp_kp_l/2$ & 0 & 0 & 1 & 1 \\
+                            &&VI: & (4) & $p_ip_jp_kp_l$ & 0 & 1 & 0 & $\frac{1}{2}$ \\
+                           &&VII: & (2) & $p_ip_jp_kp_l$ & 1 & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+
+  With any genotypic information unknown, $f_{ji}$ would be more difficult to obtain, an
+estimation needs to be done from the parent and offspring phenosets. 
+
+   $$f_{ji}=\frac{\sum_{\nu\in P_P} \sum_{w\in P_S} P(\nu {~\verb|and|~} w{~\verb|and|~}\pi_j={i\over 2})}
+ {\sum^2_{h=0} \sum_{\nu\in P_P} \sum_{w\in P_S} P(v{~\verb|and|~}w{~\verb|and|~}\pi_j ={h\over 2})}$$
+where $i=0,1,2$.
+
+  The numerator is the joint probability of observing $I_m$ and that $\pi_j$
+equals $i\over2$; the denominator is the sum of the three such joint
+probability for $i=0,1,2$.  Results for no dominance and no parental
+information is given in their table III (here $\Phi=(1+p_i+p_j+2p_ip_j)$).
+
+\begin{table}\centering
+\caption{$\hat\pi_j$ when there is no dominance and parental genotypes are unknown\label{table3}}
+\begin{tabular}{rlccccc}
+\hline
+\multicolumn{2}{c}{Sib pair type} & Probability & $f_{j0}$ & $f_{j1}$ & $f_{j2}$ & $\hat\pi_j$ \\
+\hline
+I: & $A_iA_i\times A_iA_i$ & $p_i^2(1+p_i)^2/4$ & $\frac{p_i^2}{(1+p_i)^2}$ & $\frac{2p_i}{(1+p_i)^2}$ & $\frac{1}{(1+p_i)^2}$ & $\frac{1}{(1+p_i)}$ \\
+II: & $A_iA_i\times A_jA_j$ & $p_i^2p_j^2/2$ & 1 & 0 & 0 & 0 \\
+III: & $A_iA_i\times A_iA_j$ & $p_i^2p_j(1+p_i)$ & $\frac{p_i}{1+p_i}$ & $\frac{1}{1+p_i}$ & 0 & $\frac{1}{2(1+p_i)}$ \\
+IV: & $A_iA_i\times A_jA_k$ & $p_i^2p_jp_k$ & 1 & 0 & 0 & 0 \\
+V: & $A_iA_j\times A_iA_j$ & $p_ip_j\Phi/2$ & $\frac{2p_ip_j}{\Phi}$ & $\frac{p_i+p_j}{\Phi}$ & $\frac{1}{\Phi}$ & $\frac{2+p_i+p_j}{2\Phi}$ \\
+VI: & $A_iA_j\times A_iA_k$ & $p_ip_jp_k(1+2p_i)$ & $\frac{2p_i}{1+2p_2}$ & $\frac{1}{1+2p_i}$ & 0 & $\frac{1}{2(1+2p_i)}$ \\
+VII: & $A_iA_j\times A_kA_l$ & $2p_ip_jp_kp_l$ & 1 & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Other aspects}
+  The null hypothesis for usual linkage analysis is $H_0: c=0; H_1={1\over2}$.
+  It turns out simple to bear that the test is $H_0:slope=0$ vs $H_1:
+slope<0$  where linkage is expected.
+\begin{eqnarray*}
+E[Y_j|\hat{\pi}_{jm}]&=&\sum_{\pi_{jk}}E(Y_j|\pi_{jt})P(\pi_{jt}|\hat{\pi}_{jm}) \\
+&=&\sum_{\pi_{jt}}\sum_{\pi_{jm}}E(Y_j|\pi_{jt})P(\pi_{jt}|\pi_{jm})P(\pi_{jm}|\hat{\pi}_{jm}) \\
+\end{eqnarray*}
+The first part simply combines all the possibilities
+given marker data while the second part relates to a clever inclusion of marker
+probability.
+
+\begin{table}[h]\centering
+\caption{Joint distribution of $\pi_{jm}$ and $\pi_{jt}$\label{table4}}
+\begin{tabular}{ccccc}
+\hline
+&\multicolumn{3}{c}{$\pi_{jm}$} \\ \cline{2-4}
+$\pi_{jt}$&0 & $\frac{1}{2}$ & 1 & Total \\
+\hline
+0  & $\Psi^2/4$ & $\Psi(1-\Psi)/2$ & $(1-\Psi)^2/4$ & $\frac{1}{4}$\\
+$\frac{1}{2}$ & $\Psi(1-\Psi)/2$ & $(1-2\Psi+2\Psi^2)/2$ & $\Psi(1-\Psi)/2$ & $\frac{1}{2}$ \\
+1  & $(1-\Psi)^2/4$ & $\Psi(1-\Psi)/2$ & $\Psi^2/4$ & $\frac{1}{4}$ \\
+Total &$\frac{1}{2}$& $\frac{1}{2}$& $\frac{1}{4}$& 1\\
+\hline
+\end{tabular}
+\end{table}
+
+  It deserves to note the way recombination fraction c was included
+in the model described in their appendix B. The joint distribution of
+$\pi_{jm}$ and $\hat\pi_{jm}$ can be derived from table II. For the
+special case of a two-allele marker gene this was given in table V.
+
+\begin{table}[h]\centering
+\caption{Joint distribution of $\hat\pi_{jm}$ and $\pi_{jt}$ for a
+two-allele marker locus with no dominance and complete parental
+information \label{table5}}
+\begin{tabular}{ccccc}
+\hline
+&\multicolumn{3}{c}{$\pi_{jm}$} \\ \cline{2-4}
+$\hat\pi_{jm}$&0 & $\frac{1}{2}$ & 1 & Total \\
+\hline
+0  & $\frac{1}{2}p^2q^2$ & 0 & 0 & $\frac{1}{2}p^2q^2$\\
+$\frac{1}{4}$ & $p^3q+pq^3$ & $p^3q+pq^3$ & 0 & $2(p^3q+pq^3)$ \\
+$\frac{1}{2}$ & $\frac{1}{4}(p^4+4p^2q^2+q^4)$ & $\frac{1}{2}(p^4+6p^2q^2+q^4)$ &
+$\frac{1}{4}(p^4+4p^2q^2+q^4)$ & $(p^4+5p^2q^2+q^4)$ \\
+$\frac{3}{4}$ & 0 & $p^3q+pq^3$ & $p^3q+pq^3$ & $2(p^3q+pq^3)$ \\
+1  & 0 & 0 & $\frac{1}{2}p^2q^2$ & $\frac{1}{2}p^2q^2$ \\
+Total &$\frac{1}{2}$& $\frac{1}{2}$& $\frac{1}{4}$& 1\\
+\hline
+\end{tabular}
+\end{table}
+
+  Note the conditional probabilities of $p(\pi_{jt}|\pi_{jm})$ and
+$p(\pi_{jm}|\hat{\pi}_{jm})$: the first elements of $p(\pi_{jt}|\pi_{jm})$ is
+
+  ${\Psi^2/4}\over {1/4}$,$ {{\Psi (1-\Psi)/2}\over{1/2}}$,
+  ${{{{(1-\Psi)}^2}/4}\over{1/4}}$ and the other two elements are obtained
+accordingly, here $\Psi=c^2+{(1-c)}^2$. Formulation of
+$p(\pi_{jm}|\hat{\pi}_{jm})$ is similar.
+
+  For $E[Y_{jt}|\hat{\pi}_{jm}=1]$, it is
+  $$\sigma^2_e\Psi^2+[\sigma^2_e+\sigma^2_g]
+[2\Psi(1-\Psi)]+[\sigma^2_e+2\sigma^2_g][{(1-\Psi)}^2] $$
+
+that equals to ${\sigma_e}^2+2(1-\Psi){\sigma_g}^2$.  The derivation of
+$E(Y_{jt}|\hat{\pi}={1\over2})$ is a bit tedious.
+
+  In summary, the expression for $E[Y_{jt}|\hat{\pi}_{jm}]$ is
+  $$[{\sigma_e}^2+2(1-2c+2c^2){\sigma_g}^2]-2{(1-2c)}^2{\sigma_g}^2\hat{\pi}_{jm}
+$$
+
+  This simply has the form
+  $$E[Y_j|\hat{\pi}_j]=\alpha+\beta \hat{\pi}_j$$
+  where  $\beta=-2{(1-2c)}^2{\sigma_g}^2$.
+
+  The test of the null hypothesis of no linkage turns out to be a
+test of $\beta $
+a significantly non-zero of $\beta$ implies linkage, i.e., $c\ne {1\over2}$
+
+  Further, suppose that there are K trait loci, each linked to the
+trait loci, $c$ be recombination fraction, they shows
+  $$E[\hat{\beta}]=-2\sum_{i=1}^K {(1-2c_i)}^2{\sigma_i}^2$$
+  where ${\sigma_i}^2$ is the component of total genetic variance of the
+$i^{th}$ trait locus.
+
+  The underlying assumption would be K trait loci are mutually
+unlinked and there is no epistasis.
+
+\subsection{Maximum likelihood estimation of linkage}
+The proposed method has a disadvantage that $\sigma_g^2$ is confounded with
+recombination fraction $c$ so that linkage could only be detected but not
+estimated. The paper proceeds to assume sib pair differences are normally
+distributed as a mixture of up to seven normal distributions. By considering
+only the absolution pair differences the number of distributions could be 
+reduced to four $f_1$,$f_2$,$f_3$,$f_4$. They showed that the likelihood 
+function for a sib pair can be expressed as in terms of five parameters $c$, 
+$p$, $\sigma_e^2$, and $d$,
+$$L=f(D|I_m)=\sum\limits_{h=0}^2\sum\limits_{k=0}^2f(D_j|\pi_{jt}=h/2)
+P(\pi_{jt}=h/2|\pi_{jm}=k/2)P(\pi_{jm}=k/2|I_m)$$
+where $f(D_j|\pi_{jt}=h/2)=m_{h1}f_1+m_{h2}f_2+m_{h3}f_3+m_{h4}f_4$.
+Values of $m_{hi}, \quad h=0,1,2;\quad i=1,2,3,4$ can be obtained from 
+table I and were given in table VI.
+
+\begin{table}[h]\centering
+\caption{Values of the coefficient $m_{hi}$}
+\begin{tabular}{cclll}
+\hline
+& 1&2&3&4\\
+\hline
+0 &$p^4+4p^2q^2+q^4$ & $4p^3q$ & $4pq^3$ & $2p^2q^2$\\
+1 &$1-2pq$ & $2p^2q$ & $2pq^2$ & 0 \\
+2 &1 & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\section{Extensions} Like many other commonly used linkage procedures,
+it assumes linkage equilibrium and no clinical and genetic
+heterogeneity.
+
+  In addition to notes above, one conceivable example is that we need to take
+the effect of sibship size into considerations, as proposed by Hodge (1984) and
+implemented in GAS (Genetic Analysis System).
+
+Blackwelder and Elston (1985) and later Knapp et al (1994) described the power 
+of various statistics of
+affected sib pair analysis; Goldgar(1990) handles multipoint human data on
+multifactorial traits but confounds the effect of the linked quantitative trait
+loci with the total additive genetic variance.  H-E method was extended by Amos
+and Elston (1989) to other types of relative pairs.  Amos(1994) discussed the
+estimation of the recombination fraction from relative pair data using
+likelihood and quasi-likelihood methods.
+
+For highly polymorphic marker such as HLA, IBS information is also invaluable, see
+Lange (1986).  For diseases with a late age of onset, many parental couples
+will be unavailable for genic typing.  The method classifies affected sib pairs
+based on IBS information as concordant, discordant and half-maker concordant
+without referring to parental genotypes.  It's possible to compare the expected
+and observed number of affected sib-pairs falling into each categories by
+$\chi^2$ test. The method was also extended to consider multiple sibs.
+
+Sib-pair interval mapping is a multi-point method in which information from
+adjacent markers is used to infer missing or ambiguous allele sharing.
+  $$x_i=\mu+g_i+G_i+\sum^s_{k=1}\beta_k z_{ik}+e_i$$
+$z_{ik}$ is the kth covariate measurement on an individual. $g_i=a,d,-a$
+for BB, Bb and bb, $E(g_i)=E(e_i)=E(G_i)=0$. $G_i$ is a random
+polygenic effect. We have $E(x_i)=\mu+\sum^s_{k=1}\beta_k z_{ik}$ and
+$COV(x_i,x_j)={\sigma_a}^2+{\sigma_d}^2+{\sigma_G}^2+{\sigma_e}^2$ for i=j and
+$\Phi_{ij}{\sigma_a}^2+\Delta_{ij}\sigma^2_d+\Phi_{ij}\sigma^2_G$ for $i\ne j$,
+where $\sigma^2_g$
+and $\sigma^2_e$ are respectively, the polygenic and residual components of
+variance.  and $\sigma^2_a$ and $\sigma^2_d$ as before.
+$\Phi_{ij}$ is the coefficient of relationship between relatives, $\Delta_{ij}$
+is the probability a pair shares both alleles at the major locus IBD.
+With marker data available $E(x_i|\pi_{tij})$ and $COV(x_i,x_j|\pi_{tij})$ have
+similar expressions. With linked markers,
+$E(x_i-x_j|\pi_{ij})=2Var(x^2_i)-2cov(x_i x_j|\pi_{ij})$ , now
+$cov(x_i,x_j|\pi_{ij})$
+includes marker information. When joint distribution of  is multinormal,
+then we have likelihood function to which optimization or other
+estimation methods can be applied, see Amos (1994).
+
+Affected sib-pair analysis (ASP) is more widely used in the linkage design and
+analysis.  It avoids incomplete penetrance and supposes that if a given marker
+is cosegregating with a disease- predisposing allele, then affected siblings of
+affected persons are more likely to receive the same allele identical by
+descent at a closely linked marker locus than if the marker locus was
+segregating independently.
+
+The Extended Sib pair analysis (ESPA) calculates a chi-square test statistic
+$\chi^2=2{[S-E(S)]}^2/E(S), E(S)=[S+NS]/2$, $S$ and $NS$ are number of observed
+allele shared/not shared IBD, of the null hypothesis of no linkage.  It employs
+LINKAGE/MLINK program to estimate the possible marker genotypes for untyped
+individuals.  Thus IBD is a probability count that may lead to bias.
+
+In extended pedigree to examine IBS relationships, the so-called affected
+pedigree member (APM) method.  The statistic is
+
+$Z_{ij}={1\over4}\sum^2_{a=1}\sum^a_{b=1}\delta(A_a,B_b)f(A_a)$, where $f(A_a)$
+is a weight function taking forms of $1,1/\sqrt{p_{A_a}}, 1/\sqrt{p_{A_a}}$,
+the latter two give more weight to rare-allele sharing.
+
+Other scheme may include study design, see for instance, Boehnke (1990) and
+Risch and Zhang (1995).  Actually these papers considered the quantitative
+traits in their extremity values.  To avoid the influence of allele
+frequencies, affected sib-pair with parental information is attractive.
+
+\section{Implementations}
+Some aspects that have been considered:
+\begin{itemize}
+\item Information contained in multiple sibs
+\item Complex sibship and pedigree structure
+\item Estimation of possible genotype
+\item Multiloci or haplotype, its implementation
+\item Covariates
+\end{itemize}
+Here are a few softwares that are useful.
+\begin{itemize}
+\item{SAGE/SIBPAL} could handle both qualitative and binary trait with
+or without variable age of onset. It can also take covariates.
+\item{ESPA} is used for 'extended' sib-pair analysis.
+\item{GAS/SIBHE} GAS 2.0 has graphic utility for PostScript file.  Among
+others, GAS/SIBIHE combines interval mapping with the H-E algorithm. It also
+uses Jeff O'Connell's Vitesse program.  It is able to handle up to 8 highly
+polymorphic loci simultaneously.  It also has modules for IBD and Lange's IBS
+analysis referred above.
+\item{APM} may ignore information on relative haplotype and also
+depends heavily on allele frequencies.
+\end{itemize}
+
+{\bf User control.}  GAS, MAPMAKER/SIBS provide user-friendly commands.
+However most programs use LINKAGE/MAKEPED .PED format or .PRE.
+
+\section{Applications} The method has wide application, such as serum IgE
+level with interleukin-4 encoding gene, the angiotensinogen(IBS-APM) and
+essential hypertension, Alzheimer's Disease(late-onset with chromosome 19).
+Actually the basic theory has become one of the strategies for genetic
+dissection of complex trait.  Affected sib-pair have played an important role
+in the study of type I diabetes and HLA.
+
+\subsection*{Acknowledgements}
+
+In writing this, some of the descriptions are excerpts from the original papers
+due to time limitations; some changes are made to consist with H-E's original
+paper.
+
+\section*{References}
+
+\begin{enumerate}
+
+\item Haseman, J.K.  and Elston, R.C.  (1970).  The estimation of genetic
+variance from twin data.  BG 1:  11-20.
+
+\item Blackwelder W.C.  and Elston, R.C.  (1985).  A comparison of sib-pair
+linkage tests for disease susceptibility loci, GE 2:85- 97.
+
+\item Amos, C.I., Elston, R.C.  Wilson, A.F.  and Bailey-Wilson, J.E.  (1989).
+A more powerful robust sib-pair test of linkage for quantitative traits.  GE
+6:435-49.
+
+\item Amos I.C.  (1994).  Robust variance-components approach for assessing
+genetic linkage in pedigrees, AJHG 54:  515-41.
+
+\item Goldgar, D.E.  (1990).  Multipoint analysis of human quantitative genetic
+variation.  AJHG 47:957-67.
+
+\item Li, C.C. (1955). Population Genetics, University of Chicago Press,
+Chicago.
+
+\item Olsen, J.M.  (1995).  Robust multipoint linkage analysis:  an extension
+of Haseman-Elston method, GE 12:177-93.
+
+\item Tran, L.D., Elston, R.C., Keats, B.J.B.  and Wilson, A.F.  (1994).
+Sib-pair linkage program (SIBPAL) User's Guide.
+
+\item Terwilliger, J.D.  and Ott, J.  (1994).  Handbook of Human Genetic
+Linkage, The Johns Hopkins University Press, Baltimore and London.
+
+\item Young, A. (1995). GAS Manual, Oxford University.
+
+\item Hodge, S.E.  (1984).  The information contained in multiple sibling
+pairs, GE 1:109-22.
+
+\item Risch, N.  and Zhang, H.(1995), Extreme discordant sib pairs for mapping
+quantitative trait loci in humans, Science, vol 268:1584-9.
+
+\item Lange, K.  (1986a).  The affected sib pair method using identity by state
+relations.  AJHG 50:  148-150.
+
+\item Lange, K.  (1986b).  A test statistic for the affected-sib- set method,
+AHG 50:283-90.
+
+\item Suarez, B.K., Rice, J.  and Reich, T.(1978).  The generalized sib pair IBD
+distribution:  its use in the detection of linkage, AHG 42:87-94.
+
+\item Boehnke, M.  (1990).  Sample-size guidelines for linkage analysis of a
+dominant locus for a quantitative trait by the method of lod scores, AJHG
+47:218-27.
+
+\end{enumerate}
+\end{document}

@@ -1,0 +1,1010 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<meta name="GENERATOR" content="PageBreeze Free HTML Editor (http://www.pagebreeze.com)">
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" >
+<title>useR!2008 tutorial -- Analysis of Complex Traits -- Jing Hua Zhao</title>
+</head>
+<body bgcolor="#ffffff">
+<h1 align="center">     useR!2008    Tutorial -- Analysis of Complex Traits: Overview</h1>
+<h2 align="left">Computer exercise</h2>
+<p><font color="#ff0000"><font 
+color=#000000>The purpose of this exercise is to get a feel 
+of the kind of work we touched on during the lecture. It is not 
+comprehensive but hopefully seeds your interest for further work. We follow our old 
+hypertext style which is narrative.</font>  </font></p>
+<p><strong><font size="5">I. Downloading 
+programs</font></strong></p>
+<p>  We point to you some popular programs. Their 
+URLs are listed as follows, where there should be versions 
+for various platforms.</p>
+<p>HaploView<br><a 
+href="http://www.broad.mit.edu/mpg/haploview/">http://www.broad.mit.edu/mpg/haploview/</a><br></p>
+<p>IMPUTE/SNPTEST<br><a 
+href="http://www.stats.ox.ac.uk/~marchini/software/gwas/gwas.html">http://www.stats.ox.ac.uk/~marchini/software/gwas/gwas.html</a></p>
+<p>Note that there are companion files (strand, legend and 
+haplotype) available.</p>
+<p>PLINK<br><a 
+href="http://pngu.mgh.harvard.edu/~purcell/plink/download.shtml">http://pngu.mgh.harvard.edu/~purcell/plink/download.shtml</a></p>
+<p>Other programs you may wish to experiment, but we perhaps 
+do not have the time today, are</p>
+<p>GeneHunter (Old version)<br><a 
+href="http://www.broad.mit.edu/ftp/distribution/software/genehunter/">http://www.broad.mit.edu/ftp/distribution/software/genehunter/</a></p>
+<p>Merlin<br><a 
+href="http://www.sph.umich.edu/csg/abecasis/Merlin/download/">http://www.sph.umich.edu/csg/abecasis/Merlin/download/</a></p>
+<p>SAGE<br><a 
+href="http://darwin.cwru.edu/sage/">http://darwin.cwru.edu/sage/</a><a 
+href="http://www.sph.umich.edu/csg/abecasis/Merlin/download/"></a></p>
+<p>SOLAR<br><a 
+href="http://www.sfbr.org/solar/">http://www.sfbr.org/solar/</a></p>
+<p>A comprehensive list is available from the <a 
+href="http://linkage.rockefeller.edu/">Rockefeller linkage server</a>, maintained by Wentian Li. The simplicity is great if you have Linux system and 
+connect to the Internet, but perhaps we do need to start from the basic. It 
+is possible with Windows and do exercises in both specialized programs and R 
+because the former have been used day-to-day in many insitutions. Then you will 
+need MS-DOS prompt. If you use Windows XP, select Start --&gt; Run, cmd and 
+return; or if you use Windows Vista, you&nbsp;will need a short-cut to <font 
+color=#ff0000>c:\windows\system32\cmd.exe. </font><font color="#000000">From 
+there, you can use <em>mkdir</em>, <em>chdir</em>, and <em>rmdir</em> 
+(abbreviated as <em>md</em>, <em>cd</em>, but <em>rmdir</em> ) to create, 
+change, and remove directory. You may find it more comfortable to alter the 
+properties of the Windows by right-clicking the top border and selecting 
+<em>Properties</em>. Change the Windows layout to 125/40, say and font to 10x18. 
+</font> 
+    It is convenient to use <a 
+href="http://users.ugent.be/~bpuype/wget/">wget</a> to a 
+specific URL than the webbrowser. We will 
+also use <a href="http://cm.bell-labs.com/cm/cs/who/bwk/awk95.exe">awk</a> from AT&amp;T. More generally, we can use <a 
+href="http://www.murdoch-sutherland.com/Rtools/">Rtools</a>  
+   you can use <a 
+href="http://cygwin.com">cygwin</a>, but the 
+overhead is that more 
+files are needed to be installed.</p>
+<p>At the meantime, we suppose you have R system on your 
+computer.</p>
+<p><strong><font size="5">2. 
+Data-preprocssing</font></strong></p>
+<p>You 
+may be quite good at R system and don't need this, but probably you wouldn't 
+stick to RGUI. With whole genome association, we are dealing with files with 
+very large sizes, it is often useful to split our analysis by chromosome and 
+further by sections. We first provide examples of data conversions between 
+different formats. <span 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-fareast-font-family: SimSun; mso-ansi-language: EN-GB; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA">An 
+<i style="mso-bidi-font-style: normal">awk </i>script can be called with <i 
+style="mso-bidi-font-style: normal">–f </i>option or embedded in a command line. 
+Within <i style="mso-bidi-font-style: normal">awk</i>, $0 represents the current line, while <em>$i</em>     
+   corresponds to field <i 
+style="mso-bidi-font-style: normal">i.</i> There are a number of built-in variables, such as 
+<em>NR</em> (the current record number), <em>NF</em> (number of fields in a 
+record), <em>FS</em> (field separator), <em>OFS</em>       
+              
+     (output field separator), and function such 
+as <i style="mso-bidi-font-style: normal">getline</i>.</span></p>
+<p>Suppose we have <em><u>wide.txt</u></em></p>
+<p><o:p><em><u>wide.txt</u></em></o:p></p>
+<p><o:p><font face="Courier">id A B C<br>x 1 2 3<br>y 4 5 
+6<br>z 7 8 9</font></o:p></p>
+<p>and our <em>awk</em> script <em><u>wide2long.awk </u></em> for
+  doing so contains lines as 
+follows,</p>
+<p><span 
+style="FONT-SIZE: 11pt"><font size="3"><font face="Courier">{<br>if (NR== 
+1)&nbsp;for(i=2;i&lt;=NF;i++) name[i]=$i<br>  
+elseif(NR&gt;1&amp;&amp;NF&gt;1)&nbsp;for(j=2;j&lt;=NF;j++) print $1, name[j], $j<br>}</font></font></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"><o:p></o:p></span>The we can use command,</p>
+<p><font face="Courier">awk -f wide2long.awk 
+wide.txt</font>   </p>
+<p>You can add redirection (&gt;) and file name such as 
+<em><u>long.txt</u></em> to keep the result.</p>
+<p>To transpose data, we can use 
+<em><u>xpose.awk</u></em></p>
+<p><font face="Courier">  BEGIN{FS=OFS=" 
+"}<br>{<br> for(i=1;i&lt;=NF;i++)<br>{<br>&nbsp;a[NR,i]=$i<br>&nbsp;if(big &lt;= 
+NF)&nbsp; big=NF<br>&nbsp;}<br>}<br>END{</font><font face="Courier">for(i=1;i&lt;=big;i++)&nbsp;{for(j=1;j&lt;=NR;j++) printf("%s%s",a[j,i], (j==NR ? "" :
+OFS))<br>
+&nbsp;&nbsp;&nbsp;  printf "\n"<br>
+&nbsp;&nbsp; }<br>
+}</font></p>
+<p>For a very large file, it is more efficient to partition 
+the data; we have a <em><u>cut.awk,</u></em></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"><font size="3"><font face="Courier">function 
+ceil(x)<br>{<br>&nbsp;&nbsp; eps=0.0000000001<br>&nbsp;&nbsp; 
+return(int(x+eps)+1)<br>}<br>{<br>if (NR==1) {<br>&nbsp;&nbsp; getline 
+t&lt;input<br>&nbsp;&nbsp; quota=t/groups<br>&nbsp;&nbsp; 
+close(input)<br>}<br>for (i=0;i&lt;groups;i++)<br>&nbsp;&nbsp;&nbsp; if 
+(ceil(i*quota)&lt;=NR &amp;&amp; NR&lt;ceil((i+1)*quota)) print &gt;&gt; 
+sprintf("s%d.out",i+1)<br>}</font></font></span><o:p></o:p></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">so for generating eight 
+partitions of <i style="mso-bidi-font-style: normal">chr1.dat</i>, one can use 
+two <i style="mso-bidi-font-style: normal">awk</i> sessions,</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><o:p></o:p></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style="FONT-SIZE: 11pt"><font face="Courier"><font size="3">awk 
+"END{print NR}" wide.txt &gt; wide.no<o:p></o:p></font></font></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style="FONT-SIZE: 11pt">wk -f cut.awk input=
+     wide.no groups= 
+  2 wide.txt </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"></span>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"><font face="Times New Roman">Examine <u><em>s1.out</em></u> and 
+<u><em>s2.out</em></u>. Note for this simple case of cutting into 
+two parts, one can use <em><u>cut</u></em> command, i.e.,</font>  </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"></span>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"><font face="Courier" size="3">cut -d'</font></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"><font face="Courier" size="3">' -f1-2 wide.txt &gt; 
+s1.out</font></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"><font face="Courier" size="3">cut -d'</font></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"><font face="Courier" size="3">' -f3-4 wide.txt &gt; 
+s2.out</font></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"></span>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style="FONT-SIZE: 11pt"><font face="Times New Roman">Or simply head and <em>tail 
+</em>commands<em>. </em>We can also select certain chunk of information, 
+e.g.,</font> 
+       </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"></span>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"><font face="Courier">awk "/x/, /y/" 
+wide.txt</font></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"><font face="Courier"></font></span>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span 
+style="FONT-SIZE: 11pt"><font face="Times New Roman" size="3">Note under Windows, only double quotes ("") as above are 
+acceptable, but it would be a good idea to keep your script in&nbsp;a file to be 
+called with the&nbsp;<em>-f</em> option.&nbsp;<span 
+style="FONT-SIZE: 11pt"><font face="Times New Roman" size="3">We can use 
+<em>awk</em> for other purposes, e.g., replace 
+ strings, as you will see below.</font></span>      </font></span></p>
+<h2><font face="Times New Roman">3. Examples of running 
+specialized programs</font>
+</h2>
+<p><font face="Times New Roman"><font size="4"><strong>3.1 Use of 
+HapMap</strong></font> </font>  </p>
+<p><font face="Times New Roman"><font size="3">Earlier we found single nucleotide polymorphisms 
+(SNPs) near the melanocortin 4 recepor (MC4R) gene region showing the second 
+strongest ssignal of association with fat mass, weight and 
+risk of obesity after FTO. This finding was made through a 
+two-stage design involving screening and replication from our EPIC-Norfolk cohort, then populated in 
+the GIANT consortium. We will use data from our two-stage design as 
+example.</font> </font>  </p>
+<p><font face="Times New Roman">First, we can gather some 
+information about the gene itself.&nbsp;Go to </font>         
+  <a href="http://www.hapmap.org"><font 
+face="Times New Roman">http://www.hapmap.org</font></a><font 
+face="Times New Roman"> , and select HapMap Genome Browser (B35), and type MC4R 
+in the box labelled "Landmark or Region" and Search. You will see the the a plot 
+including ideogram of chromosome 18, genes. Now five SNPs in our data are in the 
+region between rs17782313 and rs9956279,&nbsp;at positions 56002077 and 
+56093779, respectively. </font> 
+             
+              
+               
+         
+</p>
+<p><font face="Times New Roman">As uual, we allow for some flanking markers to be 
+included as well, say 50kb on either side, which will be [56052077, 56143779], 
+or a total of 91.7kb. Now enter Chr18:56052077..56143779 in the text box below 
+<em>Landmark or Region</em> and select from&nbsp;<em>Region &amp; Analysis 
+</em>option<em> Annotated LD Plot, </em>click <em>Configure</em> button which 
+brings to a new page. Change <em>LD Properties</em> from <em>lod</em> to 
+<em>rsquare, greater 0.8 </em>and <em>less than 1.0</em>. Leave the default 
+population <em>CEU on. </em>Click <em>Configure</em>. </font>  </p>
+<p><font face="Times New Roman">Now do another experiment by changing <em>Region &amp; 
+Analysis</em> to <em>Annotate tag SNP Picker</em>. On the new screen, select 
+<em>Tagger Multimarker </em>from <em>Pairwise Methods</em>. We can see dots 
+representing tag-SNPs. Alternatively, if we select <em>Download tag SNP 
+Data</em>, we see tag-SNPs, position, minor allele frequency (maf), and lists of 
+SNPs tagged by each tag-SNP. </font>            
+</p>
+<p><font face="Times New Roman">More options are available, but we stop here. We can use 
+<em><u>HaploView</u></em> program to examine the region and perform 
+elementary analysis such as Hardy-Weinberg equilibrium testing. As our SNPs here 
+are near MC4R, we use an earlier example involving LRRK2 gene and Parkinson's 
+disease. First go to HapMap website, select <em>HapMap Genome Browser 
+(B36)</em>, and search LRRK2 under <em>Landmark or Region</em>, it indicates 
+that "Showing 144.3 kbp from chr12, positions 38,905,081 to 39,049,351". We can 
+start <em><u>HaploView</u></em>, select <em>HapMap Download</em>, chromosome 12, 
+position 38095kb to 39049kb, we can download the data directly. Now we choose 
+<em>Tagger</em>, <em>Load Includes</em>, we can specify a file containing a 
+column of six SNPs (rs10506151, rs10784486, rs1365763, rs1388598, rs1491938, 
+rs1491941) and examine how they tag the gene. The work is in press with 
+<em>Parkinsonism and Related Disorders</em>       
+       . 
+</font>         
+</p>
+<p><font face="Times New Roman">In the following, we provide 
+an example to download information from HapMap in R.</font>         
+</p>
+<p><font face="Times New Roman"><strong><font size="4">3.2 Running PLINK for association 
+testing</font></strong> </font>  </p>
+<p><font face="Times New Roman">We start with <em><u>mc4r.out</u></em>, produced by SAS, 
+Stata and R, containing the following lines. </font>     
+</p>
+<p><font size="2" face="Courier">ohitsid age&nbsp;&nbsp;&nbsp;&nbsp; 
+zl10bmi rs17782313&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+rs12955983&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+rs17700633&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+rs718475&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rs9956279<br>
+ohits00013&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+48&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+.2596087&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+GG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CC<br>
+ohits00030&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 49&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+-.4964894&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+AG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CT<br>
+ohits00037&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+40&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -.4561735&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+CT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+AG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CT<br>
+ohits00052&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 41&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+.4051976&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+AG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CT<br>
+ohits00059&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 49&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1.770966&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+AG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CT<br>
+ohits00061&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 43&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+-.7701678&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CT<br>
+ohits00072&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+48&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -.8658086&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+CT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+AG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CT<br>
+ohits00077&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 48&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+-.1395421&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CC<br>
+ohits00093&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+48&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .411891 CC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+GG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+CC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TT<br>
+ohits00098&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+46&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+.8866708&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+AG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CT</font><font face="Courier"><br>
+...</font></p>
+<p><font face="Times New Roman">The columns are individual 
+ID, age, log10-transformed BMI z-score, and five SNPs. </font>        
+</p>
+<p><font face="Times New Roman">There are several ways to run PLINK, but show only show 
+one of them. We have the <em>.map</em> file as follows,</font>     </p>
+<p><font face="Courier">18 rs17782313 0 56002077<br>18 
+rs12955983 0 56023969<br>18 rs17700633 0 56080412<br>18 rs718475&nbsp;&nbsp; 0 
+56088439<br>18 rs9956279&nbsp; 0 56093779</font>  </p>
+<pre><font face="Times New Roman">We also prepare for .ped file with the following command,</font></pre>
+<p><font face="Courier">awk -f mc4r_plink.awk mc4r.out &gt; 
+mc4r_plink.ped</font>       </p>
+<p><font face="Times New Roman">where <u><em>mc4r_plink.awk</em></u> contains 
+the following lines,</font>   
+</p>
+<p><font face="Courier">BEGIN{FS="\t"}<br>{<br>if(NR&gt;1)<br>{<br>&nbsp;printf("%s 1 0 0 1 %9.6f",$1,$3)<br>&nbsp;for(i=4;i&lt;=NF;++i)<br>&nbsp; 
+{<br>&nbsp;&nbsp;&nbsp;&nbsp; $i=" " substr($i,1,1) " " 
+substr($i,2,1);<br>&nbsp;&nbsp;&nbsp;&nbsp; printf $i;<br>&nbsp; }<br>&nbsp; 
+printf "\n";<br>}<br>}</font>  </p>
+<p><font face="Times New Roman">This produces the <em>.ped</em> file with the following layout,</font>     
+</p>
+<p><font face="Courier">ohits00013 1 0 0 
+1&nbsp; 0.259609&nbsp; T T&nbsp; A A&nbsp; G G&nbsp; T T&nbsp; C C<br>ohits00030 
+1 0 0 1 -0.496489&nbsp; C T&nbsp; A G&nbsp; A G&nbsp; T C&nbsp; C 
+T<br>ohits00037 1 0 0 1 -0.456174&nbsp; C T&nbsp; A G&nbsp; A G&nbsp; T C&nbsp; 
+C T<br>ohits00052 1 0 0 1&nbsp; 0.405198&nbsp; T T&nbsp; A A&nbsp; A G&nbsp; T 
+C&nbsp; C T<br>ohits00059 1 0 0 1&nbsp; 1.770966&nbsp; T T&nbsp; A A&nbsp; A 
+G&nbsp; T C&nbsp; C T<br>ohits00061 1 0 0 1 -0.770168&nbsp; T T&nbsp; A A&nbsp; 
+A G&nbsp; T C&nbsp; C T<br>ohits00072 1 0 0 1 -0.865809&nbsp; C T&nbsp; A 
+G&nbsp; A G&nbsp; T C&nbsp; C T<br>ohits00077 1 0 0 1 -0.139542&nbsp; T T&nbsp; 
+A A&nbsp; G G&nbsp; T T&nbsp; C C<br>ohits00093 1 0 0 1&nbsp; 0.411891&nbsp; C 
+C&nbsp; G G&nbsp; A A&nbsp; C C&nbsp; T T<br>ohits00098 1 0 0 1&nbsp; 
+0.886671&nbsp; T T&nbsp; A G&nbsp; A G&nbsp; T C&nbsp; C T<br>...</font>     
+</p>
+<p><font face="Times New Roman">We can perform several types of analysis by adding 
+<em>--freq</em>, <em>--hardy</em>, 
+<em>--assoc, --qt-means</em>&nbsp;options to the following command,</font>    
+</p>
+<p><font face="Courier">plink --file mc4r_plink 
+--missing-genotype N</font>  </p>
+<p><font face="Times New Roman">They need to be run individually, leading to 
+<em>plink.frq</em>,</font>         
+</p>
+<p><font 
+face=Courier>CHR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+SNP&nbsp;&nbsp; A1&nbsp;&nbsp; 
+A2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MAF&nbsp; 
+NCHROBS<br>  &nbsp;18&nbsp;rs17782313&nbsp;&nbsp;&nbsp; 
+C&nbsp;&nbsp;&nbsp; T&nbsp;&nbsp;&nbsp;&nbsp; 0.231892&nbsp;&nbsp;&nbsp; 
+33714<br>  &nbsp;18&nbsp;rs12955983&nbsp;&nbsp;&nbsp; G&nbsp;&nbsp;&nbsp; 
+A&nbsp;&nbsp;&nbsp;&nbsp; 0.267248&nbsp;&nbsp;&nbsp; 33714<br> 
+ &nbsp;18&nbsp;rs17700633&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp; 
+G&nbsp;&nbsp;&nbsp;&nbsp; 0.301774&nbsp;&nbsp;&nbsp; 33714<br> 
+&nbsp;18&nbsp;&nbsp; rs718475&nbsp;&nbsp;&nbsp; C&nbsp;&nbsp;&nbsp; 
+T&nbsp;&nbsp;&nbsp;&nbsp; 0.316753&nbsp;&nbsp;&nbsp; 33714<br> 
+&nbsp;18&nbsp; rs9956279&nbsp;&nbsp;&nbsp; T&nbsp;&nbsp;&nbsp; 
+C&nbsp;&nbsp;&nbsp;&nbsp; 0.309604&nbsp;&nbsp;&nbsp; 33714</font>         
+</p>
+<p><font face="Times New Roman">for basic information, <em>plink.hwe</em></font>         
+</p>
+<p> <font face="Times New Roman" ><font 
+face=Courier>CHR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+SNP&nbsp;&nbsp;&nbsp;&nbsp; 
+TEST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+GENO&nbsp;&nbsp; O(HET)&nbsp;&nbsp; E(HET)&nbsp;&nbsp; P_HWD<br> 
+&nbsp;18&nbsp;rs17782313&nbsp; ALL(QT)&nbsp; 920/5978/9959&nbsp;&nbsp; 
+0.3546&nbsp;&nbsp; 0.3562&nbsp;&nbsp;&nbsp;0.5594<br> 
+&nbsp;18&nbsp;rs12955983&nbsp; ALL(QT)&nbsp;1238/6534/9085&nbsp;&nbsp; 
+0.3876&nbsp;&nbsp; 0.3917&nbsp;&nbsp;&nbsp;0.1811<br> 
+&nbsp;18&nbsp;rs17700633&nbsp; ALL(QT)&nbsp;1528/7118/8211&nbsp;&nbsp; 
+0.4223&nbsp;&nbsp; 0.4214&nbsp;&nbsp;&nbsp;0.8122<br> &nbsp;18&nbsp;&nbsp; 
+rs718475&nbsp; ALL(QT)&nbsp;1688/7303/7866&nbsp;&nbsp; 0.4332&nbsp;&nbsp; 
+0.4328&nbsp;&nbsp;&nbsp; 0.915<br> &nbsp;18&nbsp; rs9956279&nbsp; 
+ALL(QT)&nbsp;1611/7216/8030&nbsp;&nbsp; 0.4281&nbsp;&nbsp; 
+0.4275&nbsp;&nbsp;&nbsp;0.8712</font>
+</font></p>
+<p><font face="Times New Roman">for Hardy-Weinberg equilihrium 
+tests,&nbsp;<em>plink.qassoc</em></font>         
+</p>
+<p><font size="3" 
+face=Courier> 
+CHR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SNP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+BP&nbsp;NMISS&nbsp;&nbsp;&nbsp; 
+BETA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+SE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+R2&nbsp;&nbsp;&nbsp;&nbsp; 
+T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; P<br> 
+   
+   
+&nbsp;18&nbsp;rs17782313&nbsp;56002077&nbsp;16857&nbsp;0.04515&nbsp;0.01291&nbsp; 0.0007253&nbsp;3.498 0.0004706<br> 
+   
+   
+&nbsp;18&nbsp;rs12955983&nbsp;56023969&nbsp;16857&nbsp;0.03492&nbsp;0.01228&nbsp; 0.0004797&nbsp;2.844&nbsp; 0.004458<br> 
+   
+   
+&nbsp;18&nbsp;rs17700633&nbsp;56080412&nbsp;16857&nbsp;0.02039&nbsp;0.01191&nbsp; 0.0001738&nbsp;1.712&nbsp;&nbsp; 
+0.08694<br>   
+   
+&nbsp;18&nbsp;&nbsp; rs718475&nbsp;56088439&nbsp;16857&nbsp;0.01735&nbsp;0.01175&nbsp; 
+0.0001294&nbsp;1.477&nbsp;&nbsp;&nbsp; 0.1397<br>  
+   
+ &nbsp;18&nbsp; rs9956279&nbsp;56093779&nbsp;16857&nbsp;0.01911&nbsp;0.01182&nbsp; 
+0.0001549&nbsp;1.616&nbsp;&nbsp;&nbsp; 0.1061</font>         
+</p>
+<p><font face="Times New Roman">for 
+SNP-trait association, <em>plink.qassoc.means</em></font>         
+</p>
+<p> <font face="Courier"   >CHR&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+SNP&nbsp; VALUE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; G11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+G12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; G22<br>  
+&nbsp;18&nbsp;rs17782313&nbsp;&nbsp; GENO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+C/C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C/T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+T/T<br>  &nbsp;18&nbsp;rs17782313 COUNTS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+920&nbsp;&nbsp;&nbsp;&nbsp; 5978&nbsp;&nbsp;&nbsp;&nbsp; 9959<br> 
+ &nbsp;18&nbsp;rs17782313&nbsp;&nbsp; FREQ&nbsp; 0.05458&nbsp;&nbsp; 
+0.3546&nbsp;&nbsp; 0.5908<br>  &nbsp;18&nbsp;rs17782313&nbsp;&nbsp; 
+MEAN&nbsp; 0.06457&nbsp; 0.02369 -0.02277<br>  
+&nbsp;18&nbsp;rs17782313&nbsp;&nbsp;&nbsp;&nbsp; SD&nbsp;&nbsp;&nbsp; 1.044&nbsp;&nbsp;&nbsp; 
+1.012&nbsp;&nbsp;&nbsp; 0.993<br>  &nbsp;18&nbsp;rs12955983&nbsp;&nbsp; 
+GENO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; G/G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+G/A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A/A<br>  &nbsp;18&nbsp;rs12955983 
+COUNTS&nbsp;&nbsp;&nbsp;&nbsp; 1238&nbsp;&nbsp;&nbsp;&nbsp; 
+6534&nbsp;&nbsp;&nbsp;&nbsp; 9085<br>  
+&nbsp;18&nbsp;rs12955983&nbsp;&nbsp; FREQ&nbsp; 0.07344&nbsp;&nbsp; 0.3876&nbsp;&nbsp; 
+0.5389<br>  &nbsp;18&nbsp;rs12955983&nbsp;&nbsp; MEAN&nbsp; 0.06179&nbsp; 
+0.01012 -0.01854<br>  &nbsp;18&nbsp;rs12955983&nbsp;&nbsp;&nbsp;&nbsp; 
+SD&nbsp;&nbsp;&nbsp; 1.017&nbsp;&nbsp;&nbsp; 1.014&nbsp;&nbsp; 0.9926<br> 
+ &nbsp;18&nbsp;rs17700633&nbsp;&nbsp; GENO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+A/A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A/G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+G/G<br>  &nbsp;18&nbsp;rs17700633 COUNTS&nbsp;&nbsp;&nbsp;&nbsp; 
+1528&nbsp;&nbsp;&nbsp;&nbsp; 7118&nbsp;&nbsp;&nbsp;&nbsp; 8211<br> 
+ &nbsp;18&nbsp;rs17700633&nbsp;&nbsp; FREQ&nbsp; 0.09064&nbsp;&nbsp; 
+0.4223&nbsp;&nbsp; 0.4871<br>  &nbsp;18&nbsp;rs17700633&nbsp;&nbsp; 
+MEAN&nbsp; 0.01388&nbsp; 0.01217 -0.01627<br>  
+&nbsp;18&nbsp;rs17700633&nbsp;&nbsp;&nbsp;&nbsp; SD&nbsp;&nbsp;&nbsp; 1.011&nbsp;&nbsp;&nbsp; 
+1.009&nbsp;&nbsp; 0.9961<br> &nbsp;18&nbsp;&nbsp; 
+rs718475&nbsp;&nbsp; GENO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+C/C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C/T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+T/T<br> &nbsp;18&nbsp;&nbsp; rs718475 COUNTS&nbsp;&nbsp;&nbsp;&nbsp; 
+1688&nbsp;&nbsp;&nbsp;&nbsp; 7303&nbsp;&nbsp;&nbsp;&nbsp; 7866<br> 
+&nbsp;18&nbsp;&nbsp; rs718475&nbsp;&nbsp; FREQ&nbsp;&nbsp; 
+0.1001&nbsp;&nbsp; 0.4332&nbsp;&nbsp; 0.4666<br> 
+&nbsp;18&nbsp;&nbsp; rs718475&nbsp;&nbsp; MEAN&nbsp;&nbsp; 0.0176 
+0.006947&nbsp; -0.0135<br> &nbsp;18&nbsp;&nbsp; 
+rs718475&nbsp;&nbsp;&nbsp;&nbsp; SD&nbsp;&nbsp;&nbsp; 
+1.005&nbsp;&nbsp;&nbsp;&nbsp; 1.01&nbsp;&nbsp; 0.9956<br> 
+&nbsp;18&nbsp; rs9956279&nbsp;&nbsp; GENO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+T/T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T/C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+C/C<br> &nbsp;18&nbsp; rs9956279 COUNTS&nbsp;&nbsp;&nbsp;&nbsp; 
+1611&nbsp;&nbsp;&nbsp;&nbsp; 7216&nbsp;&nbsp;&nbsp;&nbsp; 8030<br> 
+&nbsp;18&nbsp; rs9956279&nbsp;&nbsp; FREQ&nbsp; 0.09557&nbsp;&nbsp; 
+0.4281&nbsp;&nbsp; 0.4764<br> &nbsp;18&nbsp; rs9956279&nbsp;&nbsp; 
+MEAN&nbsp;&nbsp; 0.0161 0.009654 -0.01511<br>&nbsp;18&nbsp; 
+rs9956279&nbsp;&nbsp;&nbsp;&nbsp; SD&nbsp;&nbsp;&nbsp; 1.018&nbsp;&nbsp;&nbsp; 
+1.007&nbsp;&nbsp;&nbsp; 0.996
+      </font> </p>
+<p><font face="Times New Roman">for summary statistics. 
+</font>         
+</p>
+<p><font face="Times New Roman">It would be interesting to 
+run haplotype analysis, for the data were generated for this particular purpose. 
+However, we omit this here. </font>              
+</p>
+<p><font face="Times New Roman"><font size="4"><strong>3.3 Running 
+IMPUTE</strong></font> </font>  </p>
+<p><font face="Times New Roman">They 
+are strong competitor to other programs such as PLINK. They 
+are customarily used in genomewide association analysis within many consortia such as 
+WTCCC, GIANT, DIAGRAM, MAGIC. It would be straightforward to download the 
+relevant information from HapMap, although it is possible to do it 
+by ourselves from HapMap. We can use IMPUTE's -int option to specify 56052077 56143779 as 
+our interval to impute. But the phased haplotype file for chromosome 18 alone 
+is about 18MB and it will be slower to run,&nbsp;so we prefer 
+to use of shortened strand, haplotype and legend files.&nbsp;We first start with 
+Build 35. </font> </p>
+<p><font face="Times New Roman">Skip the following steps if 
+you feel them clumsy and use what is provided directly. </font>           
+</p>
+<p><font face="Times New Roman">The closest SNPs are 
+rs8092109, rs8092350 at positions 56052021 and 56146917, we can use command we 
+just learned above:</font>        
+</p>
+<p><font face="Courier">awk "/rs8092109/,/rs8092350/" 
+genotypes_chr18_CEU_r21_nr_fwd_legend_all_no_mono &gt; mc4r_legend.txt</font>      </p>
+<p><font face="Times New Roman">and add header <em>rs position X0 X1</em>. </font>  </p>
+<p><font face="Times New Roman">Now we need the phased haplotypes as well, noting that 
+the two SNPs above are the 53586th and 53664th out of all 77588 SNPs on 
+chromosome 18, which is compatible with the number of lines in 
+<u><em>genotypes_chr18_CEU_r21_nr_fwd_phased_all_by_snp_no_mono</em></u>. 
+We extract the relevant lines as well. Our command is now </font>  </p>
+<p><font face="Courier">awk 
+"(NR&gt;=53587&amp;&amp;NR&lt;=53665){print}" 
+genotypes_chr18_CEU_r21_nr_fwd_phased_all_by_snp_no_mono &gt; 
+ mc4r_haplotype.txt</font>   </p>
+<p><font face="Times New Roman">Similarly we prepare for the map file</font>
+<p><font face="Courier">awk 
+"(NR==1)||($1&gt;=56052021&amp;&amp;$1&lt;=56146917){print}" 
+genetic_map_chr18.txt&gt;mc4r_map.txt</font> 
+ 
+<p></p>
+<font face="Times New Roman"><p><font face="Times New Roman">and change the third column of line 1 to 0. </font></p>
+<p><font face="Times New Roman">It appears that IMPUTE does not fuss about the length of strand file, and it is small so we use it directly.</font>           
+                              
+</p>
+</font>
+<pre>mv chr18.strand mc4r_strand.txt  </pre><font face="Courier" size="3">
+<p><font face="Times New Roman">We need to insert position 56088439 for rs718475, it is 
+on the negative strand. Otherwise our CT allele will have a mismatch with the 
+<em>mc4r_legend.txt</em>. We can also use Build 
+36,</font></p>
+</font>
+<p><font face="Courier" size="3">
+awk 
+"/rs8092109/,/rs8092350/" genotypes_chr18_CEU_r22_nr.b36_fwd_legend_by_snp 
+&gt; mc4r_legend.txt<br>awk"(NR&gt;=53587&amp;&amp;NR&lt;=53665){print} 
+"genotypes_chr18_CEU_r22_nr.b36_fwd_phased_by_snp &gt; mc4r_haplotype.txt</font></p>
+<p><font
+ face="Courier"size=""
+ "3">awk"(NR==1)||($1&gt;=56052021&amp;&amp;$1&lt;=56146917){print}" genetic_map_chr18_CEU_b36.txt &gt; mc4r_map.txt<br>
+sort -n Affy500k_b36_chr18_strand &gt; mc4r_strand.txt</font> </font></p>
+<font face="Courier" size="3"><p><font face="Times New Roman">Again add 
+  <em>rs position 0 1</em> to <em>mc4r_legend.txt</em>. The 
+  rs17700633 at position 56080412 in the strand file should change to + 
+  <em><u>(IMPUTE</u></em> <font color="#ff0000">got it wrong 
+  here</font><em><u>),</u></em> as 
+  before we need to add 56088439 - for rs718475 in line with HapMap. We might use 
+  the unordered Affymetrix strand file as it is, but to sort it numerically 
+  <em>(sort -n)</em>            is more 
+intuitive. </font>       </p>
+<p><font face="Times New Roman"> We still need to get our genotype file, 
+  say&nbsp;<em><u>mc4r_genotype.txt</u>.</em>in<em> </em>the right format.<em> 
+  </em>Again you can ignore the 
+details. </font>       </p>
+<p><font face="Courier">awk -f xpose.awk mc4r.out &gt; 
+  mc4r.xpo<br>awk "(NR&gt;3){print}" mc4r.xpo 
+&gt; l<br>  paste -d" " mc4r_left.txt l &gt; ll<br>awk -f mc4r_split.awk ll 
+&gt; mc4r_genotype.txt</font>  </p>
+<p><font face="Times New Roman">where we use <em><u>mc4r_split.awk</u></em> containing 
+  the following lines,</font>  
+</p>
+<p><font face="Times New Roman"><font 
+face=Courier>for(i=6;i&lt;=NF;i++)<br>{<br>&nbsp;&nbsp; if($i=="NN") $i=" 0 0 
+  0"<br>&nbsp;&nbsp; else<br>&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+  a1=substr($i,1,1)<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+  a2=substr($i,2,1)<br>&nbsp;&nbsp;&nbsp;&nbsp; if(a1==$4 &amp;&amp; a2==$4) $i=" 
+  1 0 0"<br>&nbsp;&nbsp;&nbsp;&nbsp; if(a1==$4 &amp;&amp; a2==$5) $i=" 0 1 
+  0"<br>&nbsp;&nbsp;&nbsp;&nbsp; if(a1==$5 &amp;&amp; a2==$4) $i=" 0 1 
+  0"<br>&nbsp;&nbsp;&nbsp;&nbsp; if(a1==$5 &amp;&amp; a2==$5) $i=" 0 0 
+1"<br>&nbsp;&nbsp; }<br>}<br>print<br>}</font></font>  </p>
+<p><font face="Times New Roman">while <em><u>mc4r_left.txt</u></em> has the 
+  following lines,</font>    
+</p>
+<p><font face="Courier">SNP_A2111128 rs17782313 56002077 C T<br>--- rs12955983 
+  56023969 A G<br>SNP_A-2222259 rs17700633 56080412 A G<br>--- 
+rs718475&nbsp;&nbsp; 56088439 C T<br>--- rs9956279&nbsp; 56093779 C T</font></p>
+<p><font face="Times New Roman">Minor editing is needed. 
+</font>    </p>
+<p><font face="Times New Roman">Although IMPUTE or SNPTEST may impose some quality 
+  control crieteria, it is a good idea to use clean data. We use make facility 
+  under Linux, i.e., to prepare for <em><u>mc4r_make.txt</u></em> which 
+  contains the following lines</font>   
+</p>
+<p><font face="Courier">#!/bin/bash</font>  </p>
+<p><font face="Courier">H =                                          mc4r_haplotype.txt<br>L = 
+  mc4r_legend.txt<br>G = mc4r_genotype.txt<br>M =                                          mc4r_map.txt<br>S = 
+  mc4r_strand.txt<br>NE = 11418<br>O = mc4r_impute.out<br>I = 
+  mc4r_impute.info<br>R = 56052021 56146917<br>N = 18763<br>C = 
+  mc4r_summary.txt<br>OPTS = -h $(H)  -l $(L) -g $(G) -m $(M) -s $(S) -Ne $(NE) -o $(O) -i 
+  $(I) -int $(R) -nind $(N) -r 
+  $(C)<br>ok:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; impute 
+$(OPTS)</font>  </p>
+<p>So we use  </p>
+<p><font face="Courier"><font face="Times New Roman" 
+color=#ff0000>make -f mc4r_make.txt</font></font>  </p>
+<p><font ><font face="Times New Roman">and it 
+  is up running!!! Note under Windows we can use <em>set </em>command to define 
+  the environment variables from MS-DOS Prompt, or effectively specify the 
+relevant files explicitly.</font></font>  </p>
+<p><font face="Courier">impute -h mc4r_haplotype.txt -l 
+  mc4r_legend.txt -m mc4r_map.txt -s mc4r_strand.txt -g mc4r_genotype.txt -Ne 
+  11418 -o mc4r_impute.out -i mc4r_impute.info -int "56052021 56146917" -nind 
+18763</font>  </p>
+<p>W<font face="Times New Roman">e can use <em>-pgs </em>option to output the impsuted 
+  genotypes for our five SNPs but it is also preferable to keep them intact, so 
+  that similar statistics can be obtained from <em><u>SNPTEST</u></em> program as with 
+  other SNPs. Somehow, two SNPs were not include in the output but we could insert 
+  them or analyze <em>mc4r_genotype.txt</em> as if it were imputed. </font>   
+</p>
+<p><font face="Times New Roman"><font size="4"><strong>3.4 Running 
+SNPTEST</strong></font> </font>  </p>
+<p><font face="Times New Roman">We will need similar tactics to execute 
+  <em><u>SNPTEST</u></em>. We need to prepare for our input file for analysis of 
+  <em>zlog10bmi</em> as a quantitative trait. 
+</font>      </p>
+<p><font face="Times New Roman">Under Linux we use <u><em>mc4r_snptest.txt</em></u>, 
+similar to a <em>make</em> script as above.</font>     </p>
+<p><font face="Courier">echo -e "id idn missing zlog10bmi\n0 
+  0 0 P" &gt; header<br>awk '(NR&gt;1){printf FNR " " $1 " " $3;printf "\n"}' 
+  mc4r.out &gt; mc4r.raw<br>export 
+  GEN=mc4r_impute.out<br>export TRAIT=mc4r.raw<br>export 
+  MISSING=mc4r.mis<br>export TEMP=mc4r.tmp<br>export SAMPLE=mc4r.sample<br>export 
+LST=mc4r.lst&lt; br&gt;</font>  </p>
+<p><font face="Courier">$SNPTEST -create_miss $GEN -o 
+  $MISSING<br>awk '{{getline t &lt; ENVIRON["MISSING"]; split(t,a);} $2=$2 " " 
+  a[++i]; print $0;}' $TRAIT &gt; $TEMP<br>cat header $TEMP &gt; 
+  $SAMPLE<br>snptest&nbsp;-controls $GEN $SAMPLE -o $LST $O -qt -hwe -exp_counts 
+  -call_thresh 0.00001 -pheno $P -frequentist 1 2 3 $COV -proper<br>rm $SAMPLE 
+$TEMP $MISSING</font>  </p>
+<p><font face="Times New Roman">Note that we extract relevant lines from 
+  <em><u>mc4r.</u></em>out. From the console, we run the following 
+command, </font>          </p>
+<p><font face="Courier">sh mc4r_snptest.txt</font>  </p>
+<p><font face="Times New Roman">Alternatively, we run <em><u>SNPTEST</u></em> with the following 
+  steps under Windows,</font>   
+</p>
+<p><font face="Courier">snptest -create_miss mc4r_impute.out 
+  -o mc4r.mis<br>awk '{{getline t &lt; mc4r.mis; split(t,a);} $2=$2 " " a[++i]; 
+  print $0;}' mc4r.raw &gt; mc4r.tmp<br>copy header+mc4r.tmp 
+  mc4r.sample<br>snptest&nbsp;-controls mc4r_impute.out mc4r.sample -o $LST $O -qt 
+  -hwe -exp_counts -call_thresh 0.00001 -pheno $P -frequentist 1 2 3 $COV 
+-proper</font>  </p>
+<p><font face="Times New Roman">We can collect our results from 
+  <u><em>mc4r.lst</em></u>. Compare the results with that from 
+  <em><u>PLINK</u></em>. It would slow to run 
+  the analysis, so proceed with treating the genotype file as if it were imputed 
+  by replacing <em>mc4r_impute.out</em> with 
+  <em>mc4r_genotype.txt</em>         
+   . </font>         
+</p>
+<p><font face="Times New Roman"><em>At the moment, 
+  <u>SNPTEST</u> failed with some memory problems under Linux and Cygwin. 
+  Hopefully this would be fixed soon.</em></font>         
+</p>
+<h2><font face="Times New Roman">4. R exercises</font>  </h2>
+<p><font face="Times New Roman">Up to now, you would 
+  perhaps wonder if we ever use R at all. We certainly do! The very first thing in 
+  mind is R's sgraphics facility. Experiment several of these in package </font>               
+               
+     <a 
+href="http://cran.r-project.org/web/packages/gap/index.html"><font face="Times New Roman">gap</font></a><font 
+face="Times New Roman">, including 
+  <em>qqunif</em>, <em>mhtplot, asplot</em>. Others include <em>pedtodot</em> as described earlier. You are welcome to my 
+  presentation on Thursday --&nbsp;it will be the first presenation in 
+  Biostatistics II.</font>  
+             
+       
+               
+             
+</p>
+<p><font face="Times New Roman">Package </font> <a 
+href="http://cran.r-project.org/web/packages/haplo.stats/index.html"><font face="Times New Roman">haplo.stats</font></a><font 
+face="Times New Roman"> is often used for haplotype analysis, but 
+  appropriate for a particular region of interest. Our example is from 
+  EPIC-obesity study of obesity as reported by Loos et al. (2008) Nat Genet. The 
+  data include replication sample in file <em><u>epicchr18_5hap.dta</u></em>, The 
+  trait of interest is <em><u>zl10bmi</u></em> with five SNPs in 
+  the MC4R region. The SNP genotypes are both in alphabets and additive coding. 
+  Before going further, perform some descriptive analysis including linear 
+  regression on single SNPs. You can also try Hardy-Weinberg equilibrium testing 
+  with </font>        
+              
+          
+         <a 
+href="http://cran.r-project.org/web/packages/genetics/index.html"><font face="Times New Roman">genetics</font></a><font 
+face="Times New Roman"> package.</font> 
+               
+             
+</p>
+<p><font 
+face=Courier>options(echo=FALSE)<br>library(haplo.stats)<br></font></p>
+<p><font face="Courier">s2n &lt;- 
+  function(snp)<br>{<br>&nbsp;&nbsp; s &lt;- strsplit(snp,"")<br>&nbsp;&nbsp; l 
+&lt;- length(snp)<br>&nbsp;&nbsp; a1 &lt;- a2 &lt;- 
+  vector("character",l)<br>&nbsp;&nbsp; for(i in 1:l)<br>&nbsp;&nbsp; 
+  {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a1[i] &lt;- 
+  s[[i]][1]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a2[i] &lt;- 
+s[[i]][2]<br>&nbsp;&nbsp; }<br>&nbsp;&nbsp;list(a1=a1,a2=a2)<br>}</font></p>
+<p><font face="Courier">five &lt;- 
+  read.dta("mc4r.out",as.is=  
+TRUE)<br>attach(five)</font></p>
+<p><font face="Courier">cat("The third analysis\n")<br>a1a2 
+&lt;- s2n(rs17782313)<br>snp1 &lt;- 
+  allele.recode(a1a2$a1,a1a2$a2,miss.val=c("N",NA))<br>a1a2 &lt;- 
+  s2n(rs12955983)<br>snp2 &lt;- 
+  allele.recode(a1a2$a1,a1a2$a2,miss.val=c("N",NA))<br>a1a2 &lt;- 
+  s2n(rs17700633)<br>snp3 &lt;- 
+  allele.recode(a1a2$a1,a1a2$a2,miss.val=c("N",NA))<br>a1a2 &lt;- 
+  s2n(rs718475)<br>snp4 &lt;- 
+  allele.recode(a1a2$a1,a1a2$a2,miss.val=c("N",NA))<br>a1a2 &lt;- 
+  s2n(rs9956279)<br>snp5 &lt;- 
+  allele.recode(a1a2$a1,a1a2$a2,miss.val=c("N",NA))<br>snps &lt;- 
+cbind(snp1$a1,snp1$a2,snp2$a1,snp2$a2,snp3$a1,snp3$a2,snp4$a1,snp4$a2,snp5$a1,snp5$a2)</font></p>
+<p><font face="Courier">cat("Allele 
+  lables:\n")<br>locus.label &lt;- c("rs17782313", "rs12955983", "rs17700633", 
+"rs718475", 
+"rs9956279")<br>cat(locus.label[1],snp1$allele.label,"\n")<br>cat(locus.label[2],snp2$allele.label,"\n")<br>cat(locus.label[3],snp3$allele.label,"\n")<br>cat(locus.label[4],snp4$allele.label,"\n")<br>cat(locus.label[5],snp5$allele.label,"\n")<br>cat("Haplotype 
+analysis:\n")<br>haplo.score(zl10bmi,snps,x.adj=age,locus.label=locus.label,simulate=TRUE)</font></p>
+<p><font face="Times New Roman, Times, serif">It is a haplotype analysis 
+  involving five SNPs at the MC4R region. The global score statistic is 34.21,
+  df=17, p value= 0.0079. This is in comparison with a global simulated p value
+  of 0.03324 and max-stat simulated p value of 0.06. These were based on 1023
+  and 1000 simulations for the global and max statistics,
+  respetively.&nbsp;The haplotype 21221 and 21121/12112 are in the negative and
+  positive association with log10-transformed sex, age adjusted BMI. Noting that
+  the alleles were recoded to 1/2 for
+  rs17782313 (C/T), rs12955983 (A/G), rs17700633 (A/G), rs718475 (C/T), rs9956279
+(C/T). </font></p>
+<p><font face="Times New Roman">We just have some feel 
+  about the kind of analysis. When dealing with genomewide analysis, it is 
+  recommded to use more elaborate packages such as </font>           
+                
+<a 
+href="http://www.bioconductor.org/packages/bioc/html/snpMatrix.html"><font face="Times New Roman">snpMatrix</font></a><font 
+face="Times New Roman">&nbsp;available from </font>  <a 
+href="http://www.bioconductor.org"><font 
+face="Times New Roman">http://www.bioconductor.org</font></a><font 
+face="Times New Roman">., e.g.,</font> </p>
+<pre>source("http://bioconductor.org/biocLite.R")<br>biocLite()</pre>
+<p><font face="Times New Roman">The package itself provides 
+  example data for both prospective and retrospect analysis; see also the package 
+  vignette through R's help.start().</font>        
+             
+</p>
+<p>library(snpMatrix)</p>
+</font>
+<p>baseurl &lt;- "http://www.hapmap.org/genotypes/latest/rs_strand/non-redundant/";<br>
+  CEU &lt;- scan("CEU.lst",what="")</p>  
+  
+
+  
+
+  <p>hapmap&lt;-function(i=1)&lt;br&gt;{&lt;br&gt;&nbsp;hapmap&lt;-paste(baseurl,CEU[i],sep="")&lt;br&gt;&nbsp;result&lt;-read.HapMap.data(hapmap)&lt;br&gt;&nbsp;sum&lt;-summary(result$snp.data)&lt;br&gt;&nbsp;invisible(list(snp.support=result$snp.support,snp.sum=sum[is.finite(sum$z.HWE),]))<br>
+  }<br>
+  for (i in 1:24)<br>
+  {<br>
+&nbsp; 
+  if (i==1)<br>
+&nbsp; 
+  {&nbsp; hapmap1 &lt;- hapmap(1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 
+  snp.support &lt;- hapmap1$snp.support<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 
+  snp.sum &lt;- hapmap1$snp.sum<br>
+&nbsp; 
+  } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 
+  hapmapi &lt;- hapmap(i)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 
+  snp.support &lt;- rbind(snp.support,hapmapi$snp.support)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 
+  snp.sum &lt;- rbind(snp.sum,hapmapi$snp.sum)<br>
+&nbsp; 
+  }<br>
+  }</p>
+<p>  library(foreign)<br>
+  setwd(".")<br>
+  write.dta(cbind(row.names(snp.support),snp.support),"snp_support.dta")<br>
+  write.dta(cbind(row.names(snp.sum),snp.sum),"snp_sum.dta")</p>
+<font face="Courier" size="3">
+<p><font face="Times New Roman">Where I have made a list of files to be downloaded in 
+<em><u>CEU.lst:</u></em></font></p>
+<p><font 
+face=Courier>genotypes_chr1_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr2_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr3_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr4_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr5_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr6_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr7_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr8_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr9_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr10_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr11_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr12_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr13_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr14_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr15_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr16_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr17_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr18_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr19_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr20_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr21_CEU_r23a_nr.b36.txt.gz<br>genotypes_chr22_CEU_r23a_nr.b36.txt.gz<br>genotypes_chrX_CEU_r23a_nr.b36.txt.gz<br>genotypes_chrY_CEU_r23a_nr.b36.txt.gz</font></p>
+<p><font face="Times New Roman">Our desired information is 
+  contained in snp_support.dta and snp_sum.dta.&nbsp;</font>       
+</p>
+<p><font face="Times New Roman">Another package to 
+  use is SNPassoc, e.g.,&nbsp;</font>          
+<span lang="EN-GB" 
+style="FONT-SIZE: 32pt; mso-fareast-font-family: ??; mso-fareast-language: ZH-CN; mso-hansi-font-family: Arial"><font 
+face=Courier size=3><font face="Times New Roman">&nbsp;</font></p>
+<div class="O" v:shape="_x0000_s1026">
+  <div 
+style="mso-line-spacing: '100 20 0'; mso-margin-left-alt: 216; mso-char-wrap: 1; mso-kinsoku-overflow: 1"><span 
+lang=EN-GB 
+style="FONT-SIZE: 12pt; mso-fareast-font-family: ??; mso-fareast-language: ZH-CN; mso-hansi-font-family: Arial">library(SNPassoc) 
+  </span></div>
+  <div 
+style="mso-line-spacing: '100 20 0'; mso-margin-left-alt: 216; mso-char-wrap: 1; mso-kinsoku-overflow: 1"><span 
+lang=EN-GB 
+style="FONT-SIZE: 12pt; mso-fareast-font-family: ??; mso-fareast-language: ZH-CN; mso-hansi-font-family: Arial">data(SNPs)<br>datSNP&lt;-setupSNP(SNPs,6:40,sep="")<br> 
+    ansAll&lt;-WGassociation(protein~1,data= 
+    datSNP,model= 
+      "all") </span></div>
+  <div 
+style="mso-line-spacing: '100 20 0'; mso-margin-left-alt: 216; mso-char-wrap: 1; mso-kinsoku-overflow: 1"><span 
+lang=EN-GB 
+style="FONT-SIZE: 12pt; mso-fareast-font-family: ??; mso-fareast-language: ZH-CN; mso-hansi-font-family: Arial">WGstats(ansAll)</span></div>
+  <div 
+style="mso-line-spacing: '100 50 0'; mso-margin-left-alt: 216; mso-char-wrap: 1; mso-kinsoku-overflow: 1"></div>
+</div>
+</font>
+<p><font size="3" face="Times New Roman">We do not give data here, 
+but a slick website is maitained by the authors: </font><font size="3">           
+    <a 
+href="http://davinci.crg.es/estivill_lab/snpassoc"><font 
+face="Times New Roman">http://davinci.crg.es/estivill_lab/snpassoc</font></a><font 
+face="Times New Roman">. Try some examples.</font> 
+</font></p>
+<p><font size="3" face="Times New Roman">The third package is 
+</font><font size="3">    <a 
+href="http://cran.r-project.org/web/packages/GenABEL/index.html"><font face="Times New Roman">GenABEL</font></a><font 
+face="Times New Roman">. Of note is its identity-by-state (IBS) analysis, see 
+ibs. We omit the details. Note further that it is a little bit clumsy to recode 
+alleles for haplo.stats but GenABEL deals with this nicely.</font>  
+             
+              
+</font></p>
+<p><font size="3" face="Times New Roman">For meta-analysis, we have an example of five studies in 
+<em>toplist.txt</em>. We used <em><u>Stata</u> </em>to convert 
+the data to long format and we can run the analysis with the following R 
+code,</font><font size="3">     
+</font></p>
+<p><font size="3" face="Courier">library(foreign)<br>toplist &lt;- 
+read.dta("toplist.dta")<br>attach(toplist)</font></p>
+<p><font size="3" 
+face=Courier>library(meta)<br> 
+by(toplist,locus1,function(x)metagen(b,se,data=x))</font></p>
+<p><font size="3" face="Times New Roman">To save the screen output, 
+it would be good idea to use batch,</font><font size="3">         
+</font></p>
+<p><font size="3">         
+  R --no-save &lt;toplist.R &gt;toplist.Rout</font></p>
+<p><font size="3" face="Times New Roman">But you might as well 
+create some but not all objects.</font><font size="3">         
+</font></p>
+<p><font size="3" face="Times New Roman">The R package </font><font size="3">   <a 
+href="http://www.cancerbiostats.onc.jhmi.edu/BayesMendel/"><font face="Times New Roman">BayesMendel</font></a><font 
+face="Times New Roman"> can be used for risk calculation, e.g.,</font>  
+</font></p>
+<div class="O" v:shape="_x0000_s1026">
+<div style="mso-char-wrap: 1; mso-kinsoku-overflow: 1"><font size="3"><span 
+style="FONT-FAMILY: Courier; mso-ascii-font-family: Courier; mso-bidi-font-family: Arial">library(BayesMendel) 
+</span></font></div>
+<div style="mso-char-wrap: 1; mso-kinsoku-overflow: 1"><font size="3"><span 
+style="FONT-FAMILY: Courier; mso-ascii-font-family: Courier; mso-bidi-font-family: Arial">data(panc.fam,pancpenet,death.othercauses) 
+</span></font></div>
+<div style="mso-char-wrap: 1; mso-kinsoku-overflow: 1"><font size="3"><span 
+style="FONT-FAMILY: Courier; mso-ascii-font-family: Courier; mso-bidi-font-family: Arial">output 
+&lt;- pancpro(family=panc.fam, </span></font></div>
+<div style="mso-char-wrap: 1; mso-kinsoku-overflow: 1"><font size="3"><span 
+style="FONT-FAMILY: Courier; mso-ascii-font-family: Courier; mso-bidi-font-family: Arial">params 
+= pancparams())</span></font></div>
+<div style="mso-char-wrap: 1; mso-kinsoku-overflow: 1"><font size="3"></font>&nbsp;</div>
+<div style="mso-char-wrap: 1; mso-kinsoku-overflow: 1"><font size="3"><span 
+style="FONT-FAMILY: Courier; mso-ascii-font-family: Courier; mso-bidi-font-family: Arial"><font face="Times New Roman">The package requires 
+registration, and we won't give much details here.</font></span></font></div>
+<div 
+style="mso-line-spacing: '100 50 0'; mso-char-wrap: 1; mso-kinsoku-overflow: 1"></div></div>
+<p><strong><font size="5"><font size="4" face="Times New Roman"> 5.<font 
+color=#000000> Software and Publications for Genetics with R/S-PLUS (from <a 
+href="http://www.mrc-epid.cam.ac.uk/~jinghua.zhao/r-genetics.htm">my personal 
+page</a>)</font></font></font></strong></p>
+<ul>
+  <li><a href="http://adegenet.r-forge.r-project.org/"><font size="3" face="Times New Roman, Times, serif">adegenet</font></a><font size="3" 
+  face="Times New Roman, Times, serif"> by T Jombart </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://www.cancerbiostats.onc.jhmi.edu/BayesMendel/">BayesMendel</a> </font>
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://cnv-tools.sourceforge.net/">cnv-tools</a>&nbsp; </font> 
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://www-gene.cimr.cam.ac.uk/clayton/software/">dgc.genetics</a>&nbsp;by
+      D Clayton </font>   
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://statgen.ncsu.edu/zaykin/Dprime/">Dprime</a> by D Zaykin </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://linkage.rockefeller.edu/yyang/resources.html">EHP</a> (Estimating haplotypes for pooled DNA sample) </font>       
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://mga.bionet.nsc.ru/nlru/GenABEL/">GenABEL</a> by Yurii Aulchenko </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://homepages.lshtm.ac.uk/%7Eencdcver/">graphminer</a> by
+      Claudio Verzili&nbsp; </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://www4.stat.ncsu.edu/%7Ejytzeng/Softwares/Hap-Clustering/R/">Hap-Clustering</a>&nbsp;by
+      JY Tzeng </font>   
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://www.uib.no/smis/gjessing/genetics/software/haplin/">HAPLIN</a> by
+      HK&nbsp;Gjessing </font>   
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://www.well.ox.ac.uk/%7Ermott/happy.html">HAPPY</a> by R Mott 
+  </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://www.stat.auckland.ac.nz/%7Ebrowning/HapVLMC/index.htm">HapVLMC</a> by&nbsp;SR&nbsp;Browning </font>  
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://fisher.utstat.toronto.edu/%7Eshuying/research/research.html">HMM.hap</a> by
+      Shuying&nbsp;Sun </font>   
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://www.fumihiko.takeuchi.name/publications.html">LDGROUP</a> by&nbsp;Takeuchi&nbsp;et
+      al. </font>   
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://www.uhnresearch.ca/labs/tritchler/">LINK/TDT</a> by D Tritchler </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://pbil.univ-lyon1.fr/%7Erezvoy/mareymap/index.php">MareyMap</a>&nbsp;by
+      Clement Rezvoy </font>   
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://mayoresearch.mayo.edu/mayo/research/biostat/splusfunctions.cfm">multic</a> by M de Andrade, E Lunde, E Atkinson </font>         
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://csg.sph.umich.edu/boehnke/p_act.php">p_act</a> by Michael Boehnke </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://wpicr.wpic.pitt.edu/wpiccompgen/">Packages</a> by
+      B Devlin &amp; K Roeder </font>       
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://cancercenter.mayo.edu/mayo/research/biostat/schaid.cfm">Packages</a>&nbsp;by
+      D Schaid </font>   
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://www.biostat.wisc.edu/%7Ekbroman/software/">Packages</a>&nbsp;by&nbsp;K
+      Broman </font>  
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://www.pedvizapi.org/">PedVizAPI</a> </font>
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://www.qtlbim.org/">QTLBIM</a> </font>
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://www.fhcrc.org/science/labs/tang/">SABER</a>&nbsp;by
+      H Tang </font>   
+  <li><font size="3" face="Times New Roman, Times, serif">Score statistics by K 
+  Wang </font>     
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://www.sph.umich.edu/csg/abecasis/Exact/r_instruct.html">SNP-HWE</a> by G Abecasis </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://www.cs.uiowa.edu/%7Ejian/">Software</a> by J Huang </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://www.stat.purdue.edu/%7Ejinj/Research/software/">Software</a> by
+      Jiashun Jin&nbsp; </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://bear.fhcrc.org/%7Eclk/soft.html">Software</a> by
+      Charles Kooperberg&nbsp; </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://www.cs.toronto.edu/%7Eradford/software-online.html">Software</a> by
+      Radford Neal&nbsp; </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://faculty.washington.edu/jonno/cv.html">Software</a> by
+      Jon Wakefield&nbsp; </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://www.hsph.harvard.edu/faculty/kraft/soft.htm">Software  
+  </a>by P Kraft </font>   
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://www.msbi.nl/dnn/">Software</a> from Leiden University Medical Center </font>      
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://www.mpipsykl.mpg.de/pages/english/research/mueller_downloads.htm">Software</a> by Muller-Myhsok </font>   
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://www.mskcc.org/mskcc/html/19904.cfm">Software for two-stage 
+  design   
+  </a> by J Satagopan </font>    
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://www.vipbg.vcu.edu/%7Eedwin/">Software</a> by
+      Edwin JCG Van den Oord&nbsp; </font>       
+  <li><font size="3" face="Times New Roman, Times, serif"><a 
+  href="http://www.biostat.harvard.edu/%7Ebetensky/ahg.programs">TDTexact</a> by R Betensky  
+  </font></li></ul>
+<p><font size="3" face="Times New Roman, Times, serif"><span style="FONT-WEIGHT: bold">Standard 
+lines 
+</span></font></p>
+<ul>
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="https://r-forge.r-project.org/">R-Forge</a> </font>
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://cran.r-project.org/">The
+          Comprehensive R&nbsp;Archive Network </a>&nbsp;(CRAN) </font> 
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://wiki.r-project.org/rwiki/doku.php">The R wiki 
+  website </a> </font>
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://www.insightful.com/">The S-PLUS home 
+  page </a> </font>
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://rgenetics.org">http://rgenetics.org</a>&nbsp; </font> 
+  <li><font size="3" face="Times New Roman, Times, serif"><a href="http://www.rforge.net/">http://www.rforge.net/</a></font></li></ul>
+<p><font size="3" face="Times New Roman, Times, serif"><span 
+style="FONT-WEIGHT: bold">Publications</span></font></p>
+<ul>
+  <li><font size="3" face="Times New Roman, Times, serif">uillot G, Santos F, Estoup A. 
+  Analysing georeferenced population genetics data with Greenland: a new 
+  algorithm to deal with null allles and a friendly graphical user interface.
+          Bioinformatics 2008;24:1406-7
+  </font>
+  <li><font size="3" face="Times New Roman, Times, serif">Jombart T.adegenet: a R package for 
+  the multivariate analysis of genetic markers. Bioinformatics 
+  2008;24:1403-5  </font>
+  <font size="+0"><li><font size="3" face="Times New Roman, Times, serif">Rezvoy C, Charif D, Gueguen L, Marais GAB. MareyMap: an R-based tool 
+  with graphical interface for estimating recombination rates. Bioinformatics 
+  2007;23:2186-9  </font>
+  <li><font size="3" face="Times New Roman, Times, serif">Yandell BS, Mehta T, 
+  Banerjee S, Shriner D, Venkataraman R, Moon JY, Neely WW, Wu H, Smith R, Yi N. 
+  R/qtlbim: QTL with Bayesian Interval Mapping in experimental crosses. 
+  Bioinformatics 2007; 23(5):641-643 </font>        
+                 
+          
+   
+  <li><font size="3" face="Times New Roman, Times, serif">Kooperberg C, M LeBlanc. 
+  Increasing the power of identifying gene x gene interactions in genome-wide 
+  association studies. Genet Epidemiol 2008;32:255-63 </font>        
+            
+    
+  <li><font size="3" face="Times New Roman, Times, serif">Zhao JH. gap: genetic 
+  analysis package. J Statist Soft 2007; 23 (8):1-18 </font>        
+      
+  <li><font size="3" face="Times New Roman, Times, serif">Sun S, CMT Greeenwood, 
+  RM Neal. Haplotype inference using a Bayesian hidden Markov model. Genet 
+  Epidemiol 2007;31:937-48 </font>        
+           
+  <li><font size="3" face="Times New Roman, Times, serif"><span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'">Clayton
+        D., Leung,H.T.&nbsp;An R package for analysis of whole-genome association
+        studies. Hum Hered<em> </em>2007; <b>64</b>, 45-51</span> </font>
+  <li><font size="3" face="Times New Roman, Times, serif">Aulchenko YS, Ripke S, Isaacs A,
+      van Duijn CM (2007). GenABEL: An R Library for genome-wide association
+      analysis. Bioinformatics 2007; 23(10):1294-6 </font>
+  <li><font size="3" face="Times New Roman, Times, serif"><span 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'">Gonzalez,J.R., 
+  Armengol,L., Sole,X., Guino,E., Mercader,J.M., Estivill,X., 
+  Moreno,V.&nbsp;SNPassoc: an R package to perform whole genome association 
+  studies. Bioinformatics 2007; <b>23</b>, 644-645</span> 
+  </font>
+  <li><font size="3" face="Times New Roman, Times, serif">Shin J-H, McNeney B, 
+  Graham J. Case-control inference of interaction between genetic and nongenetic 
+  risk factors under assumptions on their distribution. Statist Appl Genet Mol 
+  Biol 2007; 6(1):13 </font>        
+            
+            
+  <li><font size="3" face="Times New Roman, Times, serif">Estimating the null and the proportion of non-null effects in large-scale 
+  multiple comparisons. JASA 2006; <strong>102</strong>:495-506<a 
+  href="/u:/v/public_html/pgspname.pdf"> 
+   </a>
+  </font>
+  <li><font size="3" face="Times New Roman, Times, serif"><span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'">Hoffmann T, 
+  Lange C. P2BAT: a massive parallel implementation of PBAT for genome-wide 
+  association studies in R. Bioinformatics 2006; 22(24):3103-5</span> </font>
+  <li><font size="3" face="Times New Roman, Times, serif">Shin J-H, Blay S, 
+  McNeney B, Graham J. LDheatmap: An R function for graphical display of 
+  pairwise linkage disequilibria between single nucleotide polymorphisms. 
+  J&nbsp;Statist Soft&nbsp;2006; 16 (3):1-9 </font>          
+            
+         
+  <li><font size="3" face="Times New Roman, Times, serif"><span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'">Burkett K, 
+  Graham J, McNeney B. happassoc: software for likelihood inference of trait 
+  associations with SNP haplotype and other attributes. J Statist Soft 2006; 
+  16(2):1-19</span> </font>
+  <li><font size="3" face="Times New Roman, Times, serif">Zhao JH, Tan Q. Genetic dissection of complex traits <em>in silico</em>:
+      approaches, problems and solutions. Current&nbsp; Bioinformatics 2006;
+       1(3):359-69 </font>     
+      
+  <li><font size="3" face="Times New Roman, Times, serif">Tan H, M Coram, P Wang, X Zhu, N Risch. Reconstructing genetic ancestry 
+  blocks in admixed individuals. Am J Hum Genet 2006; <strong>79</strong>:1-12 </font> 
+  <li><font size="3" face="Times New Roman, Times, serif">Zhao JH, Tan Q. Integrated analysis of genetic data with R.<span 
+  title="Human genomics.">Hum Genomics.</span> 2006 Jan;2(4):258-65 </font> 
+    
+  <li><font size="3" face="Times New Roman, Times, serif">Tufto J, Cavallini P. 
+  Should wildlife biologists use free software? Wildlife Biology 2005; 
+  11(1):67-76        
+  </font></font></li></ul>
+<p><font size="3" face="Times New Roman, Times, serif"><i><span 
+style="FONT-WEIGHT: bold">Created</span> 4/8/2008, <b>Last
+        
+changed</b> 15/8/2008</i></font></p></span></font>
+</body>
+</html>

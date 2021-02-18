@@ -1,0 +1,57 @@
+CV
+
+Jing Hua Zhao is an investigator scientist working on statistical and computational genetics. He 
+obtained his bachelor (medicine) and master (medical statistics) degrees from Shandong and 
+Shanghai medical universities in China, and PhD (genetics) from King's College London. He was a 
+research associate at the Centre for Health Statistics Information within the Ministry of Health 
+of China, a visiting Scientist at Department of Environmental Health, Harvard School of Public 
+Health, a research associate at Institute of Psychiatry, King's College London and a statistician 
+at Department of Epidemiology and Public Health, University College London in the Whitehall II 
+study. 
+
+URL: http://www.mrc-epid.cam.ac.uk/~jinghua.zhao
+
+
+
+INTEGRATED ANALYSIS OF GENETIC DATA
+
+
+SYNOPSIS
+
+The genome projects in human and other species have made genetic data widely available and pose 
+tremendous challenges for statistical analysis. The efforts to tailor standalone programs for 
+particular data are often inconceivable, especially when both a large number of markers and 
+covariates are involved. Not only are end-users required to have detailed knowledge of these 
+programs, but separate data management and graphics are often necessary. The ability to integrate 
+Internet functionality within the data analytic system is also essential, given data on some 
+international projects are available from the Internet.
+
+Here I give a brief overview of several software systems recently developed and engaged in 
+analysis of genetic data, in particular the R system (http://www.r-project.org). I illustrate 
+aspects discussed by many authors, including data management, graphics, statistical analysis, 
+parsing capability, cross-platform, internet connectivity, and use of established and developing 
+mathematical and statistical functions implemented in other languages such as C/C++/Fortran and 
+Perl. The problem of haplotye-traits association is used as an example.
+
+Using R as an integrated environment requires comprehensive but feasible efforts, as demonstrated 
+with the success of the BioConductor project (http://www.bioconductor.org). I concur with 
+previous authors but wish to draw opinions on the need of computational environment upgrade and 
+on the suggestion that R is an integrated environment that statistical geneticists have longed 
+for.
+
+
+REFERENCES
+
+Guo S-W, Lange K. Genetic mapping of complex traits: promises, problems, and prospects. Theor Pop 
+Biol 57:1-11, 2000
+
+Zhao JH, Tan Q. Integrated analysis of genetic data with R. Hum Genomics (in press)
+
+Zhao JH. Mixed-effects Cox models of alcohol dependence in extended pedigrees. BMC Genet (in 
+press)
+
+Zhao JH, Tan Q. Genetic Dissection of Complex Traits in Silico: Approaches, Problems and 
+Solutions. Curr Bioinformatics (under revision)
+
+Zhao JH. Pedigree-drawing with R. Bioinformatics (under revision)
+

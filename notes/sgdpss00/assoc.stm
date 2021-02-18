@@ -1,0 +1,444 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>KCL: SGDP summer school 2000</TITLE>
+  <META NAME="IP" CONTENT="Jing Hua Zhao">
+  <META NAME="e-mail" CONTENT="j.zhao@iop.kcl.ac.uk">
+  <META NAME="created" CONTENT="**insert**">
+  <META NAME="modified" CONTENT="**insert**">
+  <META NAME="expires" CONTENT="">
+  <META NAME="keywords" CONTENT="**insert**">
+  <META NAME="description" CONTENT="Section of Genetic Epidemiology and Biostatistics">
+  <META NAME="copyright" CONTENT="King's College London">
+  <META NAME="content_source" CONTENT="Institute of Psychiatry - Psychological Medicine - Genetic Epidemiology and Biostatistics">
+  <META NAME="content_destination" CONTENT="College">
+  <META NAME="source_path" CONTENT="">
+  <LINK REL="STYLESHEET" TYPE="text/css" HREF="/IoP/Includes/kcl_dom.css">
+  <LINK REL="STYLESHEET" TYPE="text/css" HREF="/IoP/Includes/kcl_sub.css">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<!--NOEDIT-->
+<!--#include virtual="/IoP/Includes/kcl_h_sub.html"-->
+<!--#include virtual="/IoP/Includes/IoP_GEB_h.html" -->
+<!--begin contents-->
+<!--/NOEDIT-->
+
+<P><CENTER><TABLE WIDTH="520" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR>
+    <TD WIDTH="100%">
+    <P><B><FONT COLOR="#000000" FACE="Arial">PROGRAMS FOR LINKAGE
+    AND ALLELIC ASSOCIATION</FONT></B><BR>
+<BR>
+    There are many programs available for linkage and allelic association
+    analysis, but here we concentrate on <A HREF="#anchor8130">CLUMP</A>,
+    <A HREF="#anchor7668">EH</A>, <A HREF="#anchor7273">ETDT</A>,
+    <A HREF="#anchor6716">TRANSMIT</A>, <A HREF="#anchor6333">FBAT</A>,
+    <A HREF="#anchor5800">ASPEX</A> and <A HREF="#anchor5299">GENEHUNTER</A>,
+    Note that examples given here use their simplest features. However
+    they should be easily generalised to include some advanced features,
+    please consult individual program documentation for more information.
+    We also refer to some other programs such as GAS, EH+, SPLINK
+    and LINKAGE which are not pursued here.<BR>
+    By system prompt in the following we mean either MS-DOS or Unix
+    shell prompt. Unix is a system that is case-sensitive so we usually
+    use program name in lower rather than upper case to start programs.<BR>
+<BR>
+    Availability of these programs and their references are actively
+    maintained by Dr Wentian Li at http://linkage.rockefeller.edu.
+    EH+ and other associated programs are available from our site
+    http://www.iop.kcl.ac.uk/IoP/Departments/PsychMed/GEpiBSt/software.stm.<BR>
+<BR>
+    <I><FONT COLOR="#ff0000">Most programs, except perhaps ASPEX
+    and FBAT, are available from HGMP. A zip file containing executables
+    and examples not available from the original distributors will
+    be available upon request.<BR>
+<BR>
+<BR>
+    </FONT></I><B>Program for unrelated individuals: </B><A NAME="anchor8130"></A><B>CLUMP</B></P>
+
+    <P>CLUMP is designed for comparing allele frequency differences
+    between cases and controls when the maker is very highly polymorphic.
+    An example input file <I><A HREF="erda.inp">erda.inp</A></I>
+    is from a case-control study of bipolar affective disorder at
+    marker locus ERDA1, which contains the following lines.</P>
+
+    <PRE>8
+      117    63   120    13    25    12    27    15 
+       50    35    58    29    23     5    21     9 
+100
+11111</PRE>
+
+    <P>The first line tells CLUMP it is a 8-allele problem. The second
+    and third lines are numbers of alleles for cases and controls,
+    respectively. The fourth and fifth lines are number of replicates
+    needed to generate empirical p-value and peudorandom number seed,
+    respectively. Given the same seed the pseudorandom number sequence
+    is determined so the program guarantes to yield the same result.</P>
+
+    <P>Now we can enter MS-DOS prompt and run CLUMP with command</P>
+
+    <P>clump erda.inp</P>
+
+    <P>We can also specify an output file name as the second argument.
+<BR>
+<BR>
+<BR>
+    <B><I>Exercise</I></B>: Consult CLUMP documentation for meaning
+    of the four test statistics. The logic of CLUMP is among the
+    simplest yet most important in association analysis, i.e., obtaining
+    empirical p-value when asymptotic theory does not hold, try to
+    reason the program output so it comes naturally to you.<BR>
+<BR>
+<BR>
+    <B>Program for unrelated individuals: </B><A NAME="anchor7668"></A><B>EH</B></P>
+
+    <P>EH can be used to obtain haplotype frequency estimates from
+    unrelated individuals when more than one loci are involved. This
+    could be done either for cases and controls seperately, or for
+    a combined case-control sample assuming a generalised single
+    locus model.</P>
+
+    <P>We use the three data files <I><A HREF="eh.dat">eh.dat</A></I>,<I>
+    <A HREF="control.dat">control.dat</A> </I>and<I> <A HREF="case.dat">case.dat</A>
+    </I>in EH documentation as our example. First let's do a marker-maker
+    analysis, enter</P>
+
+    <P>eh</P>
+
+    <P>at system prompt and press &lt;Return&gt; after &quot;Do you
+    wish to use the case-control sampling option? [N]&quot;, &quot;Enter
+    name of data file [EH.DAT]&quot;, &quot;Enter name of output
+    file. [EH.OUT]&quot; and examine output. For the case-control
+    example answer the following questions for EH. <BR>
+<BR>
+    Do you wish to use the case-control sampling option? [N]<BR>
+    y<BR>
+    Enter name of control data file [CONTROL.DAT] &lt;Return&gt;<BR>
+    Enter name of case data file [CASE.DAT] &lt;Return&gt;<BR>
+    Enter name of output file. [EH.OUT] &lt;Return&gt;<BR>
+    Enter gene frequency of disease allele<BR>
+    0.01<BR>
+    Enter penetrances for each genotype in the following order<BR>
+    Genotype +/+ +/D D/D<BR>
+    0 0 1<BR>
+<BR>
+    and check result in eh.out</P>
+
+    <P>Alternatively these options can be put in a batch file, similar
+    to that of CLUMP. For example we call our file <I>ehtest.inp</I>
+    which contains the following lines:</P>
+
+    <P>y<BR>
+    control.dat<BR>
+    case.dat<BR>
+    eh.out<BR>
+    0.01<BR>
+    0 0 1<BR>
+<BR>
+    then the command becomes</P>
+
+    <P>eh &lt;ehtest.inp</P>
+
+    <P>Note when you run the batch file at the second time, additional
+    line is necessary after the fourth line containing only 'y' like
+    the first line, that is, to overwrite the existant <I>eh.out</I>.
+    Moreover, since it would be cumbersome to prepare input data,
+    and the chi-square approximation from likelihood ratio test under
+    association and no association is invalid. We can turn to EH+
+    and associated programs to obtain model-free statistics and their
+    empirical p-values.<BR>
+<BR>
+    <B><I>Exercise</I></B>: Run EH in noninteractive mode using <I><A
+    HREF="ehtest.inp">ehtest.inp</A></I> given above. Examine the
+    program output, what's the use of haplotype frequency estimates
+    ?<BR>
+    </P>
+
+    <P><B>Program for family data: </B><A NAME="anchor7273"></A><B>ETDT</B></P>
+
+    <P>ETDT is a program used for multiallelic TDT analysis using
+    logistic regression, the so-called Bradley-Terry model.</P>
+
+    <P>We demonstrate using the ETDT documentation files <I>example.par</I>
+    and <I>example.ppd</I>. The syntax is then very straightforward.</P>
+
+    <P>etdt example</P>
+
+    <P>This batch file does three things. First it invokes <B>ped2tdt</B>
+    program to read <I>example.par</I> in LINKAGE parameter file
+    format and <I>example.ppd</I> in post-MAKEPED data file format
+    and extract information concerning about transmission; then it
+    starts <B>calctdt</B> to build up transmission table; finally
+    it runs <B>lrtdt</B> to produce log likelihood statistics. A
+    fourth program, <B>mcetdt</B>, has to to be invoked separately
+    to obtain empirical p-values of these statistics.</P>
+
+    <P>For more details, please consult ETDT documentation.<BR>
+<BR>
+    <B><I>Exercise</I></B>: There are several methods available for
+    multiallelic TDT analysis in the literature, the data are typically
+    presented in terms of transmission table. Consider the following
+    table for a 5-allele system, could you trick ETDT to perform
+    the analysis ?<BR>
+<BR>
+    <TABLE WIDTH="450" BORDER="1" CELLSPACING="2" CELLPADDING="0">
+      <TR>
+        <TD WIDTH="20%">
+        &nbsp;0</TD> 
+        <TD WIDTH="20%">
+        &nbsp;53</TD> 
+        <TD WIDTH="20%">
+        55</TD> 
+        <TD WIDTH="20%">
+        56</TD> 
+        <TD WIDTH="20%">
+        57</TD> 
+      </TR>
+      <TR>
+        <TD WIDTH="20%">
+        47</TD> 
+        <TD WIDTH="20%">
+        0</TD> 
+        <TD WIDTH="20%">
+        52</TD> 
+        <TD WIDTH="20%">
+        54</TD> 
+        <TD WIDTH="20%">
+        56</TD> 
+      </TR>
+      <TR>
+        <TD WIDTH="20%">
+        45</TD> 
+        <TD WIDTH="20%">
+        48</TD> 
+        <TD WIDTH="20%">
+        0</TD> 
+        <TD WIDTH="20%">
+        52</TD> 
+        <TD WIDTH="20%">
+        53</TD> 
+      </TR>
+      <TR>
+        <TD WIDTH="20%">
+        44</TD> 
+        <TD WIDTH="20%">
+        46</TD> 
+        <TD WIDTH="20%">
+        48</TD> 
+        <TD WIDTH="20%">
+        0</TD> 
+        <TD WIDTH="20%">
+        51</TD> 
+      </TR>
+      <TR>
+        <TD WIDTH="20%">
+        43</TD> 
+        <TD WIDTH="20%">
+        44</TD> 
+        <TD WIDTH="20%">
+        47</TD> 
+        <TD WIDTH="20%">
+        49</TD> 
+        <TD WIDTH="20%">
+        0</TD> 
+      </TR>
+    </TABLE></P>
+
+    <P>(<I>hint</I>: build a new file <I>etdtex.cou</I> from <I>example.cou</I>
+    by changing its third column all to be 100, and the fourth column
+    to be 47, 45, ..., 49, then invoke <B>lrtdt</B> with lrtdt etdtex.cou
+    etdt.chi) <BR>
+<BR>
+<BR>
+    <B>Program for family data: </B><A NAME="anchor6716"></A><B>TRANSMIT<BR>
+<BR>
+    </B>TRANSMIT is a program for TDT-type analysis involving multilocus
+    data. Included is an example of schizophrenia and a susceptibility
+    locus at 22q12, in pre-MAKEPED and post-MAKEPED files <I><A 
+    HREF="catted.pre">catted.pre</A></I> and <I><A HREF="catted.ped">catted.ped</A></I>.
+    They are equivalently reformatted in <I><A HREF="catted.spl">catted.spl</A></I>
+    as required by both SPLINK and TRANSMIT. It was prepared by <B>ped2spl</B>
+    program of SPLINK:<BR>
+<BR>
+    Now issue the following command at the system prompt to obtain
+    result:<BR>
+<BR>
+    transmit -l1 &lt;catted.spl<BR>
+<BR>
+    or transmit -l1 &lt;catted.spl &gt;catted.out to keep output
+    in file catted.out. Here -l1 tells TRANSMIT there is only one
+    marker in the data. The above command should generate the following
+    output:<BR>
+<BR>
+    Number of families with transmissions to affected offspring:
+    401</P>
+
+    <P>1 df tests for individual haplotypes</P>
+
+    <PRE>Haplotype Observed Expected Var(O-E) Chisq (1df)
+
+    1       5       6.7688   2.7187   1.1508
+    2       13      13.344   4.9193   0.024096
+    3       71      60.305   23.19    4.9325
+    4       172     165.98   48.989   0.73992
+    5       385     392.76   91.915   0.65574
+    6       372     365.24   95.226   0.47961
+    7       204     212.2    60.388   1.114
+    8       92      98.131   29.581   1.2708
+    9       14      13.264   5.5605   0.097398</PRE>
+
+    <P>Global chisquared test, on 8 degrees of freedom = 9.8164<BR>
+<BR>
+    <B><I>Exercise</I></B>: TRANSMIT is often used for multilocus
+    data. Experiment with a 2-locus problem using documentation example
+    (<I>linkped.pre</I>) of GENEHUNTER below.<BR>
+<BR>
+<BR>
+    <B><FONT COLOR="#000000" FACE="Arial">Program for family data:
+    </FONT></B><A NAME="anchor6333"></A><B><FONT COLOR="#000000"
+     FACE="Arial">FBAT</FONT></B></P>
+
+    <P>Short for <I>f</I>amily <I>b</I>ased <I>a</I>ssociation <I>t</I>est,
+    was developed by Harvard group. It incorporates ordinary TDT-type
+    analysis, including TDT using sibling controls when parental
+    information becomes unavailable, as well as the Rabinowitz-Laird
+    method for quantitative analysis.<BR>
+<BR>
+    As in GENEHUNTER, a simple command '?' gives synopsis of a complete
+    command list. The commands for running are comparable to ASPEX.
+    File <I><A HREF="drd4.dat">drd4.dat</A></I> contains data from
+    a study of DRD4 locus. It is very similar to the format used
+    by program GAS, in that an extra line indicating marker names
+    appears first and sexes of individuals are marked as 'm' for
+    males and 'f' for females.<BR>
+<BR>
+    Now we start FBAT by command:<BR>
+<BR>
+    fbat<BR>
+<BR>
+    then we type two commands:<BR>
+<BR>
+    load drd4.dat<BR>
+    fbat<BR>
+<BR>
+    <B><I>Exercise</I></B>: There are apparent problem with Windows
+    version of FBAT, that some commands will definitely cause the
+    program to crash. Since the original author doesn't provide the
+    source code, we have to turn to Unix system. However it would
+    be rather tedious to run the program interactively every time,
+    as we may need some nonstandard use of the program. I have create
+    a batch file drd4.sh for the example used here. If you have Unix
+    account then do try this by yourself when needed.<BR>
+<BR>
+    #!/usr/local/bin/tcsh<BR>
+    rm -f drd4.out<BR>
+    /people/jzhao/packages/fbat/fbat &lt;&lt;seewhathappens<BR>
+    log drd4.out<BR>
+    log on<BR>
+    load ped drd4.dat<BR>
+    fbat<BR>
+    fbat -e<BR>
+    model d<BR>
+    fbat<BR>
+    model r<BR>
+    fbat<BR>
+    viewmarker DRD4<BR>
+    viewstat DRD4<BR>
+    log off<BR>
+    quit<BR>
+    seewhathappens<BR>
+    exit 0</P>
+
+    <P># this was done on 2-OCT-2000<BR>
+    # JH Zhao<BR>
+<BR>
+    Note the following Unix command <BR>
+<BR>
+    chomod +x <I><A HREF="drd4.sh">drd4.sh</A></I><BR>
+<BR>
+    is required to make it a proper executable. You may need make
+    minor changes for the first and third lines to suit yourown computer
+    system.</P>
+
+    <P><BR>
+    <B><FONT COLOR="#000000" FACE="Arial">Program for family data:
+    </FONT></B><A NAME="anchor5800"></A><B><FONT COLOR="#000000"
+     FACE="Arial">ASPEX</FONT></B></P>
+
+    <P>This contains a group of programs for linkage and association
+    analyses of nuclear family data. We only demonstrate program
+    <I>sib_tdt</I> here.<BR>
+<BR>
+    ASPEX recognises syntax parsed by the widely available package
+    TCL, and generate graphics commands for XMGR. To perform analysis
+    we better create a command file containing the necessary settings,
+    as we do here with file drd4.tcl.<BR>
+<BR>
+    Now we issue <I>sib_tdt</I> command with argument -f followed
+    by TCL command file <I><A HREF="drd4.tcl">drd4.tcl</A></I> and
+    data file <I>drd4.dat</I>:<BR>
+<BR>
+    sib_tdt -f <I>drd4.tcl</I> drd4.dat<BR>
+<BR>
+    <B><I>Exercise</I></B>: how to keep the output from sib_tdt ?<BR>
+<BR>
+<BR>
+    <B>Program for family data: </B><A NAME="anchor5299"></A><B>GENEHUNTER</B><BR>
+<BR>
+    GENEHUNTER is a popular program for linkage analysis. Version
+    2.0 has commands <I>tdt</I> and <I>tdt2-tdt4</I>, to obtain TDT
+    analysis for two or more markers. It doesn't correct for multiple
+    tests. Here we use GENEHUNTER documentation example. To run the
+    program interactively, simply type<BR>
+<BR>
+    gh<BR>
+<BR>
+    at the system prompt. This brings you into the program. Continue
+    to type in the following commands:<BR>
+<BR>
+    load <I><A HREF="linkloci.dat">linkloci.dat</A></I><BR>
+    scan <I><A HREF="linkped.pre">linkped.pre</A></I><BR>
+    total stat het<BR>
+    tdt linkped.pre<BR>
+    tdt2<BR>
+<BR>
+    We can catalog the session by command <I>photo &lt;filename&gt;</I>.
+    GENEHUNTER also runs in batch mode: the command then becomes
+    gh &lt;command file&gt;.</P>
+
+    <P>Note GENEHUNTER and its variations GENEHUNTER-PLUS, GENEHUNTER/IMPRINTING,
+    GENEHUNTER/TWOLOCUS, Allegro all have similar command syntax
+    (command reference), a simple '?' command will give you a synopsis.<BR>
+<BR>
+    <B><I>Exercise</I></B><I>:</I> Create and run a batch file containing
+    the following commands.<BR>
+<BR>
+    photo testl<BR>
+    ps on<BR>
+    hapl on<BR>
+    load linkloci.dat<BR>
+    scan linkped.pre<BR>
+    ped1.ps<BR>
+    ped2.ps<BR>
+    total stat het<BR>
+    npltest.ps<BR>
+    lodtest.ps<BR>
+    inftest.ps<BR>
+    quit</TD> 
+  </TR>
+</TABLE></CENTER></P>
+
+<!--NOEDIT-->
+<!--end contents-->
+<!--#include virtual="/IoP/Includes/kcl_footer.html"--> 
+
+  <CENTER>
+    Last modified: <!--#echo var="LAST_MODIFIED"--> by <A
+HREF="mailto:j.zhao@iop.kcl.ac.uk">Jing Hua Zhao</A> 
+  </CENTER>
+
+<!--/NOEDIT-->
+
+</BODY>
+</HTML>

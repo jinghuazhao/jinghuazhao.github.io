@@ -1,0 +1,767 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>KCL: Institute of Psychiatry: Section of Genetic Epidemiology and Biostatistics</TITLE>
+  <META NAME="IP" CONTENT="Jing Hua Zhao">
+  <META NAME="e-mail" CONTENT="j.zhao@iop.kcl.ac.uk">
+  <META NAME="created" CONTENT="**insert**">
+  <META NAME="modified" CONTENT="**insert**">
+  <META NAME="expires" CONTENT="">
+  <META NAME="keywords" CONTENT="**insert**">
+  <META NAME="description" CONTENT="Who's who in the Institute of Psychiatry's Section of Genetic Epidemiology and Biostatistics">
+  <META NAME="copyright" CONTENT="King's College London">
+  <META NAME="content_source" CONTENT="Institute of Psychiatry - Psychological Medicine - Genetic Epidemiology and Biostatistics">
+  <META NAME="content_destination" CONTENT="College">
+  <META NAME="source_path" CONTENT="">
+  <LINK REL="STYLESHEET" TYPE="text/css" HREF="/IoP/Includes/kcl_dom.css">
+  <LINK REL="STYLESHEET" TYPE="text/css" HREF="/IoP/Includes/kcl_sub.css">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<!--NOEDIT-->
+<!--#include virtual="/IoP/Includes/kcl_h_sub.html"-->
+<!--#include virtual="/IoP/Includes/IoP_GEB_h.html" -->
+<!--begin contents-->
+<!--/NOEDIT-->
+
+<P><CENTER><TABLE WIDTH="520" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+  <TR>
+    <TD WIDTH="100%">
+    <P>This is part of the materials prepared for&nbsp; the second
+    and the third day of the Februrary 1998 HGMP linkage course,
+    including <U><A HREF="#Computer simulation in linkage">computer
+    simulation</A></U> using SIMULATE and SLINK, multipoint analysis
+    using <A HREF="#Using GENEHUNTER for linkage">GENEHUNTER</A>,
+    and&nbsp; transmission/disequilibrium test using <A HREF="#Using ETDT program">ETDT</A>.
+    Please inform us at <A HREF="http://www.iop.kcl.ac.uk/">Instute
+    of Psychiatry</A> your suggestions and any problems, thanks !</P>
+
+    <P><A HREF="mailto:p.sham@iop.kcl.ac.uk">Pak Chung Sham</A> and
+    <A HREF="mailto:j.zhao@iop.kcl.ac.uk">Jing Hua Zhao</A></P>
+
+    <P>12/2/1998</P>
+
+    <P><HR ALIGN=LEFT></P>
+
+    <P><CENTER><A NAME="Computer simulation in linkage"></A><B><FONT
+     SIZE="+3">Computer simulation in linkage analysis</FONT></B></CENTER></P>
+
+    <HR ALIGN=LEFT>
+
+    <P>The major uses of computer simulation in linkage analysis
+    are to estimate power, obtain emipirical p-value, and explore
+    newly-proposed methods.&nbsp; The idea is to generate genotype
+    or phenotype data using random numbers, conditional on given
+    pedigree structures, under a specified genetic model and recombination
+    fraction. Simulation involves generating multiple sets of such
+    data and analyzing them using a linkage program.&nbsp; The following
+    summary statistics are often of interest:</P>
+
+    <P>&nbsp;&nbsp;&nbsp; P-value: the probability that the lod score
+    will exceed the critical value (usually set at 3) under no linkage.
+<BR>
+    &nbsp;&nbsp;&nbsp; Power: the probability that the lod score
+    will exceed the critical value (usually set at 3) under linkage
+<BR>
+    &nbsp;&nbsp;&nbsp; ELOD: the expected value of the lod score
+    at the true recombination fraction</P>
+
+    <P>The exercise for this session is mainly based on Chapter 28
+    of <I>Handbook of Human Genetic Linkage</I> by Terwilliger and
+    Ott, where the following programs are discussed:</P>
+
+    <UL>
+      <LI>SIMULATE&nbsp;&nbsp;&nbsp;&nbsp; Pascal program to simulate
+      pedigree data in a completely random fashion.
+      <LI>SLINK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Pascal/C(FASTSLINK) program to be able to condition on known
+      marker information (Ott J. Proc Natl Acad Sci USA 1989 <B>86</B>:4175-4178;
+      Weeks <I>et al</I>. Am J Hum Genet 1990 <B>47: </B>A204; Cottingham
+      et al. Am J Hum Genet 1993 <B>53</B>:252-263) .HGMP provides
+      <A HREF="http://www.hgmp.mrc.ac.uk/Menu/Help/slink.html">the
+      online manual</A>.
+      <LI>SIMLINK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fortran program
+      similar to SLINK but the generated data has to be analyze under
+      the same model (Boehnke. Am J Hum Genet 1986 <B>39</B>:513-527;&nbsp;
+      Ploughman &amp; Boehnke.&nbsp; Am J Hum Genet 1989 :543-551)
+      . HGMP also provides <A HREF="http://www.hgmp.mrc.ac.uk/Menu/Help/simlink.html">the
+      online manual</A>.
+      <LI>CHRSIM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pascal program
+      possible to specify different map functions (Terwilliger <I>et
+      al</I>. Genet Epidemiol 1993 <B>10: </B>217-224).
+    </UL>
+
+    <P>SIMULATE and SLINK are available from the Terwilliger/Ott/HGMP
+    web sites. SIMLINK is available from Boehnke/HGMP sites. CHRSIM
+    is currently unavailable from these web sites.</P>
+
+    <P>Throughout the discussions, experience with LINKAGE is assumed.
+<BR>
+    &nbsp;</P>
+
+    <P><B><FONT SIZE="+2">Setting up data files for simulation</FONT></B></P>
+
+    <P>Here is a summary of the input/output files for the above
+    programs.</P>
+
+    <UL>
+      <LI>SIMULATE
+      <UL>
+        <LI>Input&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; problem.dat, simped.dat,
+        simdata.dat
+        <LI>Output&nbsp;&nbsp;&nbsp;&nbsp; problem.dat, pedfile.dat,
+        simout.dat
+      </UL>
+      <LI>SLINK
+      <UL>
+        <LI>Input&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; slinkin.dat simped.dat,
+        simdata.dat
+        <LI>Output&nbsp;&nbsp;&nbsp;&nbsp; pedfile.dat, slinkin.dat
+      </UL>
+      <LI>CHRSIM
+      <UL>
+        <LI>Input&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; simped.dat, input.dat
+        <LI>Output&nbsp;&nbsp;&nbsp;&nbsp; pedfile.dat, test.res, outfile.dat
+      </UL>
+      <LI>SIMLINK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (omitted)
+    </UL>
+
+    <P>Linkage analysis of pedigree files produced by SIMULATE and
+    SLINK could be done with LINKAGE or SLINK (<I>msim, isim, lsim,
+    elodhet</I>) , <I>unknown</I> and possibly <I>lcp</I>/<I>lsp</I>/<I>lrp</I>
+    are required in both cases. In analysis of output from SLINK,
+    another file. limit.dat, is necessary.</P>
+
+    <P>Here we illustrate SLINK program. From HGMP linkage analysis
+    menu, select SLINK, and click <B>Example data</B>, then <B>Look
+    at example files.</B>&nbsp; Examine the contents of <U>simdata.dat</U>,
+    <U>simped.dat</U> and <U>slinkin.dat.</U>&nbsp; These are the
+    input files for <I>slink</I>;&nbsp; <U>simdata.dat</U> specifies
+    the model parameters (e.g. allele frequencies, penetrances, recombination
+    fraactions),&nbsp; <U>simped.dat </U>provides the pedigrees in
+    post-<I>makeped </I>format (but with an added column for availability
+    code, which is 2 if marker genotypes are available, or 0 if they
+    are not), <U>slinkin.dat</U><I> </I>contains a random number
+    seed, the number of replicates required, the locus number of
+    affection status, and the proportion of unlinked families. The
+    <I>slink</I> program produces the output files <U>simout.dat</U>
+    and <U>pedfile.dat</U><I>.&nbsp;&nbsp; </I>At this stage, it
+    is necessary to run the<I> unknown </I>program (using<I> </I><U>pedfile.dat</U><I>
+    </I>which contains the simulated pedigree data, and <U>datafile.dat</U><I>
+    </I>which contains the locus parameters for linkage analysis)
+    to generate files called<I> </I><U>ipedfile.dat</U><I> </I>and<I>
+    </I><U>speedfile.dat</U><I>.&nbsp; </I>These two files, toegther
+    with<I> </I><U>datafile.dat</U> and<I> </I><U>limit.dat</U><I>
+    </I>(which contains 3 lod score thresholds, usually 1, 2 and
+    3), can then be analysed by <I>msim, isim, </I>or <I>lsim (</I>which
+    are modified from<I> mlink, ilink </I>and<I> linkmap) </I>to
+    produce the output files<I> </I><U>msim.dat</U>, <U>isim.dat</U><I>
+    or </I><U>lsim.dat</U><I>. </I>Note that a separate datafile.dat
+    has to be prepared for <I>msim</I>, <I>isim</I> and <I>lsim</I>.</P>
+
+    <P>In the example, the files <U>simdata.dat</U>, <U>simped.dat</U>,
+    <U>slinkin.dat.</U><I>, </I><U>limit.dat</U> as well as the three
+    versions of datafile.dat called <U>datafile.msi</U><I>, </I><U>datafile.isi</U>
+    and <U>datafile.lsi</U> have been set up and a shell program
+    called <U>test.sh</U> written to perform the whole analysis.
+    Examine these files and then run <U>test.sh</U>&nbsp; by selecting
+    SLINK at the linkage analysis menu, changing directory to example-files/slink,
+    and typing <B>test.sh</B><I> </I>at the Unix prompt.</P>
+
+    <P>As outlined above, <I>slink</I> can generate data under heterogeneity
+    (i.e. where the proportion unlinked in <U>slinkin.dat</U> is
+    specified to be greater than 0) but one should not analyze data
+    so generated assuming homogeneity, for example, using output
+    from the <I>msim</I> program.&nbsp; Instead, the replicates generated
+    by <I>slink</I> are analyzed with <I>msim</I> to give <U>msim.dat</U>
+    and <U>lodfile.dat</U>, which are used as inputs to a utility
+    program called <I>elodhet</I>. This computes for each family
+    its expected lod score under heterogeneity. <BR>
+    Presently, <I>elodhet</I> is restricted to two loci (a trait
+    and a marker locus).</P>
+
+    <P>To simulate under no linkage between trait and marker, SIMULATE
+    is much faster than SLINK<I>. </I>It also requires three input
+    files: <U>simdat.dat</U> (locus parameters file),&nbsp; <U>simped.dat</U>
+    (post-<I>makeped</I> pedigree file) and <U>problem.dat</U>. The
+    <U>simped.dat</U> file needs the number of families and number
+    of individuals in each family sizes to be specified at the beginning.
+    Individuals in a family must be numbered consecutively, and there
+    is <I>only</I> one column for each marker (which should be 1
+    if the genotype is available and 0 otherwise). The <U>problem.dat</U>
+    file contains three random number seeds and the required number
+    of replicates. The <I>simulate</I> program generates an output
+    file called <U>pedfile.dat</U>, which can be analyzed with <I>unknown</I>,
+    <I>msim</I>, <I>isim</I>, or <I>lsim, </I>in the same way as
+    output from <I>slink</I>. <BR>
+    &nbsp;</P>
+
+    <P><B><FONT SIZE="+2">Exercise</FONT></B></P>
+
+    <P><B><FONT SIZE="+2">1.</FONT></B>Ott (Am J Hum Genet 1992 <B>51</B>:
+    283-290) did an interesting simulation to examine the effect
+    of falsely specifying unknown gene frequencies as equally frequent
+    and showed that it would result in a false-positive evidence
+    for linkage. He obtained 1,000&nbsp; replicates of a pedigree
+    having a rare dominant disease (however he didn't mention the
+    gene frequency) using SIMULATE (recombination fraction 0.5) and
+    SLINK (recombination fraction 0.2). The generated pedigrees were
+    analyzed under (1) the correct marker allele frequencies and
+    (2)&nbsp; the assumption of equal allele frequencies.<IMG SRC="ott92.jpg"
+    HEIGHT="337" WIDTH="580" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></P>
+
+    <P>This is a 22-member family, where only individuals 10-22 are
+    typed. We have prepared the pedigree file <A HREF="ott92.pre">Ott92.pre</A>
+    and parameter file <A HREF="ott92.dat">Ott92.dat</A>.</P>
+
+    <UL>
+      <LI>Prepare the necessary files and run SIMULATE.
+      <LI>Analyze the generated output file with <I>msim</I> with correct
+      allele frequencies.
+      <LI>Change all the allele frequencies to 0.25 and repeat the
+      analysis.
+      <LI>What is the effect of misspecified allele frequencies ?
+    </UL>
+
+    <P><B><FONT SIZE="+2">2.</FONT></B>The necessary files for exercise
+    28 of the <I>Handbook</I> are provided in the directory exer_28/slink
+    and exer_28/simulate. The purpose of this exercise is to demonstrate
+    the effect of model misspecification. To avoid confusion, the
+    locus file for dominant and recessive models are named <U>simdata.dom</U>
+    and <U>simdata.rec</U></P>
+
+    <UL>
+      <LI>Prepare <U>simdata.dat</U> file for SLINK under dominant
+      model (<I>Hint:</I> use Unix <B>cp</B> command).
+      <LI>Run <I>slink</I> program
+      <LI>Analyze your output with <I>unknown</I> and <I>msim </I>under
+      dominant model.
+      <LI>Repeat the analysis under recessive (i.e. misspecified) model
+      <LI>What is the effect of misspecifying the model ?
+    </UL>
+
+    <P>You could do the above analyses by creating and running a
+    batch file (see test.sh). <BR>
+    &nbsp;</P>
+
+    <P><B><FONT SIZE="+2">Quick reference:</FONT></B></P>
+
+    <P>SIMULATE: <BR>
+    =========</P>
+
+    <UL>
+      <LI>problem.dat&nbsp;&nbsp;&nbsp;&nbsp; typically has two lines
+      <UL>
+        <LI>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &lt;seed1&gt; &lt;seed2&gt; &lt;seed3&gt;
+        <LI>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &lt;#replicates&gt;
+      </UL>
+      <LI>simped.dat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; post-<I>makeped</I>
+      format with fields indicating marker status,&nbsp; the first
+      two lines indicating # of families and their sizes
+      <LI>simdata.dat&nbsp;&nbsp;&nbsp;&nbsp; ordinary LINKAGE locus
+      file format
+    </UL>
+
+    <P>SLINK: <BR>
+    ======</P>
+
+    <UL>
+      <LI>slinkin.dat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; has four
+      lines
+      <UL>
+        <LI><FONT FACE="Times New Roman,Times">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &lt;seed&gt;</FONT>
+        <LI><FONT FACE="Times New Roman,Times">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &lt;#replicates&gt;</FONT>
+        <LI><FONT FACE="Times New Roman,Times">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        locus number of affection status, if any</FONT>
+        <LI><FONT FACE="Times New Roman,Times">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        proportion of unlinked families</FONT>
+      </UL>
+      <LI>simped.dat&nbsp;&nbsp;&nbsp;&nbsp; does <I>not</I> contain
+      two-line header as in SIMULATE,&nbsp; but it has availability
+      code, often 2, and 0 when marker information unavailable.
+      <LI>simdata.dat&nbsp;&nbsp;&nbsp; ordinary LINKAGE locus file
+      <LI>limit.dat containing three thresholds, normally 1 2 3 (1
+      2.65 3 in the <I>Handbook</I>), you could use linkage utility
+      program BINOM to build up a confidence interval based on this.
+      In summary, <I>isim/msim/lsim</I> need the following files: pedfile.dat,datafile.dat,simout.dat
+      and limit.dat.
+      <LI>Here is the flowchart as given in SLINK document.
+    </UL>
+
+    <P><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;
+    simdata.dat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    simped.dat</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    v</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    +-----------------------------+</FONT> <BR>
+    <FONT FACE="Courier New,Courier">slinkin.dat-&gt;&brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    S L I N K&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar; --------&gt; simout.dat</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    +-----------------------------+</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp; datafile.dat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    pedfile.dat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    +-----------------------------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; U N K N O
+    W N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    +-----------------------------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp; datafilfe.dat&nbsp;&nbsp;&nbsp;&nbsp;
+    ipedfile.dat&nbsp;&nbsp; speedfile.dat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    +-----------------------------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    M S I M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;limit.dat-&gt;&brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    I S I M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp; &lt;------------&brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    L S I M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    +-----------------------------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &brvbar;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    outfile.dat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; msim.dat&nbsp;&nbsp;&nbsp;&nbsp;
+    &lt;-----------------+</FONT> <BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    lodfile.dat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; isim.dat</FONT>
+<BR>
+    <FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    lsim.dat</FONT> <BR>
+    &nbsp; <BR>
+    CHRSIM: <BR>
+    =======</P>
+
+    <UL>
+      <LI>&nbsp; simped.dat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; same as SIMULATE
+      <LI>&nbsp; input.dat&nbsp;&nbsp;&nbsp;<I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </I>document example with hardly any change
+    </UL>
+
+    <P><CENTER>&nbsp;</CENTER></P>
+
+    <P><CENTER><HR><A NAME="Using GENEHUNTER for linkage"></A><B><FONT
+     SIZE="+3">Using GENEHUNTER for linkage analysis</FONT></B></CENTER></P>
+
+    <HR ALIGN=LEFT>
+
+    <P><B>GENEHUNTER</B> is a general-purpose C program for linkage
+    analysis of pedigree data developed (by Kluglyak <I>et al</I>.
+    Am J Hum Genet 1996 <B>58:</B> 1347-1363) at Whitehead Institute,
+    MIT. It implements the Lander-Green Algorithm and provides a
+    form of non-parametric linkage analysis, lod-score calculation
+    under a specified model, information-content mapping and haplotyping,
+    in a user-friendly environment. It is designed to analyze small
+    pedigrees with large number of markers, as compared to LINKAGE
+    program (which is based on Elston-Stewart Algorithm and appropriate
+    for large family but small number of markers). The non-parametric
+    linkage analysis in GENEHUNTER is based on NPL statistics, but
+    has been modified recently to improve the performance of the
+    test (Kong &amp; Cox. Am J Hum Genet 1997 <B>61: </B>1179-1188,
+    software GENEHUNTER PLUS can be obtained from galton.uchicago.edu/pub/kong).</P>
+
+    <P>In this session we will use both the GENEHUNTER document example
+    and a real example to illustrate multipoint analysis. <BR>
+    &nbsp;</P>
+
+    <P><B><FONT SIZE="+2">Setting up data files for GENEHUNTER</FONT></B></P>
+
+    <P>GENEHUNTER requires a locus description file and a pedigree
+    file. The locus file is similar to the LINKAGE parameter file
+    and thus can be created with LINKAGE utility program <I>preplink</I>.
+    The pedigree file should be in pre-<I>makeped</I> format, and
+    the first locus should be the disease locus.</P>
+
+    <P>GENEHUNTER provides a simple example files called <U>linkped.pre</U>
+    and <U>linkloci.dat</U>. You can set up these two files from
+    HGMP help menu. From HGMP linkage analysis menu, select the information
+    icon for GENEHUNTER.&nbsp; Click on <B>example data</B> to set
+    up example files.&nbsp; Click <B>Look at these example files</B>
+    and examine the files&nbsp; to see the way the locus names are
+    specified, these names will appear in the postscript output in
+    the analysis. <BR>
+    &nbsp;</P>
+
+    <P><B><FONT SIZE="+2">Running GENEHUNTER</FONT></B></P>
+
+    <P>From HGMP LINKAGE menu,&nbsp; click GENEHUNTER to obtain X-Window
+    for GENEHUNTER. To do an analysis using the document example,
+    change directory to example-files/genehunter.&nbsp; Then start
+    GENEHUNTER by typing gh at the Unix Prompt</P>
+
+    <P>Unix % <B>gh</B></P>
+
+    <P><FONT FACE="Courier New,Courier">******************************************************************<BR>
+    *</FONT> <BR>
+    <FONT FACE="Courier New,Courier">*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    GENEHUNTER - Complete Linkage Analysis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    *</FONT> <BR>
+    <FONT FACE="Courier New,Courier">*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    (version 1.1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    *</FONT> <BR>
+    <FONT FACE="Courier New,Courier">*</FONT> <BR>
+    <FONT FACE="Courier New,Courier">******************************************************************</FONT>
+<BR>
+    <FONT FACE="Courier New,Courier">&nbsp;</FONT> <BR>
+    <FONT FACE="Courier New,Courier">Type 'help' or '?' for help.</FONT></P>
+
+    <P><FONT FACE="Times New Roman,Times">Now enter the following
+    commands interactively</FONT><FONT FACE="Courier New,Courier">,</FONT></P>
+
+    <P><FONT FACE="Courier New,Courier">npl:1&gt; <B>photo</B> sample</FONT>
+<BR>
+    <FONT FACE="Courier New,Courier">npl:2&gt; <B>load</B> linkloci.dat</FONT>
+<BR>
+    <FONT FACE="Courier New,Courier">npl:3&gt; <B>scan</B> linkped.pre</FONT>
+<BR>
+    <FONT FACE="Courier New,Courier">npl:4&gt; <B>total stat het</B></FONT>
+<BR>
+    <FONT FACE="Courier New,Courier">npl:5&gt; <B>quit</B></FONT></P>
+
+    <P>The<B> photo</B> command saves the session into a file.&nbsp;
+    The <B>load</B> command reads in a locus parameter file. The
+    <B>scan</B> command reads in a pedigree data file.&nbsp; The
+    <B>total stat het</B> command requests a summary of&nbsp; lod
+    score, heterogeneity and NPL statistics to be output.</P>
+
+    <P>We can also generate postscript output using <B>ps </B>command.
+    GENEHUNTER will automatically skip large pedigrees so you need
+    to execute <B>skip large off</B>&nbsp; for larger pedigrees.
+    The command for two-point analyses is <B>single on</B>. You can
+    get online help with <B>help/? </B>[command-name].</P>
+
+    <P>The above commands can be written to a command file.&nbsp;
+    Suppose this is called <U>sample.in</U>, then it can be executed
+    by the <B>run</B> <B>sample</B> command within GENEHUNTER.&nbsp;
+    Alternatively, run GENEHUNTER in batch mode by simply typing
+    at Unix prompt.</P>
+
+    <P>Unix % <B>gh</B> &lt;sample.in <BR>
+    &nbsp;</P>
+
+    <P><B><FONT SIZE="+2">Interpreting output</FONT></B></P>
+
+    <P>Now we use text editor to examine the output file <U>sample.out</U>.
+    For each pedigree GENEHUNTER produces lod scores, NPL scores,
+    p values and information content for series of positions in the
+    map. It also gives a set of haplotypes consistent with the data.
+    At the end it gives the same statistics for the total sample.</P>
+
+    <UL>
+      <LI>What's the maximum lod score ?
+      <LI>What's the maximum NPL ?
+      <LI>What's point-wise significance associated with maximum NPL
+      ?
+    </UL>
+
+    <P><B><FONT SIZE="+2">Exercise</FONT></B></P>
+
+    <P>Here is an example of homozygosity mapping. The locus description
+    file is <A HREF="gh_ex.dat">gh_ex.dat</A> and pedigree file is
+    <A HREF="gh_ex.pre">gh_ex.pre</A>.</P>
+
+    <UL>
+      <LI>Draw the pedigree diagram.
+      <LI>Create the following batch file using a text editor.
+      <LI>Run GENEHUNTER and use <B>help</B> to examine the <B>use</B>
+      command.
+      <LI>Now run the batch file.
+      <LI>View <U>gh_ex.out</U> with a text editor and the postscript
+      output with <B>ghostscript</B>.
+      <LI>Interpret the output.
+    </UL>
+
+    <P><B>system rm </B>gh_ex.out 1.ps 2.ps npl.ps lod.ps inf.ps
+<BR>
+    <B>photo </B>gh_ex <BR>
+    <B>ps on</B> <BR>
+    <B>load </B>gh_ex.dat <BR>
+    <B>use </B>1 14 2 11 3 <BR>
+    <B>scan </B>gh_ex.pre <BR>
+    1.ps <BR>
+    2.ps <BR>
+    <B>total stat het</B> <BR>
+    npl.ps <BR>
+    lod.ps <BR>
+    inf.ps <BR>
+    <B>quit</B> <BR>
+    &nbsp;</P>
+
+    <P><HR ALIGN=LEFT></P>
+
+    <P><CENTER><A NAME="Using ETDT program"></A><B><FONT SIZE="+3">Using
+    ETDT program</FONT></B>&nbsp; <HR></CENTER></P>
+
+    <P>ETDT is a C++ program for transmission disequilibrium test
+    (TDT) of multiallelic marker as proposed by Sham &amp; Curtis
+    (Ann Hum Genet 1995 <B>59</B>: 323-336). It has options for test
+    of preferential transmission from father and mother separately.
+    The recent version also provides a simple simulation module to
+    obtain the empirical significance for the test statistics. Software
+    to carry out TDT using sibling controls is also available (Curtis.
+    Ann Hum Genet 1997 <B>61</B>: 319-333). The documentation of
+    the program is very detailed. Select ETDT from HGMP linkage analysis
+    menu, and then click <B>help on this option</B>. You should be
+    able to see the document. Briefly, It gives the number of transmitted
+    and non-transmitted alleles, and calculates Chi-square statistics
+    for each allele, and computes loglikelihood ratio tests for genotype-wise
+    and allele-wise analysis. The allele-wise analysis is the preferred
+    test. <BR>
+    &nbsp;</P>
+
+    <P><B><FONT SIZE="+2">Setting up data files for ETDT</FONT></B></P>
+
+    <P>ETDT requires the same files as LINKAGE<I> </I>program. We
+    again start from running the document example. From HGMP linkage
+    analysis menu, select ETDT and <B>Example data</B> option, the
+    document example files will be set up automatically.</P>
+
+    <P>To see the document example files, click <B>Look at example
+    files</B>. The file <U>example.par</U> is simply a LINKAGE parameter
+    file and in this case it is for disease locus and one marker
+    locus, and <U>example.ppd</U> is a post-<I>makeped</I> format
+    pedigree file. <BR>
+    &nbsp;</P>
+
+    <P><B><FONT SIZE="+2">Running ETDT</FONT></B></P>
+
+    <P>Now change the default directory to example-files/etdt, and
+    type at the Unix prompt,</P>
+
+    <P>Unix % <B>etdt </B>example</P>
+
+    <P>This will take <U>example.par</U> and <U>example.ppd</U> as
+    input files to generate output file <U>example.chi</U>. The transmission
+    information is contained in <U>example.cou</U>.</P>
+
+    <P>The etdt batch command calls up three seperate programs. The
+    first program, <I>ped2tdt</I>, exatracts transmission information
+    from <U>example.par</U> and <U>example.ppd</U> and produces <U>example.tdt</U>.
+    The second program, <I>caltdt,</I> writes a transmision table
+    into a file called <U>example.cou</U>. The third program, <I>lrtdt,
+    </I>carries out the logistic regression and writes the final
+    output file <U>example.chi</U>.</P>
+
+    <P>It is advised that you give your parameter file and pedigree
+    file the same 'root' name.&nbsp; However the extensions have
+    to be .par and .ppd to indicate they are parameter file and pedigree
+    file. <BR>
+    &nbsp;</P>
+
+    <P><B><FONT SIZE="+2">Interpreting ETDT output</FONT></B></P>
+
+    <P>Now examine example.chi. ETDT outputs the regression coefficient
+    estimates and their standard errors as well as the correlation
+    matrix of the estimates, which are calculated from iterated reweighted
+    least squares (IRLS) involving singluar-value decomposition.
+    As for the document example, the allele-wise and genotype-wise
+    statistics are as follows,</P>
+
+    <P><FONT FACE="Courier New,Courier">Log likelihood under null
+    hypothesis: L0 = -29.112181</FONT> <BR>
+    <FONT FACE="Courier New,Courier">Log likelihood under parsimonious
+    (allele-wise) hypothesis: L1 = -28.423109</FONT> <BR>
+    <FONT FACE="Courier New,Courier">Log likelihood using saturated
+    (genotype-wise) model: L2 = -24.273701</FONT></P>
+
+    <P><FONT FACE="Courier New,Courier">Chi-squared for allele-wise
+    TDT = 2*(L1-L0) = 1.378143, 4 df, p = 0.847970</FONT> <BR>
+    <FONT FACE="Courier New,Courier">Chi-squared for genotype-wise
+    TDT = 2*(L2-L0) = 9.676960, 8 df, p = 0.288701</FONT> <BR>
+    <FONT FACE="Courier New,Courier">Chi-squared for goodness-of-fit
+    of allele-wise model</FONT> <BR>
+    <FONT FACE="Courier New,Courier">= 2*(L2-L1)&nbsp; = 8.298817,
+    4 df, p=0.081397</FONT></P>
+
+    <P><FONT FACE="Times New Roman,Times">Neither the genotype-wise
+    nor the allele-wise TDT is significant. The transmission tests
+    for each allele are given as follows, the Chi-square statistics
+    is calculated against the assumption of equal transmssion. The
+    associate p-values are obtained from Chi-square distribution
+    with one degree of freedom.</FONT></P>
+
+    <P><FONT FACE="Courier New,Courier">Transmissions for individual
+    alleles:</FONT></P>
+
+    <P><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    5</FONT></P>
+
+    <P><FONT FACE="Courier New,Courier">Passed:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp; 13</FONT>
+<BR>
+    <FONT FACE="Courier New,Courier">Not passed:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7&nbsp;&nbsp;&nbsp;&nbsp; 14</FONT>
+<BR>
+    <FONT FACE="Courier New,Courier">Chi-squared:&nbsp; 0.800&nbsp;
+    0.692&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.250&nbsp;
+    0.037</FONT> <BR>
+    <FONT FACE="Courier New,Courier">p values:&nbsp;&nbsp;&nbsp;
+    0.3711 0.4054&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.6171
+    0.8474</FONT> <BR>
+    <FONT FACE="Courier New,Courier">(these p values should be corrected
+    for multiple testing)</FONT> <BR>
+    &nbsp;</P>
+
+    <P><B><FONT SIZE="+2">Exercise</FONT></B></P>
+
+    <UL>
+      <LI>Examine the first pedigree from the example.ppd and see how
+      the transmission is counted, compare your result with ETDT.
+    </UL>
+
+    <P><IMG SRC="etdt1.jpg" HEIGHT="308" WIDTH="620" NATURALSIZEFLAG="0"
+    ALIGN="BOTTOM"> <BR>
+    &nbsp;</P>
+
+    <UL>
+      <LI>Consider the following 5-allele transmission table, can you
+      use ETDT program ? (<I>Hint: </I>construct a input file for <I>lrtdt</I>,
+      please refer to <U>example.cou</U>).
+      <P><CENTER>A hypothetical&nbsp; transmitted (row) x nontransmitted
+      (column)&nbsp; table</CENTER>
+    </UL>
+
+    <P><CENTER><TABLE BORDER="1" COLS="5" WIDTH="72%" CELLSPACING="2"
+    CELLPADDING="0">
+      <TR>
+        <TD>
+        0</TD> 
+        <TD>
+        53</TD> 
+        <TD>
+        55</TD> 
+        <TD>
+        56</TD> 
+        <TD>
+        57</TD> 
+      </TR>
+      <TR>
+        <TD>
+        47</TD> 
+        <TD>
+        0</TD> 
+        <TD>
+        52</TD> 
+        <TD>
+        54</TD> 
+        <TD>
+        56</TD> 
+      </TR>
+      <TR>
+        <TD>
+        45</TD> 
+        <TD>
+        48</TD> 
+        <TD>
+        0</TD> 
+        <TD>
+        52</TD> 
+        <TD>
+        53</TD> 
+      </TR>
+      <TR>
+        <TD>
+        44</TD> 
+        <TD>
+        46</TD> 
+        <TD>
+        48</TD> 
+        <TD>
+        0</TD> 
+        <TD>
+        51</TD> 
+      </TR>
+      <TR>
+        <TD>
+        43</TD> 
+        <TD>
+        44</TD> 
+        <TD>
+        47</TD> 
+        <TD>
+        49</TD> 
+        <TD>
+        0</TD> 
+      </TR>
+    </TABLE></CENTER></TD>
+  </TR>
+</TABLE></CENTER></P>
+
+<!--NOEDIT-->
+<!--end contents-->
+<!--#include virtual="/IoP/Includes/kcl_footer.html"--> 
+
+  <CENTER>
+    Last modified: <!--#echo var="LAST_MODIFIED"--> 14/1/2000 by: <A
+HREF="mailto:j.zhao@iop.kcl.ac.uk">Jing Hua Zhao</A> 
+  </CENTER>
+
+<!--/NOEDIT-->
+
+</BODY>
+</HTML>

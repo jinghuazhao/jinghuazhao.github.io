@@ -1,0 +1,916 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+  <META NAME="Author" CONTENT="j zhao">
+  <TITLE>class1</TITLE>
+</HEAD>
+<BODY>
+
+<H2><FONT FACE="Times New Roman,Times">Introduction to Quantitative
+Genetics (Session I)</FONT></H2>
+
+<P><FONT FACE="Times New Roman,Times">9:30-11:00am&nbsp; March
+9, 1998</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">For this practical we use
+Dr Alison Mcdonald's data set on neuroticism.&nbsp; The data will
+be on floppy disk in an SPSS data file called <B><A HREF="class1.sav">class1.sav</A>.</B>&nbsp;&nbsp;
+Associated SPSS syntax file called <B><A HREF="class1.sps">class1.sps</A></B>
+and output file called <B><A HREF="class1.lst">class1.lst</A></B>
+are also provided. Create a subdirectory on your U: drive, and
+copy these files across.&nbsp; Then run SPSS and read the data
+in by selecting the <U>F</U>ile menu and then <U>O</U>pen <U>D</U>ata
+file. Examine the variables on the speadsheet.&nbsp; Variable
+id is the twin pair identifier, numbered consecutively from 1
+to 522 for MZ pair, and from 523 to 794 for DZ pair. Variable
+n is the neuroticism score of the proband twin, and ncotwin the
+neuroticism score of the cotwin.&nbsp; Note that each pair is
+entered as 2 observations, in which proband and cotwin status
+is reversed.</FONT> <BR>
+&nbsp;</P>
+
+<H3><FONT FACE="Times New Roman,Times">Analysis of Variance</FONT></H3>
+
+<P><FONT FACE="Times New Roman,Times">We now perform an ANOVA
+on MZ and DZ twins in order to obtain test for (a) the presence
+of familial resemblance in MZ twins, (b) the presence of familial
+resemblance in DZ twins, (c) the presence of genetic effects.</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">Select <U>S</U>tatistics,
+ANO<U>V</U>A models, <U>S</U>imple factorial, choose n as your
+<U>D</U>ependent variable, id as your <U>F</U>actor(s) and D<U>e</U>fine
+Range 1-522 for MZ pairs and 523-794 for DZ pairs.</FONT>&nbsp;<FONT
+ FACE="Times New Roman,Times"> <U>P</U>aste after correct selection
+to obtain SPSS syntax, which should be similar to the following.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">* ANOVA for MZ.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">ANOVA</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; VARIABLES=n</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; BY id(1 522)</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /MAXORDERS ALL</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /METHOD UNIQUE</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /FORMAT LABELS
+.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">* ANOVA for DZ.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">ANOVA</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; VARIABLES=n</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; BY id(523 794)</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /MAXORDERS ALL</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /METHOD UNIQUE</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /FORMAT LABELS
+.</FONT> <BR>
+&nbsp; <BR>
+<FONT FACE="Times New Roman,Times">These commands are in <B><A
+HREF="class1.sps">class1.sps</A></B>. You can start from SPSS
+<U>F</U>ile menu and <U>O</U>pen SPSS <U>S</U>yntax and call up
+this file into SPSS syntax window, use shift-cursor key to select
+part of the code for ANOVA (or Ctrl-A to block all the commands,
+but we do NOT recommend this now), then click execute button.
+It is relatively slow ! The output should be as follows.</FONT>
+<BR>
+&nbsp; <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * *&nbsp; A N A L Y S I S&nbsp;&nbsp; O F&nbsp;&nbsp; V A R
+I A N C E&nbsp; * * *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Neuroticism</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+by&nbsp;&nbsp; ID</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+UNIQUE sums of squares</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+All effects entered simultaneously</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Sum of&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Sig</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Source of Variation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Squares&nbsp;&nbsp;&nbsp;&nbsp; DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; F&nbsp;&nbsp;&nbsp;
+of F</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Main Effects&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+13445.226&nbsp;&nbsp;&nbsp; 521&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+25.807&nbsp;&nbsp;&nbsp;&nbsp; 2.720&nbsp; .000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+13445.226&nbsp;&nbsp;&nbsp; 521&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+25.807&nbsp;&nbsp;&nbsp;&nbsp; 2.720&nbsp; .000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Explained&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+13445.226&nbsp;&nbsp;&nbsp; 521&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+25.807&nbsp;&nbsp;&nbsp;&nbsp; 2.720&nbsp; .000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4953.000&nbsp;&nbsp;&nbsp; 522&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+9.489</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+18398.226&nbsp;&nbsp; 1043&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+17.640</FONT> <BR>
+<FONT SIZE="-1">&nbsp;</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">1588 cases were
+processed.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">544 cases (34.3 pct)
+were missing.</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * *&nbsp; A N A L Y S I S&nbsp;&nbsp; O F&nbsp;&nbsp; V A R
+I A N C E&nbsp; * * *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Neuroticism</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+by&nbsp;&nbsp; ID</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+UNIQUE sums of squares</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+All effects entered simultaneously</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Sum of&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Sig</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Source of Variation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Squares&nbsp;&nbsp;&nbsp;&nbsp; DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; F&nbsp;&nbsp;&nbsp;
+of F</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Main Effects&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+5970.454&nbsp;&nbsp;&nbsp; 271&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+22.031&nbsp;&nbsp;&nbsp;&nbsp; 1.478&nbsp; .001</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+5970.454&nbsp;&nbsp;&nbsp; 271&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+22.031&nbsp;&nbsp;&nbsp;&nbsp; 1.478&nbsp; .001</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Explained&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+5970.454&nbsp;&nbsp;&nbsp; 271&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+22.031&nbsp;&nbsp;&nbsp;&nbsp; 1.478&nbsp; .001</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4053.500&nbsp;&nbsp;&nbsp; 272&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+14.903</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+10023.954&nbsp;&nbsp;&nbsp; 543&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+18.460</FONT> <BR>
+<FONT SIZE="-1">&nbsp;</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">1588 cases were processed.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">1044 cases (65.7 pct)
+were missing.</FONT> <BR>
+&nbsp;</P>
+
+<H4>Questions and Exercises:</H4>
+
+<P><FONT FACE="Courier New,Courier">(a) </FONT>What is the test
+result for familial resemblance in MZ twins? <BR>
+<FONT FACE="Courier New,Courier">(b) </FONT>What is the test result
+for familial resemblance in DZ twins? <BR>
+<FONT FACE="Courier New,Courier">(c) </FONT>What is the test result
+for the presence of genetic effects? <BR>
+<FONT FACE="Courier New,Courier">(d) </FONT>Estimate the intraclass
+correlation for MZ twins. <BR>
+<FONT FACE="Courier New,Courier">(e) </FONT>Estimate the intraclass
+correlation for DZ twins. <BR>
+<FONT FACE="Courier New,Courier">(f) </FONT>Do these intraclass
+correlations differ significantly from each other?</P>
+
+<P>If you only have pen and paper, you can use the built-in calculator
+from Windows accessories. <BR>
+&nbsp;</P>
+
+<H3>Regression Analysis</H3>
+
+<P>It is possible to estimate the intraclass correlations using
+regression analysis.&nbsp; Select&nbsp; <U>T</U>ransform, <U>C</U>ompute
+wgt = 0.5,&nbsp; <U>P</U>aste, and click execute button, then
+you should be able to see a new variable wgt in the data sheet.
+Now select <U>D</U>ata, <U>W</U>eight cases, <U>W</U>eight cases
+by wgt .&nbsp; For MZ and DZ twins separately, select <U>S</U>tatistics,
+<U>R</U>egression, <U>L</U>inear, and choose ncotwin as dependent
+and n as independent variables, run the regression.&nbsp; You
+can seperate select <U>D</U>ata, Select <U>C</U>ases, <U>I</U>f
+condition is satisfied, <U>I</U>f..., zyg = 1.0 for MZ twins and&nbsp;
+zyg = 0.5 for DZ twins. In order for the following analysis, we
+return to the mode that would use all the cases, which could be
+done by selecting <U>D</U>ata, Select <U>C</U>ases, <U>A</U>ll
+cases.&nbsp; The command and output are as follows</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">COMPUTE wgt =&nbsp;
+0.5 .</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">EXECUTE .</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">WEIGHT</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; BY wgt .</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">USE ALL.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">COMPUTE filter_$=(zyg
+= 1.0).</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">VARIABLE LABEL filter_$
+'zyg = 1.0 (FILTER)'.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">VALUE LABELS filter_$&nbsp;
+0 'Not Selected' 1 'Selected'.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">FORMAT filter_$ (f1.0).</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">FILTER BY filter_$.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">EXECUTE .</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">REGRESSION</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /MISSING LISTWISE</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /STATISTICS
+COEFF OUTS R ANOVA</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /CRITERIA=PIN(.05)
+POUT(.10)</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /NOORIGIN</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /DEPENDENT ncotwin</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /METHOD=ENTER
+n.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">USE ALL.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">COMPUTE filter_$=(zyg
+= 0.5).</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">VARIABLE LABEL filter_$
+'zyg = 0.5 (FILTER)'.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">VALUE LABELS filter_$&nbsp;
+0 'Not Selected' 1 'Selected'.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">FORMAT filter_$ (f1.0).</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">FILTER BY filter_$.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">EXECUTE .</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">REGRESSION</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /MISSING LISTWISE</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /STATISTICS
+COEFF OUTS R ANOVA</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /CRITERIA=PIN(.05)
+POUT(.10)</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /NOORIGIN</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /DEPENDENT ncotwin</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /METHOD=ENTER
+n.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">FILTER OFF.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">USE ALL.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">EXECUTE.</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * * *&nbsp;&nbsp; M U L T I P L E&nbsp;&nbsp; R E G R E S S
+I O N&nbsp;&nbsp; * * * *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Listwise Deletion
+of Missing Data</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Equation Number
+1&nbsp;&nbsp;&nbsp; Dependent Variable..&nbsp;&nbsp; NCOTWIN&nbsp;&nbsp;
+Neuroticism of cotwin</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Block Number&nbsp;
+1.&nbsp; Method:&nbsp; Enter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; N</FONT>
+<BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable(s) Entered
+on Step Number</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 1..&nbsp;&nbsp;&nbsp;
+N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Neuroticism</FONT>
+<BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Multiple R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.46158</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">R Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.21305</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Adjusted R Square&nbsp;&nbsp;&nbsp;
+.21154</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Standard Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3.73116</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Analysis of Variance</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean Square</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Regression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1959.91459&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1959.91459</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+520&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7239.19844&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+13.92154</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F =&nbsp;&nbsp;&nbsp;&nbsp;
+140.78293&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signif F =&nbsp;
+.0000</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">------------------
+Variables in the Equation ------------------</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SE B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T&nbsp; Sig
+T</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.461579&nbsp;&nbsp;&nbsp;&nbsp; .038902&nbsp;&nbsp;&nbsp; .461579&nbsp;&nbsp;&nbsp;
+11.865&nbsp; .0000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">(Constant)&nbsp;&nbsp;&nbsp;&nbsp;
+5.521399&nbsp;&nbsp;&nbsp;&nbsp; .431063&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+12.809&nbsp; .0000</FONT> <BR>
+&nbsp; <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * * *&nbsp;&nbsp; M U L T I P L E&nbsp;&nbsp; R E G R E S S
+I O N&nbsp;&nbsp; * * * *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Listwise Deletion
+of Missing Data</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Equation Number
+1&nbsp;&nbsp;&nbsp; Dependent Variable..&nbsp;&nbsp; NCOTWIN&nbsp;&nbsp;
+Neuroticism of cotwin</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Block Number&nbsp;
+1.&nbsp; Method:&nbsp; Enter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; N</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable(s) Entered
+on Step Number</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 1..&nbsp;&nbsp;&nbsp;
+N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Neuroticism</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Multiple R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.19124</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">R Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.03657</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Adjusted R Square&nbsp;&nbsp;&nbsp;
+.03300</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Standard Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.22895</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Analysis of Variance</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean Square</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Regression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+183.29657&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 183.29657</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+270&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4828.68045&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+17.88400</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+10.24919&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signif F =&nbsp;
+.0015</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">------------------
+Variables in the Equation ------------------</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SE B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T&nbsp; Sig
+T</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.191237&nbsp;&nbsp;&nbsp;&nbsp; .059735&nbsp;&nbsp;&nbsp; .191237&nbsp;&nbsp;&nbsp;&nbsp;
+3.201&nbsp; .0015</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">(Constant)&nbsp;&nbsp;&nbsp;&nbsp;
+8.246703&nbsp;&nbsp;&nbsp;&nbsp; .660871&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+12.479&nbsp; .0000</FONT> <BR>
+&nbsp;</P>
+
+<P>You should see that that the regression coefficients are the
+same as the intraclass class correlations estimated from ANOVA.&nbsp;
+Now perform a DeFries Fulker analysis.&nbsp; First calculate the
+overall mean, using the command.</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">DESCRIPTIVES</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; VARIABLES=n</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /FORMAT=LABELS
+NOINDEX</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /STATISTICS=MEAN
+STDDEV MIN MAX</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /SORT=MEAN (A)
+.</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">The overall mean of n is
+m = 10.23.&nbsp;</FONT>&nbsp; Now compute mean-centred variables.</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">COMPUTE y = ncotwin
+- 10.23.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">IF (zyg = 1) a = n
+- 10.23.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">IF (zyg = 1) d = n
+- 10.23.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">IF (zyg = 1) c = n
+- 10.23.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">IF (zyg = 0.5) a
+= (n - 10.23)/2.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">IF (zyg = 0.5) d =
+(n - 10.23)/4.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">IF (zyg = 0.5) c =
+(n - 10.23).</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">EXECUTE .</FONT></P>
+
+<P>We are now ready to do the actual regression analysis, with
+the following commands.</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">WEIGHT BY wgt.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">REGRESSION</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /MISSING LISTWISE</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /STATISTICS
+COEFF OUTS R ANOVA</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /CRITERIA=PIN(.05)
+POUT(.10)</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /ORIGIN</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /DEPENDENT y</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /METHOD=BACKWARD
+a c.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">REGRESSION</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /MISSING LISTWISE</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /STATISTICS
+COEFF OUTS R ANOVA</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /CRITERIA=PIN(.05)
+POUT(.10)</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /ORIGIN</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /DEPENDENT y</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /METHOD=ENTER
+a d.</FONT> <BR>
+&nbsp; <BR>
+You should get the following output. <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * * *&nbsp; MULTIPLE REGRESSION THROUGH THE ORIGIN&nbsp; * *
+* *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Listwise Deletion
+of Missing Data</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Equation Number
+1&nbsp;&nbsp;&nbsp; Dependent Variable..&nbsp;&nbsp; Y</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Block Number&nbsp;
+1.&nbsp; Method:&nbsp; Enter</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable(s) Entered
+on Step Number</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 1..&nbsp;&nbsp;&nbsp;
+C</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 2..&nbsp;&nbsp;&nbsp;
+A</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Multiple R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.54802</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">R Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.30033</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Adjusted R Square&nbsp;&nbsp;&nbsp;
+.29220</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Standard Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.15175</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Analysis of Variance</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean Square</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Regression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1273.13406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+636.56703</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+172&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2965.97524&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+17.23703</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+36.93021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signif F =&nbsp;
+.0000</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">------------------
+Variables in the Equation ------------------</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SE B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T&nbsp; Sig
+T</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.503110&nbsp;&nbsp;&nbsp;&nbsp; .187685&nbsp;&nbsp;&nbsp; .606324&nbsp;&nbsp;&nbsp;&nbsp;
+2.681&nbsp; .0081</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-.043207&nbsp;&nbsp;&nbsp;&nbsp; .160090&nbsp;&nbsp; -.061046&nbsp;&nbsp;&nbsp;&nbsp;
+-.270&nbsp; .7876</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">End Block Number&nbsp;&nbsp;
+1&nbsp;&nbsp; All requested variables entered.</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * * *&nbsp; MULTIPLE REGRESSION THROUGH THE ORIGIN&nbsp; * *
+* *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Equation Number
+1&nbsp;&nbsp;&nbsp; Dependent Variable..&nbsp;&nbsp; Y</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Block Number&nbsp;
+2.&nbsp; Method:&nbsp; Backward&nbsp;&nbsp;&nbsp;&nbsp; Criterion&nbsp;&nbsp;
+POUT&nbsp; .1000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+C</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable(s) Removed
+on Step Number</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 3..&nbsp;&nbsp;&nbsp;
+C</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Multiple R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.54775</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">R Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.30003</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Adjusted R Square&nbsp;&nbsp;&nbsp;
+.29599</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Standard Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.14061</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Analysis of Variance</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean Square</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Regression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1271.87852&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1271.87852</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+173&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2967.23078&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+17.14469</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+74.18500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signif F =&nbsp;
+.0000</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">------------------
+Variables in the Equation ------------------</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SE B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T&nbsp; Sig
+T</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.454511&nbsp;&nbsp;&nbsp;&nbsp; .052770&nbsp;&nbsp;&nbsp; .547754&nbsp;&nbsp;&nbsp;&nbsp;
+8.613&nbsp; .0000</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">End Block Number&nbsp;&nbsp;
+2&nbsp;&nbsp; POUT =&nbsp;&nbsp;&nbsp;&nbsp; .100 Limits reached.</FONT>
+<BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * * *&nbsp; MULTIPLE REGRESSION THROUGH THE ORIGIN&nbsp; * *
+* *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Listwise Deletion
+of Missing Data</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Equation Number
+1&nbsp;&nbsp;&nbsp; Dependent Variable..&nbsp;&nbsp; Y</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Block Number&nbsp;
+1.&nbsp; Method:&nbsp; Enter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable(s) Entered
+on Step Number</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 1..&nbsp;&nbsp;&nbsp;
+D</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 2..&nbsp;&nbsp;&nbsp;
+A</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Multiple R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.54802</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">R Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.30033</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Adjusted R Square&nbsp;&nbsp;&nbsp;
+.29220</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Standard Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.15175</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Analysis of Variance</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean Square</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Regression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1273.13406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+636.56703</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+172&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2965.97524&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+17.23703</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+36.93021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signif F =&nbsp;
+.0000</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">------------------
+Variables in the Equation ------------------</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SE B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T&nbsp; Sig
+T</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.373490&nbsp;&nbsp;&nbsp;&nbsp; .304826&nbsp;&nbsp;&nbsp; .450112&nbsp;&nbsp;&nbsp;&nbsp;
+1.225&nbsp; .2222</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.086413&nbsp;&nbsp;&nbsp;&nbsp; .320181&nbsp;&nbsp;&nbsp; .099147&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.270&nbsp; .7876</FONT></P>
+
+<P><FONT FACE="Times New Roman,Times">We can also perform linear
+regression for selected data. Suppose only proband twins with
+neuroticism score greater than 15 are included in the analysis.
+The SPSS syntax and output are as follows.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">COMPUTE filter_$=(n&gt;15).</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">VARIABLE LABEL filter_$
+'n&gt;15 (FILTER)'.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">VALUE LABELS filter_$&nbsp;
+0 'Not Selected' 1 'Selected'.</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">FORMAT filter_$ (f1.0).</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">FILTER BY filter_$.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">EXECUTE .</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">COMPUTE wgt = 0.845.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">WEIGHT BY wgt.</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">REGRESSION</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /MISSING LISTWISE</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /STATISTICS
+COEFF OUTS R ANOVA</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /CRITERIA=PIN(.05)
+POUT(.10)</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /ORIGIN</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /DEPENDENT y</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /METHOD=BACKWARD
+a c.</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">REGRESSION</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /MISSING LISTWISE</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /STATISTICS
+COEFF OUTS R ANOVA</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /CRITERIA=PIN(.05)
+POUT(.10)</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /ORIGIN</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /DEPENDENT y</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp; /METHOD=ENTER
+a d</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * * *&nbsp; MULTIPLE REGRESSION THROUGH THE ORIGIN&nbsp; * *
+* *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Listwise Deletion
+of Missing Data</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Equation Number
+1&nbsp;&nbsp;&nbsp; Dependent Variable..&nbsp;&nbsp; Y</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Block Number&nbsp;
+1.&nbsp; Method:&nbsp; Enter</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable(s) Entered
+on Step Number</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 1..&nbsp;&nbsp;&nbsp;
+C</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 2..&nbsp;&nbsp;&nbsp;
+A</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Multiple R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.54802</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">R Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.30033</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Adjusted R Square&nbsp;&nbsp;&nbsp;
+.29220</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Standard Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.15175</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Analysis of Variance</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean Square</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Regression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1273.13406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+636.56703</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+172&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2965.97524&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+17.23703</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+36.93021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signif F =&nbsp;
+.0000</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">------------------
+Variables in the Equation ------------------</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SE B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T&nbsp; Sig
+T</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.503110&nbsp;&nbsp;&nbsp;&nbsp; .187685&nbsp;&nbsp;&nbsp; .606324&nbsp;&nbsp;&nbsp;&nbsp;
+2.681&nbsp; .0081</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-.043207&nbsp;&nbsp;&nbsp;&nbsp; .160090&nbsp;&nbsp; -.061046&nbsp;&nbsp;&nbsp;&nbsp;
+-.270&nbsp; .7876</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">End Block Number&nbsp;&nbsp;
+1&nbsp;&nbsp; All requested variables entered.</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * * *&nbsp; MULTIPLE REGRESSION THROUGH THE ORIGIN&nbsp; * *
+* *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Equation Number
+1&nbsp;&nbsp;&nbsp; Dependent Variable..&nbsp;&nbsp; Y</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Block Number&nbsp;
+2.&nbsp; Method:&nbsp; Backward&nbsp;&nbsp;&nbsp;&nbsp; Criterion&nbsp;&nbsp;
+POUT&nbsp; .1000</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+C</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable(s) Removed
+on Step Number</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 3..&nbsp;&nbsp;&nbsp;
+C</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Multiple R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.54775</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">R Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.30003</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Adjusted R Square&nbsp;&nbsp;&nbsp;
+.29599</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Standard Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.14061</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Analysis of Variance</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean Square</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Regression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1271.87852&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1271.87852</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+173&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2967.23078&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+17.14469</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+74.18500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signif F =&nbsp;
+.0000</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">------------------
+Variables in the Equation ------------------</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SE B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T&nbsp; Sig
+T</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.454511&nbsp;&nbsp;&nbsp;&nbsp; .052770&nbsp;&nbsp;&nbsp; .547754&nbsp;&nbsp;&nbsp;&nbsp;
+8.613&nbsp; .0000</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* * * *&nbsp; MULTIPLE REGRESSION THROUGH THE ORIGIN&nbsp; * *
+* *</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Listwise Deletion
+of Missing Data</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Equation Number
+1&nbsp;&nbsp;&nbsp; Dependent Variable..&nbsp;&nbsp; Y</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Block Number&nbsp;
+1.&nbsp; Method:&nbsp; Enter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable(s) Entered
+on Step Number</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 1..&nbsp;&nbsp;&nbsp;
+D</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp; 2..&nbsp;&nbsp;&nbsp;
+A</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Multiple R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.54802</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">R Square&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.30033</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Adjusted R Square&nbsp;&nbsp;&nbsp;
+.29220</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Standard Error&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.15175</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Analysis of Variance</FONT>
+<BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum of Squares&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mean Square</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Regression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1273.13406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+636.56703</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">Residual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+172&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2965.97524&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+17.23703</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">F =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+36.93021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signif F =&nbsp;
+.0000</FONT> <BR>
+&nbsp;</P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">------------------
+Variables in the Equation ------------------</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">Variable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SE B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Beta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T&nbsp; Sig
+T</FONT></P>
+
+<P><FONT SIZE="-1" FACE="Courier New,Courier">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.373490&nbsp;&nbsp;&nbsp;&nbsp; .304826&nbsp;&nbsp;&nbsp; .450112&nbsp;&nbsp;&nbsp;&nbsp;
+1.225&nbsp; .2222</FONT> <BR>
+<FONT SIZE="-1" FACE="Courier New,Courier">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.086413&nbsp;&nbsp;&nbsp;&nbsp; .320181&nbsp;&nbsp;&nbsp; .099147&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.270&nbsp; .7876</FONT> <BR>
+&nbsp;</P>
+
+<P>Again we can reset our case selection mode to '<U>A</U>ll cases'.
+We keep the output from the whole SPSS syntax file in <B><A HREF="class1.lst">class1.lst</A></B>
+for your reference. Good luck in your exploration !!!
+
+</BODY>
+</HTML>
