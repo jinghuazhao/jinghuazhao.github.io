@@ -101,7 +101,7 @@ header:
 
   - titles:
       # @start locale config
-      en      : &EN       Blog
+      en      : &EN       Archive
       en-GB   : *EN
       en-US   : *EN
       en-CA   : *EN
@@ -122,7 +122,7 @@ header:
       fr-FR   : *FR
       fr-LU   : *FR
       # @end locale config
-    url: /blog.html
+    url: /archive.html
 
   - titles:
       # @start locale config
