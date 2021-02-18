@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Presentations and Book Chapters</title>
+<meta content="MSHTML 6.00.6000.17063" name="GENERATOR">
+<meta http-equiv="Content-Type" content="text/html; charset=unicode">
+<meta content="Jing" name="Author"></head>
+<body>
+<h2>Some presentations on R, genetics and statistical computing</h2>
+<p>2010 <a href="http://user2010.org/">useR! 2010</a> <a 
+href="http://user2010.org/tutorials/Zhao.html">Genetic analysis of complex 
+traits</a>&nbsp;(<a href="notes/useR2010/flyer.pdf">flyer</a>, <a 
+href="notes/useR2010/slides.pdf">slides</a>, <a 
+href="notes/useR2010/work.zip">files</a>, <a 
+href="notes/useR2010/urged.pdf">Kaleidoscope I presentation</a>)<br>2009 <a 
+href="http://www.agrocampus-rennes.fr/math/useR-2009/">useR! 2009</a> <a 
+href="http://www2.agrocampus-ouest.fr/math/useR-2009/tutorials/zhao.html">Genome-wide 
+Association Studies</a>&nbsp;(<a href="notes/useR2009/flyer.pdf">flyer</a>, <a 
+href="notes/useR2009/slides.pdf">slides</a>, <a 
+href="notes/useR2010/work.zip">files</a>, <a 
+href="notes/useR2009/assoc2zt.pdf">Association Studies 2 
+presentation</a>)<br>2008 <a 
+href="http://www.statistik.uni-dortmund.de/useR-2008/">useR! 2008</a> <a 
+href="http://www.statistik.uni-dortmund.de/useR-2008/tutorials/zhao.html">Analysis 
+of Complex Traits Using R: Case Studies</a>&nbsp;(<a 
+href="notes/useR2008/aoc-cs.pdf">slides</a>, <a 
+href="notes/useR2008/useR2008_Tutorial__Analysis_of_Complex_Traits.htm">exercise</a>, 
+<a href="notes/useR2008/work.zip">files</a>, <a 
+href="http://www.statistik.uni-dortmund.de/useR-2008/abstracts/Zhao+Tan+Li+Luan.pdf">Some 
+perspectives of graphical methods for genetic data</a>&nbsp;<a 
+href="notes/useR2008/biostat2zhao.pdf">presentation</a>)<br>2007 <a 
+href="http://user2007.org">useR! 2007</a> <a 
+href="notes/talks/useR2007slides.pdf">Use of R in Genetic Association 
+Studies</a>&nbsp;and&nbsp;<a href="paper/jss07.pdf">a revised version</a> of <a 
+href="http://www.jstatsoft.org/v23/i08/paper">gap: genetic analysis package. J 
+Stat Soft 2007; 23(8):1-18</a><br>2006 <a 
+href="http://cran.r-project.org/doc/Rnews/Rnews_2006-2.pdf">Drawing pedigree 
+diagrams with R and graphviz</a>, MRC <a 
+href="notes/talks/nov09.pdf">Introduction to R and R for genetic data 
+analysis</a>&nbsp;and <a href="notes/talks/feb06b.ppt">Integrated analysis of 
+genetic data</a><br>2005 <a href="notes/talks/gaw14.pdf"></a><a 
+href="notes/talks/mar05.ppt">IoP SGDP on Genetics Data Analysis with R</a></p>
+<p>2009 <a href="notes/gaw16/bmc_gaw16_zhao_jh.pdf">Candidate SNP-BMI 
+association in the Framingham data</a><br>2008 <a 
+href="notes/talks/jan10.pdf">Retrospective analysis of GEI</a>, <a 
+href="notes/talks/apr24.pdf">haplotype analysis</a>&nbsp;and <a 
+href="notes/talks/jun11.pdf">Design and analysis for EPIC-Norfolk&nbsp;GWAS of 
+obesity and related traits</a><br>2007&nbsp;<a 
+href="http://www.ic-ic.org/2007">ICIC 2007</a> (<a 
+href="notes/talks/icic2007slides.pdf">Analysis of Large Genomic Data in Silico: 
+The EPIC-Norfolk Study of Obesity</a>) <br>2007&nbsp;<a 
+href="http://www.genepi.org">IGES 2007</a> (<a 
+href="notes/talks/iges2007.pdf">Continuous, Discrete and Limited Depdent 
+Variable Regressions with Application to Genetic&nbsp;Association of Body Mass 
+Index and Obesity</a>)<br>2006&nbsp;<a href="notes/talks/feb06c.ppt">haplotype 
+analysis</a>, <a href="notes/talks/mar16.pdf">on problems</a>, <a 
+href="notes/talks/sd.pdf">joint analysis</a>, <a 
+href="notes/talks/may06.pdf">EPIC 400 analysis</a>, <a 
+href="notes/talks/jun08.pdf">some updates</a> and <a 
+href="notes/talks/obesity5k.pdf">WGA obesity</a><br>2003 <a 
+href="notes/talks/jun03.ppt">UCL data mining workshop</a>, <a 
+href="notes/talks/jul03.pdf">RSS on faster haplotype estimation and haplotype 
+specific tests</a>&nbsp;and <a href="notes/talks/oct03.ppt">Bristol on allelic 
+association</a><br>2002 Marburg&nbsp;on affected sib-pair analysis (<a 
+href="notes/talks/asp.ppt">asp.ppt</a>, <a 
+href="notes/talks/dsp.ppt">dsp.ppt</a>), <a href="notes/talks/jan02.ppt">RSS 
+statistical computing section on gene counting</a>&nbsp;and <a 
+href="notes/talks/tdt.pdf">IoP on TDT</a><br>2001 <a 
+href="notes/talks/mcmc.pdf">Notes on MCMC</a><br>2000 <a 
+href="notes/la/la.pdf">Linkage and Association Analysis</a> (<a 
+href="notes/la/la.tex">tex</a>) in He L (Ed) Decoding Life. Science and 
+Technology Publishing House 2000, 143-147<br>2000 <a 
+href="notes/sgdpss00/assoc.stm">SGDP Summer School notes</a>, <a 
+href="notes/sgdpss00/suppl.stm">supplementary materials</a> (<a 
+href="http://statgen.iop.kcl.ac.uk/summerschool">course homepage</a>), and 
+Chengdu <a href="notes/talks/slqtl.pdf">on QTL analysis</a><br>1998 <a 
+href="notes/bishop/bishop.pdf">Chapter 4</a> of <a 
+href="http://www.amazon.com/exec/obidos/ASIN/0121020517/qid%3D967565633/sr%3D1-1/002-1168236-6734420">Guide 
+to Human Genome Computing</a>,&nbsp;<a href="iop/jinghua/shg5/shg5.htm">A HTML 
+annotation</a> to Chapter 5 of <a 
+href="http://www.oup.com/us/catalog/general/subject/Mathematics/ProbabilityStatistics/%7E%7E/dmlldz11c2EmY2k9MDM0MDY2MjQxNw%3D%3D">Statistics 
+in Human Genetics</a>, <a href="notes/hgmp98/hgmp98.stm">HGMP courses</a>, and 
+<a href="notes/iop98/class1.htm">IoP courses</a><br>1996 <a 
+href="notes/he/he.pdf">HSPH class presentation</a> (<a 
+href="notes/he/he.tex">tex</a>)</p>
+<p><a href="http://www.sdu.edu.cn">Shandong University</a>, China, <a 
+href="notes/talks/dagsct.pdf">Design and Analysis of Genetic Study of Complex 
+Traits</a><br><a 
+href="http://giscompute.gis.a-star.edu.sg/~karu/ODGEA09/CFP.html">2nd 
+International Workshop on Optimal Data Mining in Gene Expression Analysis 
+(ODGEA’09)</a><br><a 
+href="http://giscompute.gis.a-star.edu.sg/~karu/ODGEA08/CFP.html">1st 
+International Workshop on Optimal Data Mining in Gene Expression Analysis 
+(ODGEA’08)</a><br><a 
+href="http://www.mrc-epid.cam.ac.uk/Postgrad/Studentships/Studentships08.htm">PhD 
+studentship for Statistical Genetics at MRC Epidemiology</a>&nbsp;</p>
+<p>1993-1997 <a href="iop/jinghua/pgsp/pgsp.html"><font size="4">Practical Guide 
+to Statistical Packages</font></a>&nbsp;<a href="book/pgsp.pdf"><img 
+style="WIDTH: 333px; HEIGHT: 27px" height=27 src="pgspname.jpg" width=348 
+align=top border=0 naturalsizeflag="3"></a> </p>
+<p><a href="http://www.lon.ac.uk/">University of London</a> <a 
+href="http://www.ctan.org/">LaTeX</a> <a href="software/ulthesis.zip">thesis 
+class</a>, <a href="http://www.endnote.com/">Endnote</a> <a 
+href="iop/jinghua/refs/genetics.enl">genetic reference library</a>, notes on <a 
+href="iop/jinghua/winprog/winprog.html">MFC programming</a> and <a 
+href="software/softlink.htm">some programs for genetic data analysis</a></p>
+<p><i>Date last changed 14/7</i><i>/2010</i></p></a></body></html>
