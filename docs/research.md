@@ -63,7 +63,7 @@ as well as developed [software](software.md) (esp. [Haplotype Analysis](https://
 [GitHub](https://github.com/jinghuazhao?tab=repositories) and
 [CRAN](http://cran.r-project.org/).
 
-The following is an excerpt from the [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/) pipeline.
+The following is an excerpt from the [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/) pipeline. ![Image](bees.jpg){:.circle}
 ```mermaid
 graph TB;
 SNP["LD reference panel (bed,bim,fam)"] --> |"EWAS reference panel(top1, blup, lasso, enet, bslmm)"| Methylation;
