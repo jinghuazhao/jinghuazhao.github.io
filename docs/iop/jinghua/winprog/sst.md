@@ -1,6 +1,6 @@
 ---
 layout: article
-title: The SST Class Hierarchy *by Marshall Brain & Kelly Campbell*
+title: The SST Class Hierarchy by Marshall Brain & Kelly Campbell
 ---
 
 The concept of a *class hierarchy* is often an extremely difficult one
