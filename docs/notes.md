@@ -11,6 +11,6 @@ title: Some presentations on R, genetics and statistical computing
 
 [Shandong University](http://www.sdu.edu.cn), China, [Design and Analysis of Genetic Study of Complex Traits](notes/talks/dagsct.pdf)
 
-1993-1997 [Practical Guide to Statistical Packages](iop/jinghua/pgsp/pgsp.html) [![](pgspname.jpg){width="348" height="27"}](book/pgsp.pdf)
+1993-1997 [Practical Guide to Statistical Packages](iop/jinghua/pgsp/pgsp.html) ![](pgspname.jpg){width="348" height="27"}](book/pgsp.pdf)
 
 *Date last changed 19/10/2012*
