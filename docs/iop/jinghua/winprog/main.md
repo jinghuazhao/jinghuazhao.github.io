@@ -3,7 +3,7 @@ layout: article
 title: Introduction to MFC Programming with Visual C++ Version 6.x by Marshall Brain
 ---
 
-**Series Overview**
+## Series Overview
 
 The goal of this series is to help you to gain an understanding of the
 fundamental concepts that make MFC programs work under Visual C++. Many

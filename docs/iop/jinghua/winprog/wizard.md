@@ -3,7 +3,7 @@ layout: article
 title: Understanding the AppWizard and ClassWizard in Visual C++ Version 6.x by Marshall Brain
 ---
 
-**Series Overview**
+## Series Overview
 
 It is possible to use the Visual C++ development environment as a big C
 compiler. Using it that way you can certainly create GUI applications
@@ -52,4 +52,3 @@ Or
 5. [Synchronizing Views](http://devcentral.iftech.com/learning/tutorials/mfc-win32/vc6tools/6.asp)
 6. [Understanding Document Templates](http://devcentral.iftech.com/learning/tutorials/mfc-win32/vc6tools/7.asp)
 
-\

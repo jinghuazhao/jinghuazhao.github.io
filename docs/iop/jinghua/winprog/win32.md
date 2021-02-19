@@ -3,7 +3,7 @@ layout: article
 title: Win32 Programming Features for Windows NT and Windows 95 by Marshall Brain
 ---
 
-***Series Overview**
+## Series Overview
 
 The following is an index of the material presented in this series:
 
