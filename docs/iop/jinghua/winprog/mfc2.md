@@ -52,9 +52,12 @@ class categories which include (but is not limited to):
 -   Database
 -   General Purpose
 
-  Visualizing MFC
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  One of the most frusterating things when you are first learning MFC is the \"Where am I?\" feeling you get. MFC has *hundreds* of classes. A good way to get around this feeling is to use a class hierarchy visualization tool like [CodeVizor](http://codevizor.iftech.com/rd/r_dcsb2cv.asp). With CodeVizor you can drag the source code for MFC into the CodeVizor tool and in about 30 seconds have a beautiful, clickable (and printable!) class hierarchy chart. Get CodeVizor and see how much easier undestanding MFC becomes!
+#### Visualizing MFC
+
+One of the most frusterating things when you are first learning MFC is the \"Where am I?\" feeling you get. MFC has *hundreds* of classes. A good 
+way to get around this feeling is to use a class hierarchy visualization tool like [CodeVizor](http://codevizor.iftech.com/rd/r_dcsb2cv.asp). With 
+CodeVizor you can drag the source code for MFC into the CodeVizor tool and in about 30 seconds have a beautiful, clickable (and printable!) class 
+hierarchy chart. Get CodeVizor and see how much easier undestanding MFC becomes!
 
 We will concentrate on visual objects in these tutorials. The list below
 shows the portion of the class hierarchy that deals with application
