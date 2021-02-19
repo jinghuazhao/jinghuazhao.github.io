@@ -29,12 +29,15 @@ your current directory) or type the path directly. Name the project
 that is fine - you will see the word \"samp\" echoed in the Location
 field as you type it. Click the **OK** button to create the new project.
 
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Visualizing Class Hierarchies
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  One of the most frusterating things when you are first learning MFC is the \"Where am I?\" feeling you get. MFC has *hundreds* of classes, and the AppWizard adds several more. A good way to get around this feeling is to use a class hierarchy visualization tool like [CodeVizor](http://codevizor.iftech.com/rd/r_dcsb2cv.asp). With CodeVizor you can drag the source code for MFC into the CodeVizor tool and in about 30 seconds have a beautiful, clickable (and printable!) class hierarchy chart. You can even color classes individually or in groups so that they stand out!\
-  Get CodeVizor and see how much easier undestanding class hierarchies becomes!
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### Visualizing Class Hierarchies
+
+One of the most frusterating things when you are first learning MFC is the \"Where am I?\" feeling you get. MFC has *hundreds* of classes, and the 
+AppWizard adds several more. A good way to get around this feeling is to use a class hierarchy visualization tool like 
+[CodeVizor](http://codevizor.iftech.com/rd/r_dcsb2cv.asp). With CodeVizor you can drag the source code for MFC into the CodeVizor tool and in about 
+30 seconds have a beautiful, clickable (and printable!) class hierarchy chart. You can even color classes individually or in groups so that they 
+stand out!\
+
+Get CodeVizor and see how much easier undestanding class hierarchies becomes!
 
 You will next see a group of six colorful option dialogs. You can move
 between them with the **Next** and **Previous** buttons. Look through
