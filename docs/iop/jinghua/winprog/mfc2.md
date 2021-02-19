@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Introduction to MFC Programming with Visual C++ Version 6.x *by Marshall Brain
+title: Introduction to MFC Programming with Visual C++ Version 6.x by Marshall Brain
 ---
 
 ## A Simple MFC Program
