@@ -21,8 +21,7 @@ Here are links to general information, E-journals, supplementary information for
 - [The Higher Education Funding Council for England](http://www.hefce.ac.uk/) (HEFCE)
 - [The Quality Assurance Agencey for Higher Education](http://www.qaa.ac.uk/) (QAA)
 - [The Research Assessment Exercise](http://www.rae.ac.uk/) (RAE, [KCL](http://www.kcl.ac.uk/kis/college/committees/RAE2001.html))
-- [UK Universities](http://www.scit.wlv.ac.uk/ukinfo/uk.map.html)
-- ([NISS](http://www.niss.ac.uk/sites/he-cis.html))
+- [UK Universities](http://www.scit.wlv.ac.uk/ukinfo/uk.map.html) ([NISS](http://www.niss.ac.uk/sites/he-cis.html))
 
 ### Online Journals ([Journal Browser](http://www.ncbi.nlm.nih.gov/entrez/jrbrowser.cgi))
 
