@@ -124,22 +124,3 @@ header:
       # @end locale config
     url: /Archive.html
 
-docs-en:
-  - title:      Biosketch
-    children:
-      - title:  Books
-        url:    /docs/en/books
-      - title:  Papers
-        url:    /docs/en/papers
-  - title:      Projects
-    children:
-      - title:  Consortium
-        url:    /docs/en/consortium
-      - title:  Others
-        url:    /docs/en/others
-  - title:      Programs
-    children:
-      - title:  R
-        url:    /docs/en/r
-      - title:  Standalone
-        url:    /docs/en/standalone
