@@ -22,7 +22,7 @@ header:
       fr-FR   : *FR
       fr-LU   : *FR
       # @end locale config
-    url: /biosketch.html
+    url: /en/biosketch.html
 
   - titles:
       # @start locale config
@@ -47,7 +47,7 @@ header:
       fr-FR   : *FR
       fr-LU   : *FR
       # @end locale config
-    url: /projects.html
+    url: /en/projects.html
 
   - titles:
       # @start locale config
@@ -72,4 +72,4 @@ header:
       fr-FR   : *FR
       fr-LU   : *FR
       # @end locale config
-    url: /programs.html
+    url: /en/programs.html
