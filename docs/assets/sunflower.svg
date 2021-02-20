@@ -9,14 +9,14 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   id="svg10"
-   width="48"
-   height="48"
-   viewBox="0 0 48 48"
-   sodipodi:docname="48.svg"
+   id="svg22"
+   width="2796"
+   height="2796"
+   viewBox="0 0 2796 2796"
+   sodipodi:docname="sunflower.svg"
    inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)">
   <metadata
-     id="metadata16">
+     id="metadata28">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -28,7 +28,7 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs14" />
+     id="defs26" />
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -38,24 +38,24 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1240"
-     inkscape:window-height="848"
-     id="namedview12"
+     inkscape:window-width="1271"
+     inkscape:window-height="843"
+     id="namedview24"
      showgrid="false"
      inkscape:zoom="0.30400572"
-     inkscape:cx="2269.61"
+     inkscape:cx="1398"
      inkscape:cy="1398"
-     inkscape:window-x="518"
-     inkscape:window-y="124"
+     inkscape:window-x="329"
+     inkscape:window-y="142"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g18" />
+     inkscape:current-layer="g30" />
   <g
      inkscape:groupmode="layer"
      inkscape:label="Image"
-     id="g18">
+     id="g30">
     <image
-       width="279.60001"
-       height="279.60001"
+       width="2796"
+       height="2796"
        preserveAspectRatio="none"
        xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkI
 CQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQ
@@ -26702,8 +26702,6 @@ qaS8iidsr16VUTWk9T0G0ULIQPStUehT2NNSQBzQzdbEUvLc0IGQBQetWmESOUAHgU7lMkTkEU7i
 uRynAOKIvUozLxFZDkds1shX1MswRyKQy96pMZbtIkSQqOgxihsDQVF696hAW4AAMVQmWVUVTKQ9
 o1A4FQDRCyjriiO4JET4wTirsDRWkPGfWtEIquOppgRiOMjlRUks/9k=
 "
-       id="image20"
-       x="1258.2"
-       y="1258.2" />
+       id="image32" />
   </g>
 </svg>
