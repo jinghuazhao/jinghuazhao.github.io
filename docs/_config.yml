@@ -18,7 +18,7 @@ text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate"
 highlight_theme: tomorrow # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
-title   : Jing Hua Zhao (赵京华)
+title   : 赵京华 (Jing Hua Zhao)
 description: > # this means to ignore newlines until "Language & timezone"
   Peronal page
 
@@ -32,7 +32,7 @@ timezone: Europe/London
 ##############################
 author:
   type      : # "person" (default), "organization"
-  name      : Jing Hua Zhao (赵京华)
+  name      : 赵京华 (Jing Hua Zhao)
   url       :
   avatar    : # path or url of avatar image (square)
   bio       : I am an amazing person.
