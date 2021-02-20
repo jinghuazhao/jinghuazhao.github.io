@@ -106,7 +106,7 @@ header:
       en-US   : *EN
       en-CA   : *EN
       en-AU   : *EN
-      zh-Hans : &ZH_HANS  
+      zh-Hans : &ZH_HANS  档案
       zh      : *ZH_HANS
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
@@ -156,7 +156,8 @@ header:
       en-US   : *EN
       en-CA   : *EN
       en-AU   : *EN
-      zh      : *ZH_HANS  课题
+      zh-Hans : &ZH_HANS  课题
+      zh      : *ZH_HANS
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
       zh-Hant : &ZH_HANT  課題
@@ -206,7 +207,7 @@ header:
       en-CA   : *EN
       en-AU   : *EN
       zh-Hans : &ZH_HANS  书籍
-      zh      : *ZH_HANS  
+      zh      : *ZH_HANS
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
       zh-Hant : &ZH_HANT  書籍
@@ -367,3 +368,4 @@ docs-en:
         url:    /docs/en/r
       - title:  Standalone
         url:    /docs/en/standalone
+
