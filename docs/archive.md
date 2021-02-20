@@ -1,4 +1,4 @@
 ---
 layout: archive
-tags: info
+key: page-archive
 ---
