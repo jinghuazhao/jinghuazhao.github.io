@@ -1,8 +1,8 @@
 ---
 layout: article
 key: page-about
-sidebar:
-  nav: docs-en
+aside:
+  toc
 ---
 
 ![name](name.jpg)
