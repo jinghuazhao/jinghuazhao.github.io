@@ -3,4 +3,4 @@ layout: article
 key: page-standalone
 ---
 
-[Programs](https://jinghuazhao.github.io/software.html)
+[Standalone programs](https://jinghuazhao.github.io/software.html)
