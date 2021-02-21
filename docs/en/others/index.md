@@ -12,26 +12,17 @@ show_title: false
 for gene expression data. For a given Trait of interest **T** for which
 GWAS summary statistics $z_T$ is available, the corresponding
 Wald statistic for TWAS is defined such that
-$$
-z_{TWAS} = \frac{w^T_{ge}z_T}{\sqrt{w^T_{ge}Vw_{ge}}}
-$$
-
-where $w_{ge}$ is a weight associated with gene expression and
+$$z_{TWAS} = \frac{w^T_{ge}z_T}{\sqrt{w^T_{ge}Vw_{ge}}}$$ where $w_{ge}$ is a weight associated with gene expression and
 **V** covariance matrix for $z_T$, respectively.
 
 By analogy, an epigenomewide association statistic $z_{EWAS}$ is defined through
-methylation data so that
-$$
-z_{EWAS} = \frac{w^T_{me}z_T}{\sqrt{w^T_{me}Vw_{me}}}
-$$
-
+methylation data so that $$z_{EWAS} = \frac{w^T_{me}z_T}{\sqrt{w^T_{me}Vw_{me}}}$$
 where $w_{me}$ is the weight associated with methylation. Both
 approaches allow for imputation using GWAS summary statistics. The
 derivation of these weights and imputation were done using methods as
 described in Gusev et al. (2016) called TWAS as well as in Mancuso et
 al. (2016) called Functional Summary-based Imputation (FUSION). The TWAS
 statistics from both approaches agreed very well.
-
   * [QTR](https://jinghuazhao.github.io/QTR/)
   * [TWAS-pipeline](https://jinghuazhao.github.io/TWAS-pipeline/)
 
