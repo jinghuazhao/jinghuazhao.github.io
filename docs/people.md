@@ -24,9 +24,10 @@ titles:
   fr-LU   : *FR
   # @end locale config
 key: page-people
+show_title: false
 ---
 
-### Mentors and Collaborators
+# Mentors and Collaborators
 
 Beijing University: [Yude Chen](http://finance.sina.com.cn/economist/jingjixueren/20051219/11492209756.shtml) ([School of Public Health](http://sph.pku.edu.cn/))\
 Fudan University: [Pihuan Jin](http://baike.baidu.com/view/1400594.htm),[Fumin Shen](http://baike.baidu.com/view/1402216.html), [Zhaohuan Zhang](http://baike.baidu.com/view/1405060.htm) ([Wiki Entry](http://en.wikipedia.org/wiki/Zhang_Zhaohuan))\
