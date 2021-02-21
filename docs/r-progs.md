@@ -16,7 +16,7 @@ but it is also possible to install these packages, both archived and active, fro
 library(devtools)
 install_github("cran/kinship")
 ```
-Here are some frequently-asked questions [FAQs](r-faq.htm).
+Here are some frequently-asked questions [FAQs](r-faq.md).
 
 The [associate R program](software/gaw14.R) generates the gaw14.dot files which are converted to .pdf by [graphviz](http://www.graphviz.org)/Gvedit.
 
