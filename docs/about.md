@@ -1,6 +1,8 @@
 ---
 layout: article
 key: page-about
+aside:
+  toc
 sidebar:
   nav: docs-en
 ---
