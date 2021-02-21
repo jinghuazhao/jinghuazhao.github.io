@@ -3,4 +3,4 @@ layout: article
 key: page-papers
 ---
 
-[Biosketch](jing_cv.pdf)
+[Biosketch](https://jinghuazhao.github.io/jing_cv.pdf)

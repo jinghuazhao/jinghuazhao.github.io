@@ -3,4 +3,4 @@ layout: article
 key: page-r
 ---
 
-[R](R)
+[R](https://jinghuazhao.github.io/R/)
