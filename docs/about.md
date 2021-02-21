@@ -5,7 +5,10 @@ aside:
   toc: false
 sidebar:
   nav: docs-en
+show_title: false
 ---
+
+# Personal page of Jing Hua Zhao
 
 ![name](name.jpg)
 
