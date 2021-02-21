@@ -8,7 +8,9 @@ show_title: false
 # Other projects
 
 * Epigenomics
-  * [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/)[^longnote]: Transcriptomewide association statistic $z_{TWAS}$ was originally proposed
+  * [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/)[^longnote]:
+
+[^longnote]: Transcriptomewide association statistic $z_{TWAS}$ was originally proposed
 for gene expression data. For a given Trait of interest **T** for which
 GWAS summary statistics $z_T$ is available, the corresponding
 Wald statistic for TWAS is defined such that
