@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+
+  <meta name="GENERATOR" content="Adobe PageMill 3.0 Win">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Jing"><title>FAQs for R packages distributed by Jing hua Zhao</title></head><body>
+<p><b><font face="Arial, Helvetica, sans-serif" size="+2">
+FAQs for the R packages distributed by Jing Hua Zhao</font></b><br>
+<br>
+Packages <b>kinship</b>, <b>lmm</b> and <b>pan</b> were ported from S-PLUS packages
+by Beth Atkinson, Terry Therneau and Joseph L Schafer, while <b>tdthap</b> was
+based on a version of R package by David
+Clayton; you can
+always
+send your questions
+directly to these authors.</p>
+
+<ul>
+  <li><b>Q.</b> Is there anything wrong with the code in <b>gap</b>,
+  that <i>gc.em</i> and <i>hap.em</i> give me codes hap1code and
+  hap2code that do not make sense to me?
+  </li><li><b>A.</b> Apparently no, they are the unique haplotype identifiers,
+  mixed-radixed numbers based on alleles at each marker locus.
+  However, if you do want to find out how they are formed, there is
+  an internal function revhap(loci,id) to unfold the alleles. For
+  instance, cat(revhap(c(2,2,3),5)) gives values 1,2,2, for with
+  two biallelic and a triallelic loci, the natural sequence of
+  haplotypes are 111,112,113,121,122, with1,2,2 being the fifth.
+</li></ul>
+ <ul>
+  <li><b>Q.</b> When I run <i>coxme</i> in <b>kinship</b> package,
+  there is an error message saying function "coxph.wtest not
+  found"; can I fix this?
+  </li><li><b>A.</b> This is to do with <b>survival</b> package, which
+  contains the function in R 1.8.1 but not R 1.9.x. Ideally this
+  will be fixed in the next version of <b>survival</b>. In case
+  this problem remains, you can try the following tricks if you
+  use Windows:
+  <ul>
+    <li>Start R 1.8.1, issue command library(survival), sink("c:/coxph.wtest.R"),
+    coxph.wtest, sink()
+    </li><li>Start R 1.9.x, issue command coxph.wtest &lt;- source("c:/coxph.wtest.R")
+  </li></ul>
+ </li></ul> 
+ <ul> 
+  <li><b>Q.</b> Are there any examples of using <b>pan</b> and <b><strong>kinship</strong></b>?
+  </li><li><b>A.</b> The examples are      distributed with the source packages (<em>inst/tests</em>),
+   and <em>tests</em> directory for the installed packages.
+More references about <strong>pan</strong> are as follows,
+    <blockquote>
+       <p> Schafer JL (2001). Multiple imputation with PAN. In  Sayer AG, Collins
+          LM
+          (Eds.), New methods for the analysis of change (pp. 357&#8211;377).
+       American Psychological Association, Washington, DC. <br>
+       Schafer JL, Graham
+       JW (2002). Missing data: our view of the state of the art. Psychological
+  Methods. 7:147-177<br>
+  Schafer J L, Yucel RM (2002). Computational strategies
+            for multivariate linear mixed-effects models with missing values.
+  Journal of
+      Computational and Graphical Statistics. 11:437-457<br>
+	  Demirtas H (2004). Simulation driven inference for multiply imputed longitudinal datasets. Statistica Neerlandica 58:466-482</p>
+     </blockquote>
+   </li><li><b>Q.</b> I am using IBD information from SOLAR with <strong>kinship</strong>,
+        but <em>coxme</em> stops due to nonpositive
+     definite matrices.</li>
+      <li><b>A.</b> There is a message from Terry Therneau attached below.
+   </li>
+ </ul>
+  <blockquote>
+    <p>Date: Sat, 13 Nov 2004 08:13:58 -0600 (CST)<br>
+  From: Terry Therneau &lt;therneau@mayo.edu&gt;<br>
+      To: j.zhao@ucl.ac.uk<br>
+      Subject: Re: kinship    </p>
+    <p> We also ran into the problem of non-positive-definite matrices from SOLAR.<br>
+      And it is true-- the IBD matrices that it produces are not postitive definite.<br>
+      We had 2 solutions:</p>
+    <p> 1. Realize that coxme will be happy as long as the overall variance matrix<br>
+      for the random effects is positive-definite. This can be guarrantteed with<br>
+      just a little bit on the diagonal:</p>
+    <p>&gt; kmat &lt;- makekinship( ) however it was created<br>
+&gt; 
+      smat &lt;- bdsmatrix.ibd(.... data from SOLAR<br>
+&gt; 
+      imat &lt;- bdsI(dimnames(kmat)[[1]], kmat$blocksize) #identity matrix</p>
+    <p>&gt; coxme( ......., varlist=list(imat, kmat, smat), variance=c(.01,0,0)
+                        )</p>
+    <p> This adds .01 to the diagonal of the overall variance matrix, and keeps
+            the<br>
+      matrix positive definite.</p>
+    <p> 2. Get our IBD matrices from simwalk, which produces correct ones.</p>
+    <p> Note that the error in SOLAR is small roundoff ones. As long as the<br>
+      variance component of the kinship matrix is moderate, it overcomes this.<br>
+      But if the program ever, sometime in searching for the solution, tried
+            one<br>
+      that had the variance for kmat approx 0 (less than the size of this round<br>
+      off error, about .001), then the Cholesky decomp of the overall variance
+            fails<br>
+      and the program dies.</p>
+    <p>      We found that adding a very little bit of diagonal worked, but didn't ever<br>
+      get around to "proving" that it should, or how much you really
+        need. In<br>
+      linear models this problem doesn't occur, because the error variance adds<br>
+      enough to the diagonal.</p>
+    <p> Terry Therneau</p>
+  </blockquote>
+  <p><i>Date last changed 26/1/2014</i>
+
+</p></body></html>
