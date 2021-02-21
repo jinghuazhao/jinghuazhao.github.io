@@ -128,18 +128,18 @@ docs-en:
   - title:      Biosketch
     children:
       - title:  Books
-        url:    /docs/en/books
+        url:    en/books
       - title:  Papers
-        url:    /docs/en/papers
+        url:    en/papers
   - title:      Projects
     children:
       - title:  Consortium
         url:    /docs/en/consortium
       - title:  Others
-        url:    /docs/en/others
+        url:    en/others
   - title:      Programs
     children:
       - title:  R
-        url:    /docs/en/r
+        url:    en/r
       - title:  Standalone
-        url:    /docs/en/standalone
+        url:    en/standalone
