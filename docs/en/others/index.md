@@ -18,7 +18,6 @@ key: page-others
 * Genomics
   * [hess-pipeline](https://jinghuazhao.github.io/hess-pipeline/)
   * [FM-pipeline](https://jinghuazhao.github.io/FM-pipeline/)
-  * [Omics-analysis](https://jinghuazhao.github.io/Omics-analysis/)
   * [PW-pipeline](https://jinghuazhao.github.io/PW-pipeline/)
   * [SUMSTATS](https://jinghuazhao.github.io/SUMSTATS/)
 
@@ -31,5 +30,6 @@ key: page-others
 * Miscellaneous categories
   * [GDCT](https://jinghuazhao.github.io/GDCT/)
   * [GWAS course](https://jinghuazhao.github.io/GWAS-course/)
+  * [Omics-analysis](https://jinghuazhao.github.io/Omics-analysis/)
   * [PhD](https://jinghuazhao.github.io/PhD/)
   * [Software notes](https://jinghuazhao.github.io/software-notes/)
