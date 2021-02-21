@@ -8,7 +8,7 @@ show_title: false
 # Other projects
 
 * Epigenomics
-  * [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/)[^longnote]:
+  * [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/)[^longnote]
   * [QTR](https://jinghuazhao.github.io/QTR/)
   * [TWAS-pipeline](https://jinghuazhao.github.io/TWAS-pipeline/)
 
