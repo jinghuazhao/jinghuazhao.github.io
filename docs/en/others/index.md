@@ -1,7 +1,11 @@
 ---
 layout: article
 key: page-others
+footer: true
+show_title: false
 ---
+
+# Other projects
 
 * Epigenomics
   * [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/)[^1]
