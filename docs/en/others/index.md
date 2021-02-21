@@ -28,7 +28,7 @@ key: page-others
   * [SomaLogic](https://jinghuazhao.github.io/SomaLogic/)
   * [SWATH-MS](https://jinghuazhao.github.io/SWATH-MS/)
 
-* Miscellaneous
+* Miscellaneous categories
   * [GDCT](https://jinghuazhao.github.io/GDCT/)
   * [GWAS course](https://jinghuazhao.github.io/GWAS-course/)
   * [PhD](https://jinghuazhao.github.io/PhD/)
