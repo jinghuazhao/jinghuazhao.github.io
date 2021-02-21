@@ -12,7 +12,7 @@ show_title: false
 
 # Personal page of Jing Hua Zhao
 
-I am a scientist at the [Cardiovascular EpidemiologyUnit](https://www.phpc.cam.ac.uk/people/ceu-group/ceu-research-staff/) (CEU), following positions at MRC 
+I am a scientist at the [Cardiovascular Epidemiology Unit](https://www.phpc.cam.ac.uk/people/ceu-group/ceu-research-staff/) (CEU), following positions at MRC 
 Epidemiology Unit (2005-18, [people](http://www.mrc-epid.cam.ac.uk/people/jing-hua-zhao/)), [University College London](http://www.ucl.ac.uk/) 
 (2002-5), [King\'s College London](http://www.kcl.ac.uk/) (1996-2002, [research portal](https://kclpure.kcl.ac.uk/portal/en/persons/jinghua-zhao(a8f6a34b-1eb8-4396-a930-229ac26076a9).html)),
 [Harvard University](http://www.harvard.edu/) (1994-6) and [Ministry of Health](http://www.nhc.gov.cn/),
