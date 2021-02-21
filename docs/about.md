@@ -2,7 +2,7 @@
 layout: article
 key: page-about
 aside:
-  toc: true
+  toc: false
 sidebar:
   nav: docs-en
 ---
