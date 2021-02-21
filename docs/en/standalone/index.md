@@ -3,4 +3,5 @@ layout: article
 key: page-standalone
 ---
 
-[Standalone programs](https://jinghuazhao.github.io/software.html)
+* [Haplotype analysis](https://jinghuazhao.github.io/Haplotype-Analysis/)
+* [Standalone programs](https://jinghuazhao.github.io/software.html)
