@@ -134,7 +134,7 @@ docs-en:
   - title:      Projects
     children:
       - title:  Consortium
-        url:    /docs/en/consortium
+        url:    en/consortium
       - title:  Others
         url:    en/others
   - title:      Programs
