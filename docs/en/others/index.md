@@ -3,13 +3,6 @@ layout: article
 key: page-others
 ---
 
-* Statistics
-  * [Computational statistics](https://jinghuazhao.github.io/Computational-Statistics/)
-  * [DSA](https://jinghuazhao.github.io/DSA/)
-  * [Mixed models](https://jinghuazhao.github.io/Mixed-Models/)
-  * [Numerical analysis](https://jinghuazhao.github.io/Numerical-Analysis/)
-  * [physalia](https://jinghuazhao.github.io/physalia/)
-
 * Epigenomics
   * [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/)
   * [QTR](https://jinghuazhao.github.io/QTR/)
@@ -33,3 +26,10 @@ key: page-others
   * [Omics-analysis](https://jinghuazhao.github.io/Omics-analysis/)
   * [PhD](https://jinghuazhao.github.io/PhD/)
   * [Software notes](https://jinghuazhao.github.io/software-notes/)
+
+* Statistics
+  * [Computational statistics](https://jinghuazhao.github.io/Computational-Statistics/)
+  * [DSA](https://jinghuazhao.github.io/DSA/)
+  * [Mixed models](https://jinghuazhao.github.io/Mixed-Models/)
+  * [Numerical analysis](https://jinghuazhao.github.io/Numerical-Analysis/)
+  * [physalia](https://jinghuazhao.github.io/physalia/)
