@@ -25,11 +25,11 @@ key: page-others
   * [DSA](https://jinghuazhao.github.io/DSA/)
   * [Mixed models](https://jinghuazhao.github.io/Mixed-Models/)
   * [Numerical analysis](https://jinghuazhao.github.io/Numerical-Analysis/)
-  * [physalia](https://jinghuazhao.github.io/physalia/)
 
 * Miscellaneous categories
   * [GDCT](https://jinghuazhao.github.io/GDCT/)
   * [GWAS course](https://jinghuazhao.github.io/GWAS-course/)
   * [Omics-analysis](https://jinghuazhao.github.io/Omics-analysis/)
   * [PhD](https://jinghuazhao.github.io/PhD/)
+  * [physalia](https://jinghuazhao.github.io/physalia/)
   * [Software notes](https://jinghuazhao.github.io/software-notes/)
