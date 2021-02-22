@@ -28,8 +28,7 @@ The [associate R program](software/gaw14.R) generates the gaw14.dot files which
 Packages | Comments
 -----------------------------------|-----------------------------------
  **Bundle:**                       | [CGR](software/CGR_1.0-5.tar.gz)  
-                                   | ([Windows                         
-                                   | version](software/CGR_1.0-5.zip)) 
+                                   | ([Windows version](software/CGR_1.0-5.zip))
 -----------------------------------|-----------------------------------
  **Version:**                      | 1.0-5                             
 -----------------------------------|-----------------------------------
@@ -50,11 +49,8 @@ Packages | Comments
                                    | possible for programs written by  
                                    | other authors.                    
 -----------------------------------|-----------------------------------
- **Name:**                         | [kinship](software/kinship_1.1.4. 
-                                   | tar.gz)                           
-                                   | ([Windows                         
-                                   | version](software/kinship_1.1.4.z 
-                                   | ip))                              
+ **Name:**                         | [kinship](software/kinship_1.1.4.tar.gz)                           
+                                   | ([Windows version](software/kinship_1.1.4.zip))
 -----------------------------------|-----------------------------------
  **Version:**                      | 1.1.4                             
 -----------------------------------|-----------------------------------
