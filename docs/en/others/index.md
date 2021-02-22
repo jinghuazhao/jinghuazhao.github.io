@@ -28,7 +28,7 @@ show_title: false
   * [SWATH-MS](https://jinghuazhao.github.io/SWATH-MS/) ([SWATH-MS](https://github.com/jinghuazhao/SWATH-MS))
 
 * Statistics
-  * [Computational statistics](https://jinghuazhao.github.io/Computational-Statistics/) ([Computational-Statistics](https://github.com/jinghuazhao/Computational-Statitics))
+  * [Computational statistics](https://jinghuazhao.github.io/Computational-Statistics/) ([Computational-Statistics](https://github.com/jinghuazhao/Computational-Statistics))
   * [DSA](https://jinghuazhao.github.io/DSA/) ([DSA](https://github.com/jinghuazhao/DSA))
   * [Mixed models](https://jinghuazhao.github.io/Mixed-Models/) ([Mixed-Models](https://github.com/jinghuazhao/Mixed-Models))
   * [Numerical analysis](https://jinghuazhao.github.io/Numerical-Analysis/) ([Numerical-Analysis](https://github.com/jinghuazhao/Numerical-Analysis))
