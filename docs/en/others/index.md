@@ -3,6 +3,9 @@ layout: article
 key: page-others
 footer: true
 show_title: false
+sidebar:
+  nav: docs-en
+show_title: false
 ---
 
 # Other projects

@@ -2,6 +2,9 @@
 layout: article
 key: page-consortium
 show_title: false
+sidebar:
+  nav: docs-en
+show_title: false
 ---
 
 # Consortium work

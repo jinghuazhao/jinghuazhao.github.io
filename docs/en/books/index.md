@@ -2,6 +2,9 @@
 layout: article
 key: page-books
 show_title: false
+sidebar:
+  nav: docs-en
+show_title: false
 ---
 
 # Practical Guide to Statistical Packages (1993-1997)
