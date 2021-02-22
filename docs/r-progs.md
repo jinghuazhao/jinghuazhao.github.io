@@ -40,10 +40,8 @@ Packages | Comments
  **BundleDescription:**            | This is an experimental package bundle based on the R packages    
                                    | pathmix and pointer.              
 -----------------------------------|-----------------------------------
- **License:**                      | Programs included in this package 
-                                   | by Jing hua Zhao will be under    
-                                   | GPL. Specific requirement may be  
-                                   | possible for programs written by  
+ **License:**                      | Programs included in this package by Jing hua Zhao will be under    
+                                   | GPL. Specific requirement may be possible for programs written by  
                                    | other authors.                    
 -----------------------------------|-----------------------------------
  **Name:**                         | [kinship](software/kinship_1.1.4.tar.gz) ([Windows version](software/kinship_1.1.4.zip))
