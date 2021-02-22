@@ -7,7 +7,7 @@ sidebar:
 show_title: false
 ---
 
-# Standalone packages
+# Standalone programs
 
 * [Haplotype analysis](https://jinghuazhao.github.io/Haplotype-Analysis/)
 * [Miscellaneous codings](https://jinghuazhao.github.io/misc/)
