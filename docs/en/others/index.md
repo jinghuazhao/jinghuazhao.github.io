@@ -11,7 +11,7 @@ show_title: false
 # Other projects
 
 * Epigenomics
-  * [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/)[^longnote] / [Computational-Statistics](https://github.com/jinghuazhao/Computational-Statistics)
+  * [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/)[^longnote] / [EWAS-fusion](https://github.com/jinghuazhao/EWAS-fusion)
   * [QTR](https://jinghuazhao.github.io/QTR/) / [QTR](https://github.com/jinghuazhao/QTR
 
 * Genomics
