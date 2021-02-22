@@ -3,7 +3,7 @@ layout: article
 title: R packages Maintained by Jing Hua Zhao
 ---
 
-This section now has a new home, https://jinghuazhao.github.io/R/.
+This section now has a new home, [https://jinghuazhao.github.io/R/](https://jinghuazhao.github.io/R/).
 
 It is still possible to install `kinship` as follows,
 ```r
