@@ -10,13 +10,13 @@ show_title: false
 * Epigenomics
   * [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/)[^longnote]
   * [QTR](https://jinghuazhao.github.io/QTR/)
-  * [TWAS-pipeline](https://jinghuazhao.github.io/TWAS-pipeline/)
 
 * Genomics
   * [hess-pipeline](https://jinghuazhao.github.io/hess-pipeline/)
   * [FM-pipeline](https://jinghuazhao.github.io/FM-pipeline/)
   * [PW-pipeline](https://jinghuazhao.github.io/PW-pipeline/)
   * [SUMSTATS](https://jinghuazhao.github.io/SUMSTATS/)
+  * [TWAS-pipeline](https://jinghuazhao.github.io/TWAS-pipeline/)
 
 * Proteomics
   * [Caprion](https://jinghuazhao.github.io/Caprion/)
