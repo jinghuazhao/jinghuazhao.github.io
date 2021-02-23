@@ -18,10 +18,7 @@ convert sunflower.jpg -resize 15% sun15.jpg
 ```  
 * To generate favicon, [https://realfavicongenerator.net/](https://realfavicongenerator.net/)
 * To generate SVG, [https://inkscape.org/](https://inkscape.org/)
-```
-To resize SVG,
-https://stackoverflow.com/questions/37082987/how-to-resize-svg-in-inkscape-from-a1-to-a0/37308608
-```
+* To resize SVG, [https://www.iloveimg.com/resize-image/resize-svg](https://www.iloveimg.com/resize-image/resize-svg)
 * To replace logo.svg at assets/image/logo and _includes/svg
  
 ---
