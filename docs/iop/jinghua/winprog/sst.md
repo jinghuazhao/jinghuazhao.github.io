@@ -95,8 +95,7 @@ Edit controls accept keystrokes and the backspace character.
 | class hierarchy chart. You can even color classes individually or in  |
 | groups so that they stand out!\                                       |
 | Get CodeVizor and see how much easier undestanding class hierarchies  |
-| becomes!\                                                             |
-| \                                                                     |
+| becomes!                                                              |
 |                                                                       |
 | [CodeVizor Web Site](http://codevizor.iftech.com/rd/r_dcsb2cv.asp)    |
 |-----------------------------------------------------------------------|

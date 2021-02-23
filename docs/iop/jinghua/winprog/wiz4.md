@@ -272,13 +272,21 @@ Build and execute the application. Now when you choose the **Size**
 option you will find that the application beeps. You can see that it is
 trivial to wire new menu options into an AppWizard application.
 
-#### Visualizing Class Hierarchies
-
-One of the most frusterating things when you are first learning MFC is the \"Where am I?\" feeling you get. MFC has *hundreds* of classes, and the 
-AppWizard adds several more. A good way to get around this feeling is to use a class hierarchy visualization tool like 
-[CodeVizor](http://codevizor.iftech.com/). With CodeVizor you can drag the source code for MFC into the CodeVizor tool and in about 30 seconds have 
-a beautiful, clickable (and printable!) class hierarchy chart. You can even color classes individually or in groups so that they stand out!\ The 
-[trial version](http://199.72.148.33/ss?Click&5&35daaf15) is free, so get CodeVizor and see how much easier undestanding class hierarchies becomes!
+|-----------------------------------------------------------------------|
+| Visualizing Class Hierarchies                                         |
+|=======================================================================|
+|One of the most frusterating things when you are first learning MFC is |
+|the \"Where am I?\" feeling you get. MFC has *hundreds* of classes, and|
+|the AppWizard adds several more. A good way to get around this feeling |
+|is to use a class hierarchy visualization tool like [CodeVizor](http://codevizor.iftech.com/). |
+|With CodeVizor you can drag the source code for MFC into the CodeVizor |
+|tool and in about 30 seconds have a beautiful, clickable               |
+|(and printable!) class hierarchy chart. You can even color classes     |
+|individually or in groups so that they stand out!\                     |
+|The [trial version](http://199.72.148.33/ss?Click&5&35daaf15) is free, |
+|so get CodeVizor and see how much easier undestanding class hierarchies|
+|becomes!                                                               |
+|-----------------------------------------------------------------------|
 
 ### Step 6: Add a new dialog
 
