@@ -82,9 +82,9 @@ SST understands the following keyboard semantics:
 
 Edit controls accept keystrokes and the backspace character.
 
-+-----------------------------------------------------------------------+
+|-----------------------------------------------------------------------|
 | Visualizing Class Hierarchies                                         |
-+=======================================================================+
+|=======================================================================|
 | One of the most frusterating things when you are first using class    |
 | hierarchies is the \"Where am I?\" feeling you get. Many larger       |
 | hierarchies have *hundreds* of classes. A good way to get around this |
@@ -99,7 +99,7 @@ Edit controls accept keystrokes and the backspace character.
 | \                                                                     |
 |                                                                       |
 | [CodeVizor Web Site](http://codevizor.iftech.com/rd/r_dcsb2cv.asp)    |
-+-----------------------------------------------------------------------+
+|-----------------------------------------------------------------------|
 
 The SST hierarchy contains 10 classes. Six of the classes are arranged
 in a hierarchy as shown below:
