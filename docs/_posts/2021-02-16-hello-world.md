@@ -1,6 +1,7 @@
 ---
 title: Hello, world!
 tags: info
+mermaid: true
 ---
 
 # The jekyll-themed site is up!
@@ -10,6 +11,12 @@ tags: info
 # NOTES
 
 * Old page: [https://jhz22.user.srcf.net/](https://jhz22.user.srcf.net/)
+```mermaid
+graph TB;
+photo --> |to square + to resize| docs/sunflower.jpg --> |to generate favicon| assets
+docs/sunflower.jpg --> |to generate SVG + to resize SVG| _includes/logo/logo.svg
+painting --> |to crop circle + to generate SVG + to resize SVG| docs/en/*/bees.svg
+```
 * To crop circle: [https://crop-circle.imageonline.co/](https://crop-circle.imageonline.co/)
 * To square, [https://www.oddprints.com/edit](https://www.oddprints.com/edit)
 * To resize, [https://imagemagick.org/index.php](https://imagemagick.org/index.php)
