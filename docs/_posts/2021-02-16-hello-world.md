@@ -10,6 +10,7 @@ tags: info
 # NOTES
 
 * Old page: [https://jhz22.user.srcf.net/](https://jhz22.user.srcf.net/)
+* To crop circle: [https://crop-circle.imageonline.co/](https://crop-circle.imageonline.co/)
 * To square, [https://www.oddprints.com/edit](https://www.oddprints.com/edit)
 * To resize, [https://imagemagick.org/index.php](https://imagemagick.org/index.php)
 ```bash
