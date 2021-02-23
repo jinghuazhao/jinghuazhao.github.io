@@ -14,7 +14,7 @@ mermaid: true
 * Old page: [https://jhz22.user.srcf.net/](https://jhz22.user.srcf.net/)
 
 The workflow to set up
-```mermaid
+```
 graph TB;
 photo --> |to square + to resize| docs/sunflower.jpg --> |to generate favicon| assets
 docs/sunflower.jpg --> |to generate SVG + to resize SVG| _includes/logo/logo.svg
