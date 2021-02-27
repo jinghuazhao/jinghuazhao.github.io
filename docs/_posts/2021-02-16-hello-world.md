@@ -2,6 +2,8 @@
 layout: article
 title: Hello, world!
 tags: info
+mathjax: true
+mathjax_autoNumber: false
 mermaid: true
 ---
 
