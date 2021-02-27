@@ -27,12 +27,12 @@ painting --> |to crop circle + to generate SVG + to resize SVG| docs/en/*/bees.s
 ```bash
 convert sunflower.jpg -resize 15% sun15.jpg
 ```  
-* favicon
+* Favicon
   * To generate favicon, [https://realfavicongenerator.net/](https://realfavicongenerator.net/)
-* logos for site and projects
+* Site logo
   * To generate/resize SVG, [https://inkscape.org/](https://inkscape.org/)
   * To replace logo.svg at assets/image/logo and _includes/svg
-* Icons at projects
+* Project icon
   * To crop circle, [https://crop-circle.imageonline.co/](https://crop-circle.imageonline.co/)
   * To generate SVG, [https://inkscape.org/](https://inkscape.org/)
   * To resize SVG (simpler), [https://www.iloveimg.com/resize-image/resize-svg](https://www.iloveimg.com/resize-image/resize-svg)
