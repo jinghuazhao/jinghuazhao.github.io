@@ -9,12 +9,6 @@ mermaid: true
 
 # The jekyll-themed site is up!
 
-<!--more-->
-
-# NOTES
-
-* Old page: [https://jhz22.user.srcf.net/](https://jhz22.user.srcf.net/)
-
 The workflow to set up
 ```
 graph TB;
@@ -22,6 +16,11 @@ photo --> |to square + to resize| docs/sunflower.jpg --> |to generate favicon| d
 docs/sunflower.jpg --> |to generate SVG + to resize SVG| _includes/logo/logo.svg
 painting --> |to crop circle + to generate SVG + to resize SVG| docs/en/*/bees.svg
 ```
+<!--more-->
+
+# NOTES
+
+* Old page: [https://jhz22.user.srcf.net/](https://jhz22.user.srcf.net/)
 ![](mermaid-diagram-20210224082643.svg)
 * Image at work
   * To square, [https://www.oddprints.com/edit](https://www.oddprints.com/edit)
