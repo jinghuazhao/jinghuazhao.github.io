@@ -125,7 +125,7 @@ header:
     url: /archive.html
 
 docs-en:
-  - title:      Biosketch
+  - title:      Publications
     children:
       - title:  Books
         url:    en/books
