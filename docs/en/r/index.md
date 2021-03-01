@@ -1,5 +1,6 @@
 ---
 layout: article
+permalink: /en/r
 key: page-r
 show_title: false
 sidebar:

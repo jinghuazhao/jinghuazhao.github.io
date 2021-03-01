@@ -1,5 +1,6 @@
 ---
 layout: article
+permalink: /en/others
 key: page-others
 footer: true
 show_title: false

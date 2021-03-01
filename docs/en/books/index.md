@@ -1,5 +1,6 @@
 ---
 layout: article
+permalink: /en/books
 key: page-books
 show_title: false
 sidebar:

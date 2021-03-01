@@ -1,5 +1,6 @@
 ---
 layout: article
+permalink: /en/consortium
 key: page-consortium
 show_title: false
 sidebar:

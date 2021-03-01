@@ -1,5 +1,6 @@
 ---
 layout: article
+permalink: /en/papers
 key: page-papers
 show_title: false
 sidebar:
