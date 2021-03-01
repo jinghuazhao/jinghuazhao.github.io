@@ -4,6 +4,8 @@ permalink: /en/others
 key: page-others
 footer: true
 show_title: false
+aside:
+  toc: true
 sidebar:
   nav: docs-en
 show_title: false
