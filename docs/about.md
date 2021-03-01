@@ -1,12 +1,12 @@
 ---
 layout: article
-permalink: /about.html
-key: page-about
 aside:
   toc: false
 sidebar:
   nav: docs-en
 show_title: false
+permalink: /about.html
+key: page-about
 ---
 
 ![name](name.jpg)
