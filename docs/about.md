@@ -1,6 +1,6 @@
 ---
 layout: article
-permalink: /docs
+permalink: /about.html
 key: page-about
 aside:
   toc: false
