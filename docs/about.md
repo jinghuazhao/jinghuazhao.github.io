@@ -1,12 +1,30 @@
 ---
 layout: article
-permalink: /about.html
+titles:
+  # @start locale config
+  en      : &EN       About
+  en-GB   : *EN
+  en-US   : *EN
+  en-CA   : *EN
+  en-AU   : *EN
+  zh-Hans : &ZH_HANS  关于
+  zh      : *ZH_HANS
+  zh-CN   : *ZH_HANS
+  zh-SG   : *ZH_HANS
+  zh-Hant : &ZH_HANT  關於
+  zh-TW   : *ZH_HANT
+  zh-HK   : *ZH_HANT
+  ko      : &KO
+  ko-KR   : *KO
+  fr      : &FR
+  fr-BE   : *FR
+  fr-CA   : *FR
+  fr-CH   : *FR
+  fr-FR   : *FR
+  fr-LU   : *FR
+  # @end locale config
 key: page-about
 ---
-
-![name](name.jpg)
-
-# Personal page of Jing Hua Zhao
 
 I am a scientist at the [Cardiovascular Epidemiology Unit](https://www.phpc.cam.ac.uk/people/ceu-group/ceu-research-staff/) (CEU), following positions at MRC 
 Epidemiology Unit (2005-18, [people](http://www.mrc-epid.cam.ac.uk/people/jing-hua-zhao/)), [University College London](http://www.ucl.ac.uk/) 

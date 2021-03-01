@@ -11,7 +11,7 @@ titles:
   zh      : *ZH_HANS
   zh-CN   : *ZH_HANS
   zh-SG   : *ZH_HANS
-  zh-Hant : &ZH_HANT
+  zh-Hant : &ZH_HANT  工作
   zh-TW   : *ZH_HANT
   zh-HK   : *ZH_HANT
   ko      : &KO
