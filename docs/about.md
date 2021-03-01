@@ -1,5 +1,6 @@
 ---
 layout: article
+permalink: /
 key: page-about
 aside:
   toc: false
