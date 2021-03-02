@@ -15,8 +15,6 @@ mermaid: true
 
 * Old page: [https://jhz22.user.srcf.net/](https://jhz22.user.srcf.net/)
 
-**English title than smaller title image**
-
 The workflow to set up
 ```
 graph TB;
