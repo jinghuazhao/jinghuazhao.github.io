@@ -38,7 +38,7 @@ convert sunflower.jpg -resize 15% sun15.jpg
   * To replace logo.svg at assets/image/logo and _includes/svg
 * Project icon
   * To crop circle, [https://crop-circle.imageonline.co/](https://crop-circle.imageonline.co/)
-  * To generate SVG, [https://inkscape.org/](https://inkscape.org/)
+  * To generate/resize SVG, [https://inkscape.org/](https://inkscape.org/)
   * To resize SVG (simpler), [https://www.iloveimg.com/resize-image/resize-svg](https://www.iloveimg.com/resize-image/resize-svg)
  
 ---
