@@ -26,7 +26,7 @@ titles:
 key: page-about
 ---
 
-[<img src="name.svg" height="30" width="50"/>](name.svg)
+[<img src="name.svg" height="90" width="150"/>](name.svg)
 
 I am a scientist at the [Cardiovascular Epidemiology Unit](https://www.phpc.cam.ac.uk/people/ceu-group/ceu-research-staff/) (CEU), following positions at MRC 
 Epidemiology Unit (2005-18, [people](http://www.mrc-epid.cam.ac.uk/people/jing-hua-zhao/)), [University College London](http://www.ucl.ac.uk/) 
