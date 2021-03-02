@@ -15,7 +15,7 @@ mermaid: true
 
 * Old page: [https://jhz22.user.srcf.net/](https://jhz22.user.srcf.net/)
 
-**I'm still not able to make the title image smaller**
+**Temporarily bilingual title than smaller title image**
 
 The workflow to set up
 ```
