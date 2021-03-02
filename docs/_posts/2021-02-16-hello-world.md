@@ -1,6 +1,6 @@
 ---
 layout: article
-title: 你好，世界 (Hello, world)!
+title: 世界，你好 (Hello, world)!
 tags: info
 mathjax: true
 mathjax_autoNumber: false
