@@ -1,13 +1,12 @@
 ---
 layout: article
+title: Standalone programs
 permalink: /en/standalone
 key: page-standalone
-show_title: false
+show_title: true
 sidebar:
   nav: docs-en
 ---
-
-# Standalone programs
 
 * [Haplotype analysis](https://jinghuazhao.github.io/Haplotype-Analysis/)
 * [Miscellaneous codings](https://jinghuazhao.github.io/misc/)

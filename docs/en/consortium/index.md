@@ -1,13 +1,12 @@
 ---
 layout: article
+title: Consortium work
 permalink: /en/consortium
 key: page-consortium
-show_title: false
+show_title: true
 sidebar:
   nav: docs-en
 ---
-
-# Consortium work
 
 * [COVID-19](https://jinghuazhao.github.io/COVID-19/) [![](bees.svg)](https://github.com/jinghuazhao/COVID-19)
 * [SCALLOP-INF](https://jinghuazhao.github.io/INF/) [![](bees.svg)](https://github.com/jinghuazhao/INF)
