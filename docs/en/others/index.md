@@ -11,7 +11,6 @@ sidebar:
 ---
 
 # Other projects
-
 #### Epigenomics
   * [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/)[^longnote] [![](bees.svg)](https://github.com/jinghuazhao/EWAS-fusion)
   * [QTR](https://jinghuazhao.github.io/QTR/) [![](bees.svg)](https://github.com/jinghuazhao/QTR)
