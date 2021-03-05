@@ -7,7 +7,9 @@ sidebar:
   nav: docs-en
 ---
 
-[![](pgspname.svg){:.square.shadow}](https://jinghuazhao.github.io/book/pgsp.pdf)
+<div style="width:80%; margin:0 auto;" align="center" markdown="1">
+    [![](pgspname.svg){:.square.shadow}](https://jinghuazhao.github.io/book/pgsp.pdf)
+</div>
 
 # Practical Guide to Statistical Packages (1993-1997)
 
