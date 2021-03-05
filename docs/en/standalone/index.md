@@ -5,7 +5,6 @@ key: page-standalone
 show_title: false
 sidebar:
   nav: docs-en
-show_title: false
 ---
 
 # Standalone programs

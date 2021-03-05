@@ -5,7 +5,6 @@ key: page-r
 show_title: false
 sidebar:
   nav: docs-en
-show_title: false
 ---
 
 # R packages
