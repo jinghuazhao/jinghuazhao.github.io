@@ -9,7 +9,7 @@ sidebar:
 
 [![](pgspname.svg)](https://jinghuazhao.github.io/book/pgsp.pdf)
 
-[<img class="image image--md" src="pgspname.svg"/>](https://jinghuazhao.github.io/book/pgsp.pdf)
+[<img class="image image--lg" src="pgspname.svg"/>](https://jinghuazhao.github.io/book/pgsp.pdf)
 
 # Practical Guide to Statistical Packages (1993-1997)
 
