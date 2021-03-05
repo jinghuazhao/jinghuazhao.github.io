@@ -9,6 +9,6 @@ sidebar:
 
 [![](pgspname.svg)](https://jinghuazhao.github.io/book/pgsp.pdf)
 
-## Practical Guide to Statistical Packages (1993-1997)
+# Practical Guide to Statistical Packages (1993-1997)
 
 ## ([Table of Contents](https://jinghuazhao.github.io/iop/jinghua/pgsp/pgsp.html))
