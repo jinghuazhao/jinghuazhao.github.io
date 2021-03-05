@@ -8,7 +8,6 @@ aside:
   toc: true
 sidebar:
   nav: docs-en
-show_title: false
 ---
 
 # Other projects
