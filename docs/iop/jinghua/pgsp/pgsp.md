@@ -1,6 +1,3 @@
-Practical Guide to Statistical Packages
-=======================================
-
 © Copyright 1997-8 J Zhao
 
 This page is made possible by CCT, a wonderful Chinese emTeXware,
