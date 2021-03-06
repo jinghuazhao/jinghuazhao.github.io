@@ -1,6 +1,6 @@
 ---
 layout: article
-title: 《最新实用统计分析软件包》(1993-1997) 更容易找啦!
+title: 《最新实用统计分析软件包指南》(1993-1997) 好找啦!
 tags: info
 mathjax: true
 mathjax_autoNumber: false
