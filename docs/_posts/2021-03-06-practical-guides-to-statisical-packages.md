@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Practical Guide to Statistical Packages is here!
+title: 《最新实用统计分析软件包》(1993-1997) 上网啦!
 tags: info
 mathjax: true
 mathjax_autoNumber: false
