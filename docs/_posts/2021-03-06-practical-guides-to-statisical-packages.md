@@ -1,6 +1,6 @@
 ---
 layout: article
-title: 《最新实用统计分析软件包指南》(1993-1997) 能分章节浏览了。
+title: 《最新实用统计分析软件包指南》(1993-1997) 可分章浏览了
 tags: info
 mathjax: true
 mathjax_autoNumber: false
