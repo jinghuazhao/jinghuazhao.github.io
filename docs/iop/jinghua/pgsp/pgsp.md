@@ -35,7 +35,7 @@ Dr Dong Pang (regenerated from dvips32 and HGMP on 29/11/00). A
 PostScript (unzip first)/PDF viewer/printer is necessary to view/print
 them.
 
-------------------------------------------------------------------------
+---
 
 Cover and Table of Contents ([PDF](frontmat.pdf))
 
@@ -87,7 +87,7 @@ Chapter 18. Word Procesing ([PDF](ch18.pdf))
 
 References and Information ([PDF](aft.pdf))
 
-------------------------------------------------------------------------
+---
 
 Please let [me](mailto:j.zhao@iop.kcl.ac.uk) know if you have any
 suggestions.
