@@ -14,3 +14,5 @@ mermaid: true
 # NOTES
 
 ## Web page: [https://jinghuazhao.github.io/en/books](https://jinghuazhao.github.io/en/books)
+
+The original html was converted to Markdown and links to ps.gz files were dropped all for clarity.
