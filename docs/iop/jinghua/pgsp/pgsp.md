@@ -1,4 +1,4 @@
-Practical Guide to Statistical Packages {#practical-guide-to-statistical-packages align="center"}
+Practical Guide to Statistical Packages
 =======================================
 
 © Copyright 1997-8 J Zhao
