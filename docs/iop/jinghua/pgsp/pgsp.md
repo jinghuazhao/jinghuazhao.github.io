@@ -1,3 +1,31 @@
+---
+layout: article
+titles:
+  # @start locale config
+  en      : &EN       Practical Guides to Statistical Packages (1993-1997)
+  en-GB   : *EN
+  en-US   : *EN
+  en-CA   : *EN
+  en-AU   : *EN
+  zh-Hans : &ZH_HANS  《最新实用统计分析软件包指南》(1993-1997)
+  zh      : *ZH_HANS
+  zh-CN   : *ZH_HANS
+  zh-SG   : *ZH_HANS
+  zh-Hant : &ZH_HANT  《最新實用統計分析軟件包指南》(1993-1997)
+  zh-TW   : *ZH_HANT
+  zh-HK   : *ZH_HANT
+  ko      : &KO
+  ko-KR   : *KO
+  fr      : &FR
+  fr-BE   : *FR
+  fr-CA   : *FR
+  fr-CH   : *FR
+  fr-FR   : *FR
+  fr-LU   : *FR
+  # @end locale config
+key: page-pgsp
+---
+
 © Copyright 1997-8 J Zhao
 
 This page is made possible by CCT, a wonderful Chinese emTeXware,
