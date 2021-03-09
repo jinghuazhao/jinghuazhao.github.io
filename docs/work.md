@@ -53,5 +53,4 @@ I have been a review editor for [Frontiers in
 Genetics](http://www.frontiersin.org/) ([blog
 network](http://www.frontiersin.org/blog/all_blogs) and
 [profile](http://community.frontiersin.org/people/Jing_HuaZhao/44539)) and
-recently appointed as associate editor.
-
+recently appointed as associate editor ([login](https://www.frontiersin.org/my-frontiers/overview)).
