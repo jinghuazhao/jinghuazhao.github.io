@@ -8,6 +8,6 @@ qpdf ${pgsp} --pages . 2-2 -- pre.pdf
 for i in {0..17}
 do
    echo $((${i} + 1))
-echo   qpdf ${pgsp} --pages . ${pages[${i}]} -- ${chapters[${i}]}.pdf
+   qpdf ${pgsp} --pages . ${pages[${i}]} -- ${chapters[${i}]}.pdf
 done
 qpdf ${pgsp} --pages . 554-572 -- aft.pdf
