@@ -48,8 +48,8 @@ the [Royal Statistical Society](http://www.rss.org.uk/) and here are my
 [biosketch](jing_cv.pdf) and [ResearchGate
 profile](http://www.researchgate.net/profile/Jing_Hua_Zhao/). I finished
 my term as associate editor for [The Scientific World
-Journal](http://www.hindawi.com/journals/tswj/) in July 2017 and since 2013
-I have been a review editor for [Frontiers in
+Journal](http://www.hindawi.com/journals/tswj/) in July 2017 and since about
+2010 I have been a review editor for [Frontiers in
 Genetics](http://www.frontiersin.org/) ([blog
 network](http://www.frontiersin.org/blog/all_blogs) and
 [profile](http://community.frontiersin.org/people/Jing_HuaZhao/44539)) and
