@@ -12,3 +12,9 @@ sidebar:
 # [Practical Guide to Statistical Packages](https://jinghuazhao.github.io/book/pgsp.pdf) (1993-1997)
 
 ## 各章目录 ([Table of Contents](https://jinghuazhao.github.io/iop/jinghua/pgsp/pgsp.html))
+## Software notes
+### [pspp](https://www.gnu.org/software/pspp/) is `a program for statistical analysis of sampled data. It is a free as in freedom replacement for the proprietary program SPSS, and appears very similar to it with a few exceptions`.
+### [R](https://www.r-project.org/) `is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS. To download R, please choose your preferred CRAN mirror.`
+### [gimp](https://www.gimp.org/) `is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems. It is free software, you can change its source code and distribute your changes.
+
+Whether you are a graphic designer, photographer, illustrator, or scientist, GIMP provides you with sophisticated tools to get your job done. You can further enhance your productivity with GIMP thanks to many customization options and 3rd party plugins.`
