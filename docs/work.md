@@ -44,8 +44,8 @@ genomewide association study contributed to consortia such as
 [GIANT](http://www.broadinstitute.org/collaboration/giant/index.php/Main_Page)
 and [CHARGE](http://web.chargeconsortium.com/) therefore myself as a
 [highly cited researcher](https://clarivate.com/hcr/). I am a member of
-the [Royal Statistical Society](http://www.rss.org.uk/) and here are my
-[biosketch](jing_cv.pdf) and [ResearchGate
+the [Royal Statistical Society](http://www.rss.org.uk/) ([My RSS](https://rss.org.uk/myrss/))
+and here are my [biosketch](jing_cv.pdf) and [ResearchGate
 profile](http://www.researchgate.net/profile/Jing_Hua_Zhao/). I finished
 my term as associate editor for [The Scientific World
 Journal](http://www.hindawi.com/journals/tswj/) in July 2017 and recently
