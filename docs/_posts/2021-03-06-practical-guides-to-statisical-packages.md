@@ -1,6 +1,6 @@
 ---
 layout: article
-title: 《统计分析软件包指南》(1993-1997) 各章浏览
+title: 《统计分析软件包指南》(1993-1997)
 tags: info
 mathjax: true
 mathjax_autoNumber: false
