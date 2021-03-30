@@ -11,7 +11,7 @@ sidebar:
 
 # [Practical Guide to Statistical Packages](https://jinghuazhao.github.io/book/pgsp.pdf) (1993-1997)
 
-## 各章目录 ([Table of Contents](https://jinghuazhao.github.io/iop/jinghua/pgsp/pgsp.html))
+## 目录 ([Table of Contents](https://jinghuazhao.github.io/iop/jinghua/pgsp/pgsp.html))
 
 ---
 
