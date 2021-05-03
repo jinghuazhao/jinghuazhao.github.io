@@ -23,7 +23,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 
 **BOOKMARKS**
 
--   [BBC](https://www.bbc.co.uk/) [CB2](https://www.bbc.co.uk/weather/cb2)
+-   [BBC](https://www.bbc.co.uk/) [CB1](https://www.bbc.co.uk/weather/cb1) and [CB2](https://www.bbc.co.uk/weather/cb2)
 -   [Bletchly Park](https://bletchleypark.org.uk/)
 -   [giffgaff](https://www.giffgaff.com/)
 -   [jetcost](https://www.jetcost.co.uk/)
