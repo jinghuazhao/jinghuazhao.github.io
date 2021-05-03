@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Jing Hua Zhao's virtual library at DPHPC
+title: Jing Hua Zhao's virtual library at PHPC
 ---
 
 **Work-related sites**
