@@ -25,7 +25,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 -   [Online2PDF](https://online2pdf.com/docx2pdf)
 -   [Personal page](https://jinghuazhao.github.io/)
 -   [PGSCatalog](http://www.pgscatalog.org/)
--   [phpc](https://www.phpc.cam.ac.uk/) [PeopleHR](https://dphpc.peoplehr.net/) and [PhenoScanner](http://www.phenoscanner.medschl.cam.ac.uk/)
+-   [PHPC](https://www.phpc.cam.ac.uk/) [PeopleHR](https://dphpc.peoplehr.net/) and [PhenoScanner](http://www.phenoscanner.medschl.cam.ac.uk/)
 -   [PLINK2 mailing list](https://groups.google.com/g/plink2-users)
 -   [pubmed](https://pubmed.ncbi.nlm.nih.gov/)
 -   [RStudio](https://www.rstudio.com/) [download](https://www.rstudio.com/products/rstudio/download/)
