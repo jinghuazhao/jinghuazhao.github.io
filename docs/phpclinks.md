@@ -29,7 +29,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 -   [PGSCatalog](http://www.pgscatalog.org/)
 -   [PHPC](https://www.phpc.cam.ac.uk/) [PeopleHR](https://dphpc.peoplehr.net/) and [PhenoScanner](http://www.phenoscanner.medschl.cam.ac.uk/)
 -   [PLINK2 mailing list](https://groups.google.com/g/plink2-users)
--   [pubmed](https://pubmed.ncbi.nlm.nih.gov/)
+-   [PubMed](https://pubmed.ncbi.nlm.nih.gov/)
 -   [RStudio](https://www.rstudio.com/) [download](https://www.rstudio.com/products/rstudio/download/)
 -   [slack](https://systems-genomics.slack.com/)
 -   [srcf](https://jhz22.user.srcf.net/)
