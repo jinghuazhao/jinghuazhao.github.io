@@ -53,4 +53,6 @@ became an associate editor ([login](https://www.frontiersin.org/my-frontiers/ove
 for [Frontiers in Genetics](http://www.frontiersin.org/) ([blog
 network](http://www.frontiersin.org/blog/all_blogs) and
 [profile](http://community.frontiersin.org/people/Jing_HuaZhao/44539))
-after about ten years as a review editor.
+after about ten years as a review editor. Over years I have also been an occasional
+reviewer for the [Lancet](https://www.editorialmanager.com/THELANCET/default.aspx).
+
