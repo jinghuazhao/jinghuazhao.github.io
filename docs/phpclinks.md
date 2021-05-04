@@ -6,7 +6,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 **Work-related sites**
 
 -   [cambridge-ceu](https://cambridge-ceu.github.io/)
--   [CIMH](https://www.cmih.maths.cam.ac.uk/)
+-   [cmih](https://www.cmih.maths.cam.ac.uk/)
 -   [CRAN](https://cran.r-project.org/)
 -   [dtb](http://dtb.cpr.ku.dk/)
 -   [Fedora](https://getfedora.org/)
