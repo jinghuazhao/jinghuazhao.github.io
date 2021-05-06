@@ -52,6 +52,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 -   Chinese Embassy [FAQ](http://www.chinese-embassy.org.uk/chn/qzfw/hzlxz/zyxx/t1836400.htm) and [Passport/Travel certificatte](http://www.chinese-embassy.org.uk/chn/qzfw/hzlxz/t1827718.htm)
 -   [Encore Estates](https://portal.encoreestates.co.uk/)
 -   [Entroware](https://www.entroware.com/store/index.php)
+-   [gaokao](http://114.xixik.com/gaokao/)
 -   [giffgaff](https://www.giffgaff.com/)
 -   [Greater Anglia](https://www.greateranglia.co.uk/) [parking portal](https://gaparking.co.uk/#home)
 -   [jetcost](https://www.jetcost.co.uk/)
