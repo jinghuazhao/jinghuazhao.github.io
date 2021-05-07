@@ -50,6 +50,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 -   [Cambridge English Dictionary](https://dictionary.cambridge.org/dictionary/)
 -   [CCTV](https://tv.cctv.com/)
 -   Chinese Embassy [FAQ](http://www.chinese-embassy.org.uk/chn/qzfw/hzlxz/zyxx/t1836400.htm) and [Passport/Travel certificatte](http://www.chinese-embassy.org.uk/chn/qzfw/hzlxz/t1827718.htm)
+-   [CyberChef](https://gchq.github.io/CyberChef/)
 -   [Encore Estates](https://portal.encoreestates.co.uk/)
 -   [Entroware](https://www.entroware.com/store/index.php)
 -   [gaokao](http://114.xixik.com/gaokao/)
@@ -72,4 +73,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 -   [US election 2020](https://www.bbc.co.uk/news/election/us2020/results)
 -   [VFS appointment](https://www.vfsglobal.com/Denmark/UK/Schedule_an_appointment.html)
 
-***Created on** 3/5/2021 and **last changed** 4/5/2021*
+***Created on** 3/5/2021 and **last changed** 7/5/2021*
