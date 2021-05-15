@@ -30,15 +30,19 @@ key: page-research
 ---
 
 I promoted reproducible research through presentations at
-[useR!2007](http://www.user2007.org/),
-[useR!2008](http://www.statistik.uni-dortmund.de/useR-2008/tutorials/),
-[useR!2009](http://www.r-project.org/conferences/useR-2009/tutorials/index.html),
-[useR!2010](http://www.r-project.org/conferences/useR-2010/tutorials/index.html),
-[useR!2011](https://www.r-project.org/conferences/useR-2011/), [GWAS course](https://jinghuazhao.github.io/GWAS-course/), Henry-Stewart and
-local talks as with [software collections](r-genetics.md). I collected
-bookmarks ([PHPC](phpclinks.md), [MRC](mrclinks.md) with [comments](mrc/comments.txt),
-[UCL](ucllinks.md) and [KCL](kcllinks.md) with
-[comments](iop/comments.txt) and a [diagram](focus.gif)\--[a mermaid version](iop/focus.png)), 
+* [useR!2007](http://www.user2007.org/),
+* [useR!2008](http://www.statistik.uni-dortmund.de/useR-2008/tutorials/),
+* [useR!2009](http://www.r-project.org/conferences/useR-2009/tutorials/index.html),
+* [useR!2010](http://www.r-project.org/conferences/useR-2010/tutorials/index.html),
+* [useR!2011](https://www.r-project.org/conferences/useR-2011/),
+* [GWAS course](https://jinghuazhao.github.io/GWAS-course/), 
+* Henry-Stewart and local talks as with [software collections](r-genetics.md).
+
+Various aspects which interest me have been collected in bookmarks
+* [PHPC](phpclinks.md),
+* [MRC](mrclinks.md) with [comments](mrc/comments.txt),
+* [UCL](ucllinks.md),
+* [KCL](kcllinks.md) with [comments](iop/comments.txt) and a [diagram](focus.gif)\--[a mermaid version](iop/focus.png)), 
 ```mermaid
 graph BT;
 e1 --> F1(Genetics);
