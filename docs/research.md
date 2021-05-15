@@ -52,16 +52,7 @@ B((Genetic Epidemiology & Biostatistics)) --> F4(Computer Science);
 A(Public Health) --> B((Genetic Epidemiology & Biostatistics));
 U --> A(Public Health);
 ```
-I created [DSA](https://jinghuazhao.github.io/DSA), [Numerical Analysis](https://jinghuazhao.github.io/Numerical-Analysis),
-[Computational Statistics](https://jinghuazhao.github.io/Computational-Statistics/),
-[physalia](https://jinghuazhao.github.io/physalia/), [software notes](https://jinghuazhao.github.io/software-notes/), 
-[Omics resources](https://github.com/jinghuazhao/Omics-analysis/wiki/Resources),
-as well as developed [software](software.md) (esp. [Haplotype Analysis](https://jinghuazhao.github.io/Haplotype-Analysis/),
-[R](https://jinghuazhao.github.io/R/) and more recently
-[FM-pipeline](https://jinghuazhao.github.io/FM-pipeline/) and
-[PW-pipeline](https://jinghuazhao.github.io/PW-pipeline/)) on
-[GitHub](https://github.com/jinghuazhao?tab=repositories) and
-[CRAN](http://cran.r-project.org/).
+I am currently involved in several [consortium projects](https://jinghuazhao.github.io/en/consortium) as well as [others](https://jinghuazhao.github.io/en/others).
 
 The following is an excerpt from the [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/) pipeline.
 ```mermaid
