@@ -32,6 +32,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 -   [PLINK2 mailing list](https://groups.google.com/g/plink2-users)
 -   [PubMed](https://pubmed.ncbi.nlm.nih.gov/)
 -   [RStudio](https://www.rstudio.com/) [download](https://www.rstudio.com/products/rstudio/download/)
+*   [shinyapps](https://www.shinyapps.io/)
 -   [slack](https://systems-genomics.slack.com/)
 -   [srcf](https://jhz22.user.srcf.net/)
 -   [University](https://www.cam.ac.uk/) [Self-Employment Service (ESS)](https://www.hr.admin.cam.ac.uk/hr-staff/information-new-starters/employee-self-service-ess)
