@@ -45,4 +45,3 @@ SNP["LD reference panel (bed,bim,fam)"] --> |"EWAS reference panel(top1, blup, l
 Methylation --> Trait;
 SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
 ```
-and the mathematical expression of the test statistic is $$ z_{EWAS} = \frac{w^T_{me}z_T}{\sqrt{w^T_{me}Vw_{me}}} $$

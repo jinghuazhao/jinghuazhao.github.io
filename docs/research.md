@@ -56,6 +56,7 @@ B((Genetic Epidemiology & Biostatistics)) --> F4(Computer Science);
 A(Public Health) --> B((Genetic Epidemiology & Biostatistics));
 U --> A(Public Health);
 ```
+
 I am currently involved in several [consortium](https://jinghuazhao.github.io/en/consortium) as well as [other](https://jinghuazhao.github.io/en/others) projects.
 
 At CEU, I am part of the [cambridge-ceu](https://cambridge-ceu.github.io/) GitHub organisation.
