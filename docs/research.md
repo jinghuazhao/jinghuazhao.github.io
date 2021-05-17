@@ -56,14 +56,7 @@ B((Genetic Epidemiology & Biostatistics)) --> F4(Computer Science);
 A(Public Health) --> B((Genetic Epidemiology & Biostatistics));
 U --> A(Public Health);
 ```
-I am currently involved in several [consortium](https://jinghuazhao.github.io/en/consortium) as well as [other](https://jinghuazhao.github.io/en/others) projects. The following is an excerpt from the [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/) pipeline.
-```mermaid
-graph TB;
-SNP["LD reference panel (bed,bim,fam)"] --> |"EWAS reference panel(top1, blup, lasso, enet, bslmm)"| Methylation;
-Methylation --> Trait;
-SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
-```
-and the mathematical expression of the test statistic is $$ z_{EWAS} = \frac{w^T_{me}z_T}{\sqrt{w^T_{me}Vw_{me}}} $$
+I am currently involved in several [consortium](https://jinghuazhao.github.io/en/consortium) as well as [other](https://jinghuazhao.github.io/en/others) projects.
 
 At CEU, I am part of the [cambridge-ceu](https://cambridge-ceu.github.io/) GitHub organisation.
 
