@@ -15,7 +15,7 @@ sidebar:
 
 ---
 
-## Software notes
+## Software updates
 
 ### [gimp](https://www.gimp.org/)
 
