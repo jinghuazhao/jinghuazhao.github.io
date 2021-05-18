@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 cd docs
-jekyll build
+bundle exec jekyll build
 cd -
 for f in $(ls)
 do
