@@ -8,5 +8,5 @@ sidebar:
   nav: docs-en
 ---
 
-* [shinyapps](https://jinghuazhao.shinyapps.io/shinyapps/) ![](bees.svg)
-* [shinySurvival](https://jinghuazhao.shinyapps.io/shinysurvival/) ![](bees.svg)
+* [shinyapps](https://jinghuazhao.shinyapps.io/shinyapps/) [![](bees.svg)](https://github.com/jinghuazhao/ShinyApps)
+* [shinySurvival](https://jinghuazhao.shinyapps.io/shinysurvival/) [![](bees.svg)](https://github.com/jinghuazhao/ShinyApps)
