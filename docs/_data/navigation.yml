@@ -141,5 +141,8 @@ docs-en:
     children:
       - title:  R
         url:    en/r
+      - title:  shinyapps
+        url:    en/shinyapps
       - title:  Standalone
         url:    en/standalone
+
