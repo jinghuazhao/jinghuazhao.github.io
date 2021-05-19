@@ -13,6 +13,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 -   [foxit](https://www.foxitsoftware.com/)
 -   [GATK](https://gatk.broadinstitute.org/hc/en-us)
 -   [GNU parallel](https://www.biostars.org/p/63816/)
+-   [Google translate](https://translate.google.co.uk/)
 -   [GTEx](https://gtexportal.org/home/datasets)
 -   [GWAS atlas](https://atlas.ctglab.nl/traitDB)
 -   [hail](https://hail.is/index.html)
