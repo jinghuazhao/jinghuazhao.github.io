@@ -29,16 +29,18 @@ mermaid: true
 key: page-research
 ---
 
-I promoted reproducible research through presentations at
+## Presentations
+
 * [useR!2007](http://www.user2007.org/),
 * [useR!2008](http://www.statistik.uni-dortmund.de/useR-2008/tutorials/),
 * [useR!2009](http://www.r-project.org/conferences/useR-2009/tutorials/index.html),
 * [useR!2010](http://www.r-project.org/conferences/useR-2010/tutorials/index.html),
 * [useR!2011](https://www.r-project.org/conferences/useR-2011/),
 * [GWAS course](https://jinghuazhao.github.io/GWAS-course/), 
-* Henry-Stewart and local talks as with [software collections](r-genetics.md).
+* Henry-Stewart and local talks
 
-Various aspects which interest me have been collected in bookmarks
+## Bookmarks
+
 * [PHPC](phpclinks.md),
 * [MRC](mrclinks.md) with [comments](mrc/comments.txt),
 * [UCL](ucllinks.md),
@@ -56,10 +58,17 @@ B((Genetic Epidemiology & Biostatistics)) --> F4(Computer Science);
 A(Public Health) --> B((Genetic Epidemiology & Biostatistics));
 U --> A(Public Health);
 ```
+* [software collections](r-genetics.md).
 
-I am currently involved in several [consortium](https://jinghuazhao.github.io/en/consortium) as well as [other](https://jinghuazhao.github.io/en/others) projects.
+## Projects
+
+* [consortium](https://jinghuazhao.github.io/en/consortium) projects.
+* [other](https://jinghuazhao.github.io/en/others) projects.
+
+## Related activities
 
 At CEU, I am part of the [cambridge-ceu](https://cambridge-ceu.github.io/) GitHub organisation.
 
-I would appreciate if you [e-mail me](mailto:jinghuazhao@hotmail.com) your comments or information on [citations](references.txt) ([Google Scholar](https://tinyurl.com/yxh3ycwg)).
+## A gentle call
 
+I would appreciate if you [e-mail me](mailto:jinghuazhao@hotmail.com) your comments or information on [citations](references.txt) (Google Scholar on [R/gap](https://tinyurl.com/yxh3ycwg)).
