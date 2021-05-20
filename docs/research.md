@@ -29,6 +29,8 @@ mermaid: true
 key: page-research
 ---
 
+I have promoted reproducible research through presentations, software implementation and various projects.
+
 ## Presentations
 
 * [useR!2007](http://www.user2007.org/),
