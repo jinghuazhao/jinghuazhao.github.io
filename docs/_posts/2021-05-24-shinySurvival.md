@@ -9,4 +9,6 @@ mermaid: true
 
 It allows for user-uploaded data to be analysed and reported.
 
-[https://jinghuazhao.shinyapps.io/shinysurvival/](https://jinghuazhao.shinyapps.io/shinysurvival/)
+<!--more-->
+
+See [https://jinghuazhao.shinyapps.io/shinysurvival/](https://jinghuazhao.shinyapps.io/shinysurvival/)
