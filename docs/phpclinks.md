@@ -38,6 +38,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 -   [RStudio](https://www.rstudio.com/) [download](https://www.rstudio.com/products/rstudio/download/)
 -   [slack](https://systems-genomics.slack.com/)
 -   [srcf](https://jhz22.user.srcf.net/)
+-   [Typora](https://typora.io/)
 -   [University](https://www.cam.ac.uk/) [Self-Employment Service (ESS)](https://www.hr.admin.cam.ac.uk/hr-staff/information-new-starters/employee-self-service-ess)
 -   [VirtualBox](https://www.virtualbox.org/)
 -   [yozosoft](https://www.yozosoft.com/)
