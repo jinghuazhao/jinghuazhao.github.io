@@ -11,4 +11,5 @@ sidebar:
 See [here](https://jinghuazhao.github.io/Computational-Statistics/LANGUAGES/#shinyapps) for information on how these were set up.
 
 * [shinyapps](https://jinghuazhao.shinyapps.io/shinyapps/) [![](bees.svg)](https://github.com/jinghuazhao/ShinyApps)
+* [shinygap](https://jinghuazhao.shinyapps.io/shinyapps/https://jinghuazhao.shinyapps.io/shinygap/)
 * [shinySurvival](https://jinghuazhao.shinyapps.io/shinysurvival/) [![](bees.svg)](https://github.com/jinghuazhao/ShinyApps)
