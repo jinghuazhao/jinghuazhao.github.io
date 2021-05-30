@@ -13,3 +13,13 @@ See [here](https://jinghuazhao.github.io/Computational-Statistics/LANGUAGES/#shi
 * [shinyapps](https://jinghuazhao.shinyapps.io/shinyapps/) [![](bees.svg)](https://github.com/jinghuazhao/ShinyApps)
 * [shinygap](https://jinghuazhao.shinyapps.io/shinygap/) [![](bees.svg)](https://github.com/jinghuazhao/R)
 * [shinySurvival](https://jinghuazhao.shinyapps.io/shinysurvival/) [![](bees.svg)](https://github.com/jinghuazhao/ShinyApps)
+
+It is possible to run these locally within RStudio by the following steps:
+
+1. Download the appropriate repository,
+2. Enter the directory containing the Shiny app (i.e., ui.R and server.R); for R/gap this is `inst/shinygap` from the source or `shinygap` in the installed package.
+3. Start RStudio (through the rstudio command).
+4. library(shiny)
+5. runApp()
+
+Note that steps 4 & 5 are within RStudio, and it is assumed that the required R packages (shiny, gap, survminer) are installed.
