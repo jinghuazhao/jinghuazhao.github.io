@@ -1,6 +1,6 @@
 ---
 layout: article
-title: ShinySurvival is up!
+title: shinySurvival is up!
 tags: info
 mathjax: true
 mathjax_autoNumber: false
