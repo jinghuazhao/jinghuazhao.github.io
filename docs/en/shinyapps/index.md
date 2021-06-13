@@ -20,4 +20,4 @@ Given the uncertainty with the Shiny server availability, it is an optional choi
 2. Enter the directory containing the Shiny app (i.e., ui.R and server.R); for R/gap this is `inst/shinygap` from the source or `shinygap` in the installed package.
 3. Start RStudio (through the rstudio command), and issue `library(shiny);runApp()`
 
-Note it is assumed that the required R packages (shiny, gap, survminer) are installed.
+Note `shinygap` is self-contained through `R/global.R` whereas `shinySurvival` requires `survminer` be installed.
