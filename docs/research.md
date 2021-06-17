@@ -60,6 +60,7 @@ B((Genetic Epidemiology & Biostatistics)) --> F4(Computer Science);
 A(Public Health) --> B((Genetic Epidemiology & Biostatistics));
 U --> A(Public Health);
 ```
+and [graphviz](grViz.gv) which can be viewed from RStudio.
 * [software collections](r-genetics.md).
 
 ## Projects

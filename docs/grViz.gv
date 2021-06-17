@@ -1,0 +1,20 @@
+digraph G {
+graph [overlap=true]
+
+node [shape=circle]
+Genetic_Epidemiology_Biostatistics; e1; e2; e3; e4; U
+ 
+node [shape=box]
+Genetics; Epidemiology; Mathematical_Statistics; Computer_Science; Public_Health
+
+Public_Health -> Genetic_Epidemiology_Biostatistics
+U -> Public_Health
+e1 -> Genetics
+e2 -> Epidemiology
+e3 -> Mathematical_Statistics
+e4 -> Computer_Science
+Genetic_Epidemiology_Biostatistics -> Genetics
+Genetic_Epidemiology_Biostatistics-> Epidemiology
+Genetic_Epidemiology_Biostatistics -> Mathematical_Statistics
+Genetic_Epidemiology_Biostatistics -> Computer_Science
+}
