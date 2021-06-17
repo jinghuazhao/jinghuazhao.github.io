@@ -46,7 +46,7 @@ I have promoted reproducible research through presentations, software implementa
 * [PHPC](phpclinks.md),
 * [MRC](mrclinks.md) with [comments](mrc/comments.txt),
 * [UCL](ucllinks.md),
-* [KCL](kcllinks.md) with [comments](iop/comments.txt) and a [diagram](focus.gif)\--[a mermaid version](iop/focus.png)), 
+* [KCL](kcllinks.md) with [comments](iop/comments.txt), a [diagram](focus.gif)\--[a mermaid version](iop/focus.png)), 
 ```mermaid
 graph BT;
 e1 --> F1(Genetics);
