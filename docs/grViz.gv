@@ -2,19 +2,23 @@ digraph G {
 graph [overlap=true]
 
 node [shape=circle]
-Genetic_Epidemiology_Biostatistics; e1; e2; e3; e4; U
+B [label="Genetic Epidemiology & Biostatistics"]; e1; e2; e3; e4; U
  
 node [shape=box]
-Genetics; Epidemiology; Mathematical_Statistics; Computer_Science; Public_Health
+F1 [label="Genetics"]
+F2 [label="Epidemiology"]
+F3 [label="Mathematical Statistics"]
+F4 [label="Computer Science"]
+A [label="Public Health"]
 
-Public_Health -> Genetic_Epidemiology_Biostatistics
-U -> Public_Health
-e1 -> Genetics
-e2 -> Epidemiology
-e3 -> Mathematical_Statistics
-e4 -> Computer_Science
-Genetic_Epidemiology_Biostatistics -> Genetics
-Genetic_Epidemiology_Biostatistics-> Epidemiology
-Genetic_Epidemiology_Biostatistics -> Mathematical_Statistics
-Genetic_Epidemiology_Biostatistics -> Computer_Science
+U -> A
+A -> B
+e1 -> F1
+e2 -> F2
+e3 -> F3
+e4 -> F4
+B -> F1
+B -> F2
+B -> F3
+B -> F4
 }
