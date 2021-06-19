@@ -49,12 +49,12 @@ I have promoted reproducible research through presentations, software implementa
 * [KCL](kcllinks.md) with [comments](iop/comments.txt), a [diagram](focus.gif),
 ```mermaid
 graph BT;
-U --> A(Public Health);
-A(Public Health) --> B(Genetic Epidemiology & Biostatistics);
 e1 --> F1(Genetics);
 e2 --> F2(Epidemiology);
 e3 --> F3(Mathematical Statistics);
 e4 --> F4(Computer Science);
+U --> A(Public Health);
+A(Public Health) --> B(Genetic Epidemiology & Biostatistics);
 F1(Genetics) --> B(Genetic Epidemiology & Biostatistics);
 F2(Epidemiology) --> B(Genetic Epidemiology & Biostatistics);
 F3(Mathematical Statistics) --> B(Genetic Epidemiology & Biostatistics);
