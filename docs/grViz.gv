@@ -2,11 +2,11 @@ digraph G {
 graph [overlap=true]
 
 node [shape=circle]
-U
-B [label="Genetic Epidemiology & Biostatistics"]; e1; e2; e3; e4
+U; e1; e2; e3; e4
  
 node [shape=box]
 A [label="Public Health"]
+B [label="Genetic Epidemiology & Biostatistics"]
 F1 [label="Genetics"]
 F2 [label="Epidemiology"]
 F3 [label="Mathematical Statistics"]
