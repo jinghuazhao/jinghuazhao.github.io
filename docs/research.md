@@ -46,7 +46,7 @@ I have promoted reproducible research through presentations, software implementa
 * [PHPC](phpclinks.md),
 * [MRC](mrclinks.md) with [comments](mrc/comments.txt),
 * [UCL](ucllinks.md),
-* [KCL](kcllinks.md) with [comments](iop/comments.txt), a mermaid diagram,
+* [KCL](kcllinks.md) with [comments](iop/comments.txt) and a [graphviz](grViz.png) diagram from [grViz.gv](grViz.gv) and mermaid.
 ```mermaid
 graph BT;
 e1 --> F1(Genetics);
@@ -60,7 +60,6 @@ F2(Epidemiology) --> B(Genetic Epidemiology & Biostatistics);
 F3(Mathematical Statistics) --> B(Genetic Epidemiology & Biostatistics);
 F4(Computer Science) --> B(Genetic Epidemiology & Biostatistics);
 ```
-and a [graphviz](grViz.png) version from [grViz.gv](grViz.gv).
 * [software collections](r-genetics.md).
 
 ## Projects
