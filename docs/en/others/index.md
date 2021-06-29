@@ -15,7 +15,7 @@ sidebar:
   * [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/)[^longnote] [![](bees.svg)](https://github.com/jinghuazhao/EWAS-fusion)
   * [QTR](https://jinghuazhao.github.io/QTR/) [![](bees.svg)](https://github.com/jinghuazhao/QTR)
 #### B. Genomics
-  * [FM-pipeline](https://jinghuazhao.github.io/FM-pipeline/) [![](bees.svg)](https://github.com/jinghuazhao/FM-pipeline)
+  * [FM-pipeline](https://jinghuazhao.github.io/FM-pipeline/) [![](bees.svg)](https://github.com/jinghuazhao/FM-pipeline) ([wiki](https://github.com/jinghuazhao/FM-pipeline/wiki))
   * [hess-pipeline](https://jinghuazhao.github.io/hess-pipeline/) [![](bees.svg)](https://github.com/jinghuazhao/hess-pipeline)
   * [PW-pipeline](https://jinghuazhao.github.io/PW-pipeline/) [![](bees.svg)](https://github.com/jinghuazhao/PW-pipeline) ([wiki](https://github.com/jinghuazhao/PW-pipeline/wiki))
   * [SUMSTATS](https://jinghuazhao.github.io/SUMSTATS/) [![](bees.svg)](https://github.com/jinghuazhao/SUMSTATS)
