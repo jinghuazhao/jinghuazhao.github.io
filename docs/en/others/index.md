@@ -17,7 +17,7 @@ sidebar:
 #### B. Genomics
   * [FM-pipeline](https://jinghuazhao.github.io/FM-pipeline/) [![](bees.svg)](https://github.com/jinghuazhao/FM-pipeline)
   * [hess-pipeline](https://jinghuazhao.github.io/hess-pipeline/) [![](bees.svg)](https://github.com/jinghuazhao/hess-pipeline)
-  * [PW-pipeline](https://jinghuazhao.github.io/PW-pipeline/) [![](bees.svg)](https://github.com/jinghuazhao/PW-pipeline)
+  * [PW-pipeline](https://jinghuazhao.github.io/PW-pipeline/) [![](bees.svg)](https://github.com/jinghuazhao/PW-pipeline) ([wiki](https://github.com/jinghuazhao/PW-pipeline/wiki))
   * [SUMSTATS](https://jinghuazhao.github.io/SUMSTATS/) [![](bees.svg)](https://github.com/jinghuazhao/SUMSTATS)
   * [TWAS-pipeline](https://jinghuazhao.github.io/TWAS-pipeline/) [![](bees.svg)](https://github.com/jinghuazhao/TWAS-pipeline)
 #### C. Proteomics
@@ -33,7 +33,7 @@ sidebar:
 #### E. Miscellaneous categories
   * [GDCT](https://jinghuazhao.github.io/GDCT/) [![](bees.svg)](https://github.com/jinghuazhao/GDCT)
   * [GWAS course](https://jinghuazhao.github.io/GWAS-course/) [![](bees.svg)](https://github.com/jinghuazhao/GWAS-course)
-  * [Omics-analysis](https://jinghuazhao.github.io/Omics-analysis/) [![](bees.svg)](https://github.com/jinghuazhao/Omics-analysis)
+  * [Omics-analysis](https://jinghuazhao.github.io/Omics-analysis/) [![](bees.svg)](https://github.com/jinghuazhao/Omics-analysis) ([wiki](https://github.com/jinghuazhao/Omics-analysis/wiki))
   * [PhD](https://jinghuazhao.github.io/PhD/) [![](bees.svg)](https://github.com/jinghuazhao/PhD)
   * [physalia](https://jinghuazhao.github.io/physalia/) [![](bees.svg)](https://github.com/jinghuazhao/physalia)
   * [Software notes](https://jinghuazhao.github.io/software-notes/) [![](bees.svg)](https://github.com/jinghuazhao/software-notes)
