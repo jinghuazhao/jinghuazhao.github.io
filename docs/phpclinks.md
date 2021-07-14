@@ -54,6 +54,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 -   [Brazil 2018](https://www.bbc.co.uk/sport/av/football/44587792)
 -   [Cambridge City Council](https://www.cambridge.gov.uk/)
 -   [Cambridge English Dictionary](https://dictionary.cambridge.org/dictionary/)
+-   [Cambridge Water](https://www.cambridge-water.co.uk) ([South Staffordshire Water](https://www.south-staffs-water.co.uk/))
 -   [CCTV](https://tv.cctv.com/)
 -   Chinese Embassy [FAQ](http://www.chinese-embassy.org.uk/chn/qzfw/hzlxz/zyxx/t1836400.htm) and [Passport/Travel certificatte](http://www.chinese-embassy.org.uk/chn/qzfw/hzlxz/t1827718.htm)
 -   [CyberChef](https://gchq.github.io/CyberChef/)
