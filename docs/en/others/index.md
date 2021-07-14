@@ -38,4 +38,4 @@ sidebar:
   * [physalia](https://jinghuazhao.github.io/physalia/) [![](bees.svg)](https://github.com/jinghuazhao/physalia)
   * [Software notes](https://jinghuazhao.github.io/software-notes/) [![](bees.svg)](https://github.com/jinghuazhao/software-notes)
 
-[^longnote]: Details of the rationale and setup is now readily seen from the hyperlink here.
+[^longnote]: Details of the rationale and setup in the desired format is now readily seen from the hyperlink here.
