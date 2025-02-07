@@ -29,7 +29,7 @@ title: Jing Hua Zhao's virtual library at PHPC
   * Grand Arcade, <https://www.grandarcade.co.uk/> [stores](https://www.grandarcade.co.uk/stores/)
   * Excursion, <https://www.luxurylifestylemag.co.uk/travel/how-to-spend-the-perfect-long-weekend-in-historic-cambridge/>
   * The old bicyle shop, [https://www.oldbicycleshop.com/](https://www.oldbicycleshop.com/)
-  * University Hospitals NHS Foundation Trust, <www.cuh.org.uk>
+  * University Hospitals NHS Foundation Trust, <https://www.cuh.org.uk>
     - Addenbrookes [facebook](https://en-gb.facebook.com/CambridgeUniversityHospitals/), [Volunteering at CUH](https://twitter.com/cuh_volunteers?lang=en)
 - Civil enformcement, <https://www.ce-service.co.uk/>
 - COVID-19 vaccine
