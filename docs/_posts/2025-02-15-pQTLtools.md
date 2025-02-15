@@ -15,24 +15,23 @@ R CMD check --as-cran pQTLtools_0.4.tar.gz
 as in `inst/csd3.sh`:
 
 ```
-pQTLtools/inst/csd3.sh
 Loading ceuadmin/R/latest
   Loading requirement: curl/7.79.0/gcc/75dxv7ac libiconv/1.16/gcc/aa2kwjch libxml2/2.9.13/gcc/fww2yzpt ncurses/6.2/gcc/qke6jyyt
-    gettext/0.21/gcc/lhdl4tbr libpng/1.6.37/gcc/bkdpz5q4 pcre2/10.39/gcc/inuagvoq readline/8.1/gcc/bgw44yb2 hdf5/1.12.1 icu4c/67.1/gcc/maavowaj
+    gettext/0.21/gcc/lhdl4tbr pcre2/10.39/gcc/inuagvoq readline/8.1/gcc/bgw44yb2 hdf5/1.12.1 icu4c/67.1/gcc/maavowaj
     jags-4.3.0-gcc-5.4.0-4z5shby mono/5.0.1.1 libmatheval/intel/1.1.11 hdf5/impi/1.8.16 netcdf/4.4.1 ceuadmin/json-c/0.17-20230812-icelake
-    ceuadmin/libssh/0.10.6-icelake ceuadmin/openssh/9.7p1-icelake ceuadmin/qpdf/11.9.1 ceuadmin/nettle/2.7.1 texlive/2015 ceuadmin/gsl/2.7.1
-    libiconv/1.16/gcc/4miyzf3w libxml2/2.9.12/gcc/eizlvpgn ceuadmin/readline/8.0 ceuadmin/ImageMagick/7.1.1-31 ceuadmin/libgit2/1.4.2
-    lz4-1.7.5-gcc-5.4.0-qkdvk4q python/3.7 ceuadmin/NLopt/2.7.1 ceuadmin/openssl/3.2.1-icelake ceuadmin/poppler/0.84.0 ceuadmin/glpk/4.57
-    ceuadmin/icu/70.1 ceuadmin/krb5/1.21.2-icelake ceuadmin/rust/1.74.1
+    ceuadmin/libsodium/1.0.20 ceuadmin/libpng/1.5.30 ceuadmin/libssh/0.10.6-icelake ceuadmin/openssh/9.7p1-icelake ceuadmin/qpdf/11.9.1
+    ceuadmin/nettle/2.7.1 texlive/2015 ceuadmin/gsl/2.7.1 libpng/1.6.37/gcc/bkdpz5q4 libiconv/1.16/gcc/4miyzf3w libxml2/2.9.12/gcc/eizlvpgn
+    ceuadmin/readline/8.0 ceuadmin/ImageMagick/7.1.1-31 ceuadmin/libgit2/1.4.2 lz4-1.7.5-gcc-5.4.0-qkdvk4q python/3.7 ceuadmin/NLopt/2.7.1
+    ceuadmin/openssl/3.2.1-icelake ceuadmin/poppler/0.84.0 ceuadmin/glpk/4.57 ceuadmin/icu/70.1 ceuadmin/krb5/1.21.2-icelake
+    ceuadmin/rust/1.74.1
 * checking for file ‘pQTLtools/DESCRIPTION’ ... OK
-
-
 * preparing ‘pQTLtools’:
 * checking DESCRIPTION meta-information ... OK
 * installing the package to process help pages
 Loading required namespace: pQTLtools
 * saving partial Rd database
-* creating vignettes ... OK
+* creating vignettes ...
+ OK
 * checking for LF line-endings in source and make files and shell scripts
 * checking for empty or unneeded directories
 Removed empty directory ‘pQTLtools/inst/snakemake/output/MR’
@@ -71,7 +70,7 @@ Note: more than one default provided in switch() call
 * checking extension type ... Package
 * this is package ‘pQTLtools’ version ‘0.4’
 * package encoding: UTF-8
-* checking CRAN incoming feasibility ... [5s/144s] WARNING
+* checking CRAN incoming feasibility ... [4s/142s] WARNING
 Maintainer: ‘Jing Hua Zhao <jinghuazhao@hotmail.com>’
 
 New submission
@@ -90,9 +89,12 @@ Found the following (possibly) invalid URLs:
           man/pQTLtools.Rd
     Status: Error
     Message: libcurl error code 28:
-        Connection timed out after 60000 milliseconds
-
-Size of tarball: 13876992 bytes
+        Connection timed out after 60001 milliseconds
+  URL: https://jinghuazhao.github.io/pQTLtools (moved to https://jinghuazhao.github.io/pQTLtools/)
+    From: DESCRIPTION
+          man/pQTLtools.Rd
+    Status: 200
+    Message: OK
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
@@ -101,18 +103,16 @@ Size of tarball: 13876992 bytes
 * checking for hidden files and directories ... OK
 * checking for portable file names ... OK
 * checking for sufficient/correct file permissions ... OK
-* checking whether package ‘pQTLtools’ can be installed ... [13s/16s] OK
+* checking whether package ‘pQTLtools’ can be installed ... [14s/19s] OK
 * checking installed package size ... NOTE
-  installed size is 30.7Mb
+  installed size is  9.5Mb
   sub-directories of 1Mb or more:
-    Bioconductor   1.6Mb
-    doc           20.9Mb
-    help           1.3Mb
-    snakemake      1.9Mb
-    turboman       1.9Mb
+    doc         1.3Mb
+    help        1.3Mb
+    snakemake   1.9Mb
+    turboman    1.9Mb
 * checking package directory ... OK
-* checking for future file timestamps ... NOTE
-unable to verify current time
+* checking for future file timestamps ... OK
 * checking ‘build’ directory ... OK
 * checking DESCRIPTION meta-information ... OK
 * checking top-level files ... OK
@@ -128,14 +128,11 @@ unable to verify current time
 * checking whether the namespace can be unloaded cleanly ... OK
 * checking loading without being on the library search path ... OK
 * checking use of S3 registration ... OK
-* checking dependencies in R code ... NOTE
-Package in Depends field not imported from: ‘pQTLdata’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
+* checking dependencies in R code ... OK
 * checking S3 generic/method consistency ... OK
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
-* checking R code for possible problems ... [18s/19s] OK
+* checking R code for possible problems ... [19s/20s] OK
 * checking Rd files ... OK
 * checking Rd metadata ... OK
 * checking Rd line widths ... OK
@@ -151,20 +148,20 @@ Package in Depends field not imported from: ‘pQTLdata’
 * checking data for ASCII and uncompressed saves ... OK
 * checking installed files from ‘inst/doc’ ... OK
 * checking files in ‘vignettes’ ... OK
-* checking examples ... [20s/21s] NOTE
+* checking examples ... [23s/30s] NOTE
 Examples with CPU (user + system) or elapsed time > 5s
                  user system elapsed
-run_TwoSampleMR 7.384  0.252   8.666
+run_TwoSampleMR 8.229  0.251  12.485
 * checking for unstated dependencies in vignettes ... OK
 * checking package vignettes ... OK
-* checking re-building of vignette outputs ... [246s/566s] OK
+* checking re-building of vignette outputs ... [251s/489s] OK
 * checking PDF version of manual ... OK
 * checking HTML version of manual ... OK
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
 
-Status: 1 WARNING, 4 NOTEs
+Status: 1 WARNING, 2 NOTEs
 See
   ‘/home/jhz22/pQTLtools.Rcheck/00check.log’
 for details.
