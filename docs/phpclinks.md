@@ -128,6 +128,7 @@ title: Jing Hua Zhao's virtual library at PHPC
   * dtb, <http://dtb.cpr.ku.dk/>
   * itslearning, <https://sdu.itslearning.com> (itsl-jhzh)
 - UK
+  * Diabtes risk prediction, <https://riskscore.diabetes.org.uk/start>
   * CRUK, <https://fundraise.cancerresearchuk.org/page/tengyus-race-for-life>
   * RSPCA [guinea pigs](https://www.rspca.org.uk/adviceandwelfare/pets/rodents/guineapigs/)
 - USA
@@ -158,4 +159,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 30/1/2025*
+***Created on** 3/5/2021 and **last changed** 17/2/2025*
