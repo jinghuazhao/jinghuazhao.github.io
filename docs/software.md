@@ -28,6 +28,7 @@ sidebar:
 2. JumpStart sites
    - Bioconductor contribution, <https://contributions.bioconductor.org/index.html>
    - CRAN submission, <https://cran.r-project.org/submit.html>
+   - R Contributor Site, <https://contributor.r-project.org/>
    - R Developer Page, <https://developer.r-project.org/>
 
 3. I have converted some functionality of my programs (most are on the
