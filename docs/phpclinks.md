@@ -128,7 +128,7 @@ title: Jing Hua Zhao's virtual library at PHPC
   * dtb, <http://dtb.cpr.ku.dk/>
   * itslearning, <https://sdu.itslearning.com> (itsl-jhzh)
 - UK
-  * Breast Cancer prediction, <https://breast.v3.predict.cam/> ([GitHub](https://github.com/WintonCentre/predict-v30-r), <https://breast.predict.cam/>)
+  * Breast cancer prediction, <https://breast.v3.predict.cam/> ([GitHub](https://github.com/WintonCentre/predict-v30-r), <https://breast.predict.cam/>)
   * Diabtes risk prediction, <https://riskscore.diabetes.org.uk/start>
   * CRUK, <https://fundraise.cancerresearchuk.org/page/tengyus-race-for-life>
   * RSPCA [guinea pigs](https://www.rspca.org.uk/adviceandwelfare/pets/rodents/guineapigs/)
