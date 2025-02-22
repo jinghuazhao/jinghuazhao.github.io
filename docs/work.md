@@ -44,7 +44,7 @@ through [The INTERVAL study](https://www.intervalstudy.org.uk/).
 
 Here are my [biosketch](jing_cv.pdf), [ResearchGate profile](http://www.researchgate.net/profile/Jing_Hua_Zhao/), and [research.com entry](https://research.com/u/jing-hua-zhao).
 
-![Image](assets/images/sunflower.jpg){:.circle height="360px" width="360px"}
+![Image](assets/images/sunflower.jpg){:.circle height="180px" width="180px"}
 
 ## Mentors/Collaborators
 
@@ -61,7 +61,7 @@ University of Hong Kong: [Pak Sham](https://www.psychiatry.hku.hk/prof-pak-sham)
 University of Illinois at Chicago: [Xiping Xu](http://www.uic.edu/sph/epi-bio/faculty-and-staff)\
 University of Southern Denmark: [Qihua Tan](http://www.sdu.dk/staff/qtan.aspx)
 
-![Image](assets/images/seeded-sunflower.png){:.circle height="360px" width="360px"}
+![Image](assets/images/seeded-sunflower.png){:.circle height="180px" width="180px"}
 
 ## Professional activities
 
