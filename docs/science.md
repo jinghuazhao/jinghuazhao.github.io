@@ -36,7 +36,7 @@ show_title: false
 + PNAS, <https://www.pnas.org/>
 + Science, <https://www.science.org/journal/science>
 
-![Image](assets/images/young-sunflower.jpg){:.circle height="360px" width="360px"}
+![Image](assets/images/young-sunflower.jpg){:.circle height="180px" width="180px"}
 
 ## Magazines
 
