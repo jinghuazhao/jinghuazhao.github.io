@@ -3,7 +3,7 @@ layout: article
 title: Jing Hua Zhao's virtual library at PHPC
 ---
 
-## Local information
+## Information
 
 - AccuWeather, <https://www.accuweather.com/>
 - Active lives survey, <https://www.activelivessurvey.org> (Email: <a href = "mailto:activelives@ipsos.com">activelives@ipsos.com</a>, Tel: <a href="tel:+448081296801">0808 129 6801</a>)
@@ -152,7 +152,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - Ulisses Braga-Neto (2024). [Fundamentals of Pattern Recognition and Machine Learning, 2e](https://braganeto.engr.tamu.edu/book-website-2nd-edition/), Springer
 - VinFuture, <https://online.vinfutureprize.org/nomination/my-nomination?tab=submitted>
 - What 3 words, <https://what3words.com/>
-
+- The sky live, <https://theskylive.com/>
 ## URLs
 
 - <https://museprintables.com/download/pumpkin-stencil/standing-guinea-pig/>
@@ -160,4 +160,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 17/2/2025*
+***Created on** 3/5/2021 and **last changed** 2/3/2025*
