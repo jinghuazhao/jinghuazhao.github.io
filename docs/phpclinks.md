@@ -149,10 +149,11 @@ title: Jing Hua Zhao's virtual library at PHPC
 - PhysioNet, <https://physionet.org/content/ms-cxr/>
 - Robert Kabacoff, [Modern Data Visualization with R](https://rkabacoff.github.io/datavis/index.html)
 - SPIP, <https://www.imagemet.com/products_/spip/>
+- The sky live, <https://theskylive.com/>
 - Ulisses Braga-Neto (2024). [Fundamentals of Pattern Recognition and Machine Learning, 2e](https://braganeto.engr.tamu.edu/book-website-2nd-edition/), Springer
 - VinFuture, <https://online.vinfutureprize.org/nomination/my-nomination?tab=submitted>
 - What 3 words, <https://what3words.com/>
-- The sky live, <https://theskylive.com/>
+
 ## URLs
 
 - <https://museprintables.com/download/pumpkin-stencil/standing-guinea-pig/>
