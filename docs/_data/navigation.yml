@@ -129,8 +129,8 @@ docs-en:
     children:
       - title:  Consortium
         url:    consortium
-      - title:  Other
-        url:    other
+      - title:  Solo
+        url:    solo
   - title:      Publications
     children:
       - title:  Biosketch
