@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Other projects
+title: Solo projects
 permalink: solo
 key: page-solo
 footer: true
