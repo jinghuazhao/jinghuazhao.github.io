@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Consortium work
+title: Consortium projects
 permalink: consortium
 key: page-consortium
 show_title: true
