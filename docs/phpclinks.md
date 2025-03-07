@@ -139,6 +139,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 ## Special interest
 
 - 10 Lectures on Inverse Problems and Imaging, <https://tristanvanleeuwen.github.io/IP_and_Im_Lectures/intro.html>
+- A Guide to Deep Denoising and its Application to Scientific Imaging ([DeepDenoisingGuide](https://github.com/Kangningthu/DeepDenoisingGuide), <https://kangningthu.github.io/AI-powered-denoising/index.html>
 - canSAR.ai, <https://cansar.ai/>
 - Essay writing service, <https://essayservice.com/>
 - InSilicoUK, <https://www.insilicouk.org/>
@@ -161,4 +162,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 2/3/2025*
+***Created on** 3/5/2021 and **last changed** 7/3/2025*
