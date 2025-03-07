@@ -142,6 +142,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - [A Guide to Deep Denoising and its Application to Scientific Imaging](https://kangningthu.github.io/AI-powered-denoising/index.html) ([DeepDenoisingGuide](https://github.com/Kangningthu/DeepDenoisingGuide))
 - canSAR.ai, <https://cansar.ai/>
 - Essay writing service, <https://essayservice.com/>
+- [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 3e](https://github.com/ageron/handson-ml3)
 - InSilicoUK, <https://www.insilicouk.org/>
 - [International Mathematical Olympiad](https://artofproblemsolving.com/wiki/index.php/International_Mathematical_Olympiad)
 - ImageNet, <https://www.image-net.org/>
