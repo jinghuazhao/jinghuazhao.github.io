@@ -8,7 +8,7 @@ sidebar:
   nav: docs-en
 ---
 
-1. GitHub repositories ([www.r-pkg.org](https://www.r-pkg.org/maint/jinghuazhao@hotmail.com), <https://www.rdocumentation.org/>)
+1. GitHub repositories ([www.r-pkg.org](https://www.r-pkg.org/maint/jinghuazhao@hotmail.com), [rdocumentation](https://www.rdocumentation.org/), [r-universe](https://jinghuazhao.r-universe.dev/))
   : [![](bees.svg)](https://github.com/jinghuazhao/gaawr2) [gaawr2](https://jinghuazhao.github.io/gaawr2/) ([manual](https://jinghuazhao.github.io/gaawr2/reference/gaawr2.html), [news](https://jinghuazhao.github.io/gaawr2/news/index.html), [vignette](https://jinghuazhao.github.io/gaawr2/articles/gaawr2.html), Articles: [web](https://jinghuazhao.github.io/gaawr2/articles/web.html)), <https://cran.r-project.org/package=gaawr2>
   : [![](bees.svg)](https://github.com/jinghuazhao/pQTLdata) [pQTLdata](https://jinghuazhao.github.io/pQTLdata/) ([manual](https://jinghuazhao.github.io/pQTLdata/reference/pQTLdata.html), [news](https://jinghuazhao.github.io/pQTLdata/news/index.html), [vignette](https://jinghuazhao.github.io/pQTLdata/articles/pQTLdata.html)), <https://cran.r-project.org/package=pQTLdata>
   : [![](bees.svg)](https://github.com/jinghuazhao/pQTLtools) [pQTLtools](https://jinghuazhao.github.io/pQTLtools/) ([manual](https://jinghuazhao.github.io/pQTLtools/reference/pQTLtools.html), [news](https://jinghuazhao.github.io/pQTLtools/news/index.html), [vignette](https://jinghuazhao.github.io/pQTLtools/articles/pQTLtools.html), Articles: [LocusZoom.js](https://jinghuazhao.github.io/pQTLtools/articles/LocusZoom.js.html), [bioconductor](https://jinghuazhao.github.io/pQTLtools/articles/bioconductor.html), [snakemake](https://jinghuazhao.github.io/pQTLtools/articles/snakemake.html))
