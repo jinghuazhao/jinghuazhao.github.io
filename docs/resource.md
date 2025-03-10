@@ -123,6 +123,7 @@ viewport: "width=device-width, initial-scale=1.0"
 - Alcohol Rehab Help, <https://alcoholrehabhelp.org/>
 - Ambrosia Treatment Center, <https://www.ambrosiatc.com/>
 * Amethyst Recovery DeTox, <https://www.amethystrecovery.org/>
+* Amity San Diego, <https://amitysd.com/>
 * Arkview Recovery Center, <https://www.arkviewrecovery.com/>
 * AToN Center, <https://www.atoncenter.com/>
 * Bayview Recovery Center, <https://www.bayviewrecovery.com/>
@@ -171,6 +172,7 @@ viewport: "width=device-width, initial-scale=1.0"
 * Westwind Behavioral Health Treatment, <https://www.westwindrecovery.com/>
 * White Lotus Landing, <https://www.whitelotuslanding.com/>
 * Wisconsin Recovery Institute, <https://wisconsinrecoveryinstitute.com/resources/>
+* Yonder Behavioral Health, <https://yonderbh.com/>
 
 ## Physical, mental and behavioral Health
 
@@ -189,6 +191,7 @@ viewport: "width=device-width, initial-scale=1.0"
 * Monroe Street Housing, <https://monroestreetsoberliving.com/>
 * Paradigm Treatment, <https://paradigmtreatment.com/>
 * Shortridge Academcy, <https://www.shortridgeacademy.com>
+* SoCal Empowered, <https://socalempowered.com/>
 * Taste Recovery, <https://www.tasterecovery.com/>
 + The Ridge, <https://theridgertc.com/>
 * Tusk Kratom, <https://tuskkratom.com/>
@@ -236,4 +239,4 @@ viewport: "width=device-width, initial-scale=1.0"
 - Rachel Parker, <iamrachelparker@gmail.com>
 - Emma Tressler, <healthcare@thedigitalintellect.com>
 
-***Created on** 12/1/2023 and **last changed** 9/1/2025*
+***Created on** 12/1/2023 and **last changed** 10/3/2025*
