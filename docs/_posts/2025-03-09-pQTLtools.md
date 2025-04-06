@@ -13,7 +13,7 @@ At the same time, individualized articles can be recovered from GitHub package r
 
 See <https://jinghuazhao.github.io/pQTLtools/index.html>.
 
-`R CMD check --as-cran` generated `00check.log` from Fedora 41 on 25/3/2025,
+`R CMD check --as-cran pQTLtools_0.5.tar.gz` generated `00check.log` from Fedora 41 on 25/3/2025,
 
 ```
 * using log directory ‘/home/jhz22/Downloads/pQTLtools.Rcheck’
