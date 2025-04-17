@@ -24,7 +24,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - Boardingware, <https://www.boardingware.com/>
 - Cambridge
   * Arts Picturehouse Cambridge, <https://www.picturehouses.com/cinema/arts-picturehouse-cambridge>
-  * Cambridge City Council, <https://www.cambridge.gov.uk/> bin collection, [https://www.cambridge.gov.uk/check-when-your-bin-will-be-emptied](https://www.cambridge.gov.uk/check-when-your-bin-will-be-emptied)
+  * Cambridge City Council, <https://www.cambridge.gov.uk/> [bin collection](https://www.cambridge.gov.uk/check-when-your-bin-will-be-emptied)
   * Cambridgeshire County Council, <https://www.cambridgeshire.gov.uk/> (<https://www.cambridgeshire.gov.uk/buslane>)
   * Cambridge Water, <https://www.cambridge-water.co.uk> ([South Staffordshire Water](https://www.south-staffs-water.co.uk/), [MyAccount](https://myaccount.cambridge-water.co.uk/))
   * Grand Arcade, <https://www.grandarcade.co.uk/> [stores](https://www.grandarcade.co.uk/stores/)
@@ -36,9 +36,12 @@ title: Jing Hua Zhao's virtual library at PHPC
   * booster vaccine, [https:///www.nhs.uk/book-covid-booster](https:///www.nhs.uk/book-covid-booster)
   * nearby walk-in services, [https:///www.nhs.uk/grab-a-jab](https:///www.nhs.uk/grab-a-jab)
 - Devon & Cornwall Police, <https://www.devon-cornwall.police.uk/> ([UKROEd](https://www.ukroed.org.uk/), [Information Commissioner's Office](https://ico.org.uk/))
-- Dart Charge, <https://www.gov.uk/dart-charge>
-- DVLA ([Sold, transferred or bought a vehicle](https://www.gov.uk/sold-bought-vehicle), [vehicle-tax](https://www.gov.uk/vehicle-tax) ([direct debit](https://www.gov.uk/vehicle-tax-direct-debit)), [Contact](https://www.gov.uk/contact-the-dvla))
 - Encore Estates, <https://portal.encoreestates.co.uk/>
+- gov.uk
+  * Dart Charge, <https://www.gov.uk/dart-charge>
+  * DVLA ([Sold, transferred or bought a vehicle](https://www.gov.uk/sold-bought-vehicle), [vehicle-tax](https://www.gov.uk/vehicle-tax) ([direct debit](https://www.gov.uk/vehicle-tax-direct-debit)), [Contact](https://www.gov.uk/contact-the-dvla))
+  * Online immigration status (eVisa), <https://www.gov.uk/guidance/online-immigration-status-evisa>
+  * UK Visas and Immigration (UKVI) account, <https://www.gov.uk/get-access-evisa>
 - GP patient survey, [https://www.gp-patient.co.uk/survey](https://www.gp-patient.co.uk/survey)
 - Greater Anglia, <https://www.greateranglia.co.uk/> [parking portal](https://gaparking.co.uk/#home)
 - giffgaff, <https://www.giffgaff.com/> ([account](https://www.giffgaff.com/auth/login?redirect=%2Fdashboard))
