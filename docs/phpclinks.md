@@ -42,6 +42,10 @@ title: Jing Hua Zhao's virtual library at PHPC
   * DVLA ([Sold, transferred or bought a vehicle](https://www.gov.uk/sold-bought-vehicle), [vehicle-tax](https://www.gov.uk/vehicle-tax) ([direct debit](https://www.gov.uk/vehicle-tax-direct-debit)), [Contact](https://www.gov.uk/contact-the-dvla))
   * Online immigration status (eVisa), <https://www.gov.uk/guidance/online-immigration-status-evisa>
   * UK Visas and Immigration (UKVI) account, <https://www.gov.uk/get-access-evisa>
+    - [Make another online immigration application](https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/dashboard)
+    - [Sign in](https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/dashboard) / [Ask help](https://www.gov.uk/contact-ukvi-inside-outside-uk)
+    - [Update account](https://www.gov.uk/update-uk-visas-immigration-account-details/update-your-ukvi-account)
+    - [View and prove immigration status (eVisa)](https://www.gov.uk/view-prove-immigration-status)
 - GP patient survey, [https://www.gp-patient.co.uk/survey](https://www.gp-patient.co.uk/survey)
 - Greater Anglia, <https://www.greateranglia.co.uk/> [parking portal](https://gaparking.co.uk/#home)
 - giffgaff, <https://www.giffgaff.com/> ([account](https://www.giffgaff.com/auth/login?redirect=%2Fdashboard))
