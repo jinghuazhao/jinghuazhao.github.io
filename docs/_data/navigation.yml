@@ -134,7 +134,7 @@ docs-en:
   - title:      Publications
     children:
       - title:  Biosketch
-        url:    jing_cv.pdf
+        url:    cv.pdf
       - title:  Book
         url:    book
   - title:      Software
