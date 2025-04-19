@@ -133,7 +133,7 @@ docs-en:
         url:    solo
   - title:      Publications
     children:
-      - title:  Biosketch
+      - title:  Brief CV
         url:    cv.pdf
       - title:  Book
         url:    book
