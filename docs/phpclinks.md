@@ -159,7 +159,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - Medical Information Mart for Intensive Care (mimic), <https://mimic.mit.edu/>
 - Papers by Eran Segal, <https://scholar.google.com/citations?user=oAD8PrkAAAAJ&hl=en> ([10K](https://link.springer.com/article/10.1007/s10654-021-00753-5))
 - PhysioNet, <https://physionet.org/>
-   + EHRNoteQA, <https://physionet.org/content/ehr-notes-qa-llms/> & <https://github.com/ji-youn-kim/EHRNoteQA>
+   + EHRNoteQA, [PhysioNet](https://physionet.org/content/ehr-notes-qa-llms/) & [GitHub](https://github.com/ji-youn-kim/EHRNoteQA)
    + MS-CXR, <https://physionet.org/content/ms-cxr/>
 - Robert Kabacoff, [Modern Data Visualization with R](https://rkabacoff.github.io/datavis/index.html)
 - SPIP, <https://www.imagemet.com/products_/spip/>
