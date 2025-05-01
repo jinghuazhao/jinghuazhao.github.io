@@ -156,11 +156,15 @@ title: Jing Hua Zhao's virtual library at PHPC
 - [International Mathematical Olympiad](https://artofproblemsolving.com/wiki/index.php/International_Mathematical_Olympiad)
 - ImageNet, <https://www.image-net.org/>
 - Mihaela van der Schaar Lab, <https://www.vanderschaar-lab.com/>
+- Medical Information Mart for Intensive Care (mimic), <https://mimic.mit.edu/>
 - Papers by Eran Segal, <https://scholar.google.com/citations?user=oAD8PrkAAAAJ&hl=en> ([10K](https://link.springer.com/article/10.1007/s10654-021-00753-5))
-- PhysioNet, <https://physionet.org/content/ms-cxr/>
+- PhysioNet, <https://physionet.org/>
+   + EHRNoteQA, <https://physionet.org/content/ehr-notes-qa-llms/> & <https://github.com/ji-youn-kim/EHRNoteQA>
+   + MS-CXR, <https://physionet.org/content/ms-cxr/>
 - Robert Kabacoff, [Modern Data Visualization with R](https://rkabacoff.github.io/datavis/index.html)
 - SPIP, <https://www.imagemet.com/products_/spip/>
 - The sky live, <https://theskylive.com/>
+- TigerResearch, [GitHub](https://github.com/TigerResearch) & [HuggingFace](https://huggingface.co/TigerResearch)
 - Ulisses Braga-Neto (2024). [Fundamentals of Pattern Recognition and Machine Learning, 2e](https://braganeto.engr.tamu.edu/book-website-2nd-edition/), Springer
 - VinFuture, <https://online.vinfutureprize.org/nomination/my-nomination?tab=submitted>
 - What 3 words, <https://what3words.com/>
@@ -172,4 +176,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 16/3/2025*
+***Created on** 3/5/2021 and **last changed** 1/5/2025*
