@@ -151,6 +151,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - canSAR.ai, <https://cansar.ai/>
 - Essay writing service, <https://essayservice.com/>
 - [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 3e](https://github.com/ageron/handson-ml3)
+- [Health AI Developer Foundations](https://developers.google.com/health-ai-developer-foundations)
 - HMS-DBMI, <https://github.com/hms-dbmi>
 - InSilicoUK, <https://www.insilicouk.org/>
 - [International Mathematical Olympiad](https://artofproblemsolving.com/wiki/index.php/International_Mathematical_Olympiad)
@@ -176,4 +177,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 1/5/2025*
+***Created on** 3/5/2021 and **last changed** 2/5/2025*
