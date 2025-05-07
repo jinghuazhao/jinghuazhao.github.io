@@ -44,6 +44,7 @@ show_title: false
 - Live Science, <https://www.livescience.com/>
 - New Scientist, <https://www.newscientist.com/>
 - Quanta Magazine, <https://www.quantamagazine.org/>
+- Science Alert, <https://www.sciencealert.com/>
 - Science Focus, <https://www.sciencefocus.com/>
 - Science Illustrated, <https://scienceillustrated.com/>
 - Science News, <https://www.sciencenews.org/>
@@ -62,4 +63,4 @@ show_title: false
 + Significance, <https://significancemagazine.com/>
 + The American Statistician, <https://www.tandfonline.com/journals/utas20>
 
-***Created on** 3/11/2024 and **last changed** 12/1/2025*
+***Created on** 3/11/2024 and **last changed** 7/5/2025*
