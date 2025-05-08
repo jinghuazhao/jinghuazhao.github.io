@@ -1,6 +1,6 @@
 ---
 layout: article
-title: pQTLtools 0.5 starts to take shape
+title: pQTLtools 0.5 takes shape
 tags: pQTLtools
 mathjax: true
 mathjax_autoNumber: false
