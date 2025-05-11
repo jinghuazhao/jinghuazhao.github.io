@@ -51,6 +51,17 @@ viewport: "width=device-width, initial-scale=1.0"
   </details>
 
   <details>
+    <summary>Excercise</summary>
+    <ul>
+      <li><a href="https://www.bbc.co.uk/programmes/articles/51SPhn5FKSYRnQNswfnWsN2/8-reasons-why-we-should-all-walk-more">8 reasons why we should all walk more</a></li>
+    </ul>
+  </details>
+
+  <details>
+    <summary><a href="https://www.drugwatch.com/drugs/ozempic/">Ozempic (semaglutide)</a> and <a href="https://www.drugwatch.com/drugs/ozempic/side-effects/">side effects</a> from <a href="https://www.drugwatch.com/">DrugWatch</a></summary>
+  </details>
+
+  <details>
     <summary>Food intake</summary>
     <ul>
       <li><a href="https://www.bbc.co.uk/food/articles/grow_out_food_allergy">Can you grow out of a food allergy?</a></li>
@@ -58,10 +69,6 @@ viewport: "width=device-width, initial-scale=1.0"
       <li><a href="https://www.nhs.uk/live-well/eat-well/food-guidelines-and-food-labels/the-eatwell-guide/">The Eatwell Guide from NHS</a></li>
       <li><a href="https://www.bbc.co.uk/food/articles/what_is_ultra-processed_food">Ultra-processed food and what does it mean?</a></li>
     </ul>
-  </details>
-
-  <details>
-    <summary><a href="https://www.drugwatch.com/drugs/ozempic/">Ozempic (semaglutide)</a> and <a href="https://www.drugwatch.com/drugs/ozempic/side-effects/">side effects</a> from <a href="https://www.drugwatch.com/">DrugWatch</a></summary>
   </details>
 
   <details>
@@ -239,4 +246,4 @@ viewport: "width=device-width, initial-scale=1.0"
 - Rachel Parker, <iamrachelparker@gmail.com>
 - Emma Tressler, <healthcare@thedigitalintellect.com>
 
-***Created on** 12/1/2023 and **last changed** 10/3/2025*
+***Created on** 12/1/2023 and **last changed** 11/5/2025*
