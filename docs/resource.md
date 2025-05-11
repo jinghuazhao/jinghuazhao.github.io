@@ -58,10 +58,6 @@ viewport: "width=device-width, initial-scale=1.0"
   </details>
 
   <details>
-    <summary><a href="https://www.drugwatch.com/drugs/ozempic/">Ozempic (semaglutide)</a> and <a href="https://www.drugwatch.com/drugs/ozempic/side-effects/">side effects</a> from <a href="https://www.drugwatch.com/">DrugWatch</a></summary>
-  </details>
-
-  <details>
     <summary>Food intake</summary>
     <ul>
       <li><a href="https://www.bbc.co.uk/food/articles/grow_out_food_allergy">Can you grow out of a food allergy?</a></li>
@@ -77,6 +73,10 @@ viewport: "width=device-width, initial-scale=1.0"
 
   <details>
     <summary><a href="https://knowyourdna.com/">Know your DNA, Know your History</a></summary>
+  </details>
+
+  <details>
+    <summary><a href="https://www.drugwatch.com/drugs/ozempic/">Ozempic (semaglutide)</a> and <a href="https://www.drugwatch.com/drugs/ozempic/side-effects/">side effects</a> from <a href="https://www.drugwatch.com/">DrugWatch</a></summary>
   </details>
 
   <details>
