@@ -30,6 +30,8 @@ title: Jing Hua Zhao's virtual library at PHPC
   * Grand Arcade, <https://www.grandarcade.co.uk/> [stores](https://www.grandarcade.co.uk/stores/)
   * Excursion, <https://www.luxurylifestylemag.co.uk/travel/how-to-spend-the-perfect-long-weekend-in-historic-cambridge/>
   * The old bicyle shop, [https://www.oldbicycleshop.com/](https://www.oldbicycleshop.com/)
+- China Eastern, <https://uk.ceair.com/en/>
+  * Manage Booking, <http://uk.ceair.com/en/manage-booking.html>
 - Civil enformcement, <https://www.ce-service.co.uk/>
 - COVID-19 vaccine
   * booking a vaccine, [https://www.nhs.uk/covid-vaccination](https://www.nhs.uk/covid-vaccination)
@@ -177,4 +179,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 2/5/2025*
+***Created on** 3/5/2021 and **last changed** 24/5/2025*
