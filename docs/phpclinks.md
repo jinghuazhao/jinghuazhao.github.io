@@ -157,7 +157,6 @@ title: Jing Hua Zhao's virtual library at PHPC
 - HMS-DBMI, <https://github.com/hms-dbmi>
 - InSilicoUK, <https://www.insilicouk.org/>
 - [International Mathematical Olympiad](https://artofproblemsolving.com/wiki/index.php/International_Mathematical_Olympiad)
-- ImageNet, <https://www.image-net.org/>
 - Mihaela van der Schaar Lab, <https://www.vanderschaar-lab.com/>
 - Medical Information Mart for Intensive Care (mimic), <https://mimic.mit.edu/>
 - Papers by Eran Segal, <https://scholar.google.com/citations?user=oAD8PrkAAAAJ&hl=en> ([10K](https://link.springer.com/article/10.1007/s10654-021-00753-5))
@@ -179,4 +178,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 24/5/2025*
+***Created on** 3/5/2021 and **last changed** 25/5/2025*
