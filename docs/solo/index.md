@@ -25,6 +25,7 @@ sidebar:
   : [![](bees.svg)](https://github.com/jinghuazhao/FM-pipeline) [FM-pipeline](https://jinghuazhao.github.io/FM-pipeline/) ([wiki](https://github.com/jinghuazhao/FM-pipeline/wiki))
   : [![](bees.svg)](https://github.com/jinghuazhao/GWAS-course) [GWAS course](https://jinghuazhao.github.io/GWAS-course/)
   : [![](bees.svg)](https://github.com/jinghuazhao/gwas2) [gwas2](https://jinghuazhao.github.io/gwas2)
+  : [![](bees.svg)](https://github.com/jinghuazhao/Haplotype-Analysis) [Haplotype-Analysis](https://jinghuazhao.github.io/Haplotype-Analysis)
   : [![](bees.svg)](https://github.com/jinghuazhao/HERMES) [HERMES](https://jinghuazhao.github.io/HERMES)
   : [![](bees.svg)](https://github.com/jinghuazhao/hess-pipeline) [hess-pipeline](https://jinghuazhao.github.io/hess-pipeline/)
   : [![](bees.svg)](https://github.com/jinghuazhao/PhD) [PhD](https://jinghuazhao.github.io/PhD/)
