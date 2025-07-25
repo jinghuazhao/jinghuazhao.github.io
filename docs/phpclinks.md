@@ -15,6 +15,7 @@ title: Jing Hua Zhao's virtual library at PHPC
   * Weather CB1, <https://www.bbc.co.uk/weather/cb1>
   * Weather CB2, <https://www.bbc.co.uk/weather/cb2>
   * Web episodes
+    - Euro 2025, <https://www.bbc.co.uk/programmes/p0lrrbm9>
     - Qatar 2022, [Fixture schedule](https://www.bbc.co.uk/sport/football/60959746)
     - Russia 2018, [Brazil](https://www.bbc.co.uk/sport/av/football/44587792)
     - US election 2020, <https://www.bbc.co.uk/news/election/us2020/results>
@@ -121,6 +122,7 @@ title: Jing Hua Zhao's virtual library at PHPC
    * Research Computing Service [Terms & Conditions](https://www.hpc.cam.ac.uk/storage/terms-and-conditions)
    * [Self-Employment Service (ESS)](https://www.hr.admin.cam.ac.uk/hr-staff/information-new-starters/employee-self-service-ess)
    * Universities Superannuation Scheme (USS), <https://www.uss.co.uk/>
+- United Nations [Goals](https://sdgs.un.org/goals)
 - [VFS appointment](https://www.vfsglobal.com/Denmark/UK/Schedule_an_appointment.html)
 
 ## Country-specific links
@@ -179,4 +181,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 31/5/2025*
+***Created on** 3/5/2021 and **last changed** 25/7/2025*
