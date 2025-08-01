@@ -162,6 +162,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - [International Mathematical Olympiad](https://artofproblemsolving.com/wiki/index.php/International_Mathematical_Olympiad)
 - Mihaela van der Schaar Lab, <https://www.vanderschaar-lab.com/>
 - Medical Information Mart for Intensive Care (mimic), <https://mimic.mit.edu/>
+- NBKR Institute of Science and Technology, <http://103.203.175.90:81/>
 - Papers by Eran Segal, <https://scholar.google.com/citations?user=oAD8PrkAAAAJ&hl=en> ([10K](https://link.springer.com/article/10.1007/s10654-021-00753-5))
 - PhysioNet, <https://physionet.org/>
    + EHRNoteQA, [PhysioNet](https://physionet.org/content/ehr-notes-qa-llms/) & [GitHub](https://github.com/ji-youn-kim/EHRNoteQA)
@@ -181,4 +182,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 28/7/2025*
+***Created on** 3/5/2021 and **last changed** 1/8/2025*
