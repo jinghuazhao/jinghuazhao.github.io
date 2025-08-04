@@ -143,13 +143,11 @@ docs-en:
         url:    shinyapps
       - title:  Software
         url:    software
-  - title:      Web
-    children:
-      - title:  Cambridge-CEU (responsive)
-        url:    https://cambridge-ceu.github.io
-      - title:  Cambridge-CEU (minima)
-        url:    https://cambridge-ceu.github.io/cambridge-ceu-minima.github.io
-      - title:  SRCF (legacy)
-        url:    https://jinghuazhao.github.io/public_html/
-      - title:  QR code
-        url:    assets/images/qr-logo.svg
+  - title:      Cambridge-CEU (responsive)
+    url:        https://cambridge-ceu.github.io
+  - title:      Cambridge-CEU (minima)
+    url:        https://cambridge-ceu.github.io/cambridge-ceu-minima.github.io
+  - title:      SRCF (legacy)
+    url:        https://jinghuazhao.github.io/public_html/
+  - title:      QR code
+    url:        assets/images/qr-logo.svg
