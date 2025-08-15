@@ -154,6 +154,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - 10 Lectures on Inverse Problems and Imaging, <https://tristanvanleeuwen.github.io/IP_and_Im_Lectures/intro.html>
 - [A Guide to Deep Denoising and its Application to Scientific Imaging](https://kangningthu.github.io/AI-powered-denoising/index.html) ([DeepDenoisingGuide](https://github.com/Kangningthu/DeepDenoisingGuide))
 - canSAR.ai, <https://cansar.ai/>
+- ChinaTextbook, <https://github.com/TapXWorld/ChinaTextbook>
 - Essay writing service, <https://essayservice.com/>
 - [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 3e](https://github.com/ageron/handson-ml3)
 - [Health AI Developer Foundations](https://developers.google.com/health-ai-developer-foundations)
@@ -173,6 +174,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - TigerResearch, [GitHub](https://github.com/TigerResearch) & [HuggingFace](https://huggingface.co/TigerResearch)
 - Ulisses Braga-Neto (2024). [Fundamentals of Pattern Recognition and Machine Learning, 2e](https://braganeto.engr.tamu.edu/book-website-2nd-edition/), Springer
 - VinFuture, <https://online.vinfutureprize.org/nomination/my-nomination?tab=submitted>
+- vRain bookstore, <https://github.com/shanleiguang>
 - What 3 words, <https://what3words.com/>
 
 ## URLs
@@ -182,4 +184,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 1/8/2025*
+***Created on** 3/5/2021 and **last changed** 15/8/2025*
