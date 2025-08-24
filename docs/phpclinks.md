@@ -180,8 +180,10 @@ title: Jing Hua Zhao's virtual library at PHPC
 ## URLs
 
 - <https://museprintables.com/download/pumpkin-stencil/standing-guinea-pig/>
+- <https://www.tiktok.com/@thatmedicfoodie>
 - <https://www.youtube.com/@Glutenn>
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
+- <https://www.youtube.com/@thatmedicfoodie>
 
-***Created on** 3/5/2021 and **last changed** 15/8/2025*
+***Created on** 3/5/2021 and **last changed** 24/8/2025*
