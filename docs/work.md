@@ -46,53 +46,7 @@ Here are my [brief CV](cv.pdf), [HuggingFace entry](https://huggingface.co/jhzhf
 
 ![Image](assets/images/sunflower.jpg){:.circle height="180px" width="180px"}
 
-## Mentors/Collaborators
-
-Beijing University: [Yude Chen](http://finance.sina.com.cn/economist/jingjixueren/20051219/11492209756.shtml) ([School of Public Health](http://sph.pku.edu.cn/))\
-Fudan University ([Social Medicine](https://sph.fudan.edu.cn/dept/5)): [Pihuan Jin](https://www.baike.com/wikiid/4250585070644647126?from=wiki_content&prd=innerlink&view_id=3pl79eg77sepds), [Fumin Shen](https://www.baike.com/wikiid/8733105600449106645?view_id=4otxr0qq5u2j9c), [Zhaohuan Zhang](https://baike.baidu.com/item/%E5%BC%A0%E7%85%A7%E5%AF%B0) ([Wiki Entry](http://en.wikipedia.org/wiki/Zhang_Zhaohuan))\
-Havard School of Public Health: [David Christiani](https://www.hsph.harvard.edu/david-christiani/), [William Hsiao](http://www.hsph.harvard.edu/william-hsiao/) ([Wiki Entry](http://en.wikipedia.org/wiki/William_Hsiao)), [Nan Laird](http://www.hsph.harvard.edu/nan-laird/) ([Wiki Entry](http://en.wikipedia.org/wiki/Nan_Laird))\
-Kings College London: [David Collier](https://kclpure.kcl.ac.uk/portal/david.collier.html), [Tao Li](https://kclpure.kcl.ac.uk/portal/en/persons/tao-li(279830ab-410a-4150-a30a-e3a56dad93aa).html), [Peter McGuffin](https://www.kcl.ac.uk/ioppn/depts/sgdp-centre/about/history/mcguffintribute.aspx) ([Wiki Entry](https://en.wikipedia.org/wiki/Peter_McGuffin)), [Robin Murrary](https://kclpure.kcl.ac.uk/portal/en/persons/robin-murray(0875bc32-9bb1-47b3-90c2-5783969e5ce5)/biography.html) ([Wiki Entry](https://en.wikipedia.org/wiki/Robin_Murray))\
-Max Planck-CAS Paul Gerson Unna Research Group on Dermatogenomics: [Sijia Wang](http://www.picb.ac.cn/picb-dynamic/dermatogenomics/index.jsp?ntype=3)\
-National Institute of Health: [Abbas Parsian](https://www.niaaa.nih.gov/dnb)\
-Shandong University: [Biostatistics](http://biostat.sdu.edu.cn/)\
-University College London: [Steve Humphries](https://www.ucl.ac.uk/cardiovascular/cardiovascular-genetics), [Michael Marmot](http://iris.ucl.ac.uk/iris/browse/profile?upi=MGMAR64)([Wiki Entry](http://en.wikipedia.org/wiki/Michael_Marmot)), [Andres Ruiz-Linares](https://www.ucl.ac.uk/biosciences/gee/human-population-genetics), [Arron Hingorani](https://www.ucl.ac.uk/biosciences/people/prof-aroon-hingorani), [Stephen Senn](http://www.senns.uk/)\
-University of Cambridge: [Nicholas J. Wareham](https://research.com/u/nicholas-j-wareham), [Jian'an Luan](https://research.com/u/jianan-luan)\
-University of Hong Kong: [Pak Sham](https://www.psychiatry.hku.hk/prof-pak-sham)\
-University of Illinois at Chicago: [Xiping Xu](http://www.uic.edu/sph/epi-bio/faculty-and-staff)\
-University of Southern Denmark: [Qihua Tan](http://www.sdu.dk/staff/qtan.aspx)
-
-![Image](assets/images/seeded-sunflower.png){:.circle height="180px" width="180px"}
-
-## Professional activities
-
-I have been a member of the [Royal Statistical Society](http://www.rss.org.uk/) for approximately 20 years
-([My RSS](https://rss.org.uk/myrss/)). I served as an associate editor for
-[The Scientific World Journal](http://www.hindawi.com/journals/tswj/) until July 2017
-and now as an associate editor ([login](https://www.frontiersin.org/my-frontiers/overview))
-for [Frontiers in Genetics](http://www.frontiersin.org/) ([blog network](http://www.frontiersin.org/blog/all_blogs),
-[Frontiers impact factors](https://www.frontiersin.org/about/impact).
-[Frontiers Select](https://tinyurl.com/3ha46yyn) and
-[profile](http://community.frontiersin.org/people/Jing_HuaZhao/44539))
-after about ten years as a review editor. Over years I have also been an occasional
-reviewer for the [Lancet](https://www.editorialmanager.com/thelancet/default.aspx) and many other journals.
-
-## Reproducible research
-
-I have promoted reproducible research through curation and software implementation, presentations and data-driven projects. It is encouraging and awarding to receive your [e-mail](mailto:jinghuazhao@hotmail.com) with comments or information on citations (as [early collections](references.txt) from Google search and Google Scholar on [gap](https://scholar.google.co.uk/scholar?q=%22gap:+genetic+analysis+package%22)).
-
-  * **Presentations**.
-     [useR!2007](http://www.user2007.org/),
-     [useR!2008](http://www.statistik.uni-dortmund.de/useR-2008/tutorials/),
-     [useR!2009](http://www.r-project.org/conferences/useR-2009/tutorials/index.html),
-     [useR!2010](http://www.r-project.org/conferences/useR-2010/tutorials/index.html),
-     [useR!2011](https://www.r-project.org/conferences/useR-2011/),
-     [GWAS course](https://jinghuazhao.github.io/GWAS-course/), 
-     [Henry-Stewart](https://hstalks.com/expert/1336/dr-jing-hua-zhao/) and local talks.
-  * **Projects**. [consortium work](https://jinghuazhao.github.io/consortium),
-     [other projects](https://jinghuazhao.github.io/other), and
-     [cambridge-ceu](https://cambridge-ceu.github.io/) GitHub organisation.
-
-## Workplace bookmarks
+## Bookmarks at workplace
 
 (At Mermaid Live Editor, <http://tinyurl.com/3sx6p23w>).
 
@@ -140,3 +94,49 @@ F4(Computer Science) --> B(Genetic Epidemiology & Biostatistics);
 </pre>
 
 </details>
+
+## Mentors/Collaborators
+
+Beijing University: [Yude Chen](http://finance.sina.com.cn/economist/jingjixueren/20051219/11492209756.shtml) ([School of Public Health](http://sph.pku.edu.cn/))\
+Fudan University ([Social Medicine](https://sph.fudan.edu.cn/dept/5)): [Pihuan Jin](https://www.baike.com/wikiid/4250585070644647126?from=wiki_content&prd=innerlink&view_id=3pl79eg77sepds), [Fumin Shen](https://www.baike.com/wikiid/8733105600449106645?view_id=4otxr0qq5u2j9c), [Zhaohuan Zhang](https://baike.baidu.com/item/%E5%BC%A0%E7%85%A7%E5%AF%B0) ([Wiki Entry](http://en.wikipedia.org/wiki/Zhang_Zhaohuan))\
+Havard School of Public Health: [David Christiani](https://www.hsph.harvard.edu/david-christiani/), [William Hsiao](http://www.hsph.harvard.edu/william-hsiao/) ([Wiki Entry](http://en.wikipedia.org/wiki/William_Hsiao)), [Nan Laird](http://www.hsph.harvard.edu/nan-laird/) ([Wiki Entry](http://en.wikipedia.org/wiki/Nan_Laird))\
+Kings College London: [David Collier](https://kclpure.kcl.ac.uk/portal/david.collier.html), [Tao Li](https://kclpure.kcl.ac.uk/portal/en/persons/tao-li(279830ab-410a-4150-a30a-e3a56dad93aa).html), [Peter McGuffin](https://www.kcl.ac.uk/ioppn/depts/sgdp-centre/about/history/mcguffintribute.aspx) ([Wiki Entry](https://en.wikipedia.org/wiki/Peter_McGuffin)), [Robin Murrary](https://kclpure.kcl.ac.uk/portal/en/persons/robin-murray(0875bc32-9bb1-47b3-90c2-5783969e5ce5)/biography.html) ([Wiki Entry](https://en.wikipedia.org/wiki/Robin_Murray))\
+Max Planck-CAS Paul Gerson Unna Research Group on Dermatogenomics: [Sijia Wang](http://www.picb.ac.cn/picb-dynamic/dermatogenomics/index.jsp?ntype=3)\
+National Institute of Health: [Abbas Parsian](https://www.niaaa.nih.gov/dnb)\
+Shandong University: [Biostatistics](http://biostat.sdu.edu.cn/)\
+University College London: [Steve Humphries](https://www.ucl.ac.uk/cardiovascular/cardiovascular-genetics), [Michael Marmot](http://iris.ucl.ac.uk/iris/browse/profile?upi=MGMAR64)([Wiki Entry](http://en.wikipedia.org/wiki/Michael_Marmot)), [Andres Ruiz-Linares](https://www.ucl.ac.uk/biosciences/gee/human-population-genetics), [Arron Hingorani](https://www.ucl.ac.uk/biosciences/people/prof-aroon-hingorani), [Stephen Senn](http://www.senns.uk/)\
+University of Cambridge: [Nicholas J. Wareham](https://research.com/u/nicholas-j-wareham), [Jian'an Luan](https://research.com/u/jianan-luan)\
+University of Hong Kong: [Pak Sham](https://www.psychiatry.hku.hk/prof-pak-sham)\
+University of Illinois at Chicago: [Xiping Xu](http://www.uic.edu/sph/epi-bio/faculty-and-staff)\
+University of Southern Denmark: [Qihua Tan](http://www.sdu.dk/staff/qtan.aspx)
+
+![Image](assets/images/seeded-sunflower.png){:.circle height="180px" width="180px"}
+
+## Professional activities
+
+I have been a member of the [Royal Statistical Society](http://www.rss.org.uk/) for approximately 20 years
+([My RSS](https://rss.org.uk/myrss/)). I served as an associate editor for
+[The Scientific World Journal](http://www.hindawi.com/journals/tswj/) until July 2017
+and now as an associate editor ([login](https://www.frontiersin.org/my-frontiers/overview))
+for [Frontiers in Genetics](http://www.frontiersin.org/) ([blog network](http://www.frontiersin.org/blog/all_blogs),
+[Frontiers impact factors](https://www.frontiersin.org/about/impact).
+[Frontiers Select](https://tinyurl.com/3ha46yyn) and
+[profile](http://community.frontiersin.org/people/Jing_HuaZhao/44539))
+after about ten years as a review editor. Over years I have also been an occasional
+reviewer for the [Lancet](https://www.editorialmanager.com/thelancet/default.aspx) and many other journals.
+
+## Reproducible research
+
+I have promoted reproducible research through curation and software implementation, presentations and data-driven projects. It is encouraging and awarding to receive your [e-mail](mailto:jinghuazhao@hotmail.com) with comments or information on citations (as [early collections](references.txt) from Google search and Google Scholar on [gap](https://scholar.google.co.uk/scholar?q=%22gap:+genetic+analysis+package%22)).
+
+  * **Presentations**.
+     [useR!2007](http://www.user2007.org/),
+     [useR!2008](http://www.statistik.uni-dortmund.de/useR-2008/tutorials/),
+     [useR!2009](http://www.r-project.org/conferences/useR-2009/tutorials/index.html),
+     [useR!2010](http://www.r-project.org/conferences/useR-2010/tutorials/index.html),
+     [useR!2011](https://www.r-project.org/conferences/useR-2011/),
+     [GWAS course](https://jinghuazhao.github.io/GWAS-course/), 
+     [Henry-Stewart](https://hstalks.com/expert/1336/dr-jing-hua-zhao/) and local talks.
+  * **Projects**. [consortium work](https://jinghuazhao.github.io/consortium),
+     [other projects](https://jinghuazhao.github.io/other), and
+     [cambridge-ceu](https://cambridge-ceu.github.io/) GitHub organisation.
