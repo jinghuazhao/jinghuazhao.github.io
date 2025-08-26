@@ -26,6 +26,8 @@ titles:
 key: page-work
 ---
 
+![Image](assets/images/sunflower.jpg){:.circle height="180px" width="180px"}
+
 My field is statistics, epidemiology and public heatlth with specific
 interest in [genetic analysis of complex traits](https://jinghuazhao.github.io/GDCT/) especially
 [Omics-Analysis](https://jinghuazhao.github.io/Omics-analysis/). I have worked with the
@@ -43,8 +45,6 @@ My recent contribution was to [The COVID-19 Host Genetics Initiative](https://ww
 through [The INTERVAL study](https://www.intervalstudy.org.uk/).
 
 Here are my [brief CV](cv.pdf), [HuggingFace entry](https://huggingface.co/jhzhf), [ResearchGate profile](http://www.researchgate.net/profile/Jing_Hua_Zhao/), and [research.com entry](https://research.com/u/jing-hua-zhao).
-
-![Image](assets/images/sunflower.jpg){:.circle height="180px" width="180px"}
 
 ## Bookmarks at workplace
 

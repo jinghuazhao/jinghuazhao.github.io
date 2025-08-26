@@ -29,14 +29,14 @@ show_title: false
 
 # Science
 
+![Image](assets/images/young-sunflower.jpg){:.circle height="180px" width="180px"}
+
 ## Current issues
 
 + Cell, <https://www.cell.com/>
 + Nature, <https://www.nature.com/>
 + PNAS, <https://www.pnas.org/>
 + Science, <https://www.science.org/journal/science>
-
-![Image](assets/images/young-sunflower.jpg){:.circle height="180px" width="180px"}
 
 ## Magazines
 
