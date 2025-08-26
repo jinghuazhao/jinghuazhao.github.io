@@ -35,7 +35,7 @@ viewport: "width=device-width, initial-scale=1.0"
 # Resource
 
 <details>
-  <summary><span style="font-size: 1.5em; font-weight: bold;">Collection</span></summary> 
+  <summary><span style="font-size: 1.5em; font-weight: bold;">Featured articles & sites</span></summary>
   <details>
     <summary>Alcohol consumption</summary>
     <ul>
