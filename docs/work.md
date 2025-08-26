@@ -110,8 +110,6 @@ University of Hong Kong: [Pak Sham](https://www.psychiatry.hku.hk/prof-pak-sham)
 University of Illinois at Chicago: [Xiping Xu](http://www.uic.edu/sph/epi-bio/faculty-and-staff)\
 University of Southern Denmark: [Qihua Tan](http://www.sdu.dk/staff/qtan.aspx)
 
-![Image](assets/images/seeded-sunflower.png){:.circle height="180px" width="180px"}
-
 ## Professional activities
 
 I have been a member of the [Royal Statistical Society](http://www.rss.org.uk/) for approximately 20 years
@@ -140,3 +138,5 @@ I have promoted reproducible research through curation and software implementati
   * **Projects**. [consortium work](https://jinghuazhao.github.io/consortium),
      [other projects](https://jinghuazhao.github.io/other), and
      [cambridge-ceu](https://cambridge-ceu.github.io/) GitHub organisation.
+
+![Image](assets/images/seeded-sunflower.png){:.circle height="180px" width="180px"}
