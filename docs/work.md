@@ -44,7 +44,7 @@ and [CHARGE](http://web.chargeconsortium.com/) therefore myself as a
 My recent contribution was to [The COVID-19 Host Genetics Initiative](https://www.covid19hg.org/)
 through [The INTERVAL study](https://www.intervalstudy.org.uk/).
 
-Here are my [brief CV](cv.pdf), [HuggingFace entry](https://huggingface.co/jhzhf), [ResearchGate profile](http://www.researchgate.net/profile/Jing_Hua_Zhao/), and [research.com entry](https://research.com/u/jing-hua-zhao).
+Here are my [brief CV](cv.pdf), [HuggingFace locus](https://huggingface.co/jhzhf), [ResearchGate profile](http://www.researchgate.net/profile/Jing_Hua_Zhao/), and [research.com entry](https://research.com/u/jing-hua-zhao).
 
 ## Bookmarks at workplace
 
@@ -95,7 +95,7 @@ F4(Computer Science) --> B(Genetic Epidemiology & Biostatistics);
 
 </details>
 
-## Mentors/Collaborators
+## Collaborators / Mentors
 
 Beijing University: [Yude Chen](http://finance.sina.com.cn/economist/jingjixueren/20051219/11492209756.shtml) ([School of Public Health](http://sph.pku.edu.cn/))\
 Fudan University ([Social Medicine](https://sph.fudan.edu.cn/dept/5)): [Pihuan Jin](https://www.baike.com/wikiid/4250585070644647126?from=wiki_content&prd=innerlink&view_id=3pl79eg77sepds), [Fumin Shen](https://www.baike.com/wikiid/8733105600449106645?view_id=4otxr0qq5u2j9c), [Zhaohuan Zhang](https://baike.baidu.com/item/%E5%BC%A0%E7%85%A7%E5%AF%B0) ([Wiki Entry](http://en.wikipedia.org/wiki/Zhang_Zhaohuan))\
