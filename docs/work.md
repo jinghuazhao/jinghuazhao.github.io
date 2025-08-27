@@ -31,7 +31,7 @@ key: page-work
 My field is statistics, epidemiology and public heatlth with specific
 interest in [genetic analysis of complex traits](https://jinghuazhao.github.io/GDCT/) especially
 [Omics-Analysis](https://jinghuazhao.github.io/Omics-analysis/). I have worked with the
-[SCALLOP consortium](https://www.olink.com/scallop/) following [Whitehall II](http://www.ucl.ac.uk/whitehallII),
+[SCALLOP consortium](https://www.scallop-consortium.org/) following [Whitehall II](http://www.ucl.ac.uk/whitehallII),
 [ELSA](http://www.natcen.ac.uk/elsa/), [EPIC-Norfolk](http://www.epic-norfolk.org.uk/),
 [Fenland](http://www.mrc-epid.cam.ac.uk/research/studies/fenland/),
 [InterAct](http://www.inter-act.eu/), [NSHD](http://www.nshd.mrc.ac.uk/)
