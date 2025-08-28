@@ -43,4 +43,4 @@ sidebar:
   : [![](bees.svg)](https://github.com/jinghuazhao/Computational-Statistics) [Computational statistics](https://jinghuazhao.github.io/Computational-Statistics/)
   : [![](bees.svg)](https://github.com/jinghuazhao/GDCT) [GDCT](https://jinghuazhao.github.io/GDCT/)
   : [![](bees.svg)](https://github.com/jinghuazhao/Mixed-Models) [Mixed models](https://jinghuazhao.github.io/Mixed-Models/)
-  : [![](bees.svg)](https://github.com/jinghuazhao/sphinx) [Mixed models](https://jinghuazhao.github.io/sphinx/)
+  : [![](bees.svg)](https://github.com/jinghuazhao/sphinx) [sphinx](https://jinghuazhao.github.io/sphinx/)
