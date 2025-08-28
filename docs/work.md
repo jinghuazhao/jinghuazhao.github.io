@@ -105,7 +105,7 @@ Max Planck-CAS Paul Gerson Unna Research Group on Dermatogenomics: [Sijia Wang](
 National Institute of Health: [Abbas Parsian](https://www.niaaa.nih.gov/dnb)\
 Shandong University: [Biostatistics](http://biostat.sdu.edu.cn/)\
 Southern Medical University: [Xiping Xu](https://research.com/u/xiping-xu)\
-University College London: [Steve Humphries](https://www.ucl.ac.uk/cardiovascular/cardiovascular-genetics), [Michael Marmot](http://iris.ucl.ac.uk/iris/browse/profile?upi=MGMAR64)([Wiki Entry](http://en.wikipedia.org/wiki/Michael_Marmot)), [Andres Ruiz-Linares](https://www.ucl.ac.uk/biosciences/gee/human-population-genetics), [Arron Hingorani](https://www.ucl.ac.uk/biosciences/people/prof-aroon-hingorani), [Stephen Senn](http://www.senns.uk/)\
+University College London: [Steve Humphries](https://profiles.ucl.ac.uk/10097-steve-humphries), [Michael Marmot](https://profiles.ucl.ac.uk/9195) ([Wiki Entry](http://en.wikipedia.org/wiki/Michael_Marmot)), [Andres Ruiz-Linares](https://www.ucl.ac.uk/biosciences/gee/human-population-genetics), [Arron Hingorani](https://profiles.ucl.ac.uk/7267-aroon-hingoranii), [Stephen Senn](http://www.senns.uk/)\
 University of Cambridge: [Nicholas J. Wareham](https://research.com/u/nicholas-j-wareham), [Jian'an Luan](https://research.com/u/jianan-luan)\
 University of Hong Kong: [Pak Sham](https://www.psychiatry.hku.hk/prof-pak-sham)\
 University of Southern Denmark: [Qihua Tan](http://www.sdu.dk/staff/qtan.aspx)
