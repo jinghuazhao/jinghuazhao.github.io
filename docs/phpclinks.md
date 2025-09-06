@@ -172,6 +172,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - SPIP, <https://www.imagemet.com/products_/spip/>
 - The sky live, <https://theskylive.com/>
 - TigerResearch, [GitHub](https://github.com/TigerResearch) & [HuggingFace](https://huggingface.co/TigerResearch)
+- Time and Date, <https://www.timeanddate.com/>
 - Ulisses Braga-Neto (2024). [Fundamentals of Pattern Recognition and Machine Learning, 2e](https://braganeto.engr.tamu.edu/book-website-2nd-edition/), Springer
 - VinFuture, <https://online.vinfutureprize.org/nomination/my-nomination?tab=submitted>
 - vRain bookstore, <https://github.com/shanleiguang>
@@ -186,4 +187,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/@thatunifoodie>
 - <https://www.youtube.com/@thatmedicfoodie>
 
-***Created on** 3/5/2021 and **last changed** 24/8/2025*
+***Created on** 3/5/2021 and **last changed** 6/9/2025*
