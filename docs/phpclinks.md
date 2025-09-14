@@ -185,6 +185,5 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/@Glutenn>
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
-- <https://www.youtube.com/@thatmedicfoodie>
 
-***Created on** 3/5/2021 and **last changed** 6/9/2025*
+***Created on** 3/5/2021 and **last changed** 14/9/2025*
