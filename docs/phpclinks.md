@@ -52,7 +52,7 @@ title: Jing Hua Zhao's virtual library at PHPC
     - [Update account](https://www.gov.uk/update-uk-visas-immigration-account-details/update-your-ukvi-account)
     - [View and prove immigration status (eVisa)](https://www.gov.uk/view-prove-immigration-status)
 - GP patient survey, [https://www.gp-patient.co.uk/survey](https://www.gp-patient.co.uk/survey)
-- Greater Anglia, <https://www.greateranglia.co.uk/> [parking portal](https://gaparking.co.uk/#home)
+- Greater Anglia, <https://www.greateranglia.co.uk/> [parking portal](https://gaparking.co.uk/pcn)
 - giffgaff, <https://www.giffgaff.com/> ([account](https://www.giffgaff.com/auth/login?redirect=%2Fdashboard))
 - HMRC Sign in using Government Gateway, <https://www.access.service.gov.uk/login/signin/creds>
   * [Approved professional organisations and learned societies](https://www.gov.uk/government/publications/professional-bodies-approved-for-tax-relief-list-3/approved-professional-organisations-and-learned-societies#r)
@@ -186,4 +186,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 14/9/2025*
+***Created on** 3/5/2021 and **last changed** 19/9/2025*
