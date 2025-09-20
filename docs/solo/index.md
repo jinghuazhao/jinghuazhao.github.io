@@ -22,7 +22,7 @@ sidebar:
   : [![](bees.svg)](https://github.com/jinghuazhao/GDCT) [GDCT](https://jinghuazhao.github.io/GDCT/)
   : [![](bees.svg)](https://github.com/jinghuazhao/Mixed-Models) [Mixed models](https://jinghuazhao.github.io/Mixed-Models/)
   : [![](bees.svg)](https://github.com/jinghuazhao/Numerical-Analysis) [Numerical analysis](https://jinghuazhao.github.io/Numerical-Analysis/)
-  : [![](bees.svg)](https://github.com/jinghuazhao/physalia) [physalia](https://jinghuazhao.github.io/physalia/)
+  : [![](bees.svg)](https://github.com/jinghuazhao/physalia) [physalia](https://jinghuazhao.github.io/physalia/) (GitHub-related materials)
   : [![](bees.svg)](https://github.com/jinghuazhao/sphinx) [sphinx](https://jinghuazhao.github.io/sphinx/) (extended documentation template)
   : [![](bees.svg)](https://github.com/jinghuazhao/srcf) [srcf](https://jinghuazhao.github.io/srcf/) (web page template, no jekyll)
 - Epigenomics
