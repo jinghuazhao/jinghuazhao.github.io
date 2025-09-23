@@ -83,6 +83,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - National Driver Offender Retraining Scheme (NDORS)
   * Educational course, <https://offer.ndors.org.uk/> including record access & [feedback](https://www.smartsurvey.co.uk/s/NDORSCourseFeedback/)
   * Penalty Notice Portal, <https://penaltynotice.homeoffice.gov.uk/>
+- NHS conditions, <https://www.nhs.uk/conditions/>
 - NIHR BioResource, <https://bioresource.nihr.ac.uk/>
   * Twitter, <https://twitter.com/nihrbioresource>
   * LinkedIn, <https://uk.linkedin.com/company/nihr-bioresource>
@@ -186,4 +187,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 19/9/2025*
+***Created on** 3/5/2021 and **last changed** 23/9/2025*
