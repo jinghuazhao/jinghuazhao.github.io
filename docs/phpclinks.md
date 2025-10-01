@@ -158,6 +158,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - canSAR.ai, <https://cansar.ai/>
 - ChinaTextbook, <https://github.com/TapXWorld/ChinaTextbook>
 - Essay writing service, <https://essayservice.com/>
+- Genomics England, <https://www.genomicsengland.co.uk/>
 - [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 3e](https://github.com/ageron/handson-ml3)
 - [Health AI Developer Foundations](https://developers.google.com/health-ai-developer-foundations)
 - HMS-DBMI, <https://github.com/hms-dbmi>
