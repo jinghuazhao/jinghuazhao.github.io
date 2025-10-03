@@ -171,6 +171,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - PhysioNet, <https://physionet.org/>
    + EHRNoteQA, [PhysioNet](https://physionet.org/content/ehr-notes-qa-llms/) & [GitHub](https://github.com/ji-youn-kim/EHRNoteQA)
    + MS-CXR, <https://physionet.org/content/ms-cxr/>
+- QRISK3, <https://qrisk.org/>
 - Robert Kabacoff, [Modern Data Visualization with R](https://rkabacoff.github.io/datavis/index.html)
 - SPIP, <https://www.imagemet.com/products_/spip/>
 - The sky live, <https://theskylive.com/>
@@ -189,4 +190,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 1/10/2025*
+***Created on** 3/5/2021 and **last changed** 3/10/2025*
