@@ -23,6 +23,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - Bletchly Park, <https://bletchleypark.org.uk/>
 - B&Q clubcard, <https://www.diy.com/customer/my_account/members>
 - Boardingware, <https://www.boardingware.com/>
+- Bosch UK, <https://www.bosch-home.co.uk/>
 - Cambridge
   * Arts Picturehouse Cambridge, <https://www.picturehouses.com/cinema/arts-picturehouse-cambridge>
   * Cambridge City Council, <https://www.cambridge.gov.uk/> [bin collection](https://www.cambridge.gov.uk/check-when-your-bin-will-be-emptied)
@@ -190,4 +191,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 3/10/2025*
+***Created on** 3/5/2021 and **last changed** 6/10/2025*
