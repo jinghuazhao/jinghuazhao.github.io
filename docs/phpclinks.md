@@ -43,7 +43,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - Devon & Cornwall Police, <https://www.devon-cornwall.police.uk/> ([UKROEd](https://www.ukroed.org.uk/), [Information Commissioner's Office](https://ico.org.uk/))
 - Encore Estates, <https://portal.encoreestates.co.uk/>
 - gov.uk
-  * Council tax band, <https://www.gov.uk/council-tax-bands>
+  * Council Tax band, <https://www.gov.uk/council-tax-bands>
   * Dart Charge, <https://www.gov.uk/dart-charge>
   * DVLA ([Sold, transferred or bought a vehicle](https://www.gov.uk/sold-bought-vehicle), [vehicle-tax](https://www.gov.uk/vehicle-tax) ([direct debit](https://www.gov.uk/vehicle-tax-direct-debit)), [Contact](https://www.gov.uk/contact-the-dvla))
   * Online immigration status (eVisa), <https://www.gov.uk/guidance/online-immigration-status-evisa>
