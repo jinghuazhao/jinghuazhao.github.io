@@ -34,8 +34,6 @@ viewport: "width=device-width, initial-scale=1.0"
 
 # Resource
 
-## Resource map
-
 **View by selection or click an image to expand:**
 
 <select id="page-dropdown">
