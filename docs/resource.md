@@ -212,23 +212,37 @@ viewport: "width=device-width, initial-scale=1.0"
 ---
 
 <details>
-<summary>Collection source</summary>
-<pre>
-+ Alcohol consumption
-    + [Does alcohol cause cancer?](https://alcoholrehabhelp.org/addiction/effects/cancer/)
-    + [How alcohol can affect your liver](https://www.spirehealthcare.com/health-hub/specialties/general-health/how-alcohol-can-affect-your-liver/)
-    + [How much alcohol is too much?](https://www.spirehealthcare.com/health-hub/specialties/lifestyle-management/how-much-alcohol-is-too-much/)
-    + [Unit calculator](https://alcoholchange.org.uk/alcohol-facts/interactive-tools/unit-calculator)
-+ Food intake
-    + [Can you grow out of a food allergy?](https://www.bbc.co.uk/food/articles/grow_out_food_allergy)
-    + [Does eating processed and red meat cause cancer?](https://www.cancerresearchuk.org/about-cancer/causes-of-cancer/diet-and-cancer/does-eating-processed-and-red-meat-cause-cancer)
-    + The Eatwell Guide from NHS, <https://www.nhs.uk/live-well/eat-well/food-guidelines-and-food-labels/the-eatwell-guide/>
-    + [Ultra-processed food and what does it mean](https://www.bbc.co.uk/food/articles/what_is_ultra-processed_food)
-+ [Ozempic (semaglutide)](https://www.drugwatch.com/drugs/ozempic/) and [side effects](https://www.drugwatch.com/drugs/ozempic/side-effects/) from [DrugWatch](https://www.drugwatch.com/)
-* Fake Fragrances, <https://fakefragrances.com/>
-+ Know your DNA, Know your History, <https://knowyourdna.com/>
-+ WMA Declaration of Helsinki, <https://www.wma.net/policies-post/wma-declaration-of-helsinki/>
-</pre>
+  <summary>Collection of Sources</summary>
+
+  <h2>Alcohol consumption</h2>
+  <ul>
+    <li><a href="https://alcoholrehabhelp.org/addiction/effects/cancer/">Does alcohol cause cancer?</a></li>
+    <li><a href="https://www.spirehealthcare.com/health-hub/specialties/general-health/how-alcohol-can-affect-your-liver/">How alcohol can affect your liver</a></li>
+    <li><a href="https://www.spirehealthcare.com/health-hub/specialties/lifestyle-management/how-much-alcohol-is-too-much/">How much alcohol is too much?</a></li>
+    <li><a href="https://alcoholchange.org.uk/alcohol-facts/interactive-tools/unit-calculator">Unit calculator</a></li>
+  </ul>
+
+  <h2>Food intake</h2>
+  <ul>
+    <li><a href="https://www.bbc.co.uk/food/articles/grow_out_food_allergy">Can you grow out of a food allergy?</a></li>
+    <li><a href="https://www.cancerresearchuk.org/about-cancer/causes-of-cancer/diet-and-cancer/does-eating-processed-and-red-meat-cause-cancer">Processed/red meat and cancer</a></li>
+    <li><a href="https://www.nhs.uk/live-well/eat-well/food-guidelines-and-food-labels/the-eatwell-guide/">The Eatwell Guide (NHS)</a></li>
+    <li><a href="https://www.bbc.co.uk/food/articles/what_is_ultra-processed_food">Ultra-processed food</a></li>
+  </ul>
+
+  <h2>Ozempic (semaglutide)</h2>
+  <ul>
+    <li><a href="https://www.drugwatch.com/drugs/ozempic/">Ozempic (DrugWatch)</a></li>
+    <li><a href="https://www.drugwatch.com/drugs/ozempic/side-effects/">Ozempic side effects</a></li>
+    <li><a href="https://www.drugwatch.com/">DrugWatch homepage</a></li>
+  </ul>
+
+  <h2>Other links</h2>
+  <ul>
+    <li><a href="https://fakefragrances.com/">Fake Fragrances</a></li>
+    <li><a href="https://knowyourdna.com/">Know Your DNA</a></li>
+    <li><a href="https://www.wma.net/policies-post/wma-declaration-of-helsinki/">WMA Declaration of Helsinki</a></li>
+  </ul>
 
 </details>
 
