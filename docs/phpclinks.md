@@ -41,10 +41,6 @@ title: Jing Hua Zhao's virtual library at PHPC
   * Manage Booking, <http://uk.ceair.com/en/manage-booking.html>
   * Free Baggage Allowance and Specifications, <https://www.ceair.com/global/en_static/Announcement/BaggageService/FreeBaggageAllowanceandSpecifications/>
 - Civil enformcement, <https://www.ce-service.co.uk/>
-- COVID-19 vaccine
-  * booking a vaccine, [https://www.nhs.uk/covid-vaccination](https://www.nhs.uk/covid-vaccination)
-  * booster vaccine, [https:///www.nhs.uk/book-covid-booster](https:///www.nhs.uk/book-covid-booster)
-  * nearby walk-in services, [https:///www.nhs.uk/grab-a-jab](https:///www.nhs.uk/grab-a-jab)
 - Devon & Cornwall Police, <https://www.devon-cornwall.police.uk/> ([UKROEd](https://www.ukroed.org.uk/), [Information Commissioner's Office](https://ico.org.uk/))
 - Encore Estates, <https://portal.encoreestates.co.uk/>
 - gov.uk
@@ -91,6 +87,10 @@ title: Jing Hua Zhao's virtual library at PHPC
   * Educational course, <https://offer.ndors.org.uk/> including record access & [feedback](https://www.smartsurvey.co.uk/s/NDORSCourseFeedback/)
   * Penalty Notice Portal, <https://penaltynotice.homeoffice.gov.uk/>
 - NHS conditions, <https://www.nhs.uk/conditions/>
+  * COVID-19 vaccine
+    - booking a vaccine, [https://www.nhs.uk/covid-vaccination](https://www.nhs.uk/covid-vaccination)
+    - booster vaccine, [https:///www.nhs.uk/book-covid-booster](https:///www.nhs.uk/book-covid-booster)
+    - nearby walk-in services, [https:///www.nhs.uk/grab-a-jab](https:///www.nhs.uk/grab-a-jab)
 - NIHR BioResource, <https://bioresource.nihr.ac.uk/>
   * Twitter, <https://twitter.com/nihrbioresource>
   * LinkedIn, <https://uk.linkedin.com/company/nihr-bioresource>
@@ -123,15 +123,13 @@ title: Jing Hua Zhao's virtual library at PHPC
    * DPHPC, <https://www.phpc.cam.ac.uk/>
      - CanRisk, <https://www.canrisk.org/>
      - PeopleHR, <https://dphpc.peoplehr.net/>
-     - PhenoScanner, <http://www.phenoscanner.medschl.cam.ac.uk/>
-   * medschl login, <https://webmail.medschl.cam.ac.uk/owa/auth/logon.aspx>
    * MyCompliance certificate, <https://cloud.metacompliance.com/View/Certificate?courseID=79459>
    * Oxford vs Cambridge, <https://www.luxurylifestylemag.co.uk/the-best-of-the-rest/oxford-vs-cambridge-which-university-is-better-in-2024/>
    * Research Computing Service [Terms & Conditions](https://www.hpc.cam.ac.uk/storage/terms-and-conditions)
    * [Self-Employment Service (ESS)](https://www.hr.admin.cam.ac.uk/hr-staff/information-new-starters/employee-self-service-ess)
    * Universities Superannuation Scheme (USS), <https://www.uss.co.uk/>
 - United Nations [Goals](https://sdgs.un.org/goals)
-- [VFS appointment](https://www.vfsglobal.com/Denmark/UK/Schedule_an_appointment.html)
+- VFS Global, <https://www.vfsglobal.com/en/individuals/index.html>
 
 ## Links by country
 
