@@ -164,7 +164,7 @@ viewport: "width=device-width, initial-scale=1.0"
 <details>
   <summary><span style="font-size: 1.5em; font-weight: bold;">Featured articles & sites</span></summary>
 
-  <h2>Alcohol consumption</h2>
+  <h3>Alcohol consumption</h3>
   <ul>
     <li><a href="https://alcoholrehabhelp.org/addiction/effects/cancer/">Does alcohol cause cancer?</a></li>
     <li><a href="https://www.spirehealthcare.com/health-hub/specialties/general-health/how-alcohol-can-affect-your-liver/">How alcohol can affect your liver</a></li>
@@ -172,7 +172,7 @@ viewport: "width=device-width, initial-scale=1.0"
     <li><a href="https://alcoholchange.org.uk/alcohol-facts/interactive-tools/unit-calculator">Unit calculator</a></li>
   </ul>
 
-  <h2>Food intake</h2>
+  <h3>Food intake</h3>
   <ul>
     <li><a href="https://www.bbc.co.uk/food/articles/grow_out_food_allergy">Can you grow out of a food allergy?</a></li>
     <li><a href="https://www.cancerresearchuk.org/about-cancer/causes-of-cancer/diet-and-cancer/does-eating-processed-and-red-meat-cause-cancer">Processed/red meat and cancer</a></li>
@@ -180,14 +180,14 @@ viewport: "width=device-width, initial-scale=1.0"
     <li><a href="https://www.bbc.co.uk/food/articles/what_is_ultra-processed_food">Ultra-processed food</a></li>
   </ul>
 
-  <h2>Ozempic (semaglutide)</h2>
+  <h3>Ozempic (semaglutide)</h3>
   <ul>
     <li><a href="https://www.drugwatch.com/drugs/ozempic/">Ozempic (DrugWatch)</a></li>
     <li><a href="https://www.drugwatch.com/drugs/ozempic/side-effects/">Ozempic side effects</a></li>
     <li><a href="https://www.drugwatch.com/">DrugWatch homepage</a></li>
   </ul>
 
-  <h2>Other links</h2>
+  <h3>Other links</h3>
   <ul>
     <li><a href="https://www.bbc.co.uk/programmes/articles/51SPhn5FKSYRnQNswfnWsN2/8-reasons-why-we-should-all-walk-more">8 reasons why we should all walk more</a></li>
     <li><a href="https://fakefragrances.com/">Fake Fragrances</a></li>
@@ -208,4 +208,4 @@ viewport: "width=device-width, initial-scale=1.0"
 - Rachel Parker, <iamrachelparker@gmail.com>
 - Emma Tressler, <healthcare@thedigitalintellect.com>
 
-***Created on** 12/1/2023 and **last changed** 11/5/2025*
+***Created on** 12/1/2023 and **last changed** 11/12/2025*
