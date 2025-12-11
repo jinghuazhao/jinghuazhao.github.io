@@ -3,7 +3,7 @@ layout: article
 title: Jing Hua Zhao's virtual library at PHPC
 ---
 
-## Information
+## Local information
 
 - AccuWeather, <https://www.accuweather.com/>
 - Active lives survey, <https://www.activelivessurvey.org> (Email: <a href = "mailto:activelives@ipsos.com">activelives@ipsos.com</a>, Tel: <a href="tel:+448081296801">0808 129 6801</a>)
@@ -30,7 +30,8 @@ title: Jing Hua Zhao's virtual library at PHPC
 - Bosch UK, <https://www.bosch-home.co.uk/>
 - Cambridge
   * Arts Picturehouse Cambridge, <https://www.picturehouses.com/cinema/arts-picturehouse-cambridge>
-  * Cambridge City Council, <https://www.cambridge.gov.uk/> [bin collection](https://www.cambridge.gov.uk/check-when-your-bin-will-be-emptied)
+  * Cambridge City Council, <https://www.cambridge.gov.uk/>
+    - [bin collection](https://www.cambridge.gov.uk/check-when-your-bin-will-be-emptied)
   * Cambridgeshire County Council, <https://www.cambridgeshire.gov.uk/> (<https://www.cambridgeshire.gov.uk/buslane>)
   * Cambridge Water, <https://www.cambridge-water.co.uk> ([South Staffordshire Water](https://www.south-staffs-water.co.uk/), [MyAccount](https://myaccount.cambridge-water.co.uk/))
   * Grand Arcade, <https://www.grandarcade.co.uk/> [stores](https://www.grandarcade.co.uk/stores/)
@@ -115,7 +116,7 @@ title: Jing Hua Zhao's virtual library at PHPC
   * [Tube map with new Overground lines](https://www.timeout.com/london/news/heres-what-the-tube-map-with-looks-like-with-new-overground-lines-112024)
 - Travel South Yorkshire, <https://journeyplanner.travelsouthyorkshire.com/>
 - Tripadvisor, <https://www.tripadvisor.co.uk>
-- University, <https://www.cam.ac.uk/>
+- University of Cambridge, <https://www.cam.ac.uk/>
    * Accelerate Programme for Scientific Discovery, <https://acceleratescience.github.io/>
    * Apple Day 2023, <https://www.botanic.cam.ac.uk/whats-on/apple-day-2023/>
    * cmih, <https://www.cmih.maths.cam.ac.uk/>
@@ -132,9 +133,9 @@ title: Jing Hua Zhao's virtual library at PHPC
 - United Nations [Goals](https://sdgs.un.org/goals)
 - [VFS appointment](https://www.vfsglobal.com/Denmark/UK/Schedule_an_appointment.html)
 
-## Country-specific links
+## Links by country
 
-- Chinese sites
+- China
   * CCTV, <https://tv.cctv.com/>
   * Chinese Embassy [FAQ](http://www.chinese-embassy.org.uk/chn/qzfw/hzlxz/zyxx/t1836400.htm) and [Passport/Travel certificatte](http://www.chinese-embassy.org.uk/chn/qzfw/hzlxz/t1827718.htm)
   * gaokao, <http://114.xixik.com/gaokao/>
