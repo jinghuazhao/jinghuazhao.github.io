@@ -57,6 +57,17 @@ viewport: "width=device-width, initial-scale=1.0"
     });
 </script>
 
+<style>
+summary.h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+summary.h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+</style>
+
 <a href="leaflet.html"><img src="leaflet.png" width="150" height="`00" align="center"></a>
 <a href="scattermapbox.html"><img src="scattermapbox.png" width="150" height="`00" align="center"></a>
 <a href="scattergeo.html"><img src="scattergeo.png" width="`150" height="100" align="center"></a>
@@ -158,7 +169,7 @@ viewport: "width=device-width, initial-scale=1.0"
 ---
 
 <details>
-  <summary><span style="font-size: 1.5em; font-weight: 600;">Featured articles & sites</span></summary>
+  <summary class="h2">Featured articles & sites</span></summary>
 
   <h3>Alcohol consumption</h3>
   <ul>
