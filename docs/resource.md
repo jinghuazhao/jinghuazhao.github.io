@@ -59,7 +59,7 @@ viewport: "width=device-width, initial-scale=1.0"
 
 <style>
 summary.h2 {
-  font-size: 1.5em !important;
+  font-size: 1.75em !important;
   font-weight: 600 !important;
 }
 summary.h3 {
