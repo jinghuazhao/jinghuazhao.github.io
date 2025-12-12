@@ -158,7 +158,7 @@ viewport: "width=device-width, initial-scale=1.0"
 ---
 
 <details>
-  <summary><span style="font-size: 1.5em; font-weight: bold;">Featured articles & sites</span></summary>
+  <summary><span style="font-size: 1.5em; font-weight: 600;">Featured articles & sites</span></summary>
 
   <h3>Alcohol consumption</h3>
   <ul>
@@ -204,4 +204,4 @@ viewport: "width=device-width, initial-scale=1.0"
 - Rachel Parker, <iamrachelparker@gmail.com>
 - Emma Tressler, <healthcare@thedigitalintellect.com>
 
-***Created on** 12/1/2023 and **last changed** 11/12/2025*
+***Created on** 12/1/2023 and **last changed** 12/12/2025*
