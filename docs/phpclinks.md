@@ -37,6 +37,9 @@ title: Jing Hua Zhao's virtual library at PHPC
   * Grand Arcade, <https://www.grandarcade.co.uk/> [stores](https://www.grandarcade.co.uk/stores/)
   * Excursion, <https://www.luxurylifestylemag.co.uk/travel/how-to-spend-the-perfect-long-weekend-in-historic-cambridge/>
   * The old bicyle shop, [https://www.oldbicycleshop.com/](https://www.oldbicycleshop.com/)
+  * The trainline
+    - King's X, <https://www.thetrainline.com/live/arrivals/cambridge-from-london-kings-cross>
+    - Liverpool St, <https://www.thetrainline.com/live/arrivals/cambridge-from-london-liverpool-street>
 - China Eastern, <https://uk.ceair.com/en/>
   * Manage Booking, <http://uk.ceair.com/en/manage-booking.html>
   * Free Baggage Allowance and Specifications, <https://www.ceair.com/global/en_static/Announcement/BaggageService/FreeBaggageAllowanceandSpecifications/>
@@ -195,4 +198,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://www.youtube.com/channel/UCWvF4RI_DVr3tKZjjp_lrwA>
 - <https://www.youtube.com/@thatunifoodie>
 
-***Created on** 3/5/2021 and **last changed** 11/12/2025*
+***Created on** 3/5/2021 and **last changed** 12/12/2025*
