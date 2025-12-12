@@ -59,12 +59,12 @@ viewport: "width=device-width, initial-scale=1.0"
 
 <style>
 summary.h2 {
-  font-size: 1.5em;
-  font-weight: 600;
+  font-size: 1.5em !important;
+  font-weight: 600 !important;
 }
 summary.h3 {
-  font-size: 1.25em;
-  font-weight: 600;
+  font-size: 1.25em !important;
+  font-weight: 600 !important;
 }
 </style>
 
@@ -169,7 +169,7 @@ summary.h3 {
 ---
 
 <details>
-  <summary class="h2">Featured articles & sites</span></summary>
+  <summary class="h2">Featured articles & sites</summary>
 
   <h3>Alcohol consumption</h3>
   <ul>
