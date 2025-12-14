@@ -41,7 +41,7 @@ sidebar:
   : [![](bees.svg)](https://github.com/jinghuazhao/physalia) [physalia](https://jinghuazhao.github.io/physalia/) (GitHub-related materials)
   : [![](bees.svg)](https://github.com/jinghuazhao/sphinx) [sphinx](https://jinghuazhao.github.io/sphinx/) (extended documentation template)
   : [![](bees.svg)](https://github.com/jinghuazhao/srcf) [srcf](https://jinghuazhao.github.io/srcf/) (web page template, no jekyll)
-  : [![](bees.svg)](https://github.com/jinghuazhao/tests) [tests](https://jinghuazhao.github.io/tests/)
+  : [![](bees.svg)](https://github.com/jinghuazhao/tests) [tests](https://jinghuazhao.github.io/tests/) (various computing experiments)
 - Bioinformatics
   : [![](bees.svg)](https://github.com/jinghuazhao/Omics-analysis) [Omics-analysis](https://jinghuazhao.github.io/Omics-analysis/) ([wiki](https://github.com/jinghuazhao/Omics-analysis/wiki))
   : [![](bees.svg)](https://github.com/jinghuazhao/software-notes) [Software notes](https://jinghuazhao.github.io/software-notes/)
