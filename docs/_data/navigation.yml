@@ -13,9 +13,9 @@ header:
       zh-Hant : &ZH_HANT  工作
       zh-TW   : *ZH_HANT
       zh-HK   : *ZH_HANT
-      ko      : &KO
+      ko      : &KO       일하다
       ko-KR   : *KO
-      fr      : &FR
+      fr      : &FR       Travail
       fr-BE   : *FR
       fr-CA   : *FR
       fr-CH   : *FR
@@ -38,9 +38,9 @@ header:
       zh-Hant : *ZH_HANT
       zh-TW   : &ZH_HANT  科學
       zh-HK   : *ZH_HANT
-      ko      : &KO
+      ko      : &KO       과학
       ko-KR   : *KO
-      fr      : &FR
+      fr      : &FR       Science
       fr-BE   : *FR
       fr-CA   : *FR
       fr-CH   : *FR
@@ -115,7 +115,7 @@ header:
       zh-HK   : *ZH_HANT
       ko      : &KO       활동
       ko-KR   : *KO
-      fr      : &FR       Activity
+      fr      : &FR       Activité
       fr-BE   : *FR
       fr-CA   : *FR
       fr-CH   : *FR
