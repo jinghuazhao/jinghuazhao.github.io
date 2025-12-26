@@ -36,9 +36,9 @@ viewport: "width=device-width, initial-scale=1.0"
 
 <select id="page-dropdown">
     <option value="">--Select a map--</option>
-    <option value="leaflet.html">leaflet.js</option>
-    <option value="scattermapbox.html">plotly.js</option>
-    <option value="scattergeo.html">plotly.js+US map</option>
+    <option value="leaflet.html">Left: leaflet.js</option>
+    <option value="scattermapbox.html">Middle: plotly.js</option>
+    <option value="scattergeo.html">Right: plotly.js+US map</option>
 </select>
 
 <script>
@@ -215,4 +215,4 @@ summary.h3 {
 - Rachel Parker, <iamrachelparker@gmail.com>
 - Emma Tressler, <healthcare@thedigitalintellect.com>
 
-***Created on** 12/1/2023 and **last changed** 12/12/2025*
+***Created on** 12/1/2023 and **last changed** 26/12/2025*
