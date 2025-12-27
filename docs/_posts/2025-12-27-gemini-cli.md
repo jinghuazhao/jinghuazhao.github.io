@@ -1,6 +1,6 @@
 ---
 layout: article
-title: GeminiCLI is documented
+title: gemin-cli is documented
 tags: info
 mathjax: true
 mathjax_autoNumber: false
