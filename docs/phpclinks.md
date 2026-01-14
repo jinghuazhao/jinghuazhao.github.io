@@ -33,6 +33,7 @@ title: Jing Hua Zhao's virtual library at PHPC
   * Cambridge City Council, <https://www.cambridge.gov.uk/>
     - [bin collection](https://www.cambridge.gov.uk/check-when-your-bin-will-be-emptied)
   * Cambridgeshire County Council, <https://www.cambridgeshire.gov.uk/> (<https://www.cambridgeshire.gov.uk/buslane>)
+  * Cambridge Independent, <https://digital.imnews.app/app/CAM890>
   * Cambridge Water, <https://www.cambridge-water.co.uk> ([South Staffordshire Water](https://www.south-staffs-water.co.uk/), [MyAccount](https://myaccount.cambridge-water.co.uk/))
   * Grand Arcade, <https://www.grandarcade.co.uk/> [stores](https://www.grandarcade.co.uk/stores/)
   * Excursion, <https://www.luxurylifestylemag.co.uk/travel/how-to-spend-the-perfect-long-weekend-in-historic-cambridge/>
@@ -195,4 +196,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://museprintables.com/download/pumpkin-stencil/standing-guinea-pig/>
 - <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 13/1/2026*
+***Created on** 3/5/2021 and **last changed** 14/1/2026*
