@@ -95,6 +95,7 @@ title: Jing Hua Zhao's virtual library at PHPC
     - booking a vaccine, [https://www.nhs.uk/covid-vaccination](https://www.nhs.uk/covid-vaccination)
     - booster vaccine, [https:///www.nhs.uk/book-covid-booster](https:///www.nhs.uk/book-covid-booster)
     - nearby walk-in services, [https:///www.nhs.uk/grab-a-jab](https:///www.nhs.uk/grab-a-jab)
+  * GP Patient Survey, <https://www.gpsurvey.net/login>
 - NIHR BioResource, <https://bioresource.nihr.ac.uk/>
   * Twitter, <https://twitter.com/nihrbioresource>
   * LinkedIn, <https://uk.linkedin.com/company/nihr-bioresource>
@@ -196,4 +197,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://museprintables.com/download/pumpkin-stencil/standing-guinea-pig/>
 - <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 14/1/2026*
+***Created on** 3/5/2021 and **last changed** 19/1/2026*
