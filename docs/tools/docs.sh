@@ -23,10 +23,10 @@ if [ "$(uname -n | sed 's/-[0-9]*$//')" == "login-q" ]; then
    module load ceuadmin/openssh/9.7p1-icelake
 fi
 
-for f in .gitignore $(ls)
-do
-  git add ${f}
-  git commit -m "${f}"
+git diff --name-only -z | while IFS= read -r -d '' f; do
+   echo "Processing $f"
+   git add ${f}
+   git commit -m "${f}"
 done
 git push
 du -hs --exclude .git --exclude docs/_site
