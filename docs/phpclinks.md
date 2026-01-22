@@ -100,7 +100,7 @@ title: Jing Hua Zhao's virtual library at PHPC
   * Twitter, <https://twitter.com/nihrbioresource>
   * LinkedIn, <https://uk.linkedin.com/company/nihr-bioresource>
 - Nationwide, <https://www.nationwide.co.uk/>
-- [Nine Wells - MyPropertyOnline](https://portal.encoreestates.co.uk/)
+- [Nine Wells - MyPropertyOnline](https://portal.encoreestates.co.uk/) ([Encore Estates](https://www.encoreestates.co.uk/))
 - Norfolk and Suffolk
   * Constabulary, <https://penaltynotice.homeoffice.gov.uk/>
   * Safety Camera Partnership, <https://www.nsspeedcameras.com>
@@ -197,4 +197,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - <https://museprintables.com/download/pumpkin-stencil/standing-guinea-pig/>
 - <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 19/1/2026*
+***Created on** 3/5/2021 and **last changed** 22/1/2026*
