@@ -1,7 +1,7 @@
 ---
 layout: article
 title: gemin-cli is documented
-tags: info
+tags: AI
 mathjax: true
 mathjax_autoNumber: false
 mermaid: true
