@@ -184,6 +184,8 @@ title: Jing Hua Zhao's virtual library at PHPC
 - QRISK3, <https://qrisk.org/>
 - Robert Kabacoff, [Modern Data Visualization with R](https://rkabacoff.github.io/datavis/index.html)
 - SPIP, <https://www.imagemet.com/products_/spip/>
+- SPIRIT-CONSORT, <https://www.consort-spirit.org/>
+- STROBE, <https://www.strobe-statement.org/>
 - The sky live, <https://theskylive.com/>
 - TigerResearch, [GitHub](https://github.com/TigerResearch) & [HuggingFace](https://huggingface.co/TigerResearch)
 - Time and Date, <https://www.timeanddate.com/>
