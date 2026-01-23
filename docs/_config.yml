@@ -90,6 +90,9 @@ mermaid: true
 ## Chart
 chart: true
 
+## _posts fix
+future: true
+
 ## => Paginate
 ##############################
 paginate: 15
