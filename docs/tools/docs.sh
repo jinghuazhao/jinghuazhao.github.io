@@ -7,11 +7,13 @@ function gh_pages()
   git checkout -B gh-pages
   git add -A
   git commit -m "Deploy site $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+  git remote remove origin 2>/dev/null
   git remote add origin https://github.com/jinghuazhao/jinghuazhao.github.io
-  git push --set-upstream origin gh-pages
+  git push --force origin gh-pages
   cd - || return
 }
 
+rm -rf docs/_site/*
 cd docs
 bundle exec jekyll build
 cd -
