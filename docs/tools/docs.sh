@@ -2,17 +2,20 @@
 
 function gh_pages()
 {
-  cd docs/_site
-  git checkout -b gh-pages
-  git add -f *
-  git commit -m "_site"
+  cd docs/_site || return
+  git init
+  git checkout -B gh-pages
+  git add -A
+  git commit -m "Deploy site $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+  git remote add origin https://github.com/jinghuazhao/jinghuazhao.github.io
   git push --set-upstream origin gh-pages
-  cd -
+  cd - || return
 }
 
 cd docs
 bundle exec jekyll build
 cd -
+gh_pages
 
 module load gettext/0.21/gcc/qnrcglqo
 module load libiconv/1.16/gcc/4miyzf3w
