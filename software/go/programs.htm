@@ -1,0 +1,443 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<meta name="GENERATOR" content="PageBreeze Free HTML Editor (http://www.pagebreeze.com)">
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" >
+<title>The implementation</title>
+</head>
+<body bgcolor="#ffffff">
+<h1 align="center">The programs</h1>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><font 
+face=Arial>This section contains brief description for 
+a list of some program, which are available as&nbsp;<font 
+color=#ff0000 size=3>  <a href="../go.zip"> 
+     
+a zip file</a>&nbsp;<font color="#000000">and<em>&nbsp;</em>   
+<em> <a href="../go.pdf" >a PDF 
+documentation</a>.</em></font> </font></font><font 
+face=Arial></p></font><span style="FONT-FAMILY: Arial">
+<h2 class="MsoNormal" style="MARGIN: 0cm 0cm 0pt" align="left"><font face="Arial">
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">&nbsp;</p>The master program</font>  </h2>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><font 
+face=Arial></font>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><font 
+face=Arial>It includes and calls individuals components and accumulates 
+outputs.</font><em> </em>  
+</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><em>/*9-5-2007 MRC-Epid JHZ*/</em></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><em>%include setup;&nbsp; /* set up options and paths 
+*/<br>%include map;&nbsp;&nbsp;&nbsp; /* map information */<br>%include 
+trait;&nbsp; /* trait information */<br>%include desc;&nbsp;&nbsp; /* summary 
+statistics */<br>%include exclude;/* a list of individuals to be 
+excluded*/<br>%include data;&nbsp;&nbsp; /* genotype data */<br>%include 
+split;&nbsp; /* data splitting */<br>%include code;&nbsp;&nbsp; /* minor and 
+major alleles */<br>%include pg;&nbsp;&nbsp;&nbsp;&nbsp; /* merge of phenotype 
+and genotype */<br>%include bt;&nbsp;&nbsp;&nbsp;&nbsp; /* binary strait 
+analysis (LOGISTIC) */<br>%include qt;&nbsp;&nbsp;&nbsp;&nbsp; /* quantitative 
+trait analysis */<br>%include hwe;&nbsp;&nbsp;&nbsp; /* Hardy-Weinberg 
+equilibrium tests*/<br>%include ld;&nbsp;&nbsp;&nbsp;&nbsp; /* LD plot 
+*/<br>%include tidy;&nbsp;&nbsp; /* space release */<br>%include 
+fdr;&nbsp;&nbsp;&nbsp; /* false discovery rate */<br>%include allele; /* 
+chromosome X analysis */<br>%include xhwe;&nbsp;&nbsp; /* Hardy-Weinberg 
+equilibrium tests for chromosome X */</em></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><em>%macro 
+do_chr(i,ns=30);<br>%map(&amp;i);<br>  %data(&amp;i);</em></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><em>%split(&amp;i,ns=&amp;ns);<br>%do j=1 %to 
+&amp;ns;<br>&nbsp;&nbsp;&nbsp; proc 
+sql;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; create table 
+scratch.data&amp;i as select a.rsn, a.id, substr(a1a2,1,1) as a1, 
+substr(a1a2,2,1) as 
+a2<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+from obesity.data&amp;i as a, rsn&amp;i as b where a.rsn=b.rsn and 
+group=&amp;j;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; create table 
+scratch.map&amp;i (drop=nn group rsn) as select 
+*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+from rsn&amp;i where group=&amp;j;<br>&nbsp;&nbsp;&nbsp; 
+quit;<br>&nbsp;&nbsp;&nbsp; %if %upcase(&amp;i)=X %then 
+%do;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+%allele(&amp;i);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%hwe(&amp;i,where=wheresex=2);&lt;br&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%xhwe(data=scratch.data&amp;i,where=where 
+cohort="1");<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %if (&amp;j=1) %then 
+%do;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; proc 
+sql;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+create table scratch.chisq&amp;i as select * from 
+chisq;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+quit;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+%end;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %else 
+%do;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; proc 
+append base=scratch.chisq&amp;i 
+data=chisq;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+run;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %end;<br>&nbsp;&nbsp;&nbsp; 
+%end;<br>&nbsp;&nbsp;&nbsp; %else 
+%do;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+%code(&amp;i);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+%pg(&amp;i);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+%hwe(&amp;i);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+%desc(&amp;i);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+%bt(&amp;i,trait=case);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+%qt(&amp;i,trait=bmi);<br>&nbsp;&nbsp;&nbsp; %end;<br>&nbsp;&nbsp;&nbsp; proc 
+datasets;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; append 
+base=obesity.long&amp;i 
+data=scratch.long&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+append base=scratch.cma&amp;i 
+data=ma&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; append 
+base=scratch.cpm&amp;i 
+data=pm&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; append 
+base=scratch.clpm&amp;i 
+data=clpm&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; append 
+base=scratch.canova&amp;i 
+data=anova&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; append 
+base=scratch.cparms&amp;i 
+data=parms&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; append 
+base=scratch.caf&amp;i 
+data=af&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; append 
+base=scratch.cms&amp;i 
+data=ms&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; append 
+base=scratch.cmeans&amp;i 
+data=means&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; append 
+base=scratch.cfreq&amp;i data=freq&amp;i;<br>&nbsp;&nbsp;&nbsp; 
+quit;<br>&nbsp;&nbsp;&nbsp; %tidy(&amp;i);<br>%end;<br>%mend 
+do_chr;<br>%do_chr(01);<br>%do_chr(02);<br>%do_chr(03);<br>%do_chr(04);<br>%do_chr(05);<br>%do_chr(06);<br>%do_chr(07);<br>%do_chr(08);<br>%do_chr(09);<br>%do_chr(10);<br>%do_chr(11);<br>%do_chr(12);<br>%do_chr(13);<br>%do_chr(14);<br>%do_chr(15);<br>%do_chr(16);<br>%do_chr(17);<br>%do_chr(18);<br>%do_chr(19);<br>%do_chr(20);<br>%do_chr(21);<br>%do_chr(22);<br>  %do_chr(X);</em></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><em>/* Command to run with space in /scratch: sas -work 
+/scratch go.sas &amp; */</em></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><em></em>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">&nbsp;</p>
+<h2 class="MsoNormal" style="MARGIN: 0cm 0cm 0pt" align="left"><font face="Arial">The setup</font></h2>
+<p><font face="Arial">This program sets up the libnames which 
+contain location of data. It also defines two macros to be used.</font>         
+</p>
+<p><em>/*21-4-2007 MRC-Epid JHZ*/ </em>  </p>
+<p><em>options replace=yes mprint 
+spool nocenter ps=max ls=  max; </em>  </p>
+<p><em>libname affy500k 
+'/data/genetics/GWA/annotate';<br>libname obesity 
+'/data/genetics/scratch/obesity500k';<br>libname scratch 
+'/data/genetics/scratch';<br>libname epic5k '.'; </em>  </p>
+<p><em>%let 
+home=/data/genetics/GWA/Obesity/apr-2007/; </em>  </p>
+<p><em>%global nobs cases controls; </em>  </p>
+<p><em>%macro count(dsn);<br>data 
+_null_;<br>&nbsp;&nbsp;&nbsp;&nbsp; if 0 then set &amp;dsn 
+nobs=count;<br>&nbsp;&nbsp;&nbsp;&nbsp; call 
+symput('nobs',left(put(count,16.)));<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+stop;<br>run;<br> %mend count; </em>  </p>
+<p><em> %include ds2text; </em>  </p>
+<p><em>proc 
+format;<br>&nbsp;&nbsp;&nbsp;&nbsp; value agefmt low-&lt;50='1' 50-&lt;60='2' 
+60-&lt;70='3' 70-high='4';<br>  run; </em>  </p>
+<p><em>  </em>  </p>
+<h2><font face="Arial">The data 
+  </font></h2>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><o:p><font face="Arial">It reads zipped file directly and store as 
+SAS databases. It also excludes individuals who fail the quality 
+controls.</font>           
+                  
+                 
+</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><em>/*4-5-2007 MRC-Epid JHZ*/ </em> 
+</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><em>%macro data(i);<br>title2 genotypic information;<br>%if 
+%upcase(&amp;i)=X %then %do;<br>&nbsp;&nbsp;&nbsp; %let j=X;<br>%end;<br>%else 
+%do;<br>&nbsp;&nbsp;&nbsp; %let j=%eval(&amp;i);<br>%end;<br>filename EPIC5k 
+pipe "gunzip -c 
+&amp;home.Affx_20070307fs1_gt_OB_BRLMM96_&amp;i..txt.gz";<br>data case 
+(drop=score b1b2);<br>&nbsp;&nbsp;&nbsp;&nbsp; infile EPIC5k 
+dlm='09'x;<br>&nbsp;&nbsp;&nbsp;&nbsp; format rsn $15. id 
+$15.;<br>&nbsp;&nbsp;&nbsp;&nbsp; input rsn$ id$ b1b2$ 
+score;<br>&nbsp;&nbsp;&nbsp;&nbsp; a1a2=translate(b1b2,' 
+','N');<br>run;<br>%count(case);<br>data _null_;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+nn=&amp;nobs;<br>&nbsp;&nbsp;&nbsp;&nbsp; call 
+symput('cases',left(put(nn,16.)));<br>&nbsp;&nbsp;&nbsp;&nbsp; put 
+nn=;<br>run;<br>filename EPIC5k pipe "gunzip -c 
+&amp;home.Affx_20070307fs1_gt_OBC_BRLMM96_&amp;i..txt.gz";<br>data control 
+(drop=score b1b2);<br>&nbsp;&nbsp;&nbsp;&nbsp; infile EPIC5k 
+dlm='09'x;<br>&nbsp;&nbsp;&nbsp;&nbsp; format rsn $15. id 
+$15.;<br>&nbsp;&nbsp;&nbsp;&nbsp; input rsn$ id$ b1b2$ 
+score;<br>&nbsp;&nbsp;&nbsp;&nbsp; a1a2=translate(b1b2,' 
+','N');<br>run;<br>%count(control);<br>data _null_;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+nn=&amp;nobs;<br>&nbsp;&nbsp;&nbsp;&nbsp; call 
+symput('controls',left(put(nn,16.)));<br>&nbsp;&nbsp;&nbsp;&nbsp; put 
+nn=;<br>run;<br>data data&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; set case 
+control;<br>run;<br>proc sql;<br>&nbsp;&nbsp;&nbsp;&nbsp; create table exclude 
+as select * from epic5k.exclude;<br>&nbsp;&nbsp;&nbsp;&nbsp; create table 
+obesity.data&amp;i as select * from 
+data&amp;i<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+where id not in (select wtccc_id from exclude);<br>quit;<br>%mend 
+data;<br>   </em> 
+</p>
+<p><em>  </em> </p>
+<h2 class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><font face="Arial">The map
+    information</font></h2>
+<p><em>/*27-3-2007 MRC-Epid JHZ*/ </em>   </p>
+<p><em>title2 map 
+information;<br>%macro map(i);<br>data 
+epic5k.map&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; %if %upcase(&amp;i)=X %then 
+%do;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; infile 
+"('Affx_20061113fa1_snp_23.txt', 'Affx_20061113fa1_snp_X.txt')" 
+dlm='09'x;<br>&nbsp;&nbsp;&nbsp;&nbsp; %end;<br>&nbsp;&nbsp;&nbsp;&nbsp; %else 
+%do;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; infile 
+"Affx_20061113fa1_snp_&amp;i..txt" dlm='09'x;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+%end;<br>&nbsp;&nbsp;&nbsp;&nbsp; format rsn $15.;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+input idn rsn$ chr location allele1$ allele2$;<br>&nbsp;&nbsp;&nbsp;&nbsp; drop 
+idn;<br>&nbsp;&nbsp;&nbsp;&nbsp; name=rsn;<br>run;<br>proc sort 
+data=epic5k.map&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; by rsn;<br>run;<br> %mend map; </em>   </p>
+<p><em>  </em> 
+</p>
+<h2><font face="Arial">The phenotypes</font> </h2>
+<p><font face="Arial">The data sets contains age, sex, 
+case-control labels and bosdy mass index (BMI).</font>         
+</p>
+<p><em>/*4-5-2007 MRC-Epid JHZ*/</em></p>
+<p><em>title phenotypic 
+information;<br>proc sort data= epic5k.newtrait(rename=(wtccc_id=id 
+case_20070321=case cohort_20070321=cohort)) 
+out=newtrait;<br>&nbsp;&nbsp;&nbsp;&nbsp; format wtccc_id 
+$15.;<br>&nbsp;&nbsp;&nbsp;&nbsp; by sex age;<br>run;<br>data 
+stdtrait;<br>&nbsp;&nbsp;&nbsp;&nbsp; set newtrait;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+zbmi=log10(bmi);<br>&nbsp;&nbsp;&nbsp;&nbsp; zheight=height;<br>run;<br>proc 
+standard data=stdtrait out=stdheight mean=0 std=1;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+by sex age;<br>&nbsp;&nbsp;&nbsp;&nbsp; var zheight;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+format age agefmt.;<br>run;<br>proc sort 
+data=stdtrait;<br>&nbsp;&nbsp;&nbsp;&nbsp; by cohort sex age;<br>run;<br>proc 
+standard data=stdtrait out=stdbmi mean=0 std=1;<br>&nbsp;&nbsp;&nbsp;&nbsp; by 
+cohort sex age;<br>&nbsp;&nbsp;&nbsp;&nbsp; var 
+zbmi;<br>&nbsp;&nbsp;&nbsp;&nbsp; format age agefmt.;<br>run;<br>proc 
+sql;<br>&nbsp;&nbsp;&nbsp;&nbsp; create table epic5k.trait as select a.cohort, 
+a.id, a.case, a.age, a.sex, a.hba1c, a.hdl, a.height, 
+a.zheight,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+a.bmi, b.zbmi from stdheight a left join stdbmi b on a.id=b.id;<br>quit;<br>proc 
+sort data=epic5k.trait;<br>&nbsp;&nbsp;&nbsp;&nbsp; by id cohort case age sex 
+bmi zbmi height zheight hba1c hdl;<br>  run;</em></p>
+<p><em>/*<br>data 
+epic5k.trait;<br>&nbsp;&nbsp;&nbsp;&nbsp; format sample_id 
+$15.;<br>&nbsp;&nbsp;&nbsp;&nbsp; set epic5k.qc (keep=sample_id 
+sample_selected_to_genotype case bmi age sex 
+cohort);<br>&nbsp;&nbsp;&nbsp;&nbsp; rename sample_id=id 
+sample_selected_to_genotype=typed;<br>run;<br>proc sort 
+data=epic5k.trait;<br>&nbsp;&nbsp;&nbsp;&nbsp; by id typed case bmi age 
+sex;<br>run;<br>  */s</em></p>
+<p><em></em></p>
+<h2><font face="Arial">The coding</font> 
+</h2>
+<p><font face="Arial">This program will 
+code the character labels for additive, dominant and recessive models.<em> 
+</em>   
+               
+      </font>        
+</p>
+<p><em>/*8-2-2007 MRC-Epid JHZ*/</em></p>
+<p><em>%macro code(i);<br>data 
+a1a2;<br>&nbsp;&nbsp;&nbsp;&nbsp; set 
+scratch.data&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+ab=a1;output;<br>&nbsp;&nbsp;&nbsp;&nbsp; ab=a2;output;<br>run;<br>ods select 
+none;<br>proc sort data=a1a2;<br>&nbsp;&nbsp;&nbsp;&nbsp; by 
+rsn;<br>run;<br>proc freq data=a1a2;<br>&nbsp;&nbsp;&nbsp;&nbsp; by 
+rsn;<br>&nbsp;&nbsp;&nbsp;&nbsp; ods output 
+onewayfreqs=ab;<br>&nbsp;&nbsp;&nbsp;&nbsp; table ab;<br>run;<br>ods select 
+all;<br>proc sql;<br>&nbsp;&nbsp;&nbsp;&nbsp; create table ma0 as select rsn, 
+table, ab, frequency, percent from 
+ab<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; group 
+by rsn having frequency=min(frequency);<br>&nbsp;&nbsp;&nbsp;&nbsp; create table 
+mb0 as select rsn, table, ab, frequency, percent from 
+ab<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; group 
+by rsn having frequency=max(frequency);<br>quit;<br>proc sort 
+data=ma0;<br>&nbsp;&nbsp;&nbsp;&nbsp; by rsn ab;<br>run;<br>data 
+ma;<br>&nbsp;&nbsp;&nbsp;&nbsp; set ma0;<br>&nbsp;&nbsp;&nbsp;&nbsp; by rsn 
+ab;<br>&nbsp;&nbsp;&nbsp;&nbsp; if percent=50 &amp; last.rsn then 
+delete;<br>run;<br>proc sort data=mb0;<br> by rsn ab;
+run;<br>
+data mb; <br> set mb0; <cr> by rsn ab; <br> if percent=50&amp; first.rsn then delete; <br>
+run;<br>
+ data
+  ma&amp;i(drop=table);&lt;br&gt;&nbsp;&nbsp;&nbsp;&nbsp;mergema(rename=(ab=a1 frequency=n1 percent=  p1))mb(rename=(ab=a2 frequency=n2 percent=p2));<br>
+&nbsp;&nbsp;&nbsp;&nbsp; by rsn;<br>run;<br>
+proc sort data=scratch.data&amp;i out=data&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; by rsn;<br>run;<br>
+data scratch.g&amp;i (drop=table frequency ab percent);<br>
+&nbsp;&nbsp;&nbsp;&nbsp; merge ma data&amp;i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; by rsn;<br>       &nbsp;&nbsp;&nbsp;&nbsp; if (a1 ne
+'')&amp;(a2ne'')thendo;&lt;br&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rec0=(a1=ab &amp; a2=ab);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dom0=(a1=ab|a2=ab);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add0=(a1=ab)+(a2=ab);<br>&nbsp;&nbsp;&nbsp;&nbsp; end;<br>run;<br>%mend code;</em></p>
+<h2><font face="Arial">Combining genotypes and phenotype</font> </h2>
+<p><em>/*3-5-2007 MRC-Epid JHZ*/</em></p>
+<p><em>%macro pg(i);<br>proc 
+sql;<br>&nbsp;&nbsp;&nbsp;&nbsp; create table long&amp;i as select * from 
+scratch.g&amp;i order by id;<br>quit;<br>data long&amp;i 
+(drop=t);<br>&nbsp;&nbsp;&nbsp;&nbsp; set 
+long&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; a1a2='&nbsp;&nbsp; 
+';<br>&nbsp;&nbsp;&nbsp;&nbsp; t=' ';<br>&nbsp;&nbsp;&nbsp;&nbsp; if a1 ne ' ' 
+&amp; a2 ne ' ' then do;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+t=a1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if a1&gt;a2 then 
+do;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+a1=a2;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+a2=t;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+end;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+a1a2=compress(a1||'/'||a2);<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+end;<br>&nbsp;&nbsp;&nbsp;&nbsp; drop a1 a2;<br>run;<br>proc transpose 
+data=long&amp;i out=wide&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; by 
+id;<br>&nbsp;&nbsp;&nbsp;&nbsp; id rsn;<br>&nbsp;&nbsp;&nbsp;&nbsp; var add0 
+dom0 rec0 a1a2;<br>run;<br>data scratch.wide&amp;i (where=(compress(id) ne 
+""));<br>&nbsp;&nbsp;&nbsp;&nbsp; merge epic5k.trait 
+wide&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; by id;<br>run;<br>proc transpose 
+data=scratch.wide&amp;i out=long&amp;i (drop= 
+_LABEL_rename=(_NAME_=rsn));<br>&nbsp;&nbsp;&nbsp;&nbsp; by id cohort case age sex bmi 
+zbmi height zheight hba1c hdl;<br>&nbsp;&nbsp;&nbsp;&nbsp; var 
+_all_;<br>run;<br>proc sql;<br>&nbsp;&nbsp;&nbsp;&nbsp; create table long2&amp;i 
+(where=(upcase(rsn) not 
+in('_NAME_','ID','COHORT','CASE','AGE','SEX','BMI','ZBMI','HEIGHT','ZHEIGHT$<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+as select * from long&amp;i order by rsn, id;<br>quit;<br>data 
+scratch.long&amp;i (drop=add0 dom0 rec0 where=(compress(rsn) ne 
+""));<br>&nbsp;&nbsp;&nbsp;&nbsp; set long2&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+add=input(compress(add0),3.);<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+dom=input(compress(dom0),3.);<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+rec=input(compress(rec0),3.);<br>run;<br>%mend pg;<br>  </em></p>
+<p><em> </em></p>
+<h2><font face="Arial">Marker information and Hardy-Weinberg 
+equilibrium tests</font>      
+</h2>
+<p><em>/*4-5-2007 MRC-Epid JHZ*/</em></p>
+<p><em>%macro hwe(i,where=);<br>ods 
+select none;<br>proc sort data= scratch.long&amp;i(where=(cohort="1") keep=rsn 
+id sex a1a2 cohort) out=control&amp;i (drop=cohort 
+sex);<br>&nbsp;&nbsp;&nbsp;&nbsp; &amp;where;<br>&nbsp;&nbsp;&nbsp;&nbsp; by id 
+rsn;<br>run;<br>proc transpose data=control&amp;i out=control2&amp;i 
+(drop=_NAME_ id);<br>&nbsp;&nbsp;&nbsp;&nbsp; id 
+rsn;<br>&nbsp;&nbsp;&nbsp;&nbsp; by id;<br>&nbsp;&nbsp;&nbsp;&nbsp; var 
+a1a2;<br>run;<br>proc allele data=control2&amp;i 
+genocol;<br>&nbsp;&nbsp;&nbsp;&nbsp; var 
+_CHARACTER_;<br>&nbsp;&nbsp;&nbsp;&nbsp; ods output markersumm=ms&amp;i 
+allelefreq=af&amp;i;<br>run;<br>proc sort data=scratch.long&amp;i (keep=rsn id 
+sex a1a2 cohort) out=control&amp;i (drop=cohort 
+sex);<br>&nbsp;&nbsp;&nbsp;&nbsp; &amp;where;<br>&nbsp;&nbsp;&nbsp;&nbsp; by id 
+rsn;<br>run;<br>proc transpose data=control&amp;i out=control2&amp;i 
+(drop=_NAME_ id);<br>&nbsp;&nbsp;&nbsp;&nbsp; id 
+rsn;<br>&nbsp;&nbsp;&nbsp;&nbsp; by id;<br>&nbsp;&nbsp;&nbsp;&nbsp; var 
+a1a2;<br>run;<br>proc allele data=control2&amp;i 
+genocol;<br>&nbsp;&nbsp;&nbsp;&nbsp; var 
+_CHARACTER_;<br>&nbsp;&nbsp;&nbsp;&nbsp; ods output markersumm=ams&amp;i 
+allelefreq=aaf&amp;i;<br>run;<br>ods select all;<br> %mend hwe;s</em></p>
+<address> </address>
+<h2><font face="Arial">Analysis on case-control 
+labels</font>    </h2>
+<address>/*8-2-2006 MRC-Epid JHZ*/</address>
+<address> &nbsp;</address>
+<address>stitle2 binary trait;<br>%macro 
+bt0(i,trait=case);<br>ods select none;<br>proc casecontrol 
+data=scratch.long&amp;i tall marker=rsn indiv=id genotype trend 
+outstat=scratch.pm&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; trait 
+&amp;trait;<br>&nbsp;&nbsp;&nbsp;&nbsp; var a1 a2;<br>run;<br>ods select 
+all;<br>%mend bt0;</address>
+<address>%macro bt(i,trait=case);<br>options 
+nonotes;<br>ods select none;<br>proc logistic data=scratch.long&amp;i 
+descending;<br>&nbsp;&nbsp;&nbsp;&nbsp; ods output parameterestimates=pm&amp;i 
+CLOddsPL=clpm&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; model &amp;trait=add / expb 
+clodds=pl;<br>&nbsp;&nbsp;&nbsp;&nbsp; by rsn;<br>run;<br>proc logistic 
+data=scratch.long&amp;i descending;<br>&nbsp;&nbsp;&nbsp;&nbsp; ods output 
+parameterestimates=dom&amp;i CLOddsPL=cldom&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+model &amp;trait=dom / expb clodds=pl;<br>&nbsp;&nbsp;&nbsp;&nbsp; by 
+rsn;<br>run;<br>proc logistic data=scratch.long&amp;i 
+descending;<br>&nbsp;&nbsp;&nbsp;&nbsp; ods output parameterestimates=rec&amp;i 
+CLOddsPL=clrec&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; model &amp;trait=rec / expb 
+clodds=pl;<br>&nbsp;&nbsp;&nbsp;&nbsp; by rsn;<br>run;<br>data pm&amp;i 
+(where=(variable ne "Intercept"));<br>&nbsp;&nbsp;&nbsp;&nbsp; set pm&amp;i 
+dom&amp;i rec&amp;i;<br>run;<br>proc sort 
+data=pm&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; by rsn;<br>run;<br>data 
+clpm&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; set clpm&amp;i cldom&amp;i 
+clrec&amp;i;<br>run;<br>proc sort data=clpm&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+by rsn;<br>run;<br>ods select all;<br>options notes;<br>%mend bt;<br></address>
+<h2><font face="Arial">Analysis as continuous 
+trait</font> </h2>
+<p><em>/*26-4-2007 MRC-Epid JHZ*/</em></p>
+<p><em>title2 quantitative trait in cohort;</em></p>
+<p><em>%macro qt(i,trait=bmi);<br>ods 
+select none;<br>proc reg data= 
+scratch.long&amp;i(where=(cohort="1"));<br>&nbsp;&nbsp;&nbsp;&nbsp; ods output ANOVA=anova&amp;i 
+ParameterEstimates=parms&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; by 
+rsn;<br>&nbsp;&nbsp;&nbsp;&nbsp; add: model &amp;trait=add /b 
+stb;<br>&nbsp;&nbsp;&nbsp;&nbsp; dom: model &amp;trait=dom /b 
+stb;<br>&nbsp;&nbsp;&nbsp;&nbsp; rec: model &amp;trait=rec /b 
+stb;<br>quit;<br>data parms&amp;i (drop=variable);<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+set parms&amp;i (where=(variable ne "Intercept") drop=label);<br>run;<br> %mend qt;s</em></p>
+<p><em> <br></em></p>
+<h2><font face="Arial">The data partitioning</font> </h2>
+<p><font face="Arial">It will splits the raw data into pieces 
+each to be analysed</font>           
+</p>
+<p><em>/*5-3-2007 MRC-Epid JHZ*/</em></p>
+<p><em>%macro split(i,ns=2);<br>proc 
+sql;<br>&nbsp;&nbsp;&nbsp;&nbsp; create table rsn&amp;i as select unique(rsn) 
+from case;<br>&nbsp;&nbsp;&nbsp;&nbsp; create table rsn2&amp;i as select 
+unique(rsn) from control;<br>quit;<br>data 
+rsn&amp;i;s<br>&nbsp;&nbsp;&nbsp;&nbsp; set rsn&amp;i rsn2&amp;i;<br>run;<br>proc 
+sort data=rsn&amp;i (keep=rsn) nodupkey;<br>&nbsp;&nbsp;&nbsp;&nbsp; by 
+rsn;<br>run;<br>%count(rsn&amp;i);<br>data 
+rsn&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; set 
+rsn&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; by rsn;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+nn=&amp;nobs;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+group=ceil(&amp;ns/nn*_n_);<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+name=rsn;<br>run;<br>%mend split;</em></p>
+<p><em>/*<br>proc sort data=obesity.data&amp;i (keep=rsn) 
+out=rsn&amp;i nodupkey;<br>&nbsp;&nbsp;&nbsp;&nbsp; by rsn;<br>run;<br>proc 
+sql;<br>&nbsp;&nbsp;&nbsp;&nbsp; create table rsn&amp;i as select unique(rsn) 
+from obesity.data&amp;i;<br>quit;<br>proc sql;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+create table rsn&amp;i as select rsn from 
+case<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+union select rsn from control;<br>quit;<br>*/</em></p>
+<h2><font face="Arial">Extraction of FTO SNPs</font> </h2>
+<p><em>/*1-5-2007MRC-EpidJHZ*/</em></p>
+<p><em>%include setup;&nbsp; /* set up 
+options and paths */<br>%include map;&nbsp;&nbsp;&nbsp; /* map information 
+*/<br>%include data;&nbsp;&nbsp; /* genotype data */<br>%include 
+ld;&nbsp;&nbsp;&nbsp;&nbsp; /* LDplot*/</em></p>
+<p><em>%macro extract(i);<br>proc 
+sql;<br>&nbsp;&nbsp;&nbsp;&nbsp; create table long as select 
+*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from 
+obesity.long&amp;i where rsn in (select rsn from 
+rsn);<br>&nbsp;&nbsp;&nbsp;&nbsp; create table scratch.long as select 
+*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from 
+long as a left join rsn as b on 
+a.rsn=b.rsn<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+order by pos;<br>quit;<br>proc sort 
+data=scratch.long;<br>&nbsp;&nbsp;&nbsp;&nbsp; by id age sex bmi case 
+cohort;<br>run;<br>proc transpose data=scratch.long 
+out=scratch.a1a2&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; var 
+a1a2;<br>&nbsp;&nbsp;&nbsp;&nbsp; id rsn;<br>&nbsp;&nbsp;&nbsp;&nbsp; by id age 
+sex bmi case cohort;<br>run;<br>proc transpose data=scratch.long 
+out=scratch.add&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; var 
+add;<br>&nbsp;&nbsp;&nbsp;&nbsp; id rsn;<br>&nbsp;&nbsp;&nbsp;&nbsp; by id age 
+sex bmi case cohort;<br>run;<br>proc transpose data=scratch.long 
+out=scratch.dom&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; var 
+dom;<br>&nbsp;&nbsp;&nbsp;&nbsp; id rsn;<br>&nbsp;&nbsp;&nbsp;&nbsp; by id age 
+sex bmi case cohort;<br>run;<br>proc transpose data=scratch.long 
+out=scratch.rec&amp;i;<br>&nbsp;&nbsp;&nbsp;&nbsp; var 
+rec;<br>&nbsp;&nbsp;&nbsp;&nbsp; id rsn;<br>&nbsp;&nbsp;&nbsp;&nbsp; by id age 
+sex bmi case cohort;<br>run;<br>%mendextract;</em></p>
+<p><em>%*map(16);<br>%*data(16);<br>%*include exclude;/* 
+individuals tobeexcluded*/</em></p>
+<p><em>libname obesity 
+'/data/genetics/GWA/1-5-7/obesity500k';<br>libname scratch 
+'/data/genetics/scratch';<br>proc format;s<br>&nbsp;&nbsp;&nbsp;&nbsp; value 
+agefmt low-&lt;40='1' 40-&lt;50='2' 50-&lt;60='3' 60-&lt;70='4' 
+70-high='5';<br>run;<br>%ld(16,startpos=52290376,endpos=52710882);</em></p>
+<p><em>data 
+rsn;<br>&nbsp;&nbsp;&nbsp;&nbsp; infile 'ld16_rs7202836-rs2075205.info' 
+dlm='09'x;<br>&nbsp;&nbsp;&nbsp;&nbsp; format rsn 
+$15.;<br>&nbsp;&nbsp;&nbsp;&nbsp; input rsn$ pos;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+rsn=compress(rsn);<br>run;</em></p>
+<p><em>%extract(16);<br></em></p>
+<h2><font face="Arial">Quantitative traits in cases</font><em> </em> </h2>
+<p><em>/*9-5-2007 MRC-Epid JHZ*/</em></p>
+<p><em>title2 quantitative trait in cases;</em></p>
+<p><em>%macroqlim(i,data=data,trait=bmi,x=add);<br>ods select none;<br>proc 
+qlim data= &amp;data(where=(case="1" and 
+cohort="0"));<br>&nbsp;&nbsp;&nbsp;&nbsp; ods output 
+parameterEstimates=&amp;x;<br>&nbsp;&nbsp;&nbsp;&nbsp; by 
+rsn;<br>&nbsp;&nbsp;&nbsp;&nbsp; model 
+&amp;trait=&amp;x;<br>&nbsp;&nbsp;&nbsp;&nbsp; hetero &amp;trait ~ &amp;x / 
+link=linear noconst;<br>&nbsp;&nbsp;&nbsp;&nbsp; endogenous &amp;trait ~ 
+truncated (lb=30);<br>&nbsp;&nbsp;&nbsp;&nbsp; output out= 
+m&amp;x(rename=(mills_&amp;trait=mills resid_&amp;trait=residual)) mills 
+residual;<br>run;<br>%mend 
+qlim;</em></p><font size="1">
+<p align="center">&nbsp;</p>      </font></o:p></span>
+</body>
+</html>

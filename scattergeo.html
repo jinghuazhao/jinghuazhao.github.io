@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map of Sites with Plotly.js</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        const sites = [
+            // Drug and Substance Abuse
+            { name: "449 Recovery", coords: [33.4526, -117.6207], category: "substance", url: "https://449recovery.org/" },
+            { name: "Acquare Recovery", coords: [33.9446, -118.1968], category: "substance", url: "https://www.acquarecovery.com/" },
+            { name: "Addiction Resources in Northern Illinois", coords: [42.0850, -88.0707], category: "substance", url: "https://www.northernillinoisrecovery.com/resources/" },
+            { name: "Adelante Recovery Center", coords: [33.5998, -117.8678], category: "substance", url: "https://adelanterecovery.com/" },
+            { name: "Alcohol Rehab Help", coords: [34.0522, -118.2437], category: "substance", url: "https://alcoholrehabhelp.org/" },
+            { name: "Ambrosia Treatment Center", coords: [27.4344, -80.3277], category: "substance", url: "https://www.ambrosiatc.com/" },
+            { name: "Amethyst Recovery DeTox", coords: [27.7588, -80.3604], category: "substance", url: "https://www.amethystrecovery.org/" },
+            { name: "Amity San Diego", "coords": [32.7157, -117.1611], "category": "substance", "url": "https://amitysd.com/"},
+            { name: "Arkview Recovery Center", coords: [40.2124, -76.9880], category: "substance", url: "https://www.arkviewrecovery.com/" },
+            { name: "AToN Center", coords: [33.0745, -116.6828], category: "substance", url: "https://www.atoncenter.com/" },
+            { name: "Bayview Recovery Center", coords: [47.3013, -122.3861], category: "substance", url: "https://www.bayviewrecovery.com/" },
+            { name: "Blue Star Recovery", coords: [29.8005, -95.4502], category: "substance", url: "https://bluestarrecovery.com/" },
+            { name: "California Treatment Center", coords: [33.6870, -118.1711], category: "substance", url: "https://californiaaddictiontreatment.com/" },
+            { name: "Casco Bay Recovery", coords: [43.6615, -70.2677], category: "substance", url: "https://cascobayrecovery.com/" },
+            { name: "Crestview Recovery", coords: [45.5102, -122.5453], category: "substance", url: "https://www.crestviewrecovery.com/" },
+            { name: "Denoon Recovery Center", coords: [33.8003, -117.6648], category: "substance", url: "https://www.denoonrecovery.com/" },
+            { name: "Discovery Institute", coords: [40.3340, -74.7877], category: "substance", url: "https://www.discoverynj.org/" },
+            { name: "Drug and Alcohol Addiction Treatment Services", coords: [34.0665, -118.4334], category: "substance", url: "https://addiction-treatment-services.com/" },
+            { name: "Eagle Creek Ranch Recovery", coords: [43.6391, -116.3695], category: "substance", url: "https://idahorecoverycenter.com/" },
+            { name: "First City Recovery Center", coords: [31.2565, -81.4553], category: "substance", url: "https://firstcityrecoverycenter.com/programs/" },
+            { name: "First Step Recovery", coords: [40.2282, -111.6615], category: "substance", url: "https://firststepsrecovery.com/" },
+            { name: "FreebytheSea Sunset View Drug & Alcohol Recovery Center", coords: [46.8050, -123.8527], category: "substance", url: "https://freebythesea.com" },
+            { name: "Georgia Sky Outpatient Detox", coords: [34.1265, -83.8355], category: "substance", url: "https://georgiaskyoutpatientdetox.com/" },
+            { name: "Golden Gate Recovery", coords: [37.7733, -122.4338], category: "substance", url: "https://goldengaterecovery.com/" },
+            { name: "Immersive Recovery", coords: [40.2159, -75.2250], category: "substance", url: "https://immersiverecovery.com/" },
+            { name: "IOP Addiction Treatment for Men", coords: [34.1039, -118.2217], category: "substance", url: "https://www.recoverintegrity.com/" },
+            { name: "Jay Walker Lodge", coords: [34.0577, -81.2290], category: "substance", url: "https://jaywalkerlodge.com/" },
+            { name: "Laguna Shores Recovery", coords: [33.5394, -117.7855], category: "substance", url: "https://lagunashoresrecovery.com/" },
+            { name: "Legends Recovery Center LLC", coords: [30.2357, -97.7702], category: "substance", url: "https://legendsrecovery.com/" },
+            { name: "Live Free Recovery Services – Drug Rehab Program", coords: [43.1791, -71.5077], category: "substance", url: "https://livefreerecoverynh.com/programs/" },
+            { name: "Magnolia City Detox", coords: [29.7604, -95.3698], category: "substance", url: "https://magnoliacitydetox.com/programs/" },
+            { name: "Mana Recovery", coords: [33.8920, -117.5410], category: "substance", url: "https://manarecoverycenter.com/" },
+            { name: "Massachusetts Addiction Treatment Center", coords: [42.4472, -71.1367], category: "substance", url: "https://advancedaddictioncenter.com/" },
+            { name: "Melrose Recovery", coords: [42.4500, -71.1145], category: "substance", url: "https://www.melroserecovery.com/" },
+            { name: "Moving Mountains Recovery", coords: [40.6406, -74.5744], category: "substance", url: "https://movingmountainsrecovery.com/" },
+            { name: "MPower Wellness Exton", coords: [40.0245, -75.6074], category: "substance", url: "https://mpowerwellness.com/" },
+            { name: "Origins Texas Recovery", coords: [26.1056, -97.1642], category: "substance", url: "https://www.originstexas.com/" },
+            { name: "Orlando Treatment Solutions", coords: [28.5383, -81.3792], category: "substance", url: "https://orlandotreatmentsolutions.com/" },
+            { name: "Path To Recovery Detox", coords: [30.3673, -81.4236], category: "substance", url: "https://pathtorecoverydetox.com/" },
+            { name: "Pathways Treatment Center", coords: [34.0729, -117.7989], category: "substance", url: "https://pathwaystreatmentcenter.com/" },
+            { name: "Principles Recovery Center", coords: [26.5097, -80.1079], category: "substance", url: "https://principlesrecoverycenter.com/" },
+            { name: "Rebirth Recovery Center", coords: [26.2176, -80.1404], category: "substance", url: "https://rebirthrecoverycenter.com/" },
+            { name: "Sana Lake Recovery Behavioral Wellness Center", coords: [38.7399, -90.5297], category: "substance", url: "https://sanalake.com/service-areas/maryland-heights/" },
+            { name: "Sabino Recovery", coords: [32.2769, -110.8665], category: "substance", url: "https://www.sabinorecovery.com/" },
+            { name: "Santa Barbara Recovery", coords: [34.4208, -119.6982], category: "substance", url: "https://santabarbararecovery.com/" },
+            { name: "Smoke free UK", coords: [51.5074, -0.1278], category: "substance", url: "https://smokefreeuk.co.uk/" },
+            { name: "Sovereign Health Group", coords: [33.5783, -117.6502], category: "substance", url: "https://www.sovhealth.com/" },
+            { name: "Star Point Detox", coords: [32.7801, -96.7969], category: "substance", url: "https://www.starpointdetox.com/" },
+            { name: "Sunshine Health Center", coords: [27.9530, -82.4560], category: "substance", url: "https://www.sunshinehealthcenter.com/" },
+            { name: "Surf City Detox", coords: [33.6595, -117.9988], category: "substance", url: "https://surfcitydetox.com/" },
+            { name: "The Recovery Village", coords: [28.3547, -81.4539], category: "substance", url: "https://www.therecoveryvillage.com/" },
+            { name: "The Right Step", coords: [30.2672, -97.7431], category: "substance", url: "https://www.rightstep.com/" },
+            { name: "The Willows at Red Oak Recovery", coords: [35.3560, -82.6226], category: "substance", url: "https://www.redoakrecovery.com/" },
+            { name: "Turning Point Recovery Center", coords: [41.0730, -73.7623], category: "substance", url: "https://www.turningpointrecoverycenter.com/" },
+            { name: "Valiant Recovery", coords: [39.5717, -104.9891], category: "substance", url: "https://www.valiantrecovery.com/" },
+            { name: "Yonder Behavioral Health", coords: [37.5665, -84.2838], category: "substance", url: "https://yonderbh.com/" },
+            { name: "Zia Recovery Center", coords: [32.8423, -104.4082], category: "substance", url: "https://www.ziarecoverycenter.com/" },
+ 
+            // Behavioral health
+            { name: "Adler Health", coords: [34.0745, -118.4367], category: "behavioral_health", url: "https://adlerhealth.com/" },
+            { name: "Arkview Recovery Center (+Anxiety/Depression)", coords: [40.2124, -76.9880], category: "substance", url: "https://www.arkviewrecovery.com/" },
+            { name: "Blume Behavioral Health", coords: [37.7749, -122.4194], category: "behavioral_health", url: "https://blumebh.com/" },
+            { name: "Breakwater Behavioral Health", coords: [39.9784, -75.1532], category: "behavioral_health", url: "https://breakwaterbehavioralhealth.com/" },
+            { name: "California Healing Centers", coords: [33.7810, -117.8543], category: "behavioral_health", url: "https://californiahealingcenters.com/" },
+            { name: "Elevated Wellness Clinic", coords: [39.7684, -86.1581], category: "behavioral_health", url: "https://elevatedwellnessclinic.com/" },
+            { name: "Evolve Wellness", coords: [33.8901, -118.2437], category: "behavioral_health", url: "https://www.evolvewellnessinc.com/" },
+            { name: "Idaho Empowered", coords: [43.6025, -116.2730], category: "behavioral_health", url: "https://idahoempowered.com/" },
+            { name: "Innercept", coords: [41.5949, -93.7104], category: "behavioral_health", url: "https://www.innercept.com/" },
+            { name: "Ironwood Maine", coords: [44.5430, -69.5121], category: "behavioral_health", url: "https://www.ironwoodmaine.com/" },
+            { name: "Lightwork Therapy & Recovery", coords: [37.7749, -122.4194], category: "behavioral_health", url: "https://lightworktr.com/" },
+            { name: "Mental Health Speak", coords: [40.7128, -74.0060], category: "behavioral_health", url: "https://mentalhealthpeak.com/" },
+            { name: "Monroe Street Housing", coords: [41.8781, -87.6298], category: "behavioral_health", url: "https://monroestreetsoberliving.com/" },
+            { name: "Paradigm Treatment", coords: [37.7749, -122.4194], category: "behavioral_health", url: "https://paradigmtreatment.com/" },
+            { name: "Shortridge Academy", coords: [42.0499, -71.6795], category: "behavioral_health", url: "https://www.shortridgeacademy.com" },
+            { name: "SoCal Empowered", coords: [33.646, -117.689], category: "behavioral_health", url: "https://socalempowered.com/" },
+            { name: "Taste Recovery", coords: [37.7733, -122.4338], category: "behavioral_health", url: "https://www.tasterecovery.com/" },
+            { name: "The Ridge", coords: [39.9526, -75.1652], category: "behavioral_health", url: "https://theridgertc.com/" },
+            { name: "Tusk Kratom", coords: [34.0522, -118.2437], category: "behavioral_health", url: "https://tuskkratom.com/" },
+            { name: "West Valley Detox", coords: [33.9207, -118.4047], category: "behavioral_health", url: "https://westvalleydetox.com/" },
+
+            // Social Care
+            { name: "Shepherd Premier Senior Living", coords: [42.3255, -88.2601], category: "social_care", url: "https://shepherdpremierseniorliving.com/" },
+
+            // Shelter Building
+            { name: "All-Type Roofing Services", coords: [34.0522, -118.2437], category: "shelter_building", url: "https://www.all-typeroofingservices.com/" },
+            { name: "Allied Buildings", coords: [41.8781, -87.6298], category: "shelter_building", url: "https://www.alliedbuildings.com/" }
+        ];
+        const categoryColors = {
+            substance: 'red',
+            behavioral_health: 'blue',
+            social_care: 'green',
+            shelter_building: 'orange'
+        };
+        const stateAbbreviations = {
+            'Alabama': 'AL', 'Alaska': 'AK', 'Arizona': 'AZ', 'Arkansas': 'AR', 'California': 'CA',
+            'Colorado': 'CO', 'Connecticut': 'CT', 'Delaware': 'DE', 'Florida': 'FL', 'Georgia': 'GA',
+            'Hawaii': 'HI', 'Idaho': 'ID', 'Illinois': 'IL', 'Indiana': 'IN', 'Iowa': 'IA', 'Kansas': 'KS',
+            'Kentucky': 'KY', 'Louisiana': 'LA', 'Maine': 'ME', 'Maryland': 'MD', 'Massachusetts': 'MA',
+            'Michigan': 'MI', 'Minnesota': 'MN', 'Mississippi': 'MS', 'Missouri': 'MO', 'Montana': 'MT',
+            'Nebraska': 'NE', 'Nevada': 'NV', 'New Hampshire': 'NH', 'New Jersey': 'NJ', 'New Mexico': 'NM',
+            'New York': 'NY', 'North Carolina': 'NC', 'North Dakota': 'ND', 'Ohio': 'OH', 'Oklahoma': 'OK',
+            'Oregon': 'OR', 'Pennsylvania': 'PA', 'Rhode Island': 'RI', 'South Carolina': 'SC', 'South Dakota': 'SD',
+            'Tennessee': 'TN', 'Texas': 'TX', 'Utah': 'UT', 'Vermont': 'VT', 'Virginia': 'VA', 'Washington': 'WA',
+            'West Virginia': 'WV', 'Wisconsin': 'WI', 'Wyoming': 'WY'
+        };
+        const stateCentersA = {
+            'Alabama': [32.8067, -86.7911], 'Alaska': [61.3707, -152.4044], 'Arizona': [33.7298, -111.4312],
+            'Arkansas': [34.9697, -92.3731], 'California': [36.1162, -119.6816], 'Colorado': [39.5501, -105.7821],
+            'Connecticut': [41.5978, -72.7554], 'Delaware': [39.3185, -75.5071], 'Florida': [27.7663, -81.6868],
+            'Georgia': [33.0406, -83.6431], 'Hawaii': [21.0943, -157.4983], 'Idaho': [44.2405, -114.4788],
+            'Illinois': [40.3495, -88.9861], 'Indiana': [39.8494, -86.2583], 'Iowa': [42.0115, -93.2105],
+            'Kansas': [39.0119, -98.4842], 'Kentucky': [37.3289, -84.8292], 'Louisiana': [31.1695, -91.8678],
+            'Maine': [44.2998, -69.4455], 'Maryland': [39.0639, -76.8021], 'Massachusetts': [42.2302, -71.5301],
+            'Michigan': [43.3266, -84.5361], 'Minnesota': [45.6945, -93.9002], 'Mississippi': [32.7416, -89.6683],
+            'Missouri': [38.5739, -92.6034], 'Montana': [46.9219, -110.4544], 'Nebraska': [41.1254, -98.2681],
+            'Nevada': [38.3135, -117.0554], 'New Hampshire': [43.4525, -71.5639], 'New Jersey': [40.2989, -74.5210],
+            'New Mexico': [34.8405, -106.2485], 'New York': [42.1657, -74.9481], 'North Carolina': [35.6301, -79.8060],
+            'North Dakota': [47.5289, -99.7840], 'Ohio': [40.3888, -82.7649], 'Oklahoma': [35.5653, -96.9289],
+            'Oregon': [43.9335, -119.4820], 'Pennsylvania': [40.5908, -77.2095], 'Rhode Island': [41.6809, -71.5118],
+            'South Carolina': [33.9196, -80.2118], 'South Dakota': [44.2998, -99.4388], 'Tennessee': [35.7478, -86.6923],
+            'Texas': [31.0545, -97.5635], 'Utah': [40.1500, -111.8624], 'Vermont': [44.0459, -72.7107],
+            'Virginia': [37.7693, -78.169968], 'Washington': [47.7315, -120.5955], 'West Virginia': [38.4912, -80.9545],
+            'Wisconsin': [43.6311, -90.3653], 'Wyoming': [43.07597, -107.29028]
+        };
+        const stateCenters = {
+            'AL': [32.8067, -86.7911], 'AK': [61.3707, -152.4044], 'AZ': [33.7298, -111.4312], 'AR': [34.9697, -92.3731],
+            'CA': [36.1162, -119.6816], 'CO': [39.5501, -105.7821], 'CT': [41.5978, -72.7554], 'DE': [39.3185, -75.5071],
+            'FL': [27.7663, -81.6868], 'GA': [33.0406, -83.6431], 'HI': [21.0943, -157.4983], 'ID': [44.2405, -114.4788],
+            'IL': [40.3495, -88.9861], 'IN': [39.8494, -86.2583], 'IA': [42.0115, -93.2105], 'KS': [39.0119, -98.4842],
+            'KY': [37.3289, -84.8292], 'LA': [31.1695, -91.8678], 'ME': [44.2998, -69.4455], 'MD': [39.0639, -76.8021],
+            'MA': [42.2302, -71.5301], 'MI': [43.3266, -84.5361], 'MN': [45.6945, -93.9002], 'MS': [32.7416, -89.6683],
+            'MO': [38.5739, -92.6034], 'MT': [46.9219, -110.4544], 'NE': [41.1254, -98.2681], 'NV': [38.3135, -117.0554],
+            'NH': [43.4525, -71.5639], 'NJ': [40.2989, -74.5210], 'NM': [34.8405, -106.2485], 'NY': [42.1657, -74.9481],
+            'NC': [35.6301, -79.8060], 'ND': [47.5289, -99.7840], 'OH': [40.3888, -82.7649], 'OK': [35.5653, -96.9289],
+            'OR': [43.9335, -119.4820], 'PA': [40.5908, -77.2095], 'RI': [41.6809, -71.5118], 'SC': [33.9196, -80.2118],
+            'SD': [44.2998, -99.4388], 'TN': [35.7478, -86.6923], 'TX': [31.0545, -97.5635], 'UT': [40.1500, -111.8624],
+            'VT': [44.0459, -72.7107], 'VA': [37.7693, -78.169968], 'WA': [47.7315, -120.5955], 'WV': [38.4912, -80.9545],
+            'WI': [43.6311, -90.3653], 'WY': [43.07597, -107.29028]
+        };
+        const stateLabelsTraceA = {
+            type: 'scattergeo',
+            lat: Object.values(stateCenters).map(center => center[0]),
+            lon: Object.values(stateCenters).map(center => center[1]),
+            mode: 'text',
+            text: Object.keys(stateAbbreviations).map(state => stateAbbreviations[state]),
+            textfont: {
+                size: 12,
+                color: 'black'
+            },
+            hoverinfo: 'none'
+        };
+        const stateLabelsTrace = {
+            type: 'scattergeo',
+            lat: Object.values(stateCenters).map(center => center[0]),
+            lon: Object.values(stateCenters).map(center => center[1]),
+            mode: 'text',
+            text: Object.keys(stateAbbreviations),
+            textfont: {
+                size: 12,
+                color: 'black'
+            },
+            hoverinfo: 'none'
+        };
+        const sitesTrace = {
+            type: 'scattergeo',
+            lat: sites.map(site => site.coords[0]),
+            lon: sites.map(site => site.coords[1]),
+            mode: 'markers',
+            marker: {
+                symbol: 'star',
+                color: sites.map(site => categoryColors[site.category] || 'gray'),
+                size: 12
+            },
+            text: sites.map(site => `${site.name}<br>${site.url}`),
+            hoverinfo: 'text'
+        };
+        const layout = {
+            title: 'Map of US States with Sites',
+            geo: {
+                scope: 'usa',
+                projection: { type: 'albers usa' },
+                showland: true,
+                landcolor: "white",
+                showlakes: true,
+                showcoastlines: true,
+                showstateborder: true,
+                showcountries: true,
+                showframe: true,
+                showrivers: false,
+                lonaxis: {range: [-130, -60]},
+                lataxis: {range: [24, 50]},
+                center: {lat: 37.0902, lon: -95.7129},
+                zoom: 4
+            }
+        };
+        const data = [stateLabelsTrace, sitesTrace];
+        Plotly.newPlot('map', data, layout);
+        document.getElementById('map').on('plotly_click', function(eventData) {
+            const siteIndex = eventData.points[0].pointIndex;
+            const site = sites[siteIndex];
+            window.open(site.url, '_blank');
+        });
+    </script>
+</body>
+</html>

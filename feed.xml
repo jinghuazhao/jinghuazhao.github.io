@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2026-01-23T11:27:48+00:00</updated><id>/feed.xml</id><title type="html">赵京华网页 | Web page of Jing Hua Zhao</title><subtitle>Web page
+</subtitle><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><entry><title type="html">Henry-Stewart talks to appear</title><link href="/2026/01/22/HStalks.html" rel="alternate" type="text/html" title="Henry-Stewart talks to appear" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-01-23T10:53:56+00:00</updated><id>/2026/01/22/HStalks</id><content type="html" xml:base="/2026/01/22/HStalks.html">&lt;h2 id=&quot;urls&quot;&gt;URLs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;HS Talks, See &lt;a href=&quot;https://hstalks.com/expert/1336/dr-jing-hua-zhao/?biosci&quot;&gt;https://hstalks.com/expert/1336/dr-jing-hua-zhao/?biosci&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;CRAN, &lt;a href=&quot;https://cloud.r-project.org/web/packages/gaawr2/index.html&quot;&gt;https://cloud.r-project.org/web/packages/gaawr2/index.html&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;GitHub, &lt;a href=&quot;https://github.com/jinghuazhao/gaawr2&quot;&gt;https://github.com/jinghuazhao/gaawr2&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Web site, &lt;a href=&quot;https://jinghuazhao.github.io/gaawr2/&quot;&gt;https://jinghuazhao.github.io/gaawr2/&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="gaawr2" /><summary type="html">URLs HS Talks, See https://hstalks.com/expert/1336/dr-jing-hua-zhao/?biosci. CRAN, https://cloud.r-project.org/web/packages/gaawr2/index.html. GitHub, https://github.com/jinghuazhao/gaawr2. Web site, https://jinghuazhao.github.io/gaawr2/.</summary></entry><entry><title type="html">gemin-cli is documented</title><link href="/2025/12/27/gemini-cli.html" rel="alternate" type="text/html" title="gemin-cli is documented" /><published>2025-12-27T00:00:00+00:00</published><updated>2026-01-22T21:31:43+00:00</updated><id>/2025/12/27/gemini-cli</id><content type="html" xml:base="/2025/12/27/gemini-cli.html">&lt;p&gt;See &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/applications/gemini-cli.html&quot;&gt;https://cambridge-ceu.github.io/csd3/applications/gemini-cli.html&lt;/a&gt;.&lt;/p&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="AI" /><summary type="html">See https://cambridge-ceu.github.io/csd3/applications/gemini-cli.html.</summary></entry><entry><title type="html">Fresh 0.1.64 is available</title><link href="/2025/12/26/fresh.html" rel="alternate" type="text/html" title="Fresh 0.1.64 is available" /><published>2025-12-26T00:00:00+00:00</published><updated>2025-12-27T09:57:59+00:00</updated><id>/2025/12/26/fresh</id><content type="html" xml:base="/2025/12/26/fresh.html">&lt;p&gt;Fresh is a thoughtfully implemented and fast evolving text editor, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/applications/fresh.html&quot;&gt;https://cambridge-ceu.github.io/csd3/applications/fresh.html&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/fresh.png&quot; alt=&quot;Fresh 0.1.64&quot; /&gt;&lt;/p&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="info" /><summary type="html">Fresh is a thoughtfully implemented and fast evolving text editor, https://cambridge-ceu.github.io/csd3/applications/fresh.html.</summary></entry><entry><title type="html">Latest Firefox is built on CSD3!</title><link href="/2025/09/29/firefox.html" rel="alternate" type="text/html" title="Latest Firefox is built on CSD3!" /><published>2025-09-29T00:00:00+01:00</published><updated>2026-01-20T19:10:20+00:00</updated><id>/2025/09/29/firefox</id><content type="html" xml:base="/2025/09/29/firefox.html">&lt;p&gt;These are detailed here, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/applications/firefox.html&quot;&gt;https://cambridge-ceu.github.io/csd3/applications/firefox.html&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As of 20/1/2026, we have from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;module avail ceuadmin/firefox&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;--------------------------------------------------- /usr/local/Cluster-Config/modulefiles ----------------------------------------------------
+ceuadmin/firefox/60.5.1-1.el7  ceuadmin/firefox/147.0.1  ceuadmin/firefox/148.0a1  ceuadmin/firefox/nightly
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;where nightly points to 148.0a1 on 19/12/2025.&lt;/p&gt;
+
+&lt;p&gt;Modules as of 29/9/2025,&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;--------------------------------------------------- /usr/local/Cluster-Config/modulefiles ---------------------------------------------------
+ceuadmin/firefox/60.5.1-1.el7  ceuadmin/firefox/143.0.1  ceuadmin/firefox/143.0a1  ceuadmin/firefox/145.0a1  ceuadmin/firefox/nightly
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;such that&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;60.5.1-1.el7 is actually a singularity module.&lt;/li&gt;
+  &lt;li&gt;143.0.1 is the first official release at ceuadmin.&lt;/li&gt;
+  &lt;li&gt;145.0a1 is officially nightly.&lt;/li&gt;
+  &lt;li&gt;ceuadmin/firefox/nightly is still a symbolic link to 143.0a1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The general context is described here, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/systems/web.html&quot;&gt;https://cambridge-ceu.github.io/csd3/systems/web.html&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A real-world usage on CSD3 is shown here, &lt;a href=&quot;https://jinghuazhao.github.io/Caprion/&quot;&gt;https://jinghuazhao.github.io/Caprion/&lt;/a&gt;.&lt;/p&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="info" /><summary type="html">These are detailed here, https://cambridge-ceu.github.io/csd3/applications/firefox.html. As of 20/1/2026, we have from module avail ceuadmin/firefox: --------------------------------------------------- /usr/local/Cluster-Config/modulefiles ---------------------------------------------------- ceuadmin/firefox/60.5.1-1.el7 ceuadmin/firefox/147.0.1 ceuadmin/firefox/148.0a1 ceuadmin/firefox/nightly where nightly points to 148.0a1 on 19/12/2025. Modules as of 29/9/2025, --------------------------------------------------- /usr/local/Cluster-Config/modulefiles --------------------------------------------------- ceuadmin/firefox/60.5.1-1.el7 ceuadmin/firefox/143.0.1 ceuadmin/firefox/143.0a1 ceuadmin/firefox/145.0a1 ceuadmin/firefox/nightly such that 60.5.1-1.el7 is actually a singularity module. 143.0.1 is the first official release at ceuadmin. 145.0a1 is officially nightly. ceuadmin/firefox/nightly is still a symbolic link to 143.0a1. The general context is described here, https://cambridge-ceu.github.io/csd3/systems/web.html. A real-world usage on CSD3 is shown here, https://jinghuazhao.github.io/Caprion/.</summary></entry><entry><title type="html">Software for population genetics available</title><link href="/2025/09/01/popgen.html" rel="alternate" type="text/html" title="Software for population genetics available" /><published>2025-09-01T00:00:00+01:00</published><updated>2025-10-24T10:17:12+01:00</updated><id>/2025/09/01/popgen</id><content type="html" xml:base="/2025/09/01/popgen.html">&lt;p&gt;Besides &lt;strong&gt;R/rehh&lt;/strong&gt; and &lt;strong&gt;simNGS&lt;/strong&gt; (&lt;a href=&quot;https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:simngs&quot;&gt;https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:simngs&lt;/a&gt;) earlier, this kickstarts with these modules:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;selscan&lt;/strong&gt;. Haplotype based scans for selection, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/applications/selscan.html&quot;&gt;https://cambridge-ceu.github.io/csd3/applications/selscan.html&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;angsd&lt;/strong&gt;. Analysis of Next Generation Sequencing Data, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/applications/angsd.html&quot;&gt;https://cambridge-ceu.github.io/csd3/applications/angsd.html&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Relate&lt;/strong&gt;. Software to estimate genome-wide genealogies for thousands of samples, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/applications/relate.html&quot;&gt;https://cambridge-ceu.github.io/csd3/applications/relate.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;CLUES2&lt;/strong&gt;. A method for inferring and evaluating evidence for selection, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/applications/clues2.html&quot;&gt;https://cambridge-ceu.github.io/csd3/applications/clues2.html&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;fastsimcoal2&lt;/strong&gt;. Fast sequential Markov coalescent simulation of genomic data under complex evolutionary models, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/applications/fsc2.html&quot;&gt;https://cambridge-ceu.github.io/csd3/applications/fsc2.html&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;hapstat&lt;/strong&gt;. haplotype-disease association, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/applications/hapstat.html&quot;&gt;https://cambridge-ceu.github.io/csd3/applications/hapstat.html&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;CCphylo&lt;/strong&gt;. a software suite designed to easen phylogenetic analysis, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:ccphylo&quot;&gt;https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:ccphylo&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="info" /><summary type="html">Besides R/rehh and simNGS (https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:simngs) earlier, this kickstarts with these modules: selscan. Haplotype based scans for selection, https://cambridge-ceu.github.io/csd3/applications/selscan.html. angsd. Analysis of Next Generation Sequencing Data, https://cambridge-ceu.github.io/csd3/applications/angsd.html. Relate. Software to estimate genome-wide genealogies for thousands of samples, https://cambridge-ceu.github.io/csd3/applications/relate.html CLUES2. A method for inferring and evaluating evidence for selection, https://cambridge-ceu.github.io/csd3/applications/clues2.html. fastsimcoal2. Fast sequential Markov coalescent simulation of genomic data under complex evolutionary models, https://cambridge-ceu.github.io/csd3/applications/fsc2.html. hapstat. haplotype-disease association, https://cambridge-ceu.github.io/csd3/applications/hapstat.html. CCphylo. a software suite designed to easen phylogenetic analysis, https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:ccphylo.</summary></entry><entry><title type="html">Sphinx, cambridge-ceu/csd3 &amp;amp; srcf polished</title><link href="/2025/08/31/sphinx.html" rel="alternate" type="text/html" title="Sphinx, cambridge-ceu/csd3 &amp;amp; srcf polished" /><published>2025-08-31T00:00:00+01:00</published><updated>2025-09-15T12:49:00+01:00</updated><id>/2025/08/31/sphinx</id><content type="html" xml:base="/2025/08/31/sphinx.html">&lt;p&gt;I am pleased to share extensions of two canonical (1 &amp;amp; 2 below) and a customised (3 below) themes,&lt;/p&gt;
+
+&lt;h2 id=&quot;1-sphinx-rtd-theme&quot;&gt;1. sphinx-rtd-theme&lt;/h2&gt;
+
+&lt;p&gt;A new repository, sphinx &lt;a href=&quot;https://github.com/jinghuazhao/sphinx&quot;&gt;https://github.com/jinghuazhao/sphinx&lt;/a&gt;, highlights the long-awaited adoption of the theme incorporating the master logo and link.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-jekyll-rtd-theme&quot;&gt;2. jekyll-rtd-theme&lt;/h2&gt;
+
+&lt;p&gt;Inspired by the extension above, the cambridge-ceu/csd3 site &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/&quot;&gt;https://cambridge-ceu.github.io/csd3/&lt;/a&gt; now collapses on the side bar while showing summary information on each category and giving remarkable visual simplification.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-srcf&quot;&gt;3. srcf&lt;/h2&gt;
+
+&lt;p&gt;The SRCF-style site is showcased here, &lt;a href=&quot;https://jinghuazhao.github.io/srcf/&quot;&gt;https://jinghuazhao.github.io/srcf/&lt;/a&gt;.&lt;/p&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="info" /><summary type="html">I am pleased to share extensions of two canonical (1 &amp;amp; 2 below) and a customised (3 below) themes, 1. sphinx-rtd-theme A new repository, sphinx https://github.com/jinghuazhao/sphinx, highlights the long-awaited adoption of the theme incorporating the master logo and link. 2. jekyll-rtd-theme Inspired by the extension above, the cambridge-ceu/csd3 site https://cambridge-ceu.github.io/csd3/ now collapses on the side bar while showing summary information on each category and giving remarkable visual simplification. 3. srcf The SRCF-style site is showcased here, https://jinghuazhao.github.io/srcf/.</summary></entry><entry><title type="html">Tools for mtDNA analysis added</title><link href="/2025/08/22/mtDNA.html" rel="alternate" type="text/html" title="Tools for mtDNA analysis added" /><published>2025-08-22T00:00:00+01:00</published><updated>2025-09-11T13:55:47+01:00</updated><id>/2025/08/22/mtDNA</id><content type="html" xml:base="/2025/08/22/mtDNA.html">&lt;p&gt;A summary is given in the following table,&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Date&lt;/th&gt;
+      &lt;th&gt;Addons&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2025-08-05&lt;/td&gt;
+      &lt;td&gt;MToolBox/1.2.1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2025-08-10&lt;/td&gt;
+      &lt;td&gt;haplogrep/2.4.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;””&lt;/td&gt;
+      &lt;td&gt;haplogrep/3.2.2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2025-08-13&lt;/td&gt;
+      &lt;td&gt;fNUMT/1.1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;””&lt;/td&gt;
+      &lt;td&gt;NUMTFinder/0.5.5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;””&lt;/td&gt;
+      &lt;td&gt;simNGS/1.7&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2025-08-20&lt;/td&gt;
+      &lt;td&gt;snakemake/9.9.0-miniforge3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2025-08-21&lt;/td&gt;
+      &lt;td&gt;MitoImpute/GitHub (0.2)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2025-09-09&lt;/td&gt;
+      &lt;td&gt;MitoScape/[1.0, github]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2025-09-11&lt;/td&gt;
+      &lt;td&gt;mity/2.0.1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;starting from MToolBox, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:mtoolbox&quot;&gt;https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:mtoolbox&lt;/a&gt;.&lt;/p&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="info" /><summary type="html">A summary is given in the following table, Date Addons 2025-08-05 MToolBox/1.2.1 2025-08-10 haplogrep/2.4.0 ”” haplogrep/3.2.2 2025-08-13 fNUMT/1.1 ”” NUMTFinder/0.5.5 ”” simNGS/1.7 2025-08-20 snakemake/9.9.0-miniforge3 2025-08-21 MitoImpute/GitHub (0.2) 2025-09-09 MitoScape/[1.0, github] 2025-09-11 mity/2.0.1 starting from MToolBox, https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:mtoolbox.</summary></entry><entry><title type="html">Long-read sequencing information available</title><link href="/2025/07/29/LRS.html" rel="alternate" type="text/html" title="Long-read sequencing information available" /><published>2025-07-29T00:00:00+01:00</published><updated>2025-07-29T21:48:41+01:00</updated><id>/2025/07/29/LRS</id><content type="html" xml:base="/2025/07/29/LRS.html">&lt;p&gt;This comprises of two aspects&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Software notes, &lt;a href=&quot;https://jinghuazhao.github.io/software-notes/LRS/&quot;&gt;https://jinghuazhao.github.io/software-notes/LRS/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Benchmarks&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Date&lt;/th&gt;
+          &lt;th&gt;Addons&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;2025-07-15&lt;/td&gt;
+          &lt;td&gt;SVanalyzer/0.36&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;2025-07-16&lt;/td&gt;
+          &lt;td&gt;sniffles/2.2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;””&lt;/td&gt;
+          &lt;td&gt;awscli/2.27.52&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;””&lt;/td&gt;
+          &lt;td&gt;SEQPower/1.1.0&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;2025-07-18&lt;/td&gt;
+          &lt;td&gt;truvari/5.3.0&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;2025-07-19&lt;/td&gt;
+          &lt;td&gt;hap.py/0.3.15&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;””&lt;/td&gt;
+          &lt;td&gt;rtg-tools/3.13&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;starting from SVanalyzer, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:svanalyzer&quot;&gt;https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:svanalyzer&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="info" /><summary type="html">This comprises of two aspects Software notes, https://jinghuazhao.github.io/software-notes/LRS/ Benchmarks Date Addons 2025-07-15 SVanalyzer/0.36 2025-07-16 sniffles/2.2 ”” awscli/2.27.52 ”” SEQPower/1.1.0 2025-07-18 truvari/5.3.0 2025-07-19 hap.py/0.3.15 ”” rtg-tools/3.13 starting from SVanalyzer, https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:svanalyzer.</summary></entry><entry><title type="html">Amendment to R Programming for Mass Spectrometry</title><link href="/2025/07/10/RPMS.html" rel="alternate" type="text/html" title="Amendment to R Programming for Mass Spectrometry" /><published>2025-07-10T00:00:00+01:00</published><updated>2025-07-29T21:48:41+01:00</updated><id>/2025/07/10/RPMS</id><content type="html" xml:base="/2025/07/10/RPMS.html">&lt;p&gt;This extends Omics-analysis/Proteomics: &lt;a href=&quot;https://jinghuazhao.github.io/Omics-analysis/R-Programming-for-Mass-Spectrometry/&quot;&gt;https://jinghuazhao.github.io/Omics-analysis/R-Programming-for-Mass-Spectrometry/&lt;/a&gt;.&lt;/p&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="info" /><summary type="html">This extends Omics-analysis/Proteomics: https://jinghuazhao.github.io/Omics-analysis/R-Programming-for-Mass-Spectrometry/.</summary></entry><entry><title type="html">Geany 2.0 &amp;amp; Edit 1.0.0 are featured</title><link href="/2025/05/22/geany.html" rel="alternate" type="text/html" title="Geany 2.0 &amp;amp; Edit 1.0.0 are featured" /><published>2025-05-22T00:00:00+01:00</published><updated>2025-07-29T21:48:41+01:00</updated><id>/2025/05/22/geany</id><content type="html" xml:base="/2025/05/22/geany.html">&lt;p&gt;✅ ceuadmin/geany/2.0-icelake&lt;/p&gt;
+
+&lt;p&gt;geany for both CentOS 7 and CentOS 8 is described here,&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cambridge-ceu.github.io/csd3/applications/geany.html&quot;&gt;https://cambridge-ceu.github.io/csd3/applications/geany.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/geany.png&quot; alt=&quot;geany 2.0&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;✅ ceuadmin/edit/1.0.0&lt;/p&gt;
+
+&lt;p&gt;edit is described here,&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:edit&quot;&gt;https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:edit&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/edit.png&quot; alt=&quot;Edit 1.0.0&quot; /&gt;&lt;/p&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="info" /><summary type="html">✅ ceuadmin/geany/2.0-icelake geany for both CentOS 7 and CentOS 8 is described here, https://cambridge-ceu.github.io/csd3/applications/geany.html ✅ ceuadmin/edit/1.0.0 edit is described here, https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:edit</summary></entry></feed>
