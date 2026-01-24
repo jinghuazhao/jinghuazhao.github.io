@@ -33,7 +33,7 @@ sidebar:
   : [![](bees.svg)](https://github.com/jinghuazhao/QTR) [QTR](https://jinghuazhao.github.io/QTR/)
 - Computing & Modeling
   : [![](bees.svg)](https://github.com/jinghuazhao/Believe) [Believe](https://jinghuazhao.github.io/Believe/)
-  : [![](bees.svg)](https://github.com/jinghuazhao/Computational-Statistics) [Computational statistics](https://jinghuazhao.github.io/Computational-Statistics/)
+  : [![](bees.svg)](https://github.com/jinghuazhao/Computational-Statistics) [Computational statistics](https://jinghuazhao.github.io/Computational-Statistics/) (AI, computing systems & statistics)
   : [![](bees.svg)](https://github.com/jinghuazhao/DSA) [DSA](https://jinghuazhao.github.io/DSA/)
   : [![](bees.svg)](https://github.com/jinghuazhao/GDCT) [GDCT](https://jinghuazhao.github.io/GDCT/)
   : [![](bees.svg)](https://github.com/jinghuazhao/Mixed-Models) [Mixed models](https://jinghuazhao.github.io/Mixed-Models/)
