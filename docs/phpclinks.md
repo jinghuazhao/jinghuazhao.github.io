@@ -112,7 +112,6 @@ title: Jing Hua Zhao's virtual library at PHPC
 - Parkingeye, <https://portal.parkingeye.co.uk/>
 - Royal mail, <https://www.royalmail.com/>
 - Schengen visa requirement, <https://www.schengenvisainfo.com/schengen-visa-application-requirements/>
-- SDU Syddansk Universitet, <https://sdu.itslearning.com/> (<itsl-jzh@sdu.dk>, <https://password.sdu.dk/>, <servicedesk@sdu.dk>)
 - Smart Services Ltd, <https://smartserviceltd.com/>
 - Tax service, <https://www.tax.service.gov.uk/personal-account> ([tax relief](https://www.gov.uk/tax-relief-for-employees))
 - Toyota
@@ -151,6 +150,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - Denmark
   * dtb, <http://dtb.cpr.ku.dk/>
   * itslearning, <https://sdu.itslearning.com> (itsl-jhzh)
+  * SDU Syddansk Universitet, <https://sdu.itslearning.com/> (<itsl-jzh@sdu.dk>, <https://password.sdu.dk/>, <servicedesk@sdu.dk>)
 - UK
   * Breast cancer prediction, <https://breast.v3.predict.cam/> ([GitHub](https://github.com/WintonCentre/predict-v30-r), <https://breast.predict.cam/>)
   * Diabtes risk prediction, <https://riskscore.diabetes.org.uk/start>
