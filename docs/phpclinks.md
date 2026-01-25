@@ -51,6 +51,15 @@ title: Jing Hua Zhao's virtual library at PHPC
   * Council Tax band, <https://www.gov.uk/council-tax-bands>
   * Dart Charge, <https://www.gov.uk/dart-charge>
   * DVLA ([Sold, transferred or bought a vehicle](https://www.gov.uk/sold-bought-vehicle), [vehicle-tax](https://www.gov.uk/vehicle-tax) ([direct debit](https://www.gov.uk/vehicle-tax-direct-debit)), [Contact](https://www.gov.uk/contact-the-dvla))
+    - HMRC
+        * [Approved professional organisations and learned societies](https://www.gov.uk/government/publications/professional-bodies-approved-for-tax-relief-list-3/approved-professional-organisations-and-learned-societies#r)
+        * [Claim tax relief for expenses of employment](https://www.gov.uk/tax-relief-for-employees/working-at-home)
+        * Self assessment, <https://www.gov.uk/browse/tax/self-assessment>
+            - Advantis, <https://www.advantiscredit.co.uk/>
+            - CCSCollect, <https://www.ccscollect.co.uk/>
+            - Payment, <https://www.gov.uk/pay-self-assessment-tax-bill>
+            - Sign in, <https://www.online.hmrc.gov.uk/>
+        * Personal account, <https://www.tax.service.gov.uk/personal-account>
   * Online immigration status (eVisa), <https://www.gov.uk/guidance/online-immigration-status-evisa>
   * UK Visas and Immigration (UKVI) account, <https://www.gov.uk/get-access-evisa>
     - [Make another online immigration application](https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/dashboard)
@@ -61,18 +70,8 @@ title: Jing Hua Zhao's virtual library at PHPC
 - GP patient survey, [https://www.gp-patient.co.uk/survey](https://www.gp-patient.co.uk/survey)
 - Greater Anglia, <https://www.greateranglia.co.uk/> [parking portal](https://gaparking.co.uk/pcn)
 - giffgaff, <https://www.giffgaff.com/> ([account](https://www.giffgaff.com/auth/login?redirect=%2Fdashboard))
-- HMRC Sign in using Government Gateway, <https://www.access.service.gov.uk/login/signin/creds>
-  * [Approved professional organisations and learned societies](https://www.gov.uk/government/publications/professional-bodies-approved-for-tax-relief-list-3/approved-professional-organisations-and-learned-societies#r)
-  * [Ask HMRC online](https://www.tax.service.gov.uk/ask-hmrc/chat/self-assessment)
-  * [Claim tax relief for expenses of employment](https://www.gov.uk/tax-relief-for-employees/working-at-home)
-  * Self assessment, <https://www.gov.uk/browse/tax/self-assessment> (Payment, <https://www.gov.uk/pay-self-assessment-tax-bill>)
-    - Advantis, <https://www.advantiscredit.co.uk/>
-    - CCSCollect, <https://www.ccscollect.co.uk/>
-  * Personal account, <https://www.tax.service.gov.uk/personal-account>
-  * Register for Self Assessment Online, <https://www.online.hmrc.gov.uk/>
 - jetcost, <https://www.jetcost.co.uk/>
-- [LHR directions](https://www.heathrow-airport-guide.co.uk/directions.html)
-- [LHR short-stay parking](https://www.heathrow.com/transport-and-directions/heathrow-parking/heathrow-short-stay-parking)
+- LHR [directions](https://www.heathrow-airport-guide.co.uk/directions.html), [short-stay parking](https://www.heathrow.com/transport-and-directions/heathrow-parking/heathrow-short-stay-parking)
 - Local supermarket
   * ALDI, <https://www.aldi.co.uk/>
   * ASDA, <https://www.asda.com/>
