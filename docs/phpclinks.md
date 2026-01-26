@@ -12,9 +12,8 @@ title: Jing Hua Zhao's virtual library at PHPC
 - Cambridge
   * Addenbrookes [facebook](https://en-gb.facebook.com/CambridgeUniversityHospitals/), [Volunteering at CUH](https://twitter.com/cuh_volunteers?lang=en)
   * Arts Picturehouse Cambridge, <https://www.picturehouses.com/cinema/arts-picturehouse-cambridge>
-  * Cambridge City Council, <https://www.cambridge.gov.uk/>
-    - [bin collection](https://www.cambridge.gov.uk/check-when-your-bin-will-be-emptied)
-  * Cambridgeshire County Council, <https://www.cambridgeshire.gov.uk/> (<https://www.cambridgeshire.gov.uk/buslane>)
+  * Cambridge City Council, <https://www.cambridge.gov.uk/> ([bin collection](https://www.cambridge.gov.uk/check-when-your-bin-will-be-emptied))
+  * Cambridgeshire County Council, <https://www.cambridgeshire.gov.uk/>
   * Cambridge Independent, <https://digital.imnews.app/app/CAM890>
   * Cambridge Water, <https://www.cambridge-water.co.uk> ([South Staffordshire Water](https://www.south-staffs-water.co.uk/), [MyAccount](https://myaccount.cambridge-water.co.uk/))
   * Grand Arcade, <https://www.grandarcade.co.uk/> [stores](https://www.grandarcade.co.uk/stores/)
