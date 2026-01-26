@@ -3,7 +3,7 @@ layout: article
 title: Jing Hua Zhao's virtual library at PHPC
 ---
 
-## Local information
+## About
 
 - Addenbrookes [facebook](https://en-gb.facebook.com/CambridgeUniversityHospitals/), [Volunteering at CUH](https://twitter.com/cuh_volunteers?lang=en)
 - AstraZenaca, <https://www.astrazeneca.com/>
@@ -47,7 +47,7 @@ title: Jing Hua Zhao's virtual library at PHPC
    * [Self-Employment Service (ESS)](https://www.hr.admin.cam.ac.uk/hr-staff/information-new-starters/employee-self-service-ess)
    * Universities Superannuation Scheme (USS), <https://www.uss.co.uk/>
 
-## Links by country
+## Around the world
 
 - China
   * CCTV, <https://tv.cctv.com/>
@@ -87,6 +87,7 @@ title: Jing Hua Zhao's virtual library at PHPC
   - Bosch UK, <https://www.bosch-home.co.uk/>
   - Civil enformcement, <https://www.ce-service.co.uk/>
   - Devon & Cornwall Police, <https://www.devon-cornwall.police.uk/> ([UKROEd](https://www.ukroed.org.uk/), [Information Commissioner's Office](https://ico.org.uk/))
+  - Genomics England, <https://www.genomicsengland.co.uk/>
   - gov.uk
     * Council Tax band, <https://www.gov.uk/council-tax-bands>
     * Dart Charge, <https://www.gov.uk/dart-charge>
@@ -118,8 +119,7 @@ title: Jing Hua Zhao's virtual library at PHPC
       - Congestion charge, <https://tfl.gov.uk/modes/driving/congestion-charge>
       - London Road User Charging account, <https://tfl.gov.uk/Ruc/Auth/Login> ([Auto Pay](mailto:cclondon@cclondon.com), [Fleet Services](mailto:FleetTeam@cclondon.com))
       - [Tube map with new Overground lines](https://www.timeout.com/london/news/heres-what-the-tube-map-with-looks-like-with-new-overground-lines-112024)
-  - MRC, <https://www.ukri.org/councils/mrc/>
-    * Pension scheme, <https://www.mrcps.co.uk/> ([mercer](https://contact.mercer.com/))
+  - MRC, <https://www.ukri.org/councils/mrc/> (Pension scheme, <https://www.mrcps.co.uk/> ([mercer](https://contact.mercer.com/)))
   - National Driver Offender Retraining Scheme (NDORS)
     * Educational course, <https://offer.ndors.org.uk/> including record access & [feedback](https://www.smartsurvey.co.uk/s/NDORSCourseFeedback/)
     * Penalty Notice Portal, <https://penaltynotice.homeoffice.gov.uk/>
@@ -144,7 +144,7 @@ title: Jing Hua Zhao's virtual library at PHPC
   * Educational Commission for Foreign Medical Graduates, <https://www.ecfmg.org/>
   * United States Medical Licensing Examination, <https://www.usmle.org/>
 
-## Special interest
+## Of interest
 
 - AccuWeather, <https://www.accuweather.com/>
 - Active lives survey, <https://www.activelivessurvey.org> (Email: <a href = "mailto:activelives@ipsos.com">activelives@ipsos.com</a>, Tel: <a href="tel:+448081296801">0808 129 6801</a>)
@@ -156,7 +156,6 @@ title: Jing Hua Zhao's virtual library at PHPC
 - canSAR.ai, <https://cansar.ai/>
 - ChinaTextbook, <https://github.com/TapXWorld/ChinaTextbook>
 - Essay writing service, <https://essayservice.com/>
-- Genomics England, <https://www.genomicsengland.co.uk/>
 - GP patient survey, [https://www.gp-patient.co.uk/survey](https://www.gp-patient.co.uk/survey)
 - giffgaff, <https://www.giffgaff.com/> ([account](https://www.giffgaff.com/auth/login?redirect=%2Fdashboard))
 - [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 3e](https://github.com/ageron/handson-ml3)
