@@ -147,7 +147,6 @@ title: Jing Hua Zhao's virtual library at PHPC
 
 - AccuWeather, <https://www.accuweather.com/>
 - Active lives survey, <https://www.activelivessurvey.org> (Email: <a href = "mailto:activelives@ipsos.com">activelives@ipsos.com</a>, Tel: <a href="tel:+448081296801">0808 129 6801</a>)
-- 10 Lectures on Inverse Problems and Imaging, <https://tristanvanleeuwen.github.io/IP_and_Im_Lectures/intro.html>
 - [A Guide to Deep Denoising and its Application to Scientific Imaging](https://kangningthu.github.io/AI-powered-denoising/index.html) ([DeepDenoisingGuide](https://github.com/Kangningthu/DeepDenoisingGuide))
 - Bioinformatics CRO, <https://www.bioinformaticscro.com/>
 - Boardingware, <https://www.boardingware.com/>
@@ -162,6 +161,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - HMS-DBMI, <https://github.com/hms-dbmi>
 - InSilicoUK, <https://www.insilicouk.org/>
 - [International Mathematical Olympiad](https://artofproblemsolving.com/wiki/index.php/International_Mathematical_Olympiad)
+- Lectures on Inverse Problems and Imaging, <https://tristanvanleeuwen.github.io/IP_and_Im_Lectures/intro.html>
 - Marks out of tenancy, <https://www.marksoutoftenancy.com/>
 - Mihaela van der Schaar Lab, <https://www.vanderschaar-lab.com/>
 - Medical Information Mart for Intensive Care (mimic), <https://mimic.mit.edu/>
