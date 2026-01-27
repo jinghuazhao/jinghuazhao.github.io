@@ -15,6 +15,7 @@ title: Jing Hua Zhao's virtual library at PHPC
   * Cambridge City Council, <https://www.cambridge.gov.uk/> ([bin collection](https://www.cambridge.gov.uk/check-when-your-bin-will-be-emptied))
   * Cambridgeshire County Council, <https://www.cambridgeshire.gov.uk/>
   * Cambridge Independent, <https://digital.imnews.app/app/CAM890>
+  * Cambridge Past, Present & Future, <https://cambridgeppf.org/> ([Bertrand Russell](https://cambridgeppf.org/bertrand-russell/))
   * Cambridge Water, <https://www.cambridge-water.co.uk> ([South Staffordshire Water](https://www.south-staffs-water.co.uk/), [MyAccount](https://myaccount.cambridge-water.co.uk/))
   * Grand Arcade, <https://www.grandarcade.co.uk/> [stores](https://www.grandarcade.co.uk/stores/)
   * Excursion, <https://www.luxurylifestylemag.co.uk/travel/how-to-spend-the-perfect-long-weekend-in-historic-cambridge/>
@@ -194,4 +195,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - What 3 words, <https://what3words.com/>
 - YouTube, <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 26/1/2026*
+***Created on** 3/5/2021 and **last changed** 27/1/2026*
