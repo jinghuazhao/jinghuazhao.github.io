@@ -28,6 +28,12 @@ if [ "$(uname -n | sed 's/-[0-9]*$//')" == "login-q" ]; then
    module load ceuadmin/openssh/9.7p1-icelake
 fi
 
+git ls-files --others --exclude-standard -z | while IFS= read -r -d '' f; do
+    echo "Adding new file $f"
+    git add "$f"
+    git commit -m "Add $f"
+done
+
 git diff --name-only -z | while IFS= read -r -d '' f; do
    echo "Processing $f"
    git add ${f}
