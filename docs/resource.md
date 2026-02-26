@@ -34,6 +34,8 @@ viewport: "width=device-width, initial-scale=1.0"
 
 # Resource
 
+(***Created upon request***)
+
 <select id="page-dropdown">
     <option value="">--Select a map--</option>
     <option value="leaflet.html">Left: leaflet.js</option>
@@ -95,6 +97,7 @@ summary.h3 {
 * Discovery Institute, <https://www.discoverynj.org/>
 * Drug and Alcohol Addiction Treatment Services, <https://addiction-treatment-services.com/>
 * Eagle Creek Ranch Recovery, <https://idahorecoverycenter.com/>
+* Elevate Recovery Center, <https://elevaterecoveryma.com/>
 - First City Recovery Center, <https://firstcityrecoverycenter.com/programs/>
 - First Step Recovery, <https://firststepsrecovery.com/>
 - FreebytheSea Sunset View Drug & Alcohol Recovery Center, <https://freebythesea.com>
@@ -212,7 +215,8 @@ summary.h3 {
 - Eliza Hadley, <eliza.hadley@gv.alcoholrehabhelp.org>
 - Dominique Legget, <dominique.legget@thedigitalintellect.com>
 - Nomhle Mcunu <nmcunu@southjerseyrecoverypr.com>
+- Rachel Bryant, <rachel@elevaterecoveryma.com>
 - Rachel Parker, <iamrachelparker@gmail.com>
 - Emma Tressler, <healthcare@thedigitalintellect.com>
 
-***Created on** 12/1/2023 and **last changed** 26/12/2025*
+***Created on** 12/1/2023 and **last changed** 26/2/2026*
