@@ -106,6 +106,7 @@ summary.h3 {
 - Immersive Recovery, <https://immersiverecovery.com/>
 * IOP Addiction Treatment for Men, <https://www.recoverintegrity.com/>
 * Jay Walker Lodge, <https://jaywalkerlodge.com/>
+- Lanier Recovery Center, <https://lanierrecoverycenter.com/>
 - Laguna Shores Recovery, <https://lagunashoresrecovery.com/>
 * Legends Recovery Center LLC, <https://legendsrecovery.com/>
 * Live Free Recovery Services -- Drug Rehab Program,  <https://livefreerecoverynh.com/programs/>
@@ -216,7 +217,8 @@ summary.h3 {
 - Dominique Legget, <dominique.legget@thedigitalintellect.com>
 - Nomhle Mcunu <nmcunu@southjerseyrecoverypr.com>
 - Rachel Bryant, <rachel@elevaterecoveryma.com>
+- Rachael Fitzgerald, <rachael@lanierrecoverycenter.com>
 - Rachel Parker, <iamrachelparker@gmail.com>
 - Emma Tressler, <healthcare@thedigitalintellect.com>
 
-***Created on** 12/1/2023 and **last changed** 26/2/2026*
+***Created on** 12/1/2023 and **last changed** 8/3/2026*
