@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2026-03-10T14:23:02+00:00</updated><id>/feed.xml</id><title type="html">赵京华网页 | Web page of Jing Hua Zhao</title><subtitle>Web page
-</subtitle><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><entry><title type="html">gaawr2 0.0.7 is published on CRAN</title><link href="/2026/03/10/gaawr2.html" rel="alternate" type="text/html" title="gaawr2 0.0.7 is published on CRAN" /><published>2026-03-10T00:00:00+00:00</published><updated>2026-03-10T13:37:13+00:00</updated><id>/2026/03/10/gaawr2</id><content type="html" xml:base="/2026/03/10/gaawr2.html">&lt;p&gt;See &lt;a href=&quot;https://jinghuazhao.github.io/gaawr2/index.html&quot;&gt;https://jinghuazhao.github.io/gaawr2/index.html&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB"><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en-GB" /><updated>2026-03-11T11:33:39+00:00</updated><id>/feed.xml</id><title type="html">赵京华网页 | Web page of Jing Hua Zhao</title><subtitle>Web page
+</subtitle><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><entry><title type="html">OpenClaw 2026.3.8 is documented</title><link href="/2026/03/11/openclaw.html" rel="alternate" type="text/html" title="OpenClaw 2026.3.8 is documented" /><published>2026-03-11T00:00:00+00:00</published><updated>2026-03-11T11:30:25+00:00</updated><id>/2026/03/11/openclaw</id><content type="html" xml:base="/2026/03/11/openclaw.html">&lt;p&gt;See &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:openclaw&quot;&gt;https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:openclaw&lt;/a&gt;.&lt;/p&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="AI" /><summary type="html">See https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:openclaw.</summary></entry><entry><title type="html">gaawr2 0.0.7 is published on CRAN</title><link href="/2026/03/10/gaawr2.html" rel="alternate" type="text/html" title="gaawr2 0.0.7 is published on CRAN" /><published>2026-03-10T00:00:00+00:00</published><updated>2026-03-10T14:24:44+00:00</updated><id>/2026/03/10/gaawr2</id><content type="html" xml:base="/2026/03/10/gaawr2.html">&lt;p&gt;See &lt;a href=&quot;https://jinghuazhao.github.io/gaawr2/index.html&quot;&gt;https://jinghuazhao.github.io/gaawr2/index.html&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Note that&lt;/p&gt;
 
@@ -93,31 +93,4 @@ topr: an R package for viewing and annotating genetic association results. &lt;e
 
 &lt;h2 id=&quot;0164&quot;&gt;0.1.64&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/fresh.png&quot; alt=&quot;Fresh 0.1.64&quot; /&gt;&lt;/p&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="info" /><summary type="html">Fresh is a thoughtfully implemented and fast evolving text editor, https://cambridge-ceu.github.io/csd3/applications/fresh.html. Updates 2/2/2026    Version-agnostic installations are implemented. 0.1.64</summary></entry><entry><title type="html">Latest Firefox is built on CSD3!</title><link href="/2025/09/29/firefox.html" rel="alternate" type="text/html" title="Latest Firefox is built on CSD3!" /><published>2025-09-29T00:00:00+01:00</published><updated>2026-01-20T19:10:20+00:00</updated><id>/2025/09/29/firefox</id><content type="html" xml:base="/2025/09/29/firefox.html">&lt;p&gt;These are detailed here, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/applications/firefox.html&quot;&gt;https://cambridge-ceu.github.io/csd3/applications/firefox.html&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;As of 20/1/2026, we have from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;module avail ceuadmin/firefox&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;--------------------------------------------------- /usr/local/Cluster-Config/modulefiles ----------------------------------------------------
-ceuadmin/firefox/60.5.1-1.el7  ceuadmin/firefox/147.0.1  ceuadmin/firefox/148.0a1  ceuadmin/firefox/nightly
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;where nightly points to 148.0a1 on 19/12/2025.&lt;/p&gt;
-
-&lt;p&gt;Modules as of 29/9/2025,&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;--------------------------------------------------- /usr/local/Cluster-Config/modulefiles ---------------------------------------------------
-ceuadmin/firefox/60.5.1-1.el7  ceuadmin/firefox/143.0.1  ceuadmin/firefox/143.0a1  ceuadmin/firefox/145.0a1  ceuadmin/firefox/nightly
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;such that&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;60.5.1-1.el7 is actually a singularity module.&lt;/li&gt;
-  &lt;li&gt;143.0.1 is the first official release at ceuadmin.&lt;/li&gt;
-  &lt;li&gt;145.0a1 is officially nightly.&lt;/li&gt;
-  &lt;li&gt;ceuadmin/firefox/nightly is still a symbolic link to 143.0a1.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The general context is described here, &lt;a href=&quot;https://cambridge-ceu.github.io/csd3/systems/web.html&quot;&gt;https://cambridge-ceu.github.io/csd3/systems/web.html&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;A real-world usage on CSD3 is shown here, &lt;a href=&quot;https://jinghuazhao.github.io/Caprion/&quot;&gt;https://jinghuazhao.github.io/Caprion/&lt;/a&gt;.&lt;/p&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="info" /><summary type="html">These are detailed here, https://cambridge-ceu.github.io/csd3/applications/firefox.html. As of 20/1/2026, we have from module avail ceuadmin/firefox: --------------------------------------------------- /usr/local/Cluster-Config/modulefiles ---------------------------------------------------- ceuadmin/firefox/60.5.1-1.el7 ceuadmin/firefox/147.0.1 ceuadmin/firefox/148.0a1 ceuadmin/firefox/nightly where nightly points to 148.0a1 on 19/12/2025. Modules as of 29/9/2025, --------------------------------------------------- /usr/local/Cluster-Config/modulefiles --------------------------------------------------- ceuadmin/firefox/60.5.1-1.el7 ceuadmin/firefox/143.0.1 ceuadmin/firefox/143.0a1 ceuadmin/firefox/145.0a1 ceuadmin/firefox/nightly such that 60.5.1-1.el7 is actually a singularity module. 143.0.1 is the first official release at ceuadmin. 145.0a1 is officially nightly. ceuadmin/firefox/nightly is still a symbolic link to 143.0a1. The general context is described here, https://cambridge-ceu.github.io/csd3/systems/web.html. A real-world usage on CSD3 is shown here, https://jinghuazhao.github.io/Caprion/.</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;/assets/images/fresh.png&quot; alt=&quot;Fresh 0.1.64&quot; /&gt;&lt;/p&gt;</content><author><name>赵京华(Jing Hua Zhao)</name><email>jinghuazhao@hotmail.com</email></author><category term="info" /><summary type="html">Fresh is a thoughtfully implemented and fast evolving text editor, https://cambridge-ceu.github.io/csd3/applications/fresh.html. Updates 2/2/2026    Version-agnostic installations are implemented. 0.1.64</summary></entry></feed>
