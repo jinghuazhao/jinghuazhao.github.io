@@ -104,6 +104,7 @@ summary.h3 {
 * Georgia Sky Outpatient Detox, <https://georgiaskyoutpatientdetox.com/>
 - Golden Gate Recovery, <https://goldengaterecovery.com/>
 - Immersive Recovery, <https://immersiverecovery.com/>
+- Inner Voyage Recovery Center, <https://innervoyagerecovery.com/>
 * IOP Addiction Treatment for Men, <https://www.recoverintegrity.com/>
 * Jay Walker Lodge, <https://jaywalkerlodge.com/>
 - Lanier Recovery Center, <https://lanierrecoverycenter.com/>
