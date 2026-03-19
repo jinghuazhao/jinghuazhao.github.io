@@ -86,6 +86,7 @@ title: Jing Hua Zhao's virtual library at PHPC
     * CRUK, <https://fundraise.cancerresearchuk.org/page/tengyus-race-for-life>
     * RSPCA [guinea pigs](https://www.rspca.org.uk/adviceandwelfare/pets/rodents/guineapigs/)
   - Bosch UK, <https://www.bosch-home.co.uk/>
+  - Chums, <https://www.chums.co.uk/>
   - Civil enformcement, <https://www.ce-service.co.uk/>
   - Devon & Cornwall Police, <https://www.devon-cornwall.police.uk/> ([UKROEd](https://www.ukroed.org.uk/), [Information Commissioner's Office](https://ico.org.uk/))
   - Genomics England, <https://www.genomicsengland.co.uk/>
