@@ -112,6 +112,7 @@ title: Jing Hua Zhao's virtual library at PHPC
       - [View and prove immigration status (eVisa)](https://www.gov.uk/view-prove-immigration-status)
   - Greater Anglia, <https://www.greateranglia.co.uk/> [parking portal](https://gaparking.co.uk/pcn)
   - jetcost, <https://www.jetcost.co.uk/>
+  - Kidde, <https://www.uk.kidde.com/>
   - London
     * LHR [directions](https://www.heathrow-airport-guide.co.uk/directions.html), [short-stay parking](https://www.heathrow.com/transport-and-directions/heathrow-parking/heathrow-short-stay-parking)
     * London Biological Mass Spectrometry discussion group, <http://lbmsdg.org/>
@@ -144,6 +145,7 @@ title: Jing Hua Zhao's virtual library at PHPC
   - StreetCheck, <https://www.streetcheck.co.uk/postcode/alldistricts>
 - USA
   * Educational Commission for Foreign Medical Graduates, <https://www.ecfmg.org/>
+  * Kidde, <https://www.kidde.com/>
   * United States Medical Licensing Examination, <https://www.usmle.org/>
 
 ## Of interest
@@ -198,4 +200,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - What 3 words, <https://what3words.com/>
 - YouTube, <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 18/3/2026*
+***Created on** 3/5/2021 and **last changed** 19/3/2026*
