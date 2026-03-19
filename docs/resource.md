@@ -212,13 +212,14 @@ summary.h3 {
 ## Contributors<a href="https://jinghuazhao.github.io/resource.txt" style="font-size: 16px; font-size: 90%;vertical-align: top;"><i class="fa fa-heart" style="font-size:22px;color:red"></i></a>
 
 - Enmanuel Batista <ebatista@drugwatch.com>
+- Rachel Bryant, <rachel@elevaterecoveryma.com>
 - Mara Davis <mara@hr.knowyourdna.com>
+- Chloe Farmer <chloe@innervoyagerecovery.com>
+- Rachael Fitzgerald, <rachael@lanierrecoverycenter.com>
 - Eliza Hadley, <eliza.hadley@gv.alcoholrehabhelp.org>
 - Dominique Legget, <dominique.legget@thedigitalintellect.com>
 - Nomhle Mcunu <nmcunu@southjerseyrecoverypr.com>
-- Rachel Bryant, <rachel@elevaterecoveryma.com>
-- Rachael Fitzgerald, <rachael@lanierrecoverycenter.com>
 - Rachel Parker, <iamrachelparker@gmail.com>
 - Emma Tressler, <healthcare@thedigitalintellect.com>
 
-***Created on** 12/1/2023 and **last changed** 8/3/2026*
+***Created on** 12/1/2023 and **last changed** 19/3/2026*
