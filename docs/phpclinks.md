@@ -67,6 +67,8 @@ title: Jing Hua Zhao's virtual library at PHPC
   * dtb, <http://dtb.cpr.ku.dk/>
   * itslearning, <https://sdu.itslearning.com> (itsl-jhzh)
   * SDU Syddansk Universitet, <https://sdu.itslearning.com/> (<itsl-jzh@sdu.dk>, <https://password.sdu.dk/>, <servicedesk@sdu.dk>)
+- Ethiopia
+  * National Academic OER & Digital Library of Ethiopia, <https://ndl.ethernet.edu.et/>
 - UK
   - Alina, <https://www.alina.co.uk/>
   - Barclays, <https://www.barclays.co.uk/> (App: <https://www.barclays.co.uk/app>, IBAN: <https://www.barclays.co.uk/help/international/payments/making-and-receiving-international-payments/generate-iban/>, UK Swift: BUKBGB22)
@@ -201,4 +203,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - What 3 words, <https://what3words.com/>
 - YouTube, <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 19/3/2026*
+***Created on** 3/5/2021 and **last changed** 23/3/2026*
