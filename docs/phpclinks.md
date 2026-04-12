@@ -55,11 +55,13 @@ title: Jing Hua Zhao's virtual library at PHPC
     - Manage Booking, <http://uk.ceair.com/en/manage-booking.html>
     - Free Baggage Allowance and Specifications, <https://www.ceair.com/global/en_static/Announcement/BaggageService/FreeBaggageAllowanceandSpecifications/>
   * Chinese Embassy [FAQ](http://www.chinese-embassy.org.uk/chn/qzfw/hzlxz/zyxx/t1836400.htm) and [Passport/Travel certificatte](http://www.chinese-embassy.org.uk/chn/qzfw/hzlxz/t1827718.htm)
+  * Global Times, <https://www.globaltimes.cn/>
   * gaokao, <http://114.xixik.com/gaokao/>
   * GWXX, <https://www.guwenxuexi.com/>
   * [History of China](https://www.youtube.com/playlist?app=desktop&list=PLL8DPLaffjgC8-TUhfrSw-9ZHwRwLu5Rl)
   * MIRACLL, <https://www.miracll.net/>
   * NIA [rzsq](https://rzsq.nia.gov.cn/login), [zwfw](https://s.nia.gov.cn/mps/main.html)
+  * The Paper, <https://www.thepaper.cn/>
   * toutiao, <https://www.toutiao.com/>
   * ysyy, <https://app.cctv.com/>
   * zhouyiju, <http://m.zhouyiju.com/>
@@ -203,4 +205,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - What 3 words, <https://what3words.com/>
 - YouTube, <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 23/3/2026*
+***Created on** 3/5/2021 and **last changed** 12/4/2026*
