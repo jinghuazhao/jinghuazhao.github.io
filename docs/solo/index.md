@@ -29,7 +29,7 @@ sidebar:
   : [![](bees.svg)](https://github.com/jinghuazhao/SUMSTATS) [SUMSTATS](https://jinghuazhao.github.io/SUMSTATS/)
   : [![](bees.svg)](https://github.com/jinghuazhao/TWAS-pipeline) [TWAS-pipeline](https://jinghuazhao.github.io/TWAS-pipeline/)
 - Epigenomics
-  : [![](bees.svg)](https://github.com/jinghuazhao/EWAS-fusion)[EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/)[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5069993.svg)](https://zenodo.org/record/5069993)
+  : [![](bees.svg)](https://github.com/jinghuazhao/EWAS-fusion) [EWAS-fusion](https://jinghuazhao.github.io/EWAS-fusion/)([![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5069993.svg)](https://zenodo.org/record/5069993))
   : [![](bees.svg)](https://github.com/jinghuazhao/QTR) [QTR](https://jinghuazhao.github.io/QTR/)
 - Computing & Modeling
   : [![](bees.svg)](https://github.com/jinghuazhao/Believe) [Believe](https://jinghuazhao.github.io/Believe/)
