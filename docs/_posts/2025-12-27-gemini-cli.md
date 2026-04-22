@@ -2,9 +2,5 @@
 layout: article
 title: gemini-cli is documented
 tags: AI
-mathjax: true
-mathjax_autoNumber: false
-mermaid: true
+redirect_to: https://cambridge-ceu.github.io/csd3/applications/gemini-cli.html
 ---
-
-See <https://cambridge-ceu.github.io/csd3/applications/gemini-cli.html>.
