@@ -1,7 +1,7 @@
 ---
 layout: article
 title: SCALLOP-INF paper is onlilne
-tags: info
+tags: [info, Proteogenomics]
 mathjax: true
 mathjax_autoNumber: false
 mermaid: true
