@@ -1,7 +1,7 @@
 ---
 layout: article
 title: A full stack Locuszoom.js application (updated)
-tags: [info, genetics]
+tags: [info, Genetics]
 mathjax: true
 mathjax_autoNumber: false
 mermaid: true
