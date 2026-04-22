@@ -2,9 +2,5 @@
 layout: article
 title: Claude code is documented
 tags: AI
-mathjax: true
-mathjax_autoNumber: false
-mermaid: true
+redirect_to: https://cambridge-ceu.github.io/csd3/applications/claude-code.html
 ---
-
-See <https://cambridge-ceu.github.io/csd3/applications/claude-code.html>.
