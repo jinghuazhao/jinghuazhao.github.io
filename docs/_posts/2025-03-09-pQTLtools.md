@@ -1,7 +1,7 @@
 ---
 layout: article
 title: pQTLtools 0.5 takes shape
-tags: pQTLtools
+tags: [pQTLtools, proteogenomics]
 mathjax: true
 mathjax_autoNumber: false
 mermaid: true
