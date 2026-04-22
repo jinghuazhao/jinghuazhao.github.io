@@ -218,8 +218,8 @@ defaults:
 ## => Plugins
 ##############################
 plugins:
+  - jekyll-redirect-from
   - jekyll-feed
-  - jekyll-last-modified-at
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-sitemap
