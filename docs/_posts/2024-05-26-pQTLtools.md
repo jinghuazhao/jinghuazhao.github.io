@@ -1,7 +1,7 @@
 ---
 layout: article
 title: pQTLtools 0.3 is released!
-tags: pQTLtools
+tags: [pQTLtools, proteogenomics]
 mathjax: true
 mathjax_autoNumber: false
 mermaid: true
