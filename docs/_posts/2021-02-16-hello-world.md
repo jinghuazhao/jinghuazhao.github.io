@@ -118,7 +118,7 @@ This adds a Google-powered search box to your website and is useful for large si
    xxxxxxxxxxxxxxxxx:xxxxx
    ```
 
-** Add to Jekyll config**
+**Add to Jekyll config**
 
 ```yml
 search:
