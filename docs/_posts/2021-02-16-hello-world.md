@@ -15,7 +15,6 @@ photo --> |to square + to resize| docs/sunflower.jpg --> |to generate favicon| d
 docs/sunflower.jpg --> |to generate SVG + to resize SVG| _includes/logo/logo.svg
 painting --> |to crop circle + to generate SVG + to resize SVG| docs/*/bees.svg
 </div>
-```
 
 ## Google SEO setup (subject to minor changes)
 
