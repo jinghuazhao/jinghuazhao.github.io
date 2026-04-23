@@ -3059,11 +3059,11 @@ AABJRU5ErkJggg==
 
 <h2 id="the-workflow">The workflow</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>graph TB;
+<pre><code class="language-mermaid">graph TB;
 photo --&gt; |to square + to resize| docs/sunflower.jpg --&gt; |to generate favicon| docs/assets
 docs/sunflower.jpg --&gt; |to generate SVG + to resize SVG| _includes/logo/logo.svg
 painting --&gt; |to crop circle + to generate SVG + to resize SVG| docs/*/bees.svg
-</code></pre></div></div>
+</code></pre>
 
 <div class="mermaid">
 graph TB
