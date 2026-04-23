@@ -20,6 +20,18 @@ painting --> |to crop circle + to generate SVG + to resize SVG| docs/*/bees.svg
 
 (23/4/2026)
 
+A summary of features is given below,
+
+| Feature        | Purpose                   | Required    |
+| -------------- | ------------------------- | ----------- |
+| Search Console | Indexing & SEO monitoring | Yes         |
+| Analytics      | Visitor tracking          | Recommended |
+| Custom Search  | Site search               | Optional    |
+
+- Changes may take a few days to appear in Google
+- Always redeploy after editing `_config.yml`
+- Monitor Search Console regularly for errors
+
 ### A. Google Search Console (SEO & Indexing)
 
 This aims to submit site to Google, monitor search performance (clicks, impressions), detect indexing issues.
@@ -88,18 +100,6 @@ This adds a Google-powered search box to website and is useful for large sites w
       google:
         custom_search_engine_id: xxxxxxxxxxxxxxxxx:xxxxx
     ```
-
-**Summary**
-
-| Feature        | Purpose                   | Required    |
-| -------------- | ------------------------- | ----------- |
-| Search Console | Indexing & SEO monitoring | Yes         |
-| Analytics      | Visitor tracking          | Recommended |
-| Custom Search  | Site search               | Optional    |
-
-1. Changes may take a few days to appear in Google
-2. Always redeploy after editing `_config.yml`
-3. Monitor Search Console regularly for errors
 
 <!--more-->
 
