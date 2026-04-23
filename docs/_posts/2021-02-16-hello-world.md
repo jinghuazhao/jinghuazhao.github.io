@@ -134,14 +134,6 @@ search:
 | Analytics      | Visitor tracking          | Recommended |
 | Custom Search  | Site search               | Optional    |
 
-**Final Checklist**
-
-* [ ] Site verified in Search Console
-* [ ] Sitemap submitted (`/sitemap.xml`)
-* [ ] Analytics ID added to `_config.yml`
-* [ ] Site redeployed
-* [ ] Homepage indexed
-
 * Changes may take a few days to appear in Google
 * Always redeploy after editing `_config.yml`
 * Monitor Search Console regularly for errors
