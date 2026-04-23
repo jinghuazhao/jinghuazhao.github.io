@@ -36,7 +36,7 @@ painting -->|"crop circle and SVG resize"| bees["docs/bees.svg"]
 
 ### A. Google Search Console (SEO & Indexing)
 
-This aims to submit your site to Google, monitor search performance (clicks, impressions), detect indexing issues.
+This aims to submit site to Google, monitor search performance (clicks, impressions), detect indexing issues.
 
 1. Go to:
    https://search.google.com/search-console
@@ -75,16 +75,16 @@ This serves to track visitors and user behaviour, analyze traffic sources and en
    https://analytics.google.com
 2. Click **Admin → Create Property**
 3. Configure:
-   * Property name: your site name
+   * Property name: site name
    * Timezone: United Kingdom
    * Currency: GBP
 4. Go to:
    **Data Streams → Web**
-5. Add your website:
+5. Add website:
    ```
    https://jinghuazhao.github.io
    ```
-6. Copy your Measurement ID:
+6. Copy Measurement ID:
    ```
    G-XXXXXXXXXX
    ```
@@ -99,21 +99,21 @@ analytics:
     tracking_id : G-XXXXXXXXXX
     anonymize_ip: true
 ```
-7. Deploy your site (push to GitHub Pages)
+7. Deploy site (push to GitHub Pages)
 
 ### C. Google Custom Search Engine (Optional)
 
-This adds a Google-powered search box to your website and is useful for large sites with many pages.
+This adds a Google-powered search box to website and is useful for large sites with many pages.
 
 1. Go to:
    https://programmablesearchengine.google.com/
 2. Click **Add / New Search Engine**
-3. Enter your site:
+3. Enter site:
    ```
    jinghuazhao.github.io
    ```
 4. Create the search engine
-5. Copy your Search Engine ID:
+5. Copy Search Engine ID:
    ```
    xxxxxxxxxxxxxxxxx:xxxxx
    ```
