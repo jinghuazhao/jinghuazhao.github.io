@@ -30,8 +30,8 @@ painting -->|"crop circle and SVG resize"| bees["docs/bees.svg"]
 
 (23/4/2026)
 
-A. Google Search Console (indexing & SEO monitoring)
-B. Google Analytics (visitor tracking)
+A. Google Search Console (indexing & SEO monitoring)  
+B. Google Analytics (visitor tracking)  
 C. Google Custom Search Engine (optional site search)
 
 ### A. Google Search Console (SEO & Indexing)
