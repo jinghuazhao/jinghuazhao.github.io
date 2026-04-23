@@ -7,7 +7,7 @@ mermaid: true
 
 # The jekyll-themed site is up!
 
-## The workflow to set up
+## The workflow
 
 ```
 graph TB;
@@ -88,6 +88,7 @@ This serves to track visitors and user behaviour, analyze traffic sources and en
    ```
    G-XXXXXXXXXX
    ```
+
 **Add to Jekyll config**
 
 Edit `_config.yml`:
@@ -140,7 +141,7 @@ search:
 
 <!--more-->
 
-# NOTES
+## NOTES
 
 * 13/12/2022 add-on: Fotor (<https://www.fotor.com/>)
 
