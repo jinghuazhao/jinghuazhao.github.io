@@ -78,7 +78,7 @@ analytics:
     tracking_id : G-XXXXXXXXXX
     anonymize_ip: true
 ```
-7. Deploy site (push to GitHub Pages)
+7\. Deploy site (push to GitHub Pages)
 
 ### C. Google Custom Search Engine (Optional)
 
