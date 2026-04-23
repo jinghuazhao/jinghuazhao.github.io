@@ -68,17 +68,18 @@ This serves to track visitors and user behaviour, analyze traffic sources and en
 5. Add website: `https://jinghuazhao.github.io`
 6. Copy Measurement ID: `G-XXXXXXXXXX`
 
-**Add to Jekyll config**
+    **Add to Jekyll config**
 
-Edit `_config.yml`:
-```yml
-analytics:
-  provider: google
-  google:
-    tracking_id : G-XXXXXXXXXX
-    anonymize_ip: true
-```
-7\. Deploy site (push to GitHub Pages)
+    Edit `_config.yml`:
+
+    ```yml
+    analytics:
+      provider: google
+      google:
+        tracking_id: G-XXXXXXXXXX
+        anonymize_ip: true
+    ```
+7. Deploy site (push to GitHub Pages)
 
 ### C. Google Custom Search Engine (Optional)
 
@@ -91,14 +92,16 @@ This adds a Google-powered search box to website and is useful for large sites w
 4. Create the search engine
 5. Copy Search Engine ID: `xxxxxxxxxxxxxxxxx:xxxxx`
 
-**Add to Jekyll config**
+    **Add to Jekyll config**
 
-```yml
-search:
-  provider: google
-  google:
-    custom_search_engine_id: xxxxxxxxxxxxxxxxx:xxxxx
-```
+    Edit `_config.yml`:
+
+    ```yml
+    search:
+      provider: google
+      google:
+        custom_search_engine_id: xxxxxxxxxxxxxxxxx:xxxxx
+    ```
 
 **Summary**
 
