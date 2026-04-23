@@ -17,16 +17,6 @@ painting --> |to crop circle + to generate SVG + to resize SVG| docs/*/bees.svg
 </div>
 ```
 
-<div class="mermaid">
-graph TB
-
-photo["photo"] -->|"to square and resize"| sunflower["docs/sunflower.jpg"]
-sunflower -->|"generate favicon"| assets["docs/assets"]
-sunflower -->|"generate SVG and resize"| logo["_includes/logo/logo.svg"]
-painting -->|"crop circle and SVG resize"| bees["docs/bees.svg"]
-
-</div>
-
 ## Google SEO setup (subject to minor changes)
 
 (23/4/2026)
