@@ -16,13 +16,13 @@ docs/sunflower.jpg --> |to generate SVG + to resize SVG| _includes/logo/logo.svg
 painting --> |to crop circle + to generate SVG + to resize SVG| docs/*/bees.svg
 ```
 
-```mermaid
+<div class="mermaid">
 graph TB
 photo -->|"to square + to resize"| "docs/sunflower.jpg"
 "docs/sunflower.jpg" -->|"to generate favicon"| "docs/assets"
 "docs/sunflower.jpg" -->|"to generate SVG + resize"| "_includes/logo/logo.svg"
 painting -->|"crop circle + SVG + resize"| "docs/bees.svg"
-```
+</div>
 
 ## Google SEO setup (subject to minor changes)
 
@@ -32,7 +32,7 @@ painting -->|"crop circle + SVG + resize"| "docs/bees.svg"
 * Google Analytics (visitor tracking)
 * Google Custom Search Engine (optional site search)
 
-### 1. Google Search Console (SEO & Indexing)
+### A. Google Search Console (SEO & Indexing)
 
 This aims to submit your site to Google, monitor search performance (clicks, impressions), detect indexing issues.
 
@@ -64,7 +64,8 @@ This aims to submit your site to Google, monitor search performance (clicks, imp
      ```
      https://jinghuazhao.github.io/
      ```
-### 2. Google Analytics (Traffic Tracking)
+
+### B. Google Analytics (Traffic Tracking)
 
 This serves to track visitors and user behaviour, analyze traffic sources and engagement.
 
@@ -97,7 +98,7 @@ analytics:
 ```
 7. Deploy your site (push to GitHub Pages)
 
-### 3. Google Custom Search Engine (Optional)
+### C. Google Custom Search Engine (Optional)
 
 This adds a Google-powered search box to your website and is useful for large sites with many pages.
 
