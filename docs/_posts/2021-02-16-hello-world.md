@@ -7,7 +7,7 @@ mermaid: true
 
 # The jekyll-themed site is up!
 
-The workflow to set up
+## The workflow to set up
 
 ```
 graph TB;
@@ -17,11 +17,131 @@ painting --> |to crop circle + to generate SVG + to resize SVG| docs/*/bees.svg
 ```
 
 ```mermaid
-graph TB;
-photo --> |to square + to resize| docs/sunflower.jpg --> |to generate favicon| docs/assets
-docs/sunflower.jpg --> |to generate SVG + to resize SVG| _includes/logo/logo.svg
-painting --> |to crop circle + to generate SVG + to resize SVG| docs/*/bees.svg
+graph TB
+photo -->|"to square + to resize"| "docs/sunflower.jpg"
+"docs/sunflower.jpg" -->|"to generate favicon"| "docs/assets"
+"docs/sunflower.jpg" -->|"to generate SVG + resize"| "_includes/logo/logo.svg"
+painting -->|"crop circle + SVG + resize"| "docs/bees.svg"
 ```
+
+## Google SEO setup (subject to minor changes)
+
+(23/4/2026)
+
+* Google Search Console (indexing & SEO monitoring)
+* Google Analytics (visitor tracking)
+* Google Custom Search Engine (optional site search)
+
+### 1. Google Search Console (SEO & Indexing)
+
+This aims to submit your site to Google, monitor search performance (clicks, impressions), detect indexing issues.
+
+1. Go to:
+   https://search.google.com/search-console
+2. Click **Add Property**
+   * Enter:
+     ```
+     https://jinghuazhao.github.io
+     ```
+3. Verify ownership
+   * Upload verification file:
+     ```
+     google24e7ea4268734355.html
+     ```
+   * Ensure it is accessible at:
+     ```
+     https://jinghuazhao.github.io/google24e7ea4268734355.html
+     ```
+4. Submit sitemap
+   * Go to: **Indexing → Sitemaps**
+   * Enter:
+     ```
+     /sitemap.xml
+     ```
+5. Request indexing
+   * Use **URL Inspection**
+   * Submit:
+     ```
+     https://jinghuazhao.github.io/
+     ```
+### 2. Google Analytics (Traffic Tracking)
+
+This serves to track visitors and user behaviour, analyze traffic sources and engagement.
+
+1. Go to:
+   https://analytics.google.com
+2. Click **Admin → Create Property**
+3. Configure:
+   * Property name: your site name
+   * Timezone: United Kingdom
+   * Currency: GBP
+4. Go to:
+   **Data Streams → Web**
+5. Add your website:
+   ```
+   https://jinghuazhao.github.io
+   ```
+6. Copy your Measurement ID:
+   ```
+   G-XXXXXXXXXX
+   ```
+**Add to Jekyll config**
+
+Edit `_config.yml`:
+```yml
+analytics:
+  provider: google
+  google:
+    tracking_id : G-XXXXXXXXXX
+    anonymize_ip: true
+```
+7. Deploy your site (push to GitHub Pages)
+
+### 3. Google Custom Search Engine (Optional)
+
+This adds a Google-powered search box to your website and is useful for large sites with many pages.
+
+1. Go to:
+   https://programmablesearchengine.google.com/
+2. Click **Add / New Search Engine**
+3. Enter your site:
+   ```
+   jinghuazhao.github.io
+   ```
+4. Create the search engine
+5. Copy your Search Engine ID:
+   ```
+   xxxxxxxxxxxxxxxxx:xxxxx
+   ```
+
+** Add to Jekyll config**
+
+```yml
+search:
+  provider: google
+  google:
+    custom_search_engine_id: xxxxxxxxxxxxxxxxx:xxxxx
+```
+
+**Summary**
+
+| Feature        | Purpose                   | Required    |
+| -------------- | ------------------------- | ----------- |
+| Search Console | Indexing & SEO monitoring | Yes         |
+| Analytics      | Visitor tracking          | Recommended |
+| Custom Search  | Site search               | Optional    |
+
+**Final Checklist**
+
+* [ ] Site verified in Search Console
+* [ ] Sitemap submitted (`/sitemap.xml`)
+* [ ] Analytics ID added to `_config.yml`
+* [ ] Site redeployed
+* [ ] Homepage indexed
+
+* Changes may take a few days to appear in Google
+* Always redeploy after editing `_config.yml`
+* Monitor Search Console regularly for errors
 
 <!--more-->
 
