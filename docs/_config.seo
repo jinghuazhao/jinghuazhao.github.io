@@ -1,0 +1,126 @@
+## => Site Settings
+##############################
+url     : https://jinghuazhao.github.io   # REQUIRED for SEO (canonical URL)
+baseurl : ""                              # keep empty for root domain
+title   : Jing Hua Zhao (赵京华) | Research, Data Science & Web Page
+description: >
+  Personal website of Jing Hua Zhao (赵京华) featuring research, data science,
+  publications, projects, and technical blog posts.
+
+keywords: >
+  Jing Hua Zhao, Zhao Jinghua, data science, research, statistics,
+  genomics, bioinformatics, UK, academic website
+
+logo: /assets/images/logo.png   # add if available
+
+## => Language and Timezone
+##############################
+lang: en-GB
+timezone: Europe/London
+
+## => Author and Social
+##############################
+author:
+  type      : person
+  name      : "Jing Hua Zhao"
+  url       : https://jinghuazhao.github.io
+  avatar    : /assets/images/avatar.png
+  bio       : Researcher in data science, statistics, and genomics.
+  email     : jinghuazhao@hotmail.com
+  github    : jinghuazhao
+  linkedin  : # add if available
+
+## => SEO / Social Metadata
+##############################
+twitter:
+  username: # optional
+  card: summary_large_image
+
+social:
+  name: Jing Hua Zhao
+  links:
+    - https://github.com/jinghuazhao
+    # - https://linkedin.com/in/your-profile
+
+## => GitHub Repository
+##############################
+repository: jinghuazhao/jinghuazhao.github.io
+repository_tree: docs
+
+## => Paths
+##############################
+paths:
+  root    : /
+  home    : /
+  archive : /archive.html
+  rss     : /feed.xml
+
+## => Post
+##############################
+excerpt_separator: <!--more-->
+license: CC-BY-NC-4.0
+
+toc:
+  selectors: "h1,h2,h3,h4"
+
+## => Markdown Enhancements
+##############################
+mathjax: true
+mermaid: true
+chart: true
+future: true
+
+## => Paginate
+##############################
+paginate: 10                 # slightly tighter improves crawl efficiency
+paginate_path: /page:num
+
+## => Search
+##############################
+search:
+  provider: google          # better SEO than default local search
+  google:
+    custom_search_engine_id: # ADD THIS
+
+## => Analytics
+##############################
+analytics:
+  provider: google
+  google:
+    tracking_id : G-XXXXXXXXXX   # add GA4
+    anonymize_ip: true
+
+## => Build
+##############################
+markdown    : kramdown
+highlighter : rouge
+permalink   : /:categories/:year/:month/:day/:title/   # better SEO URLs
+
+exclude:
+  - README.md
+  - node_modules
+  - vendor
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: article
+      sharing: true
+      license: true
+      aside:
+        toc: true
+      show_edit_on_github: true
+      show_subscribe: true
+      pageview: true
+
+## => Plugins
+##############################
+plugins:
+  - jekyll-redirect-from
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jemoji
