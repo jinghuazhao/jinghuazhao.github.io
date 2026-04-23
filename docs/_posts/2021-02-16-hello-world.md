@@ -30,49 +30,34 @@ painting -->|"crop circle and SVG resize"| bees["docs/bees.svg"]
 
 (23/4/2026)
 
-* Google Search Console (indexing & SEO monitoring)
-* Google Analytics (visitor tracking)
-* Google Custom Search Engine (optional site search)
+1. Google Search Console (indexing & SEO monitoring)
+2. Google Analytics (visitor tracking)
+3. Google Custom Search Engine (optional site search)
 
 ### A. Google Search Console (SEO & Indexing)
 
 This aims to submit site to Google, monitor search performance (clicks, impressions), detect indexing issues.
 
 1. Go to:
-   https://search.google.com/search-console
+   <https://search.google.com/search-console>
 2. Click **Add Property**
-   * Enter:
-     ```
-     https://jinghuazhao.github.io
-     ```
+   * Enter: `https://jinghuazhao.github.io`
 3. Verify ownership
-   * Upload verification file:
-     ```
-     google24e7ea4268734355.html
-     ```
-   * Ensure it is accessible at:
-     ```
-     https://jinghuazhao.github.io/google24e7ea4268734355.html
-     ```
+   * Upload verification file: `google24e7ea4268734355.html`
+   * Ensure it is accessible at: `https://jinghuazhao.github.io/google24e7ea4268734355.html`
 4. Submit sitemap
    * Go to: **Indexing → Sitemaps**
-   * Enter:
-     ```
-     /sitemap.xml
-     ```
+   * Enter: `/sitemap.xml`
 5. Request indexing
    * Use **URL Inspection**
-   * Submit:
-     ```
-     https://jinghuazhao.github.io/
-     ```
+   * Submit: `https://jinghuazhao.github.io/`
 
 ### B. Google Analytics (Traffic Tracking)
 
 This serves to track visitors and user behaviour, analyze traffic sources and engagement.
 
 1. Go to:
-   https://analytics.google.com
+   <https://analytics.google.com>
 2. Click **Admin → Create Property**
 3. Configure:
    * Property name: site name
@@ -80,14 +65,8 @@ This serves to track visitors and user behaviour, analyze traffic sources and en
    * Currency: GBP
 4. Go to:
    **Data Streams → Web**
-5. Add website:
-   ```
-   https://jinghuazhao.github.io
-   ```
-6. Copy Measurement ID:
-   ```
-   G-XXXXXXXXXX
-   ```
+5. Add website: `https://jinghuazhao.github.io`
+6. Copy Measurement ID: `G-XXXXXXXXXX`
 
 **Add to Jekyll config**
 
@@ -106,17 +85,11 @@ analytics:
 This adds a Google-powered search box to website and is useful for large sites with many pages.
 
 1. Go to:
-   https://programmablesearchengine.google.com/
+   <https://programmablesearchengine.google.com/>
 2. Click **Add / New Search Engine**
-3. Enter site:
-   ```
-   jinghuazhao.github.io
-   ```
+3. Enter site: `jinghuazhao.github.io`
 4. Create the search engine
-5. Copy Search Engine ID:
-   ```
-   xxxxxxxxxxxxxxxxx:xxxxx
-   ```
+5. Copy Search Engine ID: `xxxxxxxxxxxxxxxxx:xxxxx`
 
 **Add to Jekyll config**
 
@@ -135,9 +108,9 @@ search:
 | Analytics      | Visitor tracking          | Recommended |
 | Custom Search  | Site search               | Optional    |
 
-* Changes may take a few days to appear in Google
-* Always redeploy after editing `_config.yml`
-* Monitor Search Console regularly for errors
+1. Changes may take a few days to appear in Google
+2. Always redeploy after editing `_config.yml`
+3. Monitor Search Console regularly for errors
 
 <!--more-->
 
