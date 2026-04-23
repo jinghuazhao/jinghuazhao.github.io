@@ -9,11 +9,12 @@ mermaid: true
 
 ## The workflow
 
-```mermaid
+<div class="mermaid">
 graph TB;
 photo --> |to square + to resize| docs/sunflower.jpg --> |to generate favicon| docs/assets
 docs/sunflower.jpg --> |to generate SVG + to resize SVG| _includes/logo/logo.svg
 painting --> |to crop circle + to generate SVG + to resize SVG| docs/*/bees.svg
+</div>
 ```
 
 <div class="mermaid">
