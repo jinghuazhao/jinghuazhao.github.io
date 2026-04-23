@@ -20,10 +20,6 @@ painting --> |to crop circle + to generate SVG + to resize SVG| docs/*/bees.svg
 
 (23/4/2026)
 
-A. Google Search Console (indexing & SEO monitoring)  
-B. Google Analytics (visitor tracking)  
-C. Google Custom Search Engine (optional site search)
-
 ### A. Google Search Console (SEO & Indexing)
 
 This aims to submit site to Google, monitor search performance (clicks, impressions), detect indexing issues.
