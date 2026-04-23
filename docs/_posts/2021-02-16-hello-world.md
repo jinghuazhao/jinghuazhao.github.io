@@ -18,10 +18,12 @@ painting --> |to crop circle + to generate SVG + to resize SVG| docs/*/bees.svg
 
 <div class="mermaid">
 graph TB
-photo -->|"to square + to resize"| "docs/sunflower.jpg"
-"docs/sunflower.jpg" -->|"to generate favicon"| "docs/assets"
-"docs/sunflower.jpg" -->|"to generate SVG + resize"| "_includes/logo/logo.svg"
-painting -->|"crop circle + SVG + resize"| "docs/bees.svg"
+
+photo["photo"] -->|"to square and resize"| sunflower["docs/sunflower.jpg"]
+sunflower -->|"generate favicon"| assets["docs/assets"]
+sunflower -->|"generate SVG and resize"| logo["_includes/logo/logo.svg"]
+painting -->|"crop circle and SVG resize"| bees["docs/bees.svg"]
+
 </div>
 
 ## Google SEO setup (subject to minor changes)
