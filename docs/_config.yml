@@ -38,10 +38,15 @@ timezone: Europe/London
 ## => Author and Social
 ##############################
 author:
-  type      : # "person" (default), "organization"
-  name      : "赵京华(Jing Hua Zhao)"
+  type      : person # "person" (default), "organization"
+  name:     Jinghua Zhao
+  aliases:
+    - Jing Hua Zhao
+    - Zhao Jinghua
+    - 赵京华
+    - JinghuaZhao
   url       : https://jinghuazhao.github.io
-  avatar    : # path or url of avatar image (square)
+  avatar    : /assets/images/bees.jpg # path or url of avatar image (square)
   bio       : I am an amazing person.
   email     : jinghuazhao@hotmail.com
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
@@ -63,10 +68,16 @@ twitter:
   card: summary_large_image
 
 social:
-  name: Jing Hua Zhao
+  name: Jinghua Zhao
   links:
     - https://github.com/jinghuazhao
     - https://linkedin.com/in/jinghua-zhao-2350b2209
+
+seo:
+  name: Jinghua Zhao
+  sameAs:
+    - https://github.com/jinghuazhao
+    - https://www.linkedin.com/in/jinghua-zhao-2350b2209/
 
 ## => GitHub Repository (if the site is hosted by GitHub)
 ##############################
