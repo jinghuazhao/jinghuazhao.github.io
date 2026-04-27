@@ -1,9 +1,0 @@
-Package: CGR
-Version: 1.0-5
-Depends: R (> 1.5.0)
-
-Package: kinship
-Version: 1.1.4
-Depends: survival, nlme, lattice, R (>= 2.8.0)
-Imports: methods
-
