@@ -7,6 +7,12 @@ mathjax_autoNumber: false
 mermaid: true
 ---
 
+## 7/5/2026
+
+Function `import_OpenGWAS` now works under the new OpenGWAS authentication scheme.
+
+## 25/3/2025
+
 While the vignette remains unchanged, articles are finally reduced to three, featuring Bioconductor, LocusZoom.js, and snakemake, respectively.
 
 At the same time, individualized articles can be recovered from GitHub package release.
