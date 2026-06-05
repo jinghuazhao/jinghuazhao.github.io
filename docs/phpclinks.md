@@ -94,11 +94,15 @@ title: Jing Hua Zhao's virtual library at PHPC
   - Civil enformcement, <https://www.ce-service.co.uk/>
   - Devon & Cornwall Police, <https://www.devon-cornwall.police.uk/> ([UKROEd](https://www.ukroed.org.uk/), [Information Commissioner's Office](https://ico.org.uk/))
   - Genomics England, <https://www.genomicsengland.co.uk/>
-  - gov.uk
+  - gov.uk, <https://www.gov.uk/>
     * Assured tenancy forms, <https://www.gov.uk/guidance/assured-tenancy-forms>
     * Council Tax band, <https://www.gov.uk/council-tax-bands>
     * Dart Charge, <https://www.gov.uk/dart-charge>
-    * DVLA ([Renew your driving licence](www.gov.uk/renew-driving-licence), [Sold, transferred or bought a vehicle](https://www.gov.uk/sold-bought-vehicle), [vehicle-tax](https://www.gov.uk/vehicle-tax) ([direct debit](https://www.gov.uk/vehicle-tax-direct-debit)), [Contact](https://www.gov.uk/contact-the-dvla))
+    * DVLA, <https://www.gov.uk/government/organisations/driver-and-vehicle-licensing-agency>
+      - Contact, <https://www.gov.uk/contact-the-dvla>
+      - Renew your driving licence, <https://www.gov.uk/renew-driving-licence>
+      - Sold, transferred or bought a vehicle, <https://www.gov.uk/sold-bought-vehicle>
+      - Vehicle-tax, <https://www.gov.uk/vehicle-tax> ([direct debit](https://www.gov.uk/vehicle-tax-direct-debit))
       - HMRC
           * [Approved professional organisations and learned societies](https://www.gov.uk/government/publications/professional-bodies-approved-for-tax-relief-list-3/approved-professional-organisations-and-learned-societies#r)
           * [Claim tax relief for expenses of employment](https://www.gov.uk/tax-relief-for-employees/working-at-home)
