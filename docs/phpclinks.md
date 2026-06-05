@@ -98,7 +98,7 @@ title: Jing Hua Zhao's virtual library at PHPC
     * Assured tenancy forms, <https://www.gov.uk/guidance/assured-tenancy-forms>
     * Council Tax band, <https://www.gov.uk/council-tax-bands>
     * Dart Charge, <https://www.gov.uk/dart-charge>
-    * DVLA ([Sold, transferred or bought a vehicle](https://www.gov.uk/sold-bought-vehicle), [vehicle-tax](https://www.gov.uk/vehicle-tax) ([direct debit](https://www.gov.uk/vehicle-tax-direct-debit)), [Contact](https://www.gov.uk/contact-the-dvla))
+    * DVLA ([Renew your driving licence](www.gov.uk/renew-driving-licence), [Sold, transferred or bought a vehicle](https://www.gov.uk/sold-bought-vehicle), [vehicle-tax](https://www.gov.uk/vehicle-tax) ([direct debit](https://www.gov.uk/vehicle-tax-direct-debit)), [Contact](https://www.gov.uk/contact-the-dvla))
       - HMRC
           * [Approved professional organisations and learned societies](https://www.gov.uk/government/publications/professional-bodies-approved-for-tax-relief-list-3/approved-professional-organisations-and-learned-societies#r)
           * [Claim tax relief for expenses of employment](https://www.gov.uk/tax-relief-for-employees/working-at-home)
@@ -209,4 +209,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - What 3 words, <https://what3words.com/>
 - YouTube, <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 1/6/2026*
+***Created on** 3/5/2021 and **last changed** 5/6/2026*
