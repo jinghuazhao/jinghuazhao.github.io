@@ -36,7 +36,7 @@ title: Jing Hua Zhao's virtual library at PHPC
   * Tesco, <https://www.tesco.com/>
 - University of Cambridge, <https://www.cam.ac.uk/>
    * Accelerate Programme for Scientific Discovery, <https://acceleratescience.github.io/>
-   * Apple Day 2023, <https://www.botanic.cam.ac.uk/whats-on/apple-day-2023/>
+   * Apple Day 2026, <https://www.botanic.cam.ac.uk/whats-on/apple-day-2026/>
    * cmih, <https://www.cmih.maths.cam.ac.uk/>
    * DPHPC, <https://www.phpc.cam.ac.uk/>
      - CanRisk, <https://www.canrisk.org/>
@@ -213,4 +213,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - What 3 words, <https://what3words.com/>
 - YouTube, <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 5/6/2026*
+***Created on** 3/5/2021 and **last changed** 6/6/2026*
