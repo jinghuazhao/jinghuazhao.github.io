@@ -17,7 +17,7 @@ sidebar:
         - [gap.datasets](https://www.rdocumentation.org/packages/gap.datasets), <https://cran.r-project.org/package=gap.datasets>
         - kinship ([vignette](https://jinghuazhao.github.io/R/vignettes/kinship.pdf))
         - [lmm](https://www.rdocumentation.org/packages/lmm) ([vignette](https://jinghuazhao.github.io/R/vignettes/lmm-tr.pdf)), <https://cran.r-project.org/package=lmm>
-        - [pan](https://www.rdocumentation.org/packages/pan) ([vignette](https://jinghuazhao.github.io/R/vignettes/pan-tr.pdf)), <https://cran.r-project.org/package=pan>
+        - [pan](https://www.rdocumentation.org/packages/pan) ([vignette](https://jinghuazhao.github.io/R/vignettes/pan.pdf)), <https://cran.r-project.org/package=pan>
         - [tdthap](https://www.rdocumentation.org/packages/tdthap) ([vignette](https://jinghuazhao.github.io/R/vignettes/tdthap.pdf)), <https://cran.r-project.org/package=tdthap>
   : [![](bees.svg)](https://github.com/jinghuazhao/Haplotype-Analysis) [Haplotype analysis](https://jinghuazhao.github.io/Haplotype-Analysis/) based on [C programs](c-progs.md)
   : [![](bees.svg)](https://github.com/jinghuazhao/misc) [misc](https://jinghuazhao.github.io/misc/)ellaneous collections based on [miscellaneous programs](misc-progs.md)
