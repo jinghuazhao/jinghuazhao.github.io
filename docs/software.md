@@ -16,7 +16,7 @@ sidebar:
         - [gap](https://www.rdocumentation.org/packages/gap/) ([jss](https://doi.org/10.18637/jss.v023.i08), [manual](https://jinghuazhao.github.io/R/vignettes/gap-manual.pdf), [news](https://jinghuazhao.github.io/R/vignettes/ChangeLog.txt), [shinygap](https://jinghuazhao.github.io/R/vignettes/shinygap.html), [vignette](https://jinghuazhao.github.io/R/vignettes/gap.html)), <https://cran.r-project.org/package=gap>
         - [gap.datasets](https://www.rdocumentation.org/packages/gap.datasets), <https://cran.r-project.org/package=gap.datasets>
         - kinship ([vignette](https://jinghuazhao.github.io/R/vignettes/kinship.pdf))
-        - [lmm](https://www.rdocumentation.org/packages/lmm) ([vignette](https://jinghuazhao.github.io/R/vignettes/lmm-tr.pdf)), <https://cran.r-project.org/package=lmm>
+        - [lmm](https://www.rdocumentation.org/packages/lmm) ([vignette](https://jinghuazhao.github.io/R/vignettes/lmm.pdf)), <https://cran.r-project.org/package=lmm>
         - [pan](https://www.rdocumentation.org/packages/pan) ([vignette](https://jinghuazhao.github.io/R/vignettes/pan.pdf)), <https://cran.r-project.org/package=pan>
         - [tdthap](https://www.rdocumentation.org/packages/tdthap) ([vignette](https://jinghuazhao.github.io/R/vignettes/tdthap.pdf)), <https://cran.r-project.org/package=tdthap>
   : [![](bees.svg)](https://github.com/jinghuazhao/Haplotype-Analysis) [Haplotype analysis](https://jinghuazhao.github.io/Haplotype-Analysis/) based on [C programs](c-progs.md)
