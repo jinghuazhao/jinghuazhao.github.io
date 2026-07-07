@@ -82,6 +82,7 @@ title: Jing Hua Zhao's virtual library at PHPC
         - Euro 2025, [Michelle Agyemang](https://www.bbc.co.uk/programmes/p0lrrbm9)
         - Qatar 2022, [Fixture schedule](https://www.bbc.co.uk/sport/football/60959746)
         - Russia 2018, [Brazil](https://www.bbc.co.uk/sport/av/football/44587792)
+        - USA-Canada-Mexico 2026, [England](https://www.bbc.co.uk/sport/football/live/cr5j14eyzm8t)
         - US election 2020, <https://www.bbc.co.uk/news/election/us2020/results>
         - US election 2024, <https://www.bbc.co.uk/news/election/2024/us/results>
   - Bletchly Park, <https://bletchleypark.org.uk/>
@@ -214,4 +215,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - What 3 words, <https://what3words.com/>
 - YouTube, <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 11/6/2026*
+***Created on** 3/5/2021 and **last changed** 7/7/2026*
