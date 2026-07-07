@@ -28,7 +28,7 @@ key: page-work
 
 ![Image](assets/images/sunflower.jpg){:.circle height="180px" width="180px"}
 
-My field is statistics, epidemiology and public heatlth with interest
+My field is statistics, genetics, epidemiology and public heatlth with interest
 in [genetic analysis of complex traits](https://jinghuazhao.github.io/GDCT/) especially
 [Omics-Analysis](https://jinghuazhao.github.io/Omics-analysis/). I have worked with the
 [SCALLOP consortium](https://www.scallop-consortium.org/) following [Whitehall II](https://closer.ac.uk/study/whitehall-ii-study/),
