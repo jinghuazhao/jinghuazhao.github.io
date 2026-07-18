@@ -158,6 +158,7 @@ summary.h3 {
 * Shortridge Academcy, <https://www.shortridgeacademy.com>
 * SoCal Empowered, <https://socalempowered.com/>
 * Taste Recovery, <https://www.tasterecovery.com/>
+* The Haven Detox, <https://havendetoxnow.com/>
 + The Ridge, <https://theridgertc.com/>
 * Tusk Kratom, <https://tuskkratom.com/>
 * West Valley Detox, <https://westvalleydetox.com/>
@@ -215,6 +216,7 @@ summary.h3 {
 - Enmanuel Batista <ebatista@drugwatch.com>
 - Rachel Bryant, <rachel@elevaterecoveryma.com>
 - Mara Davis <mara@hr.knowyourdna.com>
+- Cassidy Webb <cwebb@havenhealthmgmt.org>
 - Chloe Farmer <chloe@innervoyagerecovery.com>
 - Rachael Fitzgerald, <rachael@lanierrecoverycenter.com>
 - Eliza Hadley, <eliza.hadley@gv.alcoholrehabhelp.org>
@@ -223,4 +225,4 @@ summary.h3 {
 - Rachel Parker, <iamrachelparker@gmail.com>
 - Emma Tressler, <healthcare@thedigitalintellect.com>
 
-***Created on** 12/1/2023 and **last changed** 19/3/2026*
+***Created on** 12/1/2023 and **last changed** 18/7/2026*
