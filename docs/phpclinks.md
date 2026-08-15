@@ -45,7 +45,7 @@ title: Jing Hua Zhao's virtual library at PHPC
    * Oxford vs Cambridge, <https://www.luxurylifestylemag.co.uk/the-best-of-the-rest/oxford-vs-cambridge-which-university-is-better-in-2024/>
    * Research Computing Service [Terms & Conditions](https://www.hpc.cam.ac.uk/storage/terms-and-conditions)
    * [Self-Employment Service (ESS)](https://www.hr.admin.cam.ac.uk/hr-staff/information-new-starters/employee-self-service-ess)
-   * Universities Superannuation Scheme (USS), <https://www.uss.co.uk/>
+   * Universities Superannuation Scheme (USS), <https://www.uss.co.uk/> ([Taking your benefits and savings](https://www.uss.co.uk/for-members/your-pension-explained/taking-your-benefits-and-savings))
 
 ## Around the world
 
@@ -216,4 +216,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - What 3 words, <https://what3words.com/>
 - YouTube, <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 13/7/2026*
+***Created on** 3/5/2021 and **last changed** 15/8/2026*
