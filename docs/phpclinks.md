@@ -92,6 +92,7 @@ title: Jing Hua Zhao's virtual library at PHPC
     * CRUK, <https://fundraise.cancerresearchuk.org/page/tengyus-race-for-life>
     * RSPCA [guinea pigs](https://www.rspca.org.uk/adviceandwelfare/pets/rodents/guineapigs/)
   - Bosch UK, <https://www.bosch-home.co.uk/>
+  - British Gas, <https://britishgas.co.uk/>
   - Chums, <https://www.chums.co.uk/>
   - Civil enformcement, <https://www.ce-service.co.uk/>
   - Devon & Cornwall Police, <https://www.devon-cornwall.police.uk/> ([UKROEd](https://www.ukroed.org.uk/), [Information Commissioner's Office](https://ico.org.uk/))
@@ -216,4 +217,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - What 3 words, <https://what3words.com/>
 - YouTube, <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 15/8/2026*
+***Created on** 3/5/2021 and **last changed** 26/8/2026*
