@@ -7,8 +7,10 @@ mathjax_autoNumber: false
 mermaid: true
 ---
 
-See <https://cambridge-ceu.github.io/csd3/applications/copilot-cli.html> &
-<https://cambridge-ceu.github.io/csd3/applications/Pi.html>.
+See 
+
+- GitHub Copilot CLI, <https://cambridge-ceu.github.io/csd3/applications/copilot-cli.html>
+- Pi, <https://cambridge-ceu.github.io/csd3/applications/Pi.html>.
 
 ## 2026-09-06
 
