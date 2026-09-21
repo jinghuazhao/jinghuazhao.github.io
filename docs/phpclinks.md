@@ -173,6 +173,7 @@ title: Jing Hua Zhao's virtual library at PHPC
 - Bioinformatics CRO, <https://www.bioinformaticscro.com/>
 - Boardingware, <https://www.boardingware.com/>
 - Brainify.AI, <https://brainify.ai/>
+- CamsPaMS, <https://CamsPaMS.org> ([Email](CambridgeProtMS@gmail.com), [LinkedIn](https://www.linkedin.com/groups/10035898/))
 - canSAR.ai, <https://cansar.ai/>
 - ChinaTextbook, <https://github.com/TapXWorld/ChinaTextbook>
 - Essay writing service, <https://essayservice.com/>
@@ -217,4 +218,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - What 3 words, <https://what3words.com/>
 - YouTube, <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 26/8/2026*
+***Created on** 3/5/2021 and **last changed** 21/9/2026*
