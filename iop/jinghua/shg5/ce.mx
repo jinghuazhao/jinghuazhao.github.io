@@ -1,0 +1,53 @@
+!C E model fitted to Alison's Data
+G1: model parameters
+Data Calc NGroups=4
+Begin Matrices;
+X Lower 1 1 Fixed   ! genetic structure
+Y Lower 1 1 Free    ! common environmental structure
+Z Lower 1 1 Free    ! specific environmental structure
+W Lower 1 1 Fixed   ! dominance structure
+Begin Algebra;
+A= X*X' ;
+C= Y*Y' ;
+E= Z*Z' ;
+D= W*W' ;
+End Algebra;
+End
+
+G2: Monozygotic twin pairs
+Data NInput-vars=2 NObservations=522
+Labels N_t1 N_t2
+CMatrix
+17.64
+8.1421 17.64
+Matrices= Group 1
+Covariances  A+C+D+E | A+C+D _
+             A+C+D   | A+C+D+E /
+Options RSidual
+End
+
+G3: Dizygotic twin pairs
+Data NInput_vars=2 NObservations=272
+Labels N_t1 N_t2
+CMatrix
+18.4599
+3.5303 18.4599
+Matrices= Group 1
+H Full 1 1
+Q Full 1 1
+Covariances A+C+D+E   | H@A+C+Q@D _
+            H@A+C+Q@D | A+C+D+E /
+Matrix H .5
+Matrix Q .25
+Start .6 All
+Options Multiple RSidual
+End
+
+G4: beta-test
+data calc
+matrices= Group 1
+compute (A|C|D|E) @ (A+C+D+E)~/
+options rs nd=3
+options multiple
+end
+
