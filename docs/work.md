@@ -31,10 +31,10 @@ key: page-work
 My field is statistics, genetics, epidemiology and public heatlth with interest
 in [genetic analysis of complex traits](https://jinghuazhao.github.io/GDCT/) especially
 [Omics-Analysis](https://jinghuazhao.github.io/Omics-analysis/). I have worked with the
-[SCALLOP consortium](https://www.scallop-consortium.org/) following [Whitehall II](https://closer.ac.uk/study/whitehall-ii-study/),
+[SCALLOP consortium](http://www.scallop-consortium.com/) following [Whitehall II](https://closer.ac.uk/study/whitehall-ii-study/),
 [ELSA](http://www.natcen.ac.uk/elsa/), [EPIC-Norfolk](http://www.epic-norfolk.org.uk/),
 [Fenland](http://www.mrc-epid.cam.ac.uk/research/studies/fenland/),
-[InterAct](http://www.inter-act.eu/), [NSHD](http://www.nshd.mrc.ac.uk/)
+[InterAct](http://www.inter-act.eu/), [NSHD](https://nshd.mrc.ac.uk/)
 and [Framingham](http://www.framinghamheartstudy.org/). The EPIC-Norfolk
 genomewide association study contributed to consortia such as
 [GIANT](http://www.broadinstitute.org/collaboration/giant/index.php/Main_Page)
@@ -99,7 +99,7 @@ F4(Computer Science) --> B(Genetic Epidemiology & Biostatistics);
 ## Collaborators / Mentors
 
 Beijing University: [Yude Chen](http://finance.sina.com.cn/economist/jingjixueren/20051219/11492209756.shtml) ([School of Public Health](http://sph.pku.edu.cn/))\
-Fudan University ([Social Medicine](https://sph.fudan.edu.cn/dept/5)): [Wenwei Cai](https://a.xueshu.baidu.com/scholarID/CN-BJ74BRUJ), [Pihuan Jin](https://www.baike.com/wikiid/4250585070644647126?from=wiki_content&prd=innerlink&view_id=3pl79eg77sepds), [Fumin Shen](https://www.baike.com/wikiid/8733105600449106645?view_id=4otxr0qq5u2j9c), [Zhaohuan Zhang](https://baike.baidu.com/item/%E5%BC%A0%E7%85%A7%E5%AF%B0) ([Wiki Entry](http://en.wikipedia.org/wiki/Zhang_Zhaohuan))\
+Fudan University ([Social Medicine](https://sph.fudan.edu.cn/dept/5)): [Andres Ruiz-Linares](https://research.com/u/andres-ruiz-linares), [Wenwei Cai](https://a.xueshu.baidu.com/scholarID/CN-BJ74BRUJ), [Pihuan Jin](https://www.baike.com/wikiid/4250585070644647126?from=wiki_content&prd=innerlink&view_id=3pl79eg77sepds), [Fumin Shen](https://www.baike.com/wikiid/8733105600449106645?view_id=4otxr0qq5u2j9c), [Zhaohuan Zhang](https://baike.baidu.com/item/%E5%BC%A0%E7%85%A7%E5%AF%B0) ([Wiki Entry](http://en.wikipedia.org/wiki/Zhang_Zhaohuan))\
 Havard School of Public Health: [David Christiani](https://hsph.harvard.edu/exec-ed/faculty/david-christiani/), [William Hsiao](https://hsph.harvard.edu/profile/william-hsiao/) ([Wiki Entry](http://en.wikipedia.org/wiki/William_Hsiao)), [Nan Laird](https://hsph.harvard.edu/profile/nan-m-laird/) ([Wiki Entry](http://en.wikipedia.org/wiki/Nan_Laird))\
 Imperial College: [James Peters](https://profiles.imperial.ac.uk/j.peters)\
 Kings College London: [David Collier](https://kclpure.kcl.ac.uk/portal/en/persons/david-collier), [Tao Li](https://kclpure.kcl.ac.uk/portal/en/persons/tao-li(279830ab-410a-4150-a30a-e3a56dad93aa).html), [Peter McGuffin](https://kclpure.kcl.ac.uk/portal/en/persons/peter.mcguffin) ([Wiki Entry](https://en.wikipedia.org/wiki/Peter_McGuffin)), [Robin Murrary](https://kclpure.kcl.ac.uk/portal/en/persons/robin.murray) ([Wiki Entry](https://en.wikipedia.org/wiki/Robin_Murray))\
@@ -107,7 +107,7 @@ Max Planck-CAS Paul Gerson Unna Research Group on Dermatogenomics: [Sijia Wang](
 National Institute of Health: [Abbas Parsian](https://www.niaaa.nih.gov/dnb)\
 Shandong University: [Biostatistics](http://biostat.sdu.edu.cn/)\
 Southern Medical University: [Xiping Xu](https://research.com/u/xiping-xu)\
-University College London: [Steve Humphries](https://profiles.ucl.ac.uk/10097-steve-humphries), [Michael Marmot](https://profiles.ucl.ac.uk/9195) ([Wiki Entry](http://en.wikipedia.org/wiki/Michael_Marmot)), [Andres Ruiz-Linares](https://www.ucl.ac.uk/biosciences/gee/human-population-genetics), [Arron Hingorani](https://profiles.ucl.ac.uk/7267-aroon-hingoranii), [Stephen Senn](http://www.senns.uk/)\
+University College London: [Steve Humphries](https://profiles.ucl.ac.uk/10097-steve-humphries), [Michael Marmot](https://profiles.ucl.ac.uk/9195) ([Wiki Entry](http://en.wikipedia.org/wiki/Michael_Marmot)), [Arron Hingorani](https://profiles.ucl.ac.uk/7267-aroon-hingoranii), [Stephen Senn](http://www.senns.uk/)\
 University of Cambridge: [Nicholas J. Wareham](https://research.com/u/nicholas-j-wareham), [Jian'an Luan](https://research.com/u/jianan-luan)\
 University of Hong Kong: [Pak Sham](https://www.psychiatry.hku.hk/prof-pak-sham)\
 University of Southern Denmark: [Qihua Tan](http://www.sdu.dk/staff/qtan.aspx)
