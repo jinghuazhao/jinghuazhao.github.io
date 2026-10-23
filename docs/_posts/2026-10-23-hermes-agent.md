@@ -1,6 +1,6 @@
 ---
 layout: article
-title: hermes-agent (0.22.5) is documented
+title: hermes-agent 0.22.5 is documented
 tags: [info, AI]
 redirect_to: https://cambridge-ceu.github.io/csd3/applications/hermes-agent.html
 ---
