@@ -51,10 +51,13 @@ title: Jing Hua Zhao's virtual library at PHPC
 ## Around the world
 
 - China
+  * Air China, <https://www.airchina.co.uk/GB/GB/Home>
+    - PheonixMiles, <https://www.airchina.co.uk/GB/GB/phoenix-miles/>
   * CCTV, <https://tv.cctv.com/>
   * China Eastern, <https://uk.ceair.com/en/>
-    - Manage Booking, <http://uk.ceair.com/en/manage-booking.html>
+    - Eastern Miles, <https://www.ceair.com/easternmiles/en/index.html>
     - Free Baggage Allowance and Specifications, <https://www.ceair.com/global/en_static/Announcement/BaggageService/FreeBaggageAllowanceandSpecifications/>
+    - Manage Booking, <http://uk.ceair.com/en/manage-booking.html>
   * Chinese Embassy [FAQ](http://www.chinese-embassy.org.uk/chn/qzfw/hzlxz/zyxx/t1836400.htm) and [Passport/Travel certificatte](http://www.chinese-embassy.org.uk/chn/qzfw/hzlxz/t1827718.htm)
   * Global Times, <https://www.globaltimes.cn/>
   * gaokao, <http://114.xixik.com/gaokao/>
@@ -224,4 +227,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - What 3 words, <https://what3words.com/>
 - YouTube, <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 7/10/2026*
+***Created on** 3/5/2021 and **last changed** 3/11/2026*
