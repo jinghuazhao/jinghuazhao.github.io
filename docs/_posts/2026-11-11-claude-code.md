@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Claude code 2.1.311 is documented
+title: Claude Code 2.1.311 is documented
 tags: [info, AI]
 redirect_to: https://cambridge-ceu.github.io/csd3/applications/claude-code.html
 ---
