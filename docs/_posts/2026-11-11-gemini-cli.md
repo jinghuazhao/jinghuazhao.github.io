@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Gemini Cli 0.68.0 is documented
+title: Gemini CLI 0.68.0 is documented
 tags: [info, AI]
 redirect_to: https://cambridge-ceu.github.io/csd3/applications/gemini-cli.html
 ---
