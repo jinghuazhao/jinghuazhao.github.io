@@ -1,6 +1,6 @@
 ---
 layout: article
-title: GitHub Copilot Cli 1.0.109 is documented
+title: GitHub Copilot CLI 1.0.109 is documented
 tags: [info, AI]
 mathjax: true
 mathjax_autoNumber: false
