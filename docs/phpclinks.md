@@ -77,7 +77,11 @@ title: Jing Hua Zhao's virtual library at PHPC
   * National Academic OER & Digital Library of Ethiopia, <https://ndl.ethernet.edu.et/>
 - UK
   - Alina, <https://www.alina.co.uk/>
-  - Barclays, <https://www.barclays.co.uk/> (App: <https://www.barclays.co.uk/app>, IBAN: <https://www.barclays.co.uk/help/international/payments/making-and-receiving-international-payments/generate-iban/>, UK Swift: BUKBGB22)
+  - Barclays, <https://www.barclays.co.uk/>
+    * App, <https://www.barclays.co.uk/app>
+    * Click to Pay, <https://www.barclays.co.uk/current-accounts/digital-wallet/click-to-pay/>
+    * IBAN, <https://www.barclays.co.uk/help/international/payments/making-and-receiving-international-payments/generate-iban/>
+    * UK Swift, BUKBGB22
   - BBC, <https://www.bbc.co.uk/>
     * bitesize, <https://www.bbc.co.uk/bitesize>
     * Weather CB1, <https://www.bbc.co.uk/weather/cb1>
@@ -227,4 +231,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - What 3 words, <https://what3words.com/>
 - YouTube, <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 3/11/2026*
+***Created on** 3/5/2021 and **last changed** 17/11/2026*
