@@ -42,6 +42,19 @@ zetianmiaomu/
     └── -7e64aeef.html
 ```
 
+## Start afresh
+
+```bash
+cd ~/Downloads
+cp ~/jinghuazhao.github.io/docs/zetianmiaomu/images.csv .
+python3 ~/jinghuazhao.github.io/docs/zetianmiaomu/download_images.py
+module load ceuadmin/python/3.14.10
+python3 migrate_solo_site.py \
+  ~/Downloads/solo-websites-20261118203431.zip \
+  --images ~/Downloads/downloaded_images \
+  --output ~/tests/zetianmiaomu
+```
+
 ## Check results
 
 ```bash
