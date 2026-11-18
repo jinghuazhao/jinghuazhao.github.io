@@ -3096,6 +3096,18 @@ zetianmiaomu/
     └── -7e64aeef.html
 </code></pre></div></div>
 
+<h2 id="start-afresh">Start afresh</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/Downloads
+<span class="nb">cp</span> ~/jinghuazhao.github.io/docs/zetianmiaomu/images.csv <span class="nb">.</span>
+python3 ~/jinghuazhao.github.io/docs/zetianmiaomu/download_images.py
+module load ceuadmin/python/3.14.10
+python3 migrate_solo_site.py <span class="se">\</span>
+  ~/Downloads/solo-websites-20261118203431.zip <span class="se">\</span>
+  <span class="nt">--images</span> ~/Downloads/downloaded_images <span class="se">\</span>
+  <span class="nt">--output</span> ~/tests/zetianmiaomu
+</code></pre></div></div>
+
 <h2 id="check-results">Check results</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">-m</span> http.server 8000 &amp;
