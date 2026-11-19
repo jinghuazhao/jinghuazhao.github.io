@@ -103,7 +103,7 @@ Fudan University ([Social Medicine](https://sph.fudan.edu.cn/dept/5)): [Andres R
 Havard School of Public Health: [David Christiani](https://hsph.harvard.edu/exec-ed/faculty/david-christiani/), [William Hsiao](https://hsph.harvard.edu/profile/william-hsiao/) ([Wiki Entry](http://en.wikipedia.org/wiki/William_Hsiao)), [Nan Laird](https://hsph.harvard.edu/profile/nan-m-laird/) ([Wiki Entry](http://en.wikipedia.org/wiki/Nan_Laird))\
 Imperial College: [James Peters](https://profiles.imperial.ac.uk/j.peters)\
 Kings College London: [David Collier](https://kclpure.kcl.ac.uk/portal/en/persons/david-collier), [Tao Li](https://kclpure.kcl.ac.uk/portal/en/persons/tao-li(279830ab-410a-4150-a30a-e3a56dad93aa).html), [Peter McGuffin](https://kclpure.kcl.ac.uk/portal/en/persons/peter.mcguffin) ([Wiki Entry](https://en.wikipedia.org/wiki/Peter_McGuffin)), [Robin Murrary](https://kclpure.kcl.ac.uk/portal/en/persons/robin.murray) ([Wiki Entry](https://en.wikipedia.org/wiki/Robin_Murray))\
-Max Planck-CAS Paul Gerson Unna Research Group on Dermatogenomics: [Sijia Wang](http://www.picb.ac.cn/picb-dynamic/dermatogenomics/index.jsp?ntype=3)\
+Max Planck-CAS Paul Gerson Unna Research Group on Dermatogenomics: [Sijia Wang](http://english.sinh.cas.cn/people/fs/201809/t20180920_197703.html)\
 National Institute of Health: [Abbas Parsian](https://www.niaaa.nih.gov/dnb)\
 Shandong University: [Biostatistics](http://biostat.sdu.edu.cn/)\
 Southern Medical University: [徐希平](https://research.com/u/xiping-xu)\
