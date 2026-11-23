@@ -105,6 +105,7 @@ title: Jing Hua Zhao's virtual library at PHPC
   - Chums, <https://www.chums.co.uk/>
   - Civil enformcement, <https://www.ce-service.co.uk/>
   - Devon & Cornwall Police, <https://www.devon-cornwall.police.uk/> ([UKROEd](https://www.ukroed.org.uk/), [Information Commissioner's Office](https://ico.org.uk/))
+  - doogal, <https://www.doogal.co.uk/>
   - Free Tour of Nottingham, <https://www.freetour.com/nottingham/free-walking-tour-nottingham>
   - Genomics England, <https://www.genomicsengland.co.uk/>
   - gov.uk, <https://www.gov.uk/>
@@ -231,4 +232,4 @@ title: Jing Hua Zhao's virtual library at PHPC
 - What 3 words, <https://what3words.com/>
 - YouTube, <https://www.youtube.com/@Violetsjourney>
 
-***Created on** 3/5/2021 and **last changed** 17/11/2026*
+***Created on** 3/5/2021 and **last changed** 23/11/2026*
